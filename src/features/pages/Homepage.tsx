@@ -1,3 +1,4 @@
+import CTA from "../ui/CTA"
 import Header from "../ui/Header"
 import Hero from "../ui/Hero"
 
@@ -6,6 +7,7 @@ function Homepage() {
         <div>
             <Header/>
             <Hero/>
+            <CTA/>
         </div>
     )
 }

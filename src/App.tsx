@@ -8,8 +8,8 @@ function App() {
   return (
     
    <BrowserRouter>
+   <Navigate to='/homepage' replace={true}/>
    <Routes>
-    
     <Route path="/homepage" element={<Homepage/>} />
     <Route path="/about" element={<About/>}/>
    </Routes>

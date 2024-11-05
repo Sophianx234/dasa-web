@@ -52,16 +52,16 @@ export type slidesImagesType =
 function Hero() {
 
     return (
-        <div className="slide-container">
+        <div className="slide-container ">
         <Slide>
          {slideImages.map((slideImage, index)=> (
-            <div key={index}>
+            <div key={index} className='bg-[#0000009d]'>
               <div className='
               flex
     items-center justify-center
     bg-cover
     bg-center
-    max-h-[25rem] h-[25rem] lg:h-[50rem] lg:max-h-[30rem] ' style={{  'backgroundImage': `url(${slideImage.url})` }}>
+    max-h-[25rem] h-[25rem] lg:h-[50rem] lg:max-h-[30rem] mix-blend-overlay' style={{  'backgroundImage': `url(${slideImage.url})` }}>
                 
               </div>
             </div>
