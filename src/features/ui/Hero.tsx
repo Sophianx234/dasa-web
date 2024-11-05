@@ -11,6 +11,7 @@ export type divStyleType = {
     alignItems: string,
     justifyContent: string,
     backgroundSize: string,
+    backgroundPosition: string,
     height: string 
 }
 export type slidesImagesType = 
@@ -25,13 +26,7 @@ const spanStyle : spanStyleType = {
     color: '#000000'
   }
   
-  const divStyle: divStyleType = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundSize: 'cover',
-    height: '400px'
-  }
+  
   const slideImages: slidesImagesType[] = [
     {
       url: 'https://i.ibb.co/Yfy7hZR/photo-5-2024-10-31-06-51-41.jpg',
@@ -62,7 +57,12 @@ function Hero() {
         <Slide>
          {slideImages.map((slideImage, index)=> (
             <div key={index}>
-              <div style={{ ...divStyle, 'backgroundImage': `url(${slideImage.url})` }}>
+              <div className='
+              flex
+    items-center justify-center
+    bg-cover
+    bg-center
+    max-h-[25rem] h-[25rem] ' style={{  'backgroundImage': `url(${slideImage.url})` }}>
                 <span style={spanStyle}>{slideImage.caption}</span>
               </div>
             </div>
