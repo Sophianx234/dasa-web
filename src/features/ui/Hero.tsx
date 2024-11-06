@@ -56,6 +56,7 @@ export type slidesImagesType =
 function Hero() {
 
     return (
+      <>
         <div className="slide-container ">
         <Slide>
          {slideImages.map((slideImage, index)=> (
@@ -72,6 +73,10 @@ function Hero() {
           ))} 
         </Slide>
       </div>
+      <div className='pt-10 bg-primary uppercase text-xs pb-8 font-mulish px-1 '>
+        <h1 className='font-bold text-center text-[#33312e]'>Your gateway to a world of networking, mentorship, and cultural exchange.</h1>
+      </div>
+          </>
     )
 }
 
