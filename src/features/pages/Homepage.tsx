@@ -1,6 +1,7 @@
 import CTA from "../ui/CTA"
 import Header from "../ui/Header"
 import Hero from "../ui/Hero"
+import Membership from "../ui/Membership"
 
 function Homepage() {
     return (
@@ -8,6 +9,7 @@ function Homepage() {
             <Header/>
             <Hero/>
             <CTA/>
+            <Membership/>
         </div>
     )
 }
