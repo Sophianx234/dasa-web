@@ -15,7 +15,9 @@ export default {
         rethink: 'Rethink Sans',
         mulish: 'Mulish',
         poppins: 'Poppins',
-        Montserrat: 'Montserrat'
+        Montserrat: 'Montserrat',
+        lobster: 'Lobster',
+        chewy: 'Chewy'
       },
       colors: {
         primary: '#FEF3E7',
