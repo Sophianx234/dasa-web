@@ -6,8 +6,8 @@ export type testimonialProp = {
 }
 function Testimonial({testimonial, name,role,img}:testimonialProp) {
     return (
-        <div className="space-y-2">
-            <h1 className="text-center text-lg px-8 font-bold ">{testimonial}</h1>
+        <div className="space-y-2 text-[#33312e]">
+            <h1 className="text-center text-lg px-8 font-bold  ">{testimonial}</h1>
             <div className="flex flex-col justify-center items-center">
                 <img src={img} alt="" className="size-14 rounded-full" />
         <div>
