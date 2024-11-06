@@ -16,6 +16,9 @@ export default {
         mulish: 'Mulish',
         poppins: 'Poppins',
         Montserrat: 'Montserrat'
+      },
+      colors: {
+        primary: '#FEF3E7',
       }
     },
   },

@@ -40,6 +40,10 @@ export type slidesImagesType =
       
     },
     {
+      url: 'https://i.ibb.co/ns2h563/photo-46-2024-10-31-06-50-45.jpg',
+      
+    },
+    {
       url: 'https://i.ibb.co/Fn3jDbD/photo-51-2024-10-31-06-52-36.jpg',
        
     },

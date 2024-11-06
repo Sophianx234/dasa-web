@@ -4,7 +4,7 @@ import Hero from "../ui/Hero"
 
 function Homepage() {
     return (
-        <div>
+        <div className="text-stone-900">
             <Header/>
             <Hero/>
             <CTA/>
