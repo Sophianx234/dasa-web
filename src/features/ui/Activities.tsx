@@ -15,14 +15,16 @@ function Activities() {
     return (
         <div className="py-10">
             <h1 className="text-center font-bold font-rethink">Experience the Fun with Us</h1>
+            <p className="text-center px-2 text-sm font-Poppins pt-1 pb-4">Join the Fun! Where Culture, Friendship, and Growth Come Alive</p>
             <div className="pt-2 flex justify-center flex-col ">
                 <div className=" w-full items-center space-y-6 flex flex-col">
 
-                <VideoPlayer src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/IMG_8063%20(2).MOV?t=2024-11-07T06%3A20%3A51.890Z"/>
-                <VideoPlayer  src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/VID-20240205-WA0108.mp4" />
-                <VideoPlayer  src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/IMG_8065%20(2).MOV"/>
+                <VideoPlayer src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/das-x.MOV?t=2024-11-07T14%3A20%3A02.433Z"/>
+                <VideoPlayer  src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/dasa-12.mp4" />
+                <VideoPlayer  src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/dasa-3.MOV"/>
+                <VideoPlayer  src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/dasa-2.MOV"/>
                 </div>
-
+<p className="text-center text-sm font-chewy ">Laughter, Community, and Lifelong <br /> Memories.</p>
             </div>
         </div>
     )

@@ -1,8 +1,10 @@
 import Activities from "../ui/Activities"
+import BriefAbout from "../ui/BriefAbout"
 import CTA from "../ui/CTA"
 import Header from "../ui/Header"
 import Hero from "../ui/Hero"
 import Membership from "../ui/Membership"
+import Questions from "../ui/Questions"
 import Testimonials from "../ui/Testimonials"
 
 function Homepage() {
@@ -10,12 +12,13 @@ function Homepage() {
         <div className="text-stone-900">
             <Header/>
             <main>
-
             <Hero/>
+            <BriefAbout/>
             <CTA/>
             <Membership/>
             <Testimonials/>
             <Activities/>
+            <Questions/>
             </main>
 
         </div>
