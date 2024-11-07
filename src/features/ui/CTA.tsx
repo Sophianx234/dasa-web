@@ -16,10 +16,10 @@ function CTA() {
                 </div>
                 <div className="space-y-1 pt-2">
 
-                <h1 className="font-bold font-rethink text-center">Join <span className=" border-b-primary border-b-[3px]">5,482</span> other Members</h1>
+                <h1 className="font-bold font-rethink text-center">Join <span className=" border-b-dasalight border-b-[3px]">5,482</span> other Members</h1>
                 <p className="text-xs text-center px-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam temporibus voluptatibus eligendi dignissimos pariatur!</p>
                 <div className="  text-center flex justify-center  ">
-                    <button className="bg-primary text-sm px-3 py-1 flex justify-center items-center rounded-full gap-1 "> <MdPersonOutline className="size-4" />Get innstant access</button>
+                    <button className="bg-dasalight text-sm px-3 py-1 flex justify-center items-center rounded-full gap-1 "> <MdPersonOutline className="size-4" />Get innstant access</button>
                 </div>
                 </div>
             </div>

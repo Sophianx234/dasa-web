@@ -20,6 +20,8 @@ export default {
   			chewy: 'Chewy'
   		},
   		colors: {
+			dasalight: '#FEF3E7',
+
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'
