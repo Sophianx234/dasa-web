@@ -1,3 +1,4 @@
+import Activities from "../ui/Activities"
 import CTA from "../ui/CTA"
 import Header from "../ui/Header"
 import Hero from "../ui/Hero"
@@ -14,6 +15,7 @@ function Homepage() {
             <CTA/>
             <Membership/>
             <Testimonials/>
+            <Activities/>
             </main>
 
         </div>

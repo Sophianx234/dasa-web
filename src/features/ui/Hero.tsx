@@ -1,19 +1,7 @@
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 
-export type spanStyleType = {
-    padding: string,
-    background: string,
-    color: string
-}
-export type divStyleType = {
-    display:string,
-    alignItems: string,
-    justifyContent: string,
-    backgroundSize: string,
-    backgroundPosition: string,
-    height: string 
-}
+
 export type slidesImagesType = 
     {
         url: string,

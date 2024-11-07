@@ -12,7 +12,7 @@ function CTA() {
         <div className="">
             <div className="max-w-[15rem] mx-auto flex flex-col justify-center items-center space-y-2 pt-5">
                 <div className="flex items-center -space-x-2">
-                {ctaImages.map(image=><CTImages imageUrl = {image} />)}
+                {ctaImages.map(image=><CTImages imageUrl = {image} key={image} />)}
                 </div>
                 <div className="space-y-1 pt-2">
 
