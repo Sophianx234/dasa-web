@@ -7,8 +7,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 function App() {
   const queryClient = new QueryClient()
   return (
-    
+
    <BrowserRouter>
+<Provider>
    <QueryClientProvider client={queryClient}>
 
    <Navigate to='/homepage' replace={true}/>
@@ -17,6 +18,7 @@ function App() {
     <Route path="/about" element={<About/>}/>
    </Routes>
    </QueryClientProvider>
+</Provider>    
    </BrowserRouter>
       
   )

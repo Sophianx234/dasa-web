@@ -1,7 +1,8 @@
 function Svg() {
+    
     return (
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1400 980" enable-background="new 0 0 1400 980" xml:space="preserve">
+        <svg version="1.1" id="Capa_1" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1400 935" enable-background="new 0 0 1400 980" xml:space="preserve">
 <g>
 	<g>
 		<path fill-rule="evenodd" clip-rule="evenodd" fill="#5B5B5F" d="M53,39c6.9-4,12.7-4.3,18.9-0.5c0,2.3,0,4.6,0,7.3
