@@ -3,7 +3,7 @@ import AccordionList from "./AccordionList"
 
 function Questions() {
     return (
-        <div>
+        <div className="pt-14">
             <AccordionList/>
         </div>
     )
