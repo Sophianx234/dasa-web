@@ -4,7 +4,7 @@ import navSlice from './src/features/slices/navSlice'
 
 // ...
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     nav: navSlice
   }
