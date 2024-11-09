@@ -1,5 +1,5 @@
 import { BsInstagram } from "react-icons/bs"
-import { FaXTwitter } from "react-icons/fa6"
+import { FaHeart, FaRegHeart, FaXTwitter } from "react-icons/fa6"
 import { FiFacebook } from "react-icons/fi"
 import { PiTelegramLogo } from "react-icons/pi"
 import SVGLite from "./SVGLite"
@@ -9,6 +9,7 @@ export type videoPlayerProps = {
 } 
 function VideoPlayer({src}:videoPlayerProps) {
     return (
+        <>
         <div className="grid grid-cols-[.2fr_2fr_.2fr] gap-3">
             <div className="flex   flex-col items-center  gap-16 pt-2">
 
@@ -23,11 +24,12 @@ function VideoPlayer({src}:videoPlayerProps) {
             </div>
 
         <video className="w-64  pb-10" src={src} controls autoPlay muted loop></video>
-        <div>
-
+        <div className="flex">
+        <FaHeart  className="size-6 stroke-dasalight self-end  mb-10"/>
+        </div>
+        </div>
         <SVGLite type='lines'/>
-        </div>
-        </div>
+        </>
     )
 }
 
