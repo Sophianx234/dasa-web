@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities{
+  .hover-primary{
+    @apply border-2 border-dasalight hover:bg-white transition-all duration-150
+  }
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

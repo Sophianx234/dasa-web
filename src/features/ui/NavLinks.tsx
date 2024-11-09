@@ -21,10 +21,10 @@ function NavLinks({swap= 'flex'}:navLinksProps) {
                 <NavLink to='/homepage'>
                     Home
                 </NavLink>
-                <NavLink to='about'>
+                <NavLink to='/about'>
                     About
                 </NavLink>
-                <NavLink to='signup'>
+                <NavLink to='sigin'>
                     Signin
                 </NavLink>
                 <NavLink to='signup' className='text-center bg-dasalight py-2 font-semibold hover:rounded-sm hover:bg-white hover:border-2 border-2 border-white hover:border-dasalight transition-all duration-150 rounded-sm'>
