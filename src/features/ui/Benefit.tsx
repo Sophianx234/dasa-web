@@ -7,7 +7,7 @@ export type benefitProps = {
 }
 function Benefit({icon,title,description}: benefitProps) {
     return (
-        <div className="pt-5 pb-4 rounded-md  bg-[#ffd8a8] mx-2">
+        <div className="pt-5 pb-4 rounded-md  px-3 bg-[#ffd8a8] mx-10">
                     <div className="flex flex-col items-center">
                     {icon}
                     <h1 className="font-bold text-sm text-center text-[#191611]"> {title}

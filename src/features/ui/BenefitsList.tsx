@@ -1,9 +1,8 @@
 import { FaRegHandshake } from "react-icons/fa"
 import Benefit from "./Benefit"
 import { GiGlassCelebration } from "react-icons/gi"
-import { IoPeopleCircle, IoStorefrontOutline } from "react-icons/io5"
+import {  IoStorefrontOutline } from "react-icons/io5"
 import { CiLock } from "react-icons/ci"
-import { BiSolidFaceMask } from "react-icons/bi"
 import { BsIncognito } from "react-icons/bs"
 
 function BenefitsList() {
