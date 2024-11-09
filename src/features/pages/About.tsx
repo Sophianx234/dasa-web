@@ -1,6 +1,7 @@
 import AboutSection from "../ui/AboutSection"
 import ExecutivesSection from "../ui/ExecutivesSection"
 import Impact from "../ui/Impact"
+import Values from "../ui/Values"
 import Header  from "./../ui/Header"
 
 function About() {
@@ -10,6 +11,7 @@ function About() {
            <AboutSection/>
            <ExecutivesSection/>
            <Impact/>
+           <Values/>
         </div>
     )
 }
