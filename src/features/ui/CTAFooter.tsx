@@ -14,10 +14,10 @@ function CTAFooter() {
                     <h1 className="font-bold text-xl text-[#fef4e9]">Be Apart Of the Association</h1>
                     <p className="text-dasalight text-xs font-poppins px-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique reiciendis voluptatum nihil molestias ex ullam quae provident soluta libero adipisci!</p>
                 </div>
-<div className="flex justify-center pt-4  ">
+<div className="flex justify-center pt-4  w-32 mx-auto ">
 
-            <input type="email" className="absolute  z-2 py-1  px-4 max-w-screen-sm " placeholder="damian" />
-            <button className="bg-dasalight absolute translate-x-[85%] px-3 py-[.254rem] border-0 flex gap-1 font-semibold items-center  text-[#66615c]">Ti Chama <FaArrowRight/>
+            <input type="email" className="absolute  z-2 py-1 pl-6 max-w-72 w-72  px-4  " placeholder="damian" />
+            <button className="bg-dasalight absolute translate-x-[75%] px-3  border-0 flex gap-1 font-semibold py-1 items-center  text-[#66615c]">Ti Chama <FaArrowRight/>
             </button>
 </div>
             </div>
