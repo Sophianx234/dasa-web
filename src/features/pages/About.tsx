@@ -1,7 +1,15 @@
+import AboutSection from "../ui/AboutSection"
+import ExecutivesSection from "../ui/ExecutivesSection"
+import Impact from "../ui/Impact"
+import Header  from "./../ui/Header"
+
 function About() {
     return (
         <div>
-           about 
+           <Header/>
+           <AboutSection/>
+           <ExecutivesSection/>
+           <Impact/>
         </div>
     )
 }
