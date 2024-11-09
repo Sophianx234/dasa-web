@@ -3,7 +3,8 @@ import { FaHeart, FaRegHeart, FaXTwitter } from "react-icons/fa6"
 import { FiFacebook } from "react-icons/fi"
 import { PiTelegramLogo } from "react-icons/pi"
 import SVGLite from "./SVGLite"
-import Reaction from "./Reactions"
+import Reaction from "./Reaction"
+import ReactionList from "./ReactionList"
 
 export type videoPlayerProps = {
     src: string
@@ -29,7 +30,7 @@ function VideoPlayer({src}:videoPlayerProps) {
         <video className="w-64  pb-10" src={src} controls autoPlay muted loop></video>
         <div className="flex">
             <div className="self-end">
-                <Reaction/>
+                <ReactionList/>
             </div>
         </div>
         </div>
