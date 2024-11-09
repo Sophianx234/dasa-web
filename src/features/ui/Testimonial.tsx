@@ -1,3 +1,5 @@
+import SVGLite from "./SVGLite"
+
 export type testimonialProp = {
     testimonial:string,
     name: string,
@@ -16,6 +18,7 @@ function Testimonial({testimonial, name,role,img}:testimonialProp) {
             <p className="text-center font-poppins font-bold">{role}</p>
         </div>
             </div>
+            <SVGLite/>
         </div>
     )
 }
