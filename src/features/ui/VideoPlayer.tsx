@@ -2,6 +2,7 @@ import { BsInstagram } from "react-icons/bs"
 import { FaXTwitter } from "react-icons/fa6"
 import { FiFacebook } from "react-icons/fi"
 import { PiTelegramLogo } from "react-icons/pi"
+import SVGLite from "./SVGLite"
 
 export type videoPlayerProps = {
     src: string
@@ -24,6 +25,7 @@ function VideoPlayer({src}:videoPlayerProps) {
         <video className="w-64  pb-10" src={src} controls autoPlay muted loop></video>
         <div>
 
+        <SVGLite type='lines'/>
         </div>
         </div>
     )

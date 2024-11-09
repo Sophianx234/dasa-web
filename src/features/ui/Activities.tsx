@@ -1,3 +1,4 @@
+import SVGLite from "./SVGLite";
 import VideoPlayer from "./VideoPlayer";
 
 function Activities() {
@@ -17,6 +18,10 @@ function Activities() {
             <h1 className="text-center font-bold font-rethink">Experience the Fun with Us</h1>
             <p className="text-center px-2 text-sm font-Poppins pt-1 pb-4">Join the Fun! Where Culture, Friendship, and Growth Come Alive</p>
             <div className="pt-2 flex justify-center flex-col ">
+              <div>
+
+              <SVGLite type='sticks'/>
+              </div>
                 <div className=" w-full items-center space-y-6 flex flex-col">
 
                 <VideoPlayer src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/das-x.MOV?t=2024-11-07T14%3A20%3A02.433Z"/>
