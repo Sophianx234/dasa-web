@@ -7,13 +7,17 @@ import Footer from "../ui/Footer"
 import Header from "../ui/Header"
 import Hero from "../ui/Hero"
 import Membership from "../ui/Membership"
+import NavLinks from "../ui/NavLinks"
 import Questions from "../ui/Questions"
 import Testimonials from "../ui/Testimonials"
+import { useAppSelector } from "../utils/hooks"
 
 function Homepage() {
+    const isOpen = useAppSelector(store=>store.nav.isOpen)
     return (
         <div className="text-stone-900">
             <Header/>
+          { isOpen && <NavLinks swap='col'/>}
             <main>
             <Hero/>
             <BriefAbout/>

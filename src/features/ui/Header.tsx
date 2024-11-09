@@ -7,7 +7,9 @@ import { useDispatch } from "react-redux"
 import { useAppSelector } from "../utils/hooks"
 
 function Header() {
-    
+    const dispatch = useDispatch()
+    const isOpen = useAppSelector(store=>store.nav.isOpen)
+    console.log(isOpen)
     
     return (
         <div className="flex items-center justify-between px-2 py-2 bg-[#FEF3E7]">
@@ -16,9 +18,10 @@ function Header() {
             <FaWolfPackBattalion className="size-12"/>
 
             </Link>
-            <button >
+            <button onClick={()=>dispatch(toggleNav())}>
 
             <IoMenu className="size-12"/>
+            
             </button>
         </div>
     )
