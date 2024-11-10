@@ -4,10 +4,33 @@ import { FaRegUser } from "react-icons/fa6"
 import { Link } from "react-router-dom"
 import { TbBrandOpenvpn } from "react-icons/tb"
 import SVGLite from "./SVGLite"
+import { slidesImagesType } from "./Hero"
+import { Fade } from "react-slideshow-image"
 
 function SignIn() {
-    const signinImgUrl = ["https://i.ibb.co/TchPr99/photo-5-2024-10-31-06-53-18.jpg","https://i.ibb.co/BN6WBpn/photo-30-2024-10-31-06-53-18.jpg"
-    ] 
+    const slideImages: slidesImagesType[] = [
+        
+        {
+            url: 'https://i.ibb.co/Yfy7hZR/photo-5-2024-10-31-06-51-41.jpg',
+            
+        },
+        {
+            url:"https://i.ibb.co/5jHK7HD/IMG-20241107-WA0017.jpg" 
+        },
+    {
+        url: "https://i.ibb.co/BN6WBpn/photo-30-2024-10-31-06-53-18.jpg"
+    },
+    {
+        url: "https://i.ibb.co/y4PdLty/photo-9-2024-10-31-06-50-45.jpg" 
+    },
+    {
+        url:"https://i.ibb.co/SNcNjPD/photo-33-2024-10-31-06-52-36.jpg"  
+    },
+    {
+        url:"https://i.ibb.co/jgk1phW/IMG-20241107-WA0013.jpg"
+    },
+]
+    
     return (
         <div className="flex items-center justify-center h-dvh px-10 text-[60%]">
             <div className="flex   bg-dasalight   ">
@@ -37,7 +60,23 @@ function SignIn() {
                 </form>
                 <div className="overflow-hidden bg-[#191611c9] max-h-72 max-w-48 w-48 ">
 
-                <img src={signinImgUrl[1]} alt="" className="scale-[1.4] mix-blend-overlay border-0 max-w-48" />
+        
+                <Fade>
+         {slideImages.map((slideImage, index)=> (
+            <div key={index} className='bg-[#0000009d]'>
+              <div className={`
+              flex
+    items-center justify-center
+    bg-cover
+    bg-center
+    scale-[1]
+    max-h-[25rem] h-[25rem] lg:h-[50rem] lg:max-h-[30rem] ${index===1 &&' '}   border-0 max-w-48 mix-blend-overlay`} style={{  'backgroundImage': `url(${slideImage.url})` }}>
+                
+              </div>
+            </div>
+          ))} 
+        </Fade>
+                
                 </div>
             </div>
         </div>
