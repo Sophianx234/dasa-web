@@ -5,17 +5,18 @@ import { IoLockClosed, IoLockClosedOutline, IoLockOpenOutline, IoMailOutline } f
 import { PiBuildingApartmentLight } from "react-icons/pi"
 import { useAppSelector } from "../utils/hooks"
 import Select from "./Select"
+import SVGLite from "./SVGLite"
 
 function Form() {
     const isAnnex = useAppSelector(store=>store.user.isAnnex)
     console.log(isAnnex)
     
     return (
-        <div>
-            <div>
+        <div className="bg-dasalight h-dvh pt-6 ">
+            <div className="px-4">
                 <div>
-                    <h1>Let's get started</h1>
-                    <p>Create your DaSA account. Already registered? <Link to='login'>Login here</Link></p>
+                    <h1 className="text-[#33312e] font-bold text-3xl ">Let's get started</h1>
+                    <p className=" font-mulish text-sm">Create your DaSA account. Already <br /> registered? <Link to='login' className="text-blue-950 font-bold">Login here</Link></p>
                 </div>
 
                 <form action="" className="grid grid-cols-2">
@@ -39,9 +40,10 @@ function Form() {
 
                     <FormInput type="password" placeholder="Confirm Password " icon={<IoLockOpenOutline className="absolute left-2   "/>}/>
                 </form>
-                <p>By pressing continue you agree to to the Pipe terms of service and privacy policy</p>
-                <button >Signup</button>
+                <p>By signing up, you acknowledge that you’ve read and accepted our Terms of Service and Privacy Policy.</p>
+                <button className="bg-dasadeep" >Signup</button>
             </div>
+            <SVGLite type="sticks"/>
         </div>
     )
 }

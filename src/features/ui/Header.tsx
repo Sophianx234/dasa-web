@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux"
 import { useAppSelector } from "../utils/hooks"
 
 function Header() {
+    const logo = ["https://i.ibb.co/n8hRM6d/dasalogo-removebg.png" ]
     const dispatch = useDispatch()
     const isOpen = useAppSelector(store=>store.nav.isOpen)
     console.log(isOpen)
@@ -14,9 +15,9 @@ function Header() {
     return (
         <div className="flex sticky  -top-1 shadow-md z-10 items-center justify-between px-2 py-2 bg-[#FEF3E7]">
             
-            <Link to='about'>
-            <FaWolfPackBattalion className="size-12"/>
-
+            <Link to='/about' className="flex items-center text-sm ">
+            <img src={logo[0]} className=" w-20 "/>
+           <span className="font-bold">DaSA</span>
             </Link>
             <button onClick={()=>dispatch(toggleNav())}>
 
