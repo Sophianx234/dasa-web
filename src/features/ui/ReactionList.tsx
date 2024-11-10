@@ -1,7 +1,7 @@
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import Reaction from "./Reaction";
 import { BsEmojiLaughing, BsFillEmojiLaughingFill } from "react-icons/bs";
-import { AiFillHeart, AiFillLike } from "react-icons/ai";
+import { AiFillLike } from "react-icons/ai";
 import { SlLike } from "react-icons/sl";
 import { useState } from "react";
 

@@ -12,7 +12,7 @@ function Header() {
     console.log(isOpen)
     
     return (
-        <div className="flex items-center justify-between px-2 py-2 bg-[#FEF3E7]">
+        <div className="flex sticky  -top-1 shadow-md z-10 items-center justify-between px-2 py-2 bg-[#FEF3E7]">
             
             <Link to='about'>
             <FaWolfPackBattalion className="size-12"/>

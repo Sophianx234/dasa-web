@@ -21,6 +21,7 @@ export default {
   		},
   		colors: {
 			dasalight: '#FEF3E7',
+			dasadeep: '#ffd8a8',
 
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',
