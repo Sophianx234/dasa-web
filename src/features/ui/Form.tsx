@@ -19,26 +19,35 @@ function Form() {
                     <p className=" font-mulish text-sm">Create your DaSA account. Already <br /> registered? <Link to='login' className="text-blue-950 font-bold">Login here</Link></p>
                 </div>
 
-                <form action="" className="grid grid-cols-2">
+                <form action="" className="grid grid-cols-2 gap-x-5 gap-y-3">
 
-                    <FormInput type="text" placeholder="First name" icon={<FaRegUser className="absolute left-2  "/>}/>
+                    <FormInput type="text" placeholder="First name"
+                    style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none "
+                    icon={<FaRegUser className="absolute left-2  "/>}/>
 
-                    <FormInput type="text" placeholder="Last name" icon={<FaRegUser className="absolute left-2  "/>}/>
+                    <FormInput type="text" placeholder="Last name"
+                    style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none "
+                     icon={<FaRegUser className="absolute left-2  "/>}/>
 
-                    <FormInput type="email" addClass="col-span-2" placeholder="Enter your email address" icon={<IoMailOutline className="absolute left-2  "/>}/>
+                    <FormInput type="email" addClass="col-span-2" style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none " placeholder="Enter your email address" icon={<IoMailOutline className="absolute left-2  "/>}/>
 
-                    <FormInput type="select" placeholder="Hall of Residence " icon={<PiBuildingApartmentLight className="absolute left-2   "/>}/>
+                    <FormInput type="select" placeholder="Hall of Residence " style="bg-transparent" icon={<PiBuildingApartmentLight className="absolute left-2   "/>}/>
                     
 
-                    {isAnnex === 'Annex' || isAnnex === 'UGEL Hostel'?<Select type="select" placeholder={`${isAnnex}`} icon={<PiBuildingApartmentLight className="absolute left-2   "/>}/>: null}
+                    {isAnnex === 'Annex' || isAnnex === 'UGEL Hostel'?<Select type="select" style="bg-transparent" placeholder={`${isAnnex}`} icon={<PiBuildingApartmentLight className="absolute left-2   "/>}/>: null}
 
-                    <Select type="select" 
+                    <Select 
+                    style="bg-transparent" 
+                    type="select" 
                    form="course" placeholder={`Course`} icon={<PiBuildingApartmentLight className="absolute left-2   "/>}/>
-                    <FormInput type="password" placeholder="Password " addClass="col-span-2"
+                    <FormInput 
+                    style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none indent-2 " type="password" placeholder="Password " addClass="col-span-2"
                      icon={<IoLockClosedOutline
                     className="absolute left-2   "/>}/>
 
-                    <FormInput type="password" placeholder="Confirm Password " icon={<IoLockOpenOutline className="absolute left-2   "/>}/>
+                    <FormInput type="password" 
+                    style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none  indent-2 " addClass="col-span-2"
+                    placeholder="Confirm Password " icon={<IoLockOpenOutline className="absolute left-2   "/>}/>
                 </form>
                 <p>By signing up, you acknowledge that you’ve read and accepted our Terms of Service and Privacy Policy.</p>
                 <button className="bg-dasadeep" >Signup</button>

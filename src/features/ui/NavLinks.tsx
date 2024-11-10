@@ -21,16 +21,16 @@ function NavLinks({swap= 'flex'}:navLinksProps) {
                 </button>
             </div>
             <ul className={swap === 'col'? 'flex flex-col px-4 gap-6': 'flex gap-10'}>
-                <NavLink to='/homepage'>
+                <Link to='/homepage' onClick={()=>dispatch(toggleNav())}>
                     Home
-                </NavLink>
-                <NavLink to='/about'>
+                </Link>
+                <NavLink to='/about' onClick={()=>dispatch(toggleNav())}>
                     About
                 </NavLink>
-                <NavLink to='/login'>
-                    Signin
+                <NavLink to='/login' onClick={()=>dispatch(toggleNav())}>
+                    Login
                 </NavLink>
-                <NavLink to='/signup' className='text-center bg-dasalight py-2 font-semibold hover:rounded-sm hover:bg-white hover:border-2 border-2 border-white hover:border-dasalight transition-all duration-150 rounded-sm'>
+                <NavLink to='/signup' className='text-center bg-dasalight py-2 font-semibold hover:rounded-sm hover:bg-white hover:border-2 border-2 border-white hover:border-dasalight transition-all duration-150 rounded-sm' onClick={()=>dispatch(toggleNav())}>
                     Join the Community
                 </NavLink>
             </ul>

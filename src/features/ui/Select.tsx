@@ -1,7 +1,7 @@
 import { useAppSelector } from "../utils/hooks"
 import { formInputProps } from "./FormInput"
 
-function Select({icon,addClass,placeholder,form}:formInputProps) {
+function Select({icon,addClass,placeholder,form,style}:formInputProps) {
     const isAnnex = useAppSelector(store=>store.user.isAnnex)
     const UGEL = [
         {
@@ -108,7 +108,7 @@ function Select({icon,addClass,placeholder,form}:formInputProps) {
     return (
         <div className={`flex items-center relative ${addClass}`}>
             {icon}
-            <select   name="" id="" className="indent-6 font-poppins h-full w-full text-gray-400">
+            <select   name="" id="" className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`}>
                 <option >Select {placeholder}</option>
                 {annexes.map(annex=><option value={annex}>{ annex}</option>)}
             </select> 
@@ -118,7 +118,7 @@ function Select({icon,addClass,placeholder,form}:formInputProps) {
         return (
             <div className={`flex items-center relative ${addClass}`}>
             {icon}
-            <select   name="" id="" className="indent-6 font-poppins h-full w-full text-gray-400">
+            <select   name="" id="" className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`}>
                 <option >Select {placeholder}</option>
                 {annexes.map(annex=><option value={annex?.name}>{ annex?.name}</option>)}
             </select> 
@@ -128,7 +128,8 @@ function Select({icon,addClass,placeholder,form}:formInputProps) {
         return (
             <div className={`flex items-center relative ${addClass}`}>
             {icon}
-            <select   name="" id="" className="indent-6 font-poppins h-full w-full text-gray-400">
+            <select   name="" id=""
+             className={` ${style} indent-6 font-poppins h-full w-full text-gray-400`}>
                 <option >Select {placeholder}</option>
                 {universityOfGhanaPrograms.map(course=><option value={course}>{course}</option>)}
             </select> 
