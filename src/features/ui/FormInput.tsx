@@ -4,7 +4,8 @@ import { setAnnex } from "../slices/userSlice"
 
 export type formInputProps = {
 icon: ReactElement,
-type?: string
+type?: string,
+form?: string
 placeholder: string,
 addClass?: string
 }
