@@ -17,7 +17,7 @@ function Form() {
             <div className="px-4">
                 <div>
                     <h1 className="text-[#33312e] font-bold pb-2 text-3xl ">Let's get started</h1>
-                    <p className=" font-mulish text-sm pb-4">Create your DaSA account. Already <br /> registered? <Link to='/policy' className="text-blue-950 font-bold hover:underline italic">Login here</Link></p>
+                    <p className=" font-mulish text-sm pb-4  ">Create your DaSA account. Already <br /> registered? <Link to='/policy' className="text-blue-950 font-bold hover:underline italic">Login here</Link></p>
                 </div>
 
                 <form action="" className="grid grid-cols-2 gap-x-5 gap-y-3">
