@@ -1,3 +1,5 @@
+import Socials from "./Socials"
+
 export type executiveProps = {
     imgUrl: string,
     name: string,
@@ -14,6 +16,7 @@ function Executive({name,imgUrl,role,desc}:executiveProps) {
                             <p className="font-bold  font-rethink text-[#4c4945]">{role}</p>
                             <p className="leading-7">{desc}</p>
                         </div>
+                        <Socials />
                     </div>
     )
 }

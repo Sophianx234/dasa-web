@@ -6,7 +6,7 @@ import { LiaSeedlingSolid, LiaSlideshare } from "react-icons/lia"
 
 function Values() {
     return (
-        <div className="py-20 px-4">
+        <div className="py-20 px-4 border-b-4 border-b-dasalight mb-5">
             <div className="text-center  pb-4">
 
             <h1 className="font-mulish font-bold text-2xl">What We Stand For</h1>
