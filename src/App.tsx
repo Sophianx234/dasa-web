@@ -4,6 +4,8 @@ import About from "./features/pages/About"
 import PageNotFound from "./features/pages/PageNotFound"
 import Login from "./features/pages/Login"
 import SignUp from "./features/pages/SignUp"
+import AppLayout from "./features/pages/AppLayout"
+import DashboardOverview from "./features/dashboard/DashboardOverview"
 
 
 function App() {
@@ -17,6 +19,11 @@ function App() {
     <Route path="about" element={<About/>}/>
     <Route path="/login" element={<Login/>}/>
     <Route path="/signup" element={<SignUp/>}/>
+    <Route path="/dashboard" element={<AppLayout/>}>
+    
+    <Route index element={<Navigate to='/overview' replace={true}/>}/>
+    <Route path="overview" element={<DashboardOverview/>}/>
+    </Route>
     <Route path='*' element={<PageNotFound/>} />
    </Routes>
    </BrowserRouter>
