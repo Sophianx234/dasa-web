@@ -32,9 +32,9 @@ function SignIn() {
 ]
     
     return (
-        <div className="flex flex-col  items-center justify-center h-dvh bg-dasalight px-10 text-[60%] space-y-12">
+        <div className="flex flex-col  items-center justify-center h-dvh bg-dasalight px-10 text-[60%] space-y-12 ">
             <SVGLite type="sticks"/>
-            <div className="flex   bg-dasadeep shadow-sm   ">
+            <div className="flex   bg-daslight shadow-xl  rounded-md  overflow-hidden ">
                 <form className="flex flex-col px-2 ">
                 <h1 className="font-poppins font-semibold text-3xl text-[#33312e] pb-4 pt-4">Login</h1>
                 <div className="space-y-3">
