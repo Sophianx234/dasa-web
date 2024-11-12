@@ -1,16 +1,14 @@
 import HeaderDashboard from "./HeaderDashboard";
 import Welcome from "./Welcome";
-import Tile from "./AnonymousTile";
-import Tiles from "./Tiles";
 import Market from "./Market";
-import Messages from "./Messages";
+import AnonymousTiles from "./AnonymousTiles";
 
 function DashboardOverview() {
   return (
     <div className="">
       <HeaderDashboard />
       <Welcome />
-      <Messages />
+      <AnonymousTiles/>
       <Market />
     </div>
   );

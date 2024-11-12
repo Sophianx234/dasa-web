@@ -8,9 +8,7 @@ export type tileProps = {
 function AnonymousTile({title,message,to,time,name}:tileProps) {
     return (
         <div className="pt-5 space-y-2">
-            <h1 className="mx-4 dash-title pl-2">
-                {title}
-            </h1>
+            
             <div className="mx-4 border-dasalight border-2 px-4 shadow-md pt-2">
                 
 
