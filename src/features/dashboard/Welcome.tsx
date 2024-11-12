@@ -8,12 +8,12 @@ function Welcome() {
             <p className="font-poppins tracking-wide ">
             Here's what's happening with your product today
             </p>
-            <div className="flex items-center justify-center">
-                <p className="flex flex-col text-center"><span className="font-bold font-mulish text-lg">
-                83</span>  <span className="leading-5 font-mulish font-medium">Anonymous Messages</span></p>
+            <div className="flex items-center justify-center gap-16">
+                <p className="flex flex-col   text-center"><span className="font-bold font-mulish text-lg">
+                83</span>  <span className="leading-5 font-mulish font-medium">Anonymous <br /> Messages</span></p>
             
                 <p className="flex flex-col text-center"><span className="font-bold font-mulish text-lg">
-                83</span> <span className="font-mulish leading-5 font-medium ">Anonymous Messages</span></p>
+                83</span> <span className="font-mulish leading-5 font-medium ">Anonymous <br /> Messages</span></p>
             </div>
             
           </div>
