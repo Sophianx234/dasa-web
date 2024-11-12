@@ -1,16 +1,19 @@
-import { GoBell } from "react-icons/go"
-import { IoMenuOutline } from "react-icons/io5"
-import AvatarComponent from "./AvatarComponent"
-import HeaderDashboard from "./HeaderDashboard"
-import Welcome from "./Welcome"
+import HeaderDashboard from "./HeaderDashboard";
+import Welcome from "./Welcome";
+import Tile from "./AnonymousTile";
+import Tiles from "./Tiles";
+import Market from "./Market";
+import Messages from "./Messages";
 
 function DashboardOverview() {
-    return (
-        <div>
-            <HeaderDashboard/>
-            <Welcome/>
-        </div>
-    )
+  return (
+    <div className="">
+      <HeaderDashboard />
+      <Welcome />
+      <Messages />
+      <Market />
+    </div>
+  );
 }
 
-export default DashboardOverview
+export default DashboardOverview;

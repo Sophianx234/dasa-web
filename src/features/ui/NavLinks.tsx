@@ -2,15 +2,23 @@ import { IoClose } from "react-icons/io5"
 import { Link, NavLink } from "react-router-dom"
 import { useAppDispatch } from "../utils/hooks"
 import { toggleNav } from "../slices/navSlice"
+import { motion } from "framer-motion"
+
 
 export type navLinksProps = {
     swap: 'col'|'flex'
 }
+
 function NavLinks({swap= 'flex'}:navLinksProps) {
     const dispatch = useAppDispatch()
     const logo = ["https://i.ibb.co/n8hRM6d/dasalogo-removebg.png" ]
     return (
-        <div className="bg-white fixed -top-1 -bottom-1   pb-10 left-0 right-0   z-20 pt-6 px-4 space-y-6">
+        <motion.div
+        exit={{x:'-100vw', opacity:0}}
+        animate={{x:0, opacity:1}}
+        initial={{x:'-100vw',opacity:0}}
+        transition={{type:'keyframes'}}
+        className="bg-white fixed -top-1 -bottom-1 z-50  pb-10 left-0 right-0    pt-6 px-4 space-y-6">
             <div className="flex justify-between ">
                 <Link to='/homepage'>
                 <img src={logo[0]} className=" w-20"/>
@@ -34,7 +42,7 @@ function NavLinks({swap= 'flex'}:navLinksProps) {
                     Join the Community
                 </NavLink>
             </ul>
-        </div>
+        </motion.div>
     )
 }
 

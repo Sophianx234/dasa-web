@@ -1,3 +1,4 @@
+import { motion,AnimatePresence } from "framer-motion"
 import Activities from "../ui/Activities"
 import Banner from "../ui/Banner"
 import BriefAbout from "../ui/BriefAbout"
@@ -17,7 +18,12 @@ function Homepage() {
     return (
         <div className="text-stone-900">
             <Header/>
-          { isOpen && <NavLinks swap='col'/>}
+            <AnimatePresence >
+          { isOpen && 
+            
+          <NavLinks  swap='col'/>
+        }
+        </AnimatePresence>
             <main>
             <Hero/>
             <BriefAbout/>

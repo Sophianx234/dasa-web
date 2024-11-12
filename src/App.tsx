@@ -20,8 +20,8 @@ function App() {
     <Route path="/login" element={<Login/>}/>
     <Route path="/signup" element={<SignUp/>}/>
     <Route path="/dashboard" element={<AppLayout/>}>
-    
-    <Route index element={<Navigate to='/overview' replace={true}/>}/>
+
+    <Route index element={<Navigate to='overview' replace={true}/>}/>
     <Route path="overview" element={<DashboardOverview/>}/>
     </Route>
     <Route path='*' element={<PageNotFound/>} />
