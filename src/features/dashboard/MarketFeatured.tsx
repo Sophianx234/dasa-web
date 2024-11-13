@@ -11,7 +11,7 @@ export type MarketFeaturedProps = {
 }
 function MarketFeatured() {
     return (
-        <div>
+        <div className="pb-6">
             <div>
                 <img src="https://i.ibb.co/74bb2Sh/business.jpg"/> 
                 <div>
