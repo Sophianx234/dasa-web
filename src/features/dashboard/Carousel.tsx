@@ -19,7 +19,5 @@ function Slider() {
     </Swiper>
   );
 };
-    )
-}
-
+   
 export default Slider
