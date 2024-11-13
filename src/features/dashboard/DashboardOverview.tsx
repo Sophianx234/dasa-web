@@ -5,6 +5,7 @@ import AnonymousTiles from "./AnonymousTiles";
 import AnnouncementList from "./AnnouncementList";
 import Slider from "./Slider";
 import BriefGallery from "./BriefGallery";
+import Events from "./Events";
 
 function DashboardOverview() {
   return (
@@ -12,6 +13,7 @@ function DashboardOverview() {
       <HeaderDashboard />
       <Welcome />
       <AnnouncementList/>
+      <Events/>
       <AnonymousTiles/>
       <Market />
       <BriefGallery/>
