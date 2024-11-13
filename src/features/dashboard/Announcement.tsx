@@ -34,18 +34,19 @@ function Announcement() {
                 <h1 className="font-bold font-mulish text-lg">Welcome to DaSA humble Dasians</h1>
                 </div>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas molestias quaerat ratione eveniet id rem. Doloremque ad natus architecto praesentium.</p>
-                <div>
+                <div className="flex justify-between py-2">
                   <h1>
-                  👍🤯
+                  <span className="text-lg">
+                  👍🤯</span>  12 person
                     </h1> 
                     <div>
-                        <p>2 Comments</p> - 1 Share
+                        <p>2 Comments</p> 
                         </div> 
                 </div>
                 <div>
-                    <div className="flex gap-4">
-                       <span className="flex items-center"><FaRegSmileBeam/> Reactions</span> 
-                       <span className="flex items-center"><LiaComment/> Reactions</span> 
+                    <div className="flex gap-4 border-t-2 py-2 pb-3">
+                       <span className="flex items-center gap-2 justify-center"><FaRegSmileBeam/> Reactions</span> 
+                       <span className="flex items-center gap-2 justify-center"><LiaComment/> Comment</span> 
                     </div>
                 </div>
             </div>
