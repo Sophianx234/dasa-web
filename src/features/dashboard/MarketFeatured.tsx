@@ -1,10 +1,13 @@
 import { FaStar } from "react-icons/fa6";
-import { IoIosStarOutline } from "react-icons/io";
 export type MarketFeaturedProps = {
     entLogo: string,
-    products: Array<string>,
+    productImgs: Array<string>,
     entName: string,
-    industry: string
+    industry: string,
+    product: string,
+    price: number,
+    stock: number,
+
 }
 function MarketFeatured() {
     return (
