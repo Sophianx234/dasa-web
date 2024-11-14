@@ -8,18 +8,25 @@ import BriefGallery from "./BriefGallery";
 import Events from "./Events";
 import Event from "./Event";
 import DashNav from "./dashNav";
+import { useAppSelector } from "@/features/utils/hooks";
+import { AnimatePresence } from "framer-motion";
 
 function DashboardOverview() {
+  const openSidebar = useAppSelector(store=>store.nav.openSidebar)
   return (
     <div className="">
       <HeaderDashboard />
-      <DashNav/>
+     <AnimatePresence>
+
+      {openSidebar &&
+       <DashNav/>}
+       </AnimatePresence>
       <Welcome />
       <AnnouncementList/>
       <Events/>
       <AnonymousTiles/>
       <Market />
-      <BriefGallery/>
+      <BriefGallery style="overview"/>
     </div>
   );
 }

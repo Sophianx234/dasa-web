@@ -6,6 +6,7 @@ import Login from "./features/pages/Login"
 import SignUp from "./features/pages/SignUp"
 import AppLayout from "./features/pages/AppLayout"
 import DashboardOverview from "./features/dashboard/components/DashboardOverview"
+import GalleryPage from './features/dashboard/pages/GalleryPage'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
 
     <Route index element={<Navigate to='overview' replace={true}/>}/>
     <Route path="overview" element={<DashboardOverview/>}/>
+    <Route path="/dashboard/gallery" element={<GalleryPage/>}/>
     </Route>
     <Route path='*' element={<PageNotFound/>} />
    </Routes>
