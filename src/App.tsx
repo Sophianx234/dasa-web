@@ -5,7 +5,7 @@ import PageNotFound from "./features/pages/PageNotFound"
 import Login from "./features/pages/Login"
 import SignUp from "./features/pages/SignUp"
 import AppLayout from "./features/pages/AppLayout"
-import DashboardOverview from "./features/dashboard/DashboardOverview"
+import DashboardOverview from "./features/dashboard/components/DashboardOverview"
 
 
 function App() {

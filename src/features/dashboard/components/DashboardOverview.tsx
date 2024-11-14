@@ -7,11 +7,13 @@ import Slider from "./Slider";
 import BriefGallery from "./BriefGallery";
 import Events from "./Events";
 import Event from "./Event";
+import DashNav from "./dashNav";
 
 function DashboardOverview() {
   return (
     <div className="">
       <HeaderDashboard />
+      <DashNav/>
       <Welcome />
       <AnnouncementList/>
       <Events/>
