@@ -9,7 +9,7 @@
     @apply border-2 border-dasalight hover:bg-white transition-all duration-150
   }
   .dash-title{
-    @apply text-xl font-Montserrat font-semibold text-zinc-700
+    @apply  text-xl font-Montserrat font-semibold text-zinc-700
   }
 }
 @layer base {

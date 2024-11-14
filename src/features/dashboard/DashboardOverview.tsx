@@ -6,6 +6,7 @@ import AnnouncementList from "./AnnouncementList";
 import Slider from "./Slider";
 import BriefGallery from "./BriefGallery";
 import Events from "./Events";
+import Event from "./Event";
 
 function DashboardOverview() {
   return (

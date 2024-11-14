@@ -2,7 +2,6 @@ import { SlPin } from "react-icons/sl"
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { MdOutlineEventNote } from "react-icons/md";
 import { FaRegSmileBeam } from "react-icons/fa";
-import { TfiCommentAlt } from "react-icons/tfi";
 import { LiaComment } from "react-icons/lia";
 function Announcement() {
     return (

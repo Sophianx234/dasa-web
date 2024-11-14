@@ -1,35 +1,45 @@
+import  { useRef, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
 import 'swiper/css';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css/navigation';
+
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Event from './Event';
 
-
-function Events() {
-
-    
-
+export default function App() {
   return (
-    <Swiper
-      spaceBetween={50}
-      slidesPerView={3}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-      <SwiperSlide><Event/></SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      ...
-    </Swiper>
+    <div className='pt-6'>
+      <h1 className='dash-title mx-4 pb-4 '>Events</h1>
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <SwiperSlide><Event/></SwiperSlide>
+        <SwiperSlide><Event/></SwiperSlide>
+        <SwiperSlide><Event/></SwiperSlide>
+        <SwiperSlide><Event/></SwiperSlide>
+        <SwiperSlide><Event/></SwiperSlide>
+        <SwiperSlide><Event/></SwiperSlide>
+        <SwiperSlide><Event/></SwiperSlide>
+        <SwiperSlide><Event/></SwiperSlide>
+        <SwiperSlide><Event/></SwiperSlide>
+      </Swiper>
+    </div>
   );
-};
-   
-
-
-export default Events
+}
