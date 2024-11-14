@@ -1,6 +1,7 @@
 import { Pagination } from "@/components/ui/pagination";
 import { PaginationX } from "./Pagination";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useEffect } from "react";
 
 
@@ -39,15 +40,23 @@ function BriefGallery({style}:BriefGalleryProps) {
             <h1 className="dash-title pb-6">Gallery</h1>
             <div className="grid grid-cols-3 ">
 
-            {shuffledImageLinks.map(img=><img src={img} alt="" key={img} />)}
+            {shuffledImageLinks.map(img=><div className="overflow-hidden"> <LazyLoadImage
+       src={img} alt=""   effect="blur"
+        onError={()=>console.log('Error')}
+        className="hover:scale-110 duration-150" /></div>)}
             </div>
+            {
+                 style== 'overview' &&
             <div className="flex justify-center  ">
-                { style== 'overview' &&
                     
                     <Link to="gallery" className="bg-dasalight text-[#33312e] px-4 py-2 text-lg font-bold font-mulish rounded-full mt-2 hover-primary duration-200">
                 
                 View more</Link>
+                </div>
                 }
+                <div className="pt-2">
+
+                <PaginationX/>
                 </div>
            </div>
     )

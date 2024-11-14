@@ -5,7 +5,7 @@ function GalleryPage() {
     return (
         <div>
             <HeaderDashboard/>
-            <BriefGallery style=''/>
+            <BriefGallery style='normal'/>
         </div>
     )
 }

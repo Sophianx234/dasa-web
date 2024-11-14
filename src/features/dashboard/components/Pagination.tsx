@@ -10,9 +10,9 @@ import {
   
   export function PaginationX() {
     return (
-      <Pagination>
+      <Pagination >
         <PaginationContent>
-          <PaginationItem>
+          <PaginationItem >
             <PaginationPrevious href="#" />
           </PaginationItem>
           <PaginationItem>
