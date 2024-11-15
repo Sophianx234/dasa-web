@@ -11,6 +11,7 @@ import { PiSidebarFill } from "react-icons/pi";
 import { useAppDispatch } from "@/features/utils/hooks";
 import { toggleSidebar } from "@/features/slices/navSlice";
 import { motion } from "framer-motion";
+import DashNavItem from "./DashNavItem";
 function DashNav() {
     const dispatch = useAppDispatch() 
     
@@ -41,30 +42,43 @@ function DashNav() {
             <div className="flex flex-col justify-between h-full">
 
             <ul className="space-y-4  ">
-                <li className="flex  items-center gap-3 border py-4 px-2 font-Montserrat text-xl group hover:bg-dasalight hover:py-4 hover:px-4 rounded-xl transition-all duration-150 font-bold text-[#191817] ">
-                <RiHome3Line className="size-8"/><Link to='dashboard/overview' className="flex justify-between  items-center w-full"><span>Home</span>  <span className="hidden group-hover:block"><IoIosArrowForward /></span>
-                </Link></li>
-                <li className="flex items-center gap-3 font-Montserrat group text-xl  border py-4 px-2 hover:bg-dasalight hover:py-4 hover:px-4 rounded-xl transition-all duration-150 font-bold text-[#191817] ">
-                <IoNotificationsOutline className="size-8"/><Link to='dashboard/overview' className="w-full flex justify-between items-center">Notifications <span className="hidden group-hover:block"><IoIosArrowForward/></span>
-                </Link></li>
-                <li className="flex items-center gap-3 font-Montserrat text-xl border py-4 px-2 hover:bg-dasalight hover:py-4 hover:px-4 rounded-xl transition-all group  duration-150 font-bold text-[#191817] ">
-                <TbMessage className="size-8"/><Link to='dashboard/overview' className="w-full flex justify-between items-center ">Anonymous Message <span className="hidden group-hover:block"><IoIosArrowForward/></span>
-                </Link></li>
-                <li className="flex items-center gap-3 font-Montserrat text-xl hover:bg-dasalight hover:py-4 hover:px-4 rounded-xl transition-all duration-150 border py-4 px-2 font-bold text-[#191817] group ">
-                <GrGallery className="size-7"/><Link to='dashboard/overview' className="w-full flex justify-between items-center">Gallery <span className="hidden group-hover:block"><IoIosArrowForward/></span>
-                </Link></li>
-                <li className="flex items-center gap-3 font-Montserrat text-xl border py-4 px-2 hover:bg-dasalight hover:py-4 hover:px-4 rounded-xl transition-all duration-150 font-bold text-[#191817] group ">
-                <MdOutlineStore className="size-8"/><Link to='dashboard/overview' className="w-full flex justify-between items-center">DaSA Market Center <span className="hidden group-hover:block"><IoIosArrowForward/></span>
-                </Link></li>
-                <li className="flex items-center gap-3 font-Montserrat text-xl border py-4 px-2 hover:bg-dasalight hover:py-4 hover:px-4 rounded-xl transition-all duration-150 font-bold text-[#191817] group ">
-                <RiSecurePaymentLine className="size-8"/><Link to='dashboard/overview' className="w-full flex justify-between items-center">Payment<span className="hidden group-hover:block"><IoIosArrowForward/></span>
-                </Link></li>
-                <li className="flex items-center gap-3 font-Montserrat text-xl border py-4 px-2 hover:bg-dasalight hover:py-4 hover:px-4 rounded-xl transition-all duration-150 font-bold text-[#191817] group ">
-                <FaRegUser className="size-8"/><Link to='dashboard/overview' className="w-full flex justify-between items-center">Account<span className="hidden group-hover:block"><IoIosArrowForward/></span>
-                </Link></li>
-                <li className="flex items-center gap-3 font-Montserrat text-xl border py-4 px-2 hover:bg-dasalight hover:py-4 hover:px-4 rounded-xl transition-all duration-150 font-bold text-[#191817] group ">
-                <TbLogout2 className="size-8"/><Link to='dashboard/overview' className="w-full flex justify-between items-center">Logout<span className="hidden group-hover:block"><IoIosArrowForward/></span>
-                </Link></li>
+                <DashNavItem
+                icon={<RiHome3Line className="size-8"/>}
+                link='/dashboard/overview' navTitle='Home'
+                arrIcon={<IoIosArrowForward />} />
+                <DashNavItem
+                icon={<IoNotificationsOutline className="size-8"/>}
+                link='/dashboard/overview' navTitle='Notifications'
+                arrIcon={<IoIosArrowForward />} />
+                <DashNavItem
+                icon={<TbMessage className="size-8"/>}
+                link='/dashboard/overview' navTitle='Anonymous Message'
+                arrIcon={<IoIosArrowForward />} />
+                <DashNavItem
+                icon={<GrGallery className="size-8"/>}
+                link='/dashboard/overview' navTitle='Gallery'
+                arrIcon={<IoIosArrowForward />} />
+                <DashNavItem
+                icon={<MdOutlineStore className="size-8"/>}
+                link='/dashboard/overview' navTitle='DaSA Market Center'
+                arrIcon={<IoIosArrowForward />} />
+                <DashNavItem
+                icon={<RiSecurePaymentLine className="size-8"/>}
+                link='/dashboard/overview' navTitle='Payment'
+                arrIcon={<IoIosArrowForward />} />
+                <DashNavItem
+                icon={<FaRegUser className="size-8"/>}
+                link='/dashboard/overview' navTitle='Account'
+                arrIcon={<IoIosArrowForward />} />
+                <DashNavItem
+                icon={<TbLogout2 className="size-8"/>}
+                link='/dashboard/overview' navTitle='Logout'
+                arrIcon={<IoIosArrowForward />} />
+                
+                
+               
+                
+               
             </ul>
             <div className="flex items-center space-x-2 pt-10">
                 <AvatarComponent/>
