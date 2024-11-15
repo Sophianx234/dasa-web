@@ -3,6 +3,7 @@ import { PaginationX } from "./Pagination";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { shuffleArray } from "@/features/utils/helpers";
 export type BriefGalleryProps = {
     style: string
 }
@@ -23,14 +24,7 @@ function BriefGallery({style}:BriefGalleryProps) {
     
     
     ];
-    function shuffleArray(array, freezeCount) {
-        const limit = array.length - freezeCount;
-        for (let i = limit - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]]; // Swap elements
-        }
-        return array;
-      }
+    
       const shuffledImageLinks = shuffleArray(imageLinks, 3)
     
     return (
