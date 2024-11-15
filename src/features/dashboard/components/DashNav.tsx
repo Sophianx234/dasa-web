@@ -44,35 +44,35 @@ function DashNav() {
             <ul className="space-y-4  ">
                 <DashNavItem
                 icon={<RiHome3Line className="size-8"/>}
-                link='/dashboard/overview' navTitle='Home'
+                link='dashboard/overview' navTitle='Home'
                 arrIcon={<IoIosArrowForward />} />
                 <DashNavItem
                 icon={<IoNotificationsOutline className="size-8"/>}
-                link='/dashboard/overview' navTitle='Notifications'
+                link='dashboard/overview' navTitle='Notifications'
                 arrIcon={<IoIosArrowForward />} />
                 <DashNavItem
                 icon={<TbMessage className="size-8"/>}
-                link='/dashboard/overview' navTitle='Anonymous Message'
+                link='dashboard/overview' navTitle='Anonymous Message'
                 arrIcon={<IoIosArrowForward />} />
                 <DashNavItem
                 icon={<GrGallery className="size-8"/>}
-                link='/dashboard/overview' navTitle='Gallery'
+                link='dashboard/gallery' navTitle='Gallery'
                 arrIcon={<IoIosArrowForward />} />
                 <DashNavItem
                 icon={<MdOutlineStore className="size-8"/>}
-                link='/dashboard/overview' navTitle='DaSA Market Center'
+                link='dashboard/market' navTitle='DaSA Market Center'
                 arrIcon={<IoIosArrowForward />} />
                 <DashNavItem
                 icon={<RiSecurePaymentLine className="size-8"/>}
-                link='/dashboard/overview' navTitle='Payment'
+                link='dashboard/payment' navTitle='Payment'
                 arrIcon={<IoIosArrowForward />} />
                 <DashNavItem
                 icon={<FaRegUser className="size-8"/>}
-                link='/dashboard/overview' navTitle='Account'
+                link='dashboard/account' navTitle='Account'
                 arrIcon={<IoIosArrowForward />} />
                 <DashNavItem
                 icon={<TbLogout2 className="size-8"/>}
-                link='/dashboard/overview' navTitle='Logout'
+                link='dashboard/logout' navTitle='Logout'
                 arrIcon={<IoIosArrowForward />} />
                 
                 
