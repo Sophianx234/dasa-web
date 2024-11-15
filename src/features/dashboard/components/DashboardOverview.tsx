@@ -16,11 +16,7 @@ function DashboardOverview() {
   return (
     <div className="">
       <HeaderDashboard />
-     <AnimatePresence>
-
-      {openSidebar &&
-       <DashNav/>}
-       </AnimatePresence>
+     
       <Welcome />
       <AnnouncementList/>
       <Events/>
