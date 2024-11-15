@@ -1,11 +1,19 @@
+import HeaderDashboard from "./HeaderDashboard"
 import MarketFeaturedList from "./MarketFeaturedList"
 
-function Market() {
+export type marketProps ={
+    style: string
+} 
+function Market({style}:marketProps) {
     return (
-        <div className="px-6 pt-4">
-            <h1 className="dash-title">Dasa Market Center</h1>
+        <>
+        {style !== 'overview'&&  <HeaderDashboard/>}
+        <div className="px-6  pt-10">
+            <h1 className="dash-title pb-2">Dasa Market Center</h1>
+
             <MarketFeaturedList/>
         </div>
+        </>
     )
 }
 

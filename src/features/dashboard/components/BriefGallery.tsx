@@ -47,10 +47,11 @@ function BriefGallery({style}:BriefGalleryProps) {
                 View more</Link>
                 </div>
                 }
+                { style !=='overview'&&
                 <div className="pt-2">
 
                 <PaginationX/>
-                </div>
+                </div>}
            </div>
     )
 }

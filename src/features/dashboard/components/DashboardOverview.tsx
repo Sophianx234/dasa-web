@@ -21,7 +21,7 @@ function DashboardOverview() {
       <AnnouncementList/>
       <Events/>
       <AnonymousTiles/>
-      <Market />
+      <Market style='overview' />
       <BriefGallery style="overview"/>
     </div>
   );

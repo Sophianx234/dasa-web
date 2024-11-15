@@ -8,8 +8,8 @@ import { Link } from "react-router-dom"
 function HeaderDashboard() {
     const dispatch = useAppDispatch()
     return (
-        <div className="bg-dasadeep   pb-10">
-                <div className="flex items-center px-4 justify-between border-b-[#33312e33] border-b-2">
+        <div className="bg-dasadeep   pb-10 mb-10">
+                <div className="flex items-center px-4 justify-between border-b-[#33312e33] border-b-2 ">
 
                 <div className="flex items-center">
                     <button onClick={()=>dispatch(toggleSidebar())} className="border  border-transparent hover:border rounded-md duration-100 hover:border-dasalight hover:scale-105">
