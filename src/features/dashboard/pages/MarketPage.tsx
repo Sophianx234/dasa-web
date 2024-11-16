@@ -1,7 +1,9 @@
+import Market from "../components/Market"
+
 function MarketPage() {
     return (
         <div>
-            Market Page
+            <Market style=""/>
         </div>
     )
 }

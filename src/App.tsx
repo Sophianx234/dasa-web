@@ -10,6 +10,8 @@ import GalleryPage from "./features/dashboard/pages/GalleryPage";
 import NotificationsPage from "./features/dashboard/pages/NotificationsPage";
 import AnonymousPage from "./features/dashboard/pages/AnonymousPage";
 import Market from "./features/dashboard/components/Market";
+import MarketPage from "./features/dashboard/pages/MarketPage";
+import PaymentPage from "./features/dashboard/pages/PaymentPage";
 
 function App() {
   return (
@@ -25,7 +27,8 @@ function App() {
           <Route path="/dashboard/gallery" element={<GalleryPage />} />
           <Route path="/dashboard/notifications" element={<NotificationsPage />} />
           <Route path="/dashboard/anonymous" element={<AnonymousPage />} />
-          <Route path="/dashboard/market" element={<Market />} />
+          <Route path="/dashboard/payment" element={<PaymentPage />} />
+          <Route path="/dashboard/market" element={<MarketPage />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
