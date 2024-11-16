@@ -1,4 +1,5 @@
 import HeaderDashboard from "../components/HeaderDashboard"
+import PaymentForm from "../components/PaymentForm"
 import ToggleButton from "../components/ToggleButton"
 
 function PaymentPage() {
@@ -6,6 +7,7 @@ function PaymentPage() {
         <div>
             <HeaderDashboard/>
             <ToggleButton/>
+            <PaymentForm/>
         </div>
     )
 }

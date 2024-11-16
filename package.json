@@ -25,6 +25,7 @@
     "react-animated-heart": "^0.0.8",
     "react-countup": "^6.5.3",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.2",
     "react-icons": "^5.3.0",
     "react-lazy-load-image-component": "^1.6.2",
     "react-redux": "^9.1.2",
