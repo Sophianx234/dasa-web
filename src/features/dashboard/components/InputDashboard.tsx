@@ -37,8 +37,8 @@ function InputDashboard({state,icon,type, ...rest}:inputDashboardProps) {
       } = useForm();
       if(type==='input')
     return (
-    <div className="relative rounded-lg overflow-hidden">
-            <input className="border py-3 h-full w-full indent-16 "  {...rest} {...register('state')} />
+    <div className="relative rounded-lg overflow-hidden ">
+            <input className="border py-3 h-full w-full indent-16 focus:outline-dasadeep focus:outline-2 "  {...rest} {...register('state')} />
             <div>
 
             {errors.state && <p>{state} is required.</p>}
@@ -53,8 +53,8 @@ function InputDashboard({state,icon,type, ...rest}:inputDashboardProps) {
         return (
     <div className="relative rounded-lg overflow-hidden">
 
-            <select {...register('hall')}   name="" id="" className="border py-3 h-full w-full indent-16 ">
-            <option className="text-gray-400" >Select Hall </option>
+            <select  {...register('hall')}    className="border py-3 h-full w-full indent-16 text-zinc-400 focus:outline-dasadeep focus:outline-2 ">
+            <option className="" > Select Hall </option>
             {universityOfGhanaHostels.map(hostel=><option  value={hostel} key={hostel}>{ hostel}</option>)}
         </select>
         <div className="absolute top-0 bottom-0 flex items-center  justify-center bg-dasalight w-12">
