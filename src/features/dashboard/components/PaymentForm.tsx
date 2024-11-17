@@ -1,42 +1,39 @@
-import { useForm } from 'react-hook-form';
-import InputDashboard from './InputDashboard';
-import { FaRegUser } from 'react-icons/fa6';
-import { LuContact2 } from 'react-icons/lu';
-import { PiBuildingApartmentLight } from 'react-icons/pi';
-import PlanTypeItem from './PlanTypeItem';
-import PaystackPop from '@paystack/inline-js'
+import { useForm } from "react-hook-form"
+import PlanTypeItem from "./PlanTypeItem"
+import InputDashboard from "./InputDashboard"
+import { PiBuildingApartmentLight } from "react-icons/pi"
+import { LuContact2 } from "react-icons/lu"
+import { FaRegUser } from "react-icons/fa6"
+import FieldError from "./FieldError"
 
+type Inputs = {
+    example: string
+    exampleRequired: string
+  }
 function PaymentForm() {
-
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = data => console.log(data);
-  const handlePay = () => {
-    const paystack = new PaystackPop();
-    paystack.newTransaction({
-      key: 'pk_test_47942aac0ea9216a4c98d03ca6dddd51ef89b627', // Replace with your Paystack public key
-      email: 'user@example.com',
-      amount: 5000 * 100, // Amount in pesewas
-      currency: 'GHS',
-      callback: (response) => {
-        alert(`Payment successful! Reference: ${response.reference}`);
-      },
-      onClose: () => {
-        alert("Payment window closed");
-      },
-    });
-  };
-  return (
-    <form  className='flex  pb-10  justify-center  shadow-lg pt-2 mt-10 mx-4 '  onSubmit={handleSubmit(onSubmit)}>
+        const {
+          register,
+          handleSubmit,
+          formState: { errors },
+        } = useForm<Inputs>()
+        const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+    return (
+        <form  className='flex  pb-10  justify-center  shadow-lg pt-2 mt-10 mx-4 '  onSubmit={handleSubmit(onSubmit)}>
       <div className=' w-full mx-6 flex flex-col space-y-2 '>
-
      <InputDashboard
+     errors={errors}
+     register={register}
      type='input' placeholder='First Name' state='firstName' name='firstName' icon={<FaRegUser className="fill-[#4c4945a1] "/>}/>
-     <InputDashboard placeholder='Last Name' type='input' state='lastName' icon={<FaRegUser className="fill-[#4c4945a1] "/>}/>
-     <InputDashboard placeholder='Contact' type='input' state='contact' icon={<LuContact2 className="stroke-[#4c4945] "/>}/>
-     <InputDashboard type='select' placeholder='Hall of residence' state='hall' icon={<PiBuildingApartmentLight className="stroke-[#4c4945] "/>}/>
+     <InputDashboard
+     errors={errors}
+     
+     
+     register={register} placeholder='Last Name' type='input' state='lastName' icon={<FaRegUser className="fill-[#4c4945a1] "/>}/>
+     
+     <InputDashboard
+     errors={errors} register={register} placeholder='Contact' type='input' state='contact' icon={<LuContact2 className="stroke-[#4c4945a1] "/>}/>
+     <InputDashboard
+     errors={errors} register={register} type='select' placeholder='Hall of residence' state='hall' icon={<PiBuildingApartmentLight className="fill-[#4c4945] "/>}/>
 
      <div className='pb-2'>
         <h1 className='font-mulish font-semibold pb-3 pt-5'>Plan type</h1>
@@ -62,7 +59,8 @@ function PaymentForm() {
       <input type="submit" className='bg-dasalight rounded-md py-2 font-bold text-[#33312e]' />
       </div>
     </form>
-  );
+
+    )
 }
 
 export default PaymentForm

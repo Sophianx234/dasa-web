@@ -1,15 +1,16 @@
 import React, { ReactElement } from "react";
-import { useForm } from "react-hook-form";
+import { FieldError, useForm, UseFormRegister } from "react-hook-form";
 import { FaRegUser } from "react-icons/fa6";
 export type inputDashboardProps = React.InputHTMLAttributes<HTMLInputElement> & {
     state: string;
     icon: ReactElement ,
     type: string,
-    name?: string
-    
+    name?: string,
+    register: UseFormRegister<any>,
+    errors: FieldError<any>
   };
   
-function InputDashboard({state,icon,type, ...rest}:inputDashboardProps) {
+function InputDashboard({state,icon,type,register,errors, ...rest}:inputDashboardProps) {
     const universityOfGhanaHostels = [
         "Legon Hall",
         "Akuafo Hall",
@@ -30,36 +31,41 @@ function InputDashboard({state,icon,type, ...rest}:inputDashboardProps) {
         "Korang Hall",
         "Lashibi Hall",
       ];
-      
-    
-    const {
-        register,
-        formState: { errors },
-      } = useForm();
+      console.log(errors[state])
+     
+
       if(type==='input')
     return (
-    <div className="relative rounded-lg overflow-hidden ">
-            <input type="text"   className="border py-3 h-full w-full indent-16 focus:outline-dasadeep focus:outline-2 "  {...rest} {...register(`${state}`,{required:true})} />
-            <div>
-
-            {errors[`${state}`] && <p className="bg-red-400 h-full w-full ">{state} is required.</p>}
-            </div>
+<>
+    <div  className="relative rounded-lg overflow-hidden flex flex-col ">
+            <input type="text"   className="border py-3 h-full w-full indent-16 focus:outline-dasadeep focus:outline-2 "  {...rest}   {...register(state,{required:`${state} is required`})} name={state} id={state} />
             <div className="absolute top-0 bottom-0 flex items-center  justify-center bg-dasalight w-12">
             {icon}
             </div>
     </div>
+            <div className="pl-10 bg-dasalight rounded-lg font-Montserrat font-medium text-[#191817]">
+
+{errors?.[state]?.message}
+            
+            </div>
+</>
         
     )
     if(type=='select')
         return (
     <div className="relative rounded-lg overflow-hidden">
 
-            <select  {...register('hall',{required:true})}    className="border py-3 h-full w-full indent-16 text-zinc-400 focus:outline-dasadeep focus:outline-2 ">
+            <select required {...register('hall')}    className="border py-3 h-full w-full indent-16 text-zinc-400 focus:outline-dasadeep focus:outline-2 ">
             <option className="" > Select Hall </option>
             {universityOfGhanaHostels.map(hostel=><option  value={hostel} key={hostel}>{ hostel}</option>)}
         </select>
         <div className="absolute top-0 bottom-0 flex items-center  justify-center bg-dasalight w-12">
             {icon}
+            </div>
+            <div className="pl-10 bg-dasalight rounded-lg font-Montserrat font-medium text-[#191817]">
+
+{errors?.[state]?.message}
+            
             </div>
     </div>
             )
