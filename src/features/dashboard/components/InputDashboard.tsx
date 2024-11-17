@@ -4,7 +4,8 @@ import { FaRegUser } from "react-icons/fa6";
 export type inputDashboardProps = React.InputHTMLAttributes<HTMLInputElement> & {
     state: string;
     icon: ReactElement ,
-    type: string
+    type: string,
+    name?: string
     
   };
   
@@ -38,10 +39,10 @@ function InputDashboard({state,icon,type, ...rest}:inputDashboardProps) {
       if(type==='input')
     return (
     <div className="relative rounded-lg overflow-hidden ">
-            <input className="border py-3 h-full w-full indent-16 focus:outline-dasadeep focus:outline-2 "  {...rest} {...register('state')} />
+            <input type="text"   className="border py-3 h-full w-full indent-16 focus:outline-dasadeep focus:outline-2 "  {...rest} {...register(`${state}`,{required:true})} />
             <div>
 
-            {errors.state && <p>{state} is required.</p>}
+            {errors[`${state}`] && <p className="bg-red-400 h-full w-full ">{state} is required.</p>}
             </div>
             <div className="absolute top-0 bottom-0 flex items-center  justify-center bg-dasalight w-12">
             {icon}
@@ -53,7 +54,7 @@ function InputDashboard({state,icon,type, ...rest}:inputDashboardProps) {
         return (
     <div className="relative rounded-lg overflow-hidden">
 
-            <select  {...register('hall')}    className="border py-3 h-full w-full indent-16 text-zinc-400 focus:outline-dasadeep focus:outline-2 ">
+            <select  {...register('hall',{required:true})}    className="border py-3 h-full w-full indent-16 text-zinc-400 focus:outline-dasadeep focus:outline-2 ">
             <option className="" > Select Hall </option>
             {universityOfGhanaHostels.map(hostel=><option  value={hostel} key={hostel}>{ hostel}</option>)}
         </select>
