@@ -1,7 +1,9 @@
+import PaymentForm from "../components/PaymentForm"
+
 function Payment() {
     return (
         <div>
-            payment section
+            <PaymentForm/>
         </div>
     )
 }
