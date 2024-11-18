@@ -4,7 +4,7 @@ import InputDashboard from "./InputDashboard"
 import { PiBuildingApartmentLight } from "react-icons/pi"
 import { LuContact2 } from "react-icons/lu"
 import { FaRegUser } from "react-icons/fa6"
-
+import PaystackPop from '@paystack/inline-js'
 type Inputs = {
     example: string
     exampleRequired: string
@@ -15,7 +15,34 @@ function PaymentForm() {
           handleSubmit,
           formState: { errors },
         } = useForm<Inputs>()
-        const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+        const onSubmit = (data: any) => {
+          console.log(data)
+          initializePayment(data);
+        };
+      
+        const initializePayment = (data: any) => {
+          const PaystackPop = window?.PaystackPop;
+      
+          if (!PaystackPop) {
+            alert("Paystack library is not loaded");
+            return;
+          }
+      
+          const paystack = new PaystackPop();
+          paystack.newTransaction({
+            key: 'pk_test_47942aac0ea9216a4c98d03ca6dddd51ef89b627', // Replace with your Paystack public key
+            email: data.email,
+            amount: data.amount , // Paystack expects the amount in kobo
+            currency: 'NGN',
+            callback: (response: any) => {
+              alert(`Payment complete! Reference: ${response.reference}`);
+              // Handle successful payment here (e.g., notify backend, update UI)
+            },
+            onClose: () => {
+              alert('Transaction was not completed.');
+            },
+          });
+        };
     return (
         <form  className='flex  pb-10  justify-center  shadow-lg pt-2 mt-10 mx-4 '  onSubmit={handleSubmit(onSubmit)}>
       <div className=' w-full mx-6 flex flex-col space-y-2 '>
@@ -40,20 +67,20 @@ function PaymentForm() {
             <PlanTypeItem 
             price={25}
             register = {register}
-            error={errors}
+            
             planType='Business'
             planPackage='Dues'
             planDesc='Covers only the payment of annual DaSA dues, ensuring active membership in the association.'/>
             <PlanTypeItem 
             price={32}
             register = {register}
-            error={errors}
+            
             planType='Standard'
             planPackage='Dues+ T-shirt'
             planDesc='Includes payment of DaSA dues and a DaSA-branded T-shirt to show your pride.'/>
             <PlanTypeItem 
             register = {register}
-            error={errors}
+            
             price={32}
             planType='Premium'
             planPackage='Dues + Suveniers'

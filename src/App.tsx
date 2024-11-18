@@ -12,6 +12,8 @@ import AnonymousPage from "./features/dashboard/pages/AnonymousPage";
 import Market from "./features/dashboard/components/Market";
 import MarketPage from "./features/dashboard/pages/MarketPage";
 import PaymentPage from "./features/dashboard/pages/PaymentPage";
+import Payment from "./features/dashboard/pages/Payment";
+import PaymentHistory from "./features/dashboard/pages/PaymentHistory";
 
 function App() {
   return (
@@ -25,9 +27,16 @@ function App() {
           <Route index element={<Navigate to="overview" replace={true} />} />
           <Route path="overview" element={<DashboardOverview />} />
           <Route path="/dashboard/gallery" element={<GalleryPage />} />
-          <Route path="/dashboard/notifications" element={<NotificationsPage />} />
+          <Route
+            path="/dashboard/notifications"
+            element={<NotificationsPage />}
+          />
           <Route path="/dashboard/anonymous" element={<AnonymousPage />} />
-          <Route path="/dashboard/payment" element={<PaymentPage />} />
+          <Route path="/dashboard/payment" element={<PaymentPage />}>
+          <Route index element={<Navigate to='form' replace/>}/>
+            <Route path="form" element={<Payment />} />
+            <Route path="history" element={<PaymentHistory />} />
+          </Route>
           <Route path="/dashboard/market" element={<MarketPage />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />

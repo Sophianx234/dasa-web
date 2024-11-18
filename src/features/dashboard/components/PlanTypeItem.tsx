@@ -18,16 +18,17 @@ function PlanTypeItem({planType,planPackage,price,planDesc,register}:planTypeIte
     return (
         <div >
             <div className="" >
-                <div className=" border px-4 rounded-lg
+                <div className={` border px-4 rounded-lg
                 pb-2
-                ">
+                 group`}>
                     <div className="grid grid-cols-[1fr_1fr_1fr] items-center pt-2 pb-2 ">
                     <div className="flex items-center gap-3 ">
 
                     <label >
 
-                       <input type="radio" className=' hidden peer ' {...register('price')} value={+price}  />
+                       <input  type="radio" className=' hidden peer ' {...register('price')} value={+price}  />
                        <div className=" peer-checked border-4  size-6 rounded-full enabled peer-checked:border-dasadeep
+                       group:peer-checked:border-dasadeep
                         "></div>
                     </label>
 

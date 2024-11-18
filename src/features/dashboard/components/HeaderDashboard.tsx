@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 function HeaderDashboard() {
     const dispatch = useAppDispatch()
     return (
-        <div className="bg-dasadeep   pb-10 mb-10">
+        <div className="bg-dasadeep    pb-10 mb-10 sticky  z-40 top-0 left-0 right-0">
                 <div className="flex items-center px-4 justify-between border-b-[#33312e33] border-b-2 ">
 
                 <div className="flex items-center">
