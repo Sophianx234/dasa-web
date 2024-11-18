@@ -5,27 +5,33 @@ export type planTypeItemProps = {
     planType: string,
     planPackage: string,
     planDesc: string,
-    price: number
+    price: number,
+    register: UseFormRegister<any>;
+    
 
 }
-function PlanTypeItem({planType,planPackage,price,planDesc}:planTypeItemProps) {
+function PlanTypeItem({planType,planPackage,price,planDesc,register}:planTypeItemProps) {
     const [toggleRadio, setToggleRadio] = useState(false)
     function handleSelection(e){
         setToggleRadio(toggle=>!toggle)
     }
     return (
-        <div>
-            <div className="">
+        <div >
+            <div className="" >
                 <div className=" border px-4 rounded-lg
                 pb-2
                 ">
                     <div className="grid grid-cols-[1fr_1fr_1fr] items-center pt-2 pb-2 ">
                     <div className="flex items-center gap-3 ">
 
-                    
-                       <div onClick={handleSelection} className={`border-8  size-6 ${toggleRadio&&'border-dasadeep'} rounded-full`}>
+                    <label >
 
-                       </div>
+                       <input type="radio" className=' hidden peer ' {...register('price')} value={+price}  />
+                       <div className=" peer-checked border-4  size-6 rounded-full enabled peer-checked:border-dasadeep
+                        "></div>
+                    </label>
+
+                       
                     <h1 className="font-bold font-mulish">{planType}</h1>
                     </div>
                     <div className="flex items-center gap-1 border rounded-full mx-2 px-2 ">

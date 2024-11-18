@@ -4,7 +4,6 @@ import InputDashboard from "./InputDashboard"
 import { PiBuildingApartmentLight } from "react-icons/pi"
 import { LuContact2 } from "react-icons/lu"
 import { FaRegUser } from "react-icons/fa6"
-import FieldError from "./FieldError"
 
 type Inputs = {
     example: string
@@ -40,15 +39,21 @@ function PaymentForm() {
         <div className='space-y-2'>
             <PlanTypeItem 
             price={25}
+            register = {register}
+            error={errors}
             planType='Business'
             planPackage='Dues'
             planDesc='Covers only the payment of annual DaSA dues, ensuring active membership in the association.'/>
             <PlanTypeItem 
             price={32}
+            register = {register}
+            error={errors}
             planType='Standard'
             planPackage='Dues+ T-shirt'
             planDesc='Includes payment of DaSA dues and a DaSA-branded T-shirt to show your pride.'/>
             <PlanTypeItem 
+            register = {register}
+            error={errors}
             price={32}
             planType='Premium'
             planPackage='Dues + Suveniers'
