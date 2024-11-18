@@ -22,6 +22,7 @@ function PaymentHistory() {
     <PaymentHistoryItem/>
     <PaymentHistoryItem/>
     <PaymentHistoryItem/>
+    <PaymentHistoryItem/>
     
   </tbody>
 </table>

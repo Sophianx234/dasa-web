@@ -1,7 +1,11 @@
+import AnonymousSection from "../components/AnonymousSection"
+import HeaderDashboard from "../components/HeaderDashboard"
+
 function AnonymousPage() {
     return (
         <div>
-            Anonymous Page
+            <HeaderDashboard/>
+            <AnonymousSection/>
         </div>
     )
 }
