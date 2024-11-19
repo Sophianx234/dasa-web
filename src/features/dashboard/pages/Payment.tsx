@@ -1,11 +1,11 @@
-import PaymentForm from "../components/PaymentForm"
+import PaymentForm from "../components/PaymentForm";
 
 function Payment() {
-    return (
-        <div>
-            <PaymentForm/>
-        </div>
-    )
+  return (
+    <div>
+      <PaymentForm />
+    </div>
+  );
 }
 
-export default Payment
+export default Payment;

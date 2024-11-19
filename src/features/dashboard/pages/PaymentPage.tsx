@@ -1,18 +1,18 @@
-import { Outlet } from "react-router-dom"
-import HeaderDashboard from "../components/HeaderDashboard"
-import PaymentForm from "../components/PaymentForm"
-import ToggleButton from "../components/ToggleButton"
+import { Outlet } from "react-router-dom";
+import HeaderDashboard from "../components/HeaderDashboard";
+import PaymentForm from "../components/PaymentForm";
+import ToggleButton from "../components/ToggleButton";
 
 function PaymentPage() {
-    return (
-        <div>
-            <HeaderDashboard/>
-            <ToggleButton/>
-            <div>
-        <Outlet/>
-            </div>
-        </div>
-    )
+  return (
+    <div>
+      <HeaderDashboard />
+      <ToggleButton />
+      <div>
+        <Outlet />
+      </div>
+    </div>
+  );
 }
 
-export default PaymentPage
+export default PaymentPage;

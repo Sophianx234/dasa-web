@@ -1,13 +1,13 @@
-import AnonymousSection from "../components/AnonymousSection"
-import HeaderDashboard from "../components/HeaderDashboard"
+import AnonymousSection from "../anonymous/AnonymousSection";
+import HeaderDashboard from "../components/HeaderDashboard";
 
 function AnonymousPage() {
-    return (
-        <div>
-            <HeaderDashboard/>
-            <AnonymousSection/>
-        </div>
-    )
+  return (
+    <div>
+      <HeaderDashboard />
+      <AnonymousSection />
+    </div>
+  );
 }
 
-export default AnonymousPage
+export default AnonymousPage;

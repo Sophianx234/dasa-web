@@ -1,11 +1,11 @@
-import Market from "../components/Market"
+import Market from "../components/Market";
 
 function MarketPage() {
-    return (
-        <div>
-            <Market style=""/>
-        </div>
-    )
+  return (
+    <div>
+      <Market style="" />
+    </div>
+  );
 }
 
-export default MarketPage
+export default MarketPage;

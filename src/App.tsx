@@ -15,7 +15,7 @@ import PaymentPage from "./features/dashboard/pages/PaymentPage";
 import Payment from "./features/dashboard/pages/Payment";
 import PaymentHistory from "./features/dashboard/pages/PaymentHistory";
 import AnonymousMain from "./features/dashboard/pages/AnonymousMain";
-import ViewAnonymous from "./features/dashboard/components/ViewAnonymous";
+import ViewAnonymous from "./features/dashboard/anonymous/ViewAnonymous";
 import Conversation from "./features/dashboard/components/Conversation";
 
 function App() {
@@ -35,12 +35,18 @@ function App() {
             element={<NotificationsPage />}
           />
           <Route path="/dashboard/anonymous" element={<AnonymousPage />} />
-          <Route path="/dashboard/anonymous/write" element={<AnonymousMain/>}/>
-          <Route path="/dashboard/anonymous/view" element={<ViewAnonymous/>}/>
-          <Route path="/dashboard/anonymous/conversation" element={<Conversation/>}/>
-          
+          <Route
+            path="/dashboard/anonymous/write"
+            element={<AnonymousMain />}
+          />
+          <Route path="/dashboard/anonymous/view" element={<ViewAnonymous />} />
+          <Route
+            path="/dashboard/anonymous/conversation"
+            element={<Conversation />}
+          />
+
           <Route path="/dashboard/payment" element={<PaymentPage />}>
-          <Route index element={<Navigate to='form' replace/>}/>
+            <Route index element={<Navigate to="form" replace />} />
             <Route path="form" element={<Payment />} />
             <Route path="history" element={<PaymentHistory />} />
           </Route>
