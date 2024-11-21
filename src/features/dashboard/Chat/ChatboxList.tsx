@@ -1,3 +1,4 @@
+import { FiSend } from "react-icons/fi";
 import ChatItem from "./ChatItem";
 import ChatMenu from "./ChatMenu";
 
@@ -13,11 +14,18 @@ function ChatboxList() {
   ];
 
   return (
+    <>
+
     <div className="relative overflow-y-scroll">
       {anonymousMessages.map((text, i) => (
         <ChatItem chat={text} orient={i % 2 == 0 && "reverse"} />
       ))}
     </div>
+    <div className="flex py-3 items-center space-x-2 z-40 justify-center  bg-dasalight">
+        <input type="text" placeholder="Type here" className="input input-bordered  max-w-xs" />
+        <FiSend className="hover:stroke-blue-600 duration-150 transition-all size-9 stroke-yellow "/>
+        </div>
+      </>
   );
 }
 

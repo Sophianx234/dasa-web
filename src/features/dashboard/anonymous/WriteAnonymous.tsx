@@ -4,6 +4,7 @@ import { PiFaceMaskBold } from "react-icons/pi";
 import ChatItem from "../Chat/ChatItem";
 import ChatHeader from "../Chat/ChatHeader";
 import ChatboxList from "../Chat/ChatboxList";
+import { FiSend } from "react-icons/fi";
 
 function WriteAnonymous() {
   return (
@@ -14,6 +15,7 @@ function WriteAnonymous() {
         <ChatHeader />
 
         <ChatboxList />
+        
       </div>
     </div>
   );

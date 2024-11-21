@@ -5,6 +5,7 @@ import { AiFillMessage } from "react-icons/ai"
 import { BiMessageDetail } from "react-icons/bi"
 import { IoIosClose } from "react-icons/io"
 import { IoArrowBackOutline } from "react-icons/io5"
+import { Link } from "react-router-dom"
 
 function ChatMenu() {
     const dispatch = useAppDispatch()
@@ -43,7 +44,7 @@ function ChatMenu() {
   </div>
   
   <li>
-    <a>
+    <Link onClick={()=>dispatch(toggleChatMenu())} to='/dashboard/anonymous/view'>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-5 w-5"
@@ -58,14 +59,14 @@ function ChatMenu() {
       </svg>
       View Anonymous
       <span className="badge badge-sm">99+</span>
-    </a>
+    </Link>
   </li>
   <li>
-    <a>
+    <Link onClick={()=>dispatch(toggleChatMenu())} to='/dashboard/anonymous/conversation'>
     <BiMessageDetail className="size-6"/>
       Text a Member
       <span className="badge badge-sm badge-warning">NEW</span>
-    </a>
+    </Link>
   </li>
   <li>
     <a>
