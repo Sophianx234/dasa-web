@@ -1,8 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = {
+export type initialStateProp = {
+    isLiked: boolean,
+    isAnnex: string,
+    anonymousMessages: [string]
+}
+const initialState: initialStateProp = {
     isLiked: false,
-    isAnnex: ''
+    isAnnex: '',
+    anonymousMessages: ['']
 }
 const userSlice = createSlice({
     name: 'user',
@@ -14,9 +19,12 @@ const userSlice = createSlice({
         setAnnex(state,action){
             state.isAnnex = action.payload
         },
+        sendMessage(state,action){
+            state.anonymousMessages.push(action.payload)
+        },
     }
 
 })
 
-export const {toggleLike,setAnnex} = userSlice.actions
+export const {toggleLike,setAnnex,sendMessage} = userSlice.actions
 export default userSlice.reducer
