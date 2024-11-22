@@ -28,12 +28,12 @@ function ChatboxList() {
   return (
     <>
 
-    <div className="relative overflow-y-scroll">
+    <div className="relative overflow-y-scroll h-dvh ">
       {messages.map((text, i) => (
         <ChatItem chat={text} orient={i % 2 == 0 && "reverse"} />
       ))}
     </div>
-    <form onSubmit={handleSubmit(data=>console.log(data))} className="flex py-3 text-white items-center space-x-2 z-40 justify-center  bg-dasalight">
+    <form onSubmit={handleSubmit(data=>dispatch(sendMessage(data.text)))} className="flex py-3 text-white items-center space-x-2 z-40 justify-center  bg-dasalight">
         <input {...register('text')} type="text" placeholder="Type here" className="input input-bordered  max-w-xs" />
         <button>
 

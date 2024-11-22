@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 export type initialStateProp = {
     isLiked: boolean,
     isAnnex: string,
-    anonymousMessages: [string]
+    anonymousMessages: Array<string|null>
 }
 const initialState: initialStateProp = {
     isLiked: false,
     isAnnex: '',
-    anonymousMessages: ['']
+    anonymousMessages: []
 }
 const userSlice = createSlice({
     name: 'user',
