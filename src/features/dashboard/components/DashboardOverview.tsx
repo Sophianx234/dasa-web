@@ -13,9 +13,9 @@ function DashboardOverview() {
   return (
     <div className=" ">
       <HeaderDashboard />
-      <div className="overflow-y-scroll bg-white">
+      <div className=" bg-white">
 
-
+      <UserStats/>
       <Welcome />
       <AnnouncementList />
       <Events />
