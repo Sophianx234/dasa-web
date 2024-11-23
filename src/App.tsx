@@ -17,6 +17,8 @@ import PaymentHistory from "./features/dashboard/pages/PaymentHistory";
 import AnonymousMain from "./features/dashboard/pages/AnonymousMain";
 import ViewAnonymous from "./features/dashboard/anonymous/ViewAnonymous";
 import Conversation from "./features/dashboard/components/Conversation";
+import Account from "./features/dashboard/account/AccountHeader";
+import AccountPage from "./features/dashboard/pages/AccountPage";
 
 function App() {
   return (
@@ -33,6 +35,10 @@ function App() {
           <Route
             path="/dashboard/notifications"
             element={<NotificationsPage />}
+          />
+          <Route
+            path="/dashboard/account"
+            element={<AccountPage />}
           />
           
           <Route

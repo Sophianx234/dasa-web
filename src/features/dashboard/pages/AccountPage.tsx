@@ -1,7 +1,13 @@
+import AccountContent from "../account/AccountContent"
+import AccountHeader from "../account/AccountHeader"
+import AccountProfile from "../account/AccountProfile"
+
 function AccountPage() {
     return (
         <div>
-            AccountPage
+            <AccountHeader/>
+            <AccountProfile/>
+            <AccountContent/>
         </div>
     )
 }
