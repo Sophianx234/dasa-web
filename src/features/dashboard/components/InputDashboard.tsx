@@ -46,7 +46,7 @@ function InputDashboard({
         <div className="relative rounded-lg overflow-hidden flex flex-col ">
           <input
             type="text"
-            className="border py-3 h-full w-full indent-16 focus:outline-dasadeep focus:outline-2 "
+            className="border py-3 h-full w-full indent-16 focus:outline-dasadeep focus:outline-2 bg-white "
             {...rest}
             {...register(state, { required: `${state} is required` })}
             name={state}
@@ -67,7 +67,7 @@ function InputDashboard({
         <select
           required
           {...register("hall")}
-          className="border py-3 h-full w-full indent-16 text-zinc-400 focus:outline-dasadeep focus:outline-2 "
+          className="border py-3 h-full w-full indent-16 text-zinc-400 focus:outline-dasadeep focus:outline-2 bg-white "
         >
           <option className=""> Select Hall </option>
           {universityOfGhanaHostels.map((hostel) => (

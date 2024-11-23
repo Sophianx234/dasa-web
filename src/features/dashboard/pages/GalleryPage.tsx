@@ -3,7 +3,7 @@ import HeaderDashboard from "../components/HeaderDashboard";
 
 function GalleryPage() {
   return (
-    <div>
+    <div className="bg-white">
       <HeaderDashboard />
       <BriefGallery style="normal" />
     </div>

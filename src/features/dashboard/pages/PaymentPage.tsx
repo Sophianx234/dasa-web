@@ -5,7 +5,7 @@ import ToggleButton from "../components/ToggleButton";
 
 function PaymentPage() {
   return (
-    <div>
+    <div className="bg-white">
       <HeaderDashboard />
       <ToggleButton />
       <div>

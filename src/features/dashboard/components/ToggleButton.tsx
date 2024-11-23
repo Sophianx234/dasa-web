@@ -20,7 +20,7 @@ function ToggleButton() {
           </Link>
           <Link to='history'
             onClick={() => setTogglePayment("history")}
-            className={`py-2 px-6 rounded-full transition-all ${
+            className={`py-3 px-6 rounded-full transition-all ${
               togglePayment == "history" && "bg-dasadeep"
             }`}
           >

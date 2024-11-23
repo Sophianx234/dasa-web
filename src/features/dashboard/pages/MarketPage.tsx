@@ -2,7 +2,7 @@ import Market from "../components/Market";
 
 function MarketPage() {
   return (
-    <div>
+    <div className="bg-white">
       <Market style="" />
     </div>
   );
