@@ -1,14 +1,19 @@
 import { toggleChatMenu } from "@/features/slices/navSlice"
 import { useAppDispatch } from "@/features/utils/hooks"
 import { motion } from "framer-motion"
-import { AiFillMessage } from "react-icons/ai"
-import { BiMessageDetail } from "react-icons/bi"
 import { IoIosClose } from "react-icons/io"
-import { IoArrowBackOutline } from "react-icons/io5"
-import { Link } from "react-router-dom"
+import ChatProfile from "./ChatProfile"
 
 function ChatMenu() {
     const dispatch = useAppDispatch()
+    const profileImgs = [
+      "https://i.ibb.co/tKPn0sJ/photo-25-2024-10-31-06-50-45.jpg",
+      "https://i.ibb.co/jvRPsZd/photo-30-2024-10-31-06-51-41.jpg",
+      "https://i.ibb.co/09h7ZjL/photo-26-2024-10-31-06-51-41.jpg",
+      "https://i.ibb.co/LN31XS8/photo-6-2024-10-31-06-51-41.jpg",
+      "https://i.ibb.co/xLJRnzX/photo-84-2024-10-31-06-52-36.jpg"
+    ];
+    
     return (
         <>
         <motion.ul
@@ -44,24 +49,11 @@ function ChatMenu() {
     </a>
   </div>
   
-  <li>
-  <h1>Text a Member</h1>
-    <Link onClick={()=>dispatch(toggleChatMenu())} to='/dashboard/anonymous/view'>
-    </Link>
-  </li>
-  <li>
-    <Link onClick={()=>dispatch(toggleChatMenu())} to='/dashboard/anonymous/conversation'>
-    <BiMessageDetail className="size-6"/>
-      Text a Member
-      <span className="badge badge-sm badge-warning">NEW</span>
-    </Link>
-  </li>
-  <li>
-    <a>
-      Stats
-      <span className="badge badge-xs badge-info"></span>
-    </a>
-  </li>
+  <h1 className="font-poppins text-2xl font-semibold text-slate-800 pl-5 pb-2">Chats</h1>
+  <div className="divide-y space-y-2">
+
+  {profileImgs.map(profile=><ChatProfile profile={profile} text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet ? " name="Abdullai Yaseera"/>)}
+  </div>
 </motion.ul>
           </>
     )
