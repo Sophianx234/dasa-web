@@ -52,7 +52,7 @@ function DashNav() {
                 arrIcon={<IoIosArrowForward />} />
                 <DashNavItem
                 icon={<TbMessage className="size-8"/>}
-                link='dashboard/anonymous' navTitle='Anonymous Message'
+                link='dashboard/anonymous/write' navTitle='Anonymous Message'
                 arrIcon={<IoIosArrowForward />} />
                 <DashNavItem
                 icon={<GrGallery className="size-8"/>}

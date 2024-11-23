@@ -34,7 +34,7 @@ function App() {
             path="/dashboard/notifications"
             element={<NotificationsPage />}
           />
-          <Route path="/dashboard/anonymous" element={<AnonymousPage />} />
+          
           <Route
             path="/dashboard/anonymous/write"
             element={<AnonymousMain />}

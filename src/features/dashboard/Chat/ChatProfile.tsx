@@ -11,10 +11,10 @@ function ChatProfile({profile,name,text}:chatProfileProps) {
     
     const dispatch = useAppDispatch()
     return (
-        <li>
+        <li className="border border-x-0 ">
 
         <Link onClick={()=>dispatch(toggleChatMenu())} to='/dashboard/anonymous/view'>
-        <div className="grid grid-cols-[.5fr_2fr] content-center items-center">
+        <div className="grid grid-cols-[.5fr_2fr] py-2 content-center items-center">
 
         <div className="overflow-hidden w-16 rounded-full h-16   ">
 

@@ -3,6 +3,8 @@ import { useAppDispatch } from "@/features/utils/hooks"
 import { motion } from "framer-motion"
 import { IoIosClose } from "react-icons/io"
 import ChatProfile from "./ChatProfile"
+import { FaMasksTheater } from "react-icons/fa6"
+import { Link } from "react-router-dom"
 
 function ChatMenu() {
     const dispatch = useAppDispatch()
@@ -18,16 +20,16 @@ function ChatMenu() {
         <>
         <motion.ul
         exit={{
-            y: '-100vh',
+            x: '100vw',
             opacity: 0
         }}
         initial={{
-            y: '-100vh',
+            x: '100vw',
             opacity: 0
 
         }}
         animate={{
-            y: 0,
+            x: 0,
             opacity: 1,
             
             
@@ -39,18 +41,27 @@ function ChatMenu() {
         <div >
           
     <a className="flex  items-center mx-2 justify-between" >
-    <IoIosClose onClick={()=>dispatch(toggleChatMenu())}className="size-9 fill-gray-700 "/>
+      <div onClick={()=>dispatch(toggleChatMenu())}>
+
+    <IoIosClose className="size-9 fill-gray-700 "/>
+      </div>
       
-      <div></div>
+      
       <span className="flex ">
 
       <img src="https://i.ibb.co/n8hRM6d/dasalogo-removebg.png" className="w-16" alt="" />
       </span>
     </a>
   </div>
-  
+  <div className="flex justify-between pr-6 pt-6">
+
   <h1 className="font-poppins text-2xl font-semibold text-slate-800 pl-5 pb-2">Chats</h1>
-  <div className="divide-y space-y-2">
+  <Link to='/dashboard/anonymous/write'>
+  <FaMasksTheater className="size-8 hover:scale-105" />
+  </Link>
+
+  </div>
+  <div className=" ">
 
   {profileImgs.map(profile=><ChatProfile profile={profile} text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet ? " name="Abdullai Yaseera"/>)}
   </div>
