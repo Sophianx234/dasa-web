@@ -10,8 +10,8 @@ function AccountContent() {
     return (
         <div className="mx-3 pt-6">
             <ul className="space-y-2 ">
-                <h1 className="ml-2 font-poppins antialiased">Preferences</h1>
-                <div className=" shadow-md  px-4 rounded-md space-y-2 pt-3">
+                <h1 className="ml-2 font-Montserrat antialiased font-semibold text-lg">Preferences</h1>
+                <div className=" shadow-md  px-4 rounded-md space-y-2 pt-3 pb-2">
 
                 <AccountContentItem content="Change Password" icon={<GoLock className="size-5"/>}/>
                 <AccountContentItem content="Change Phone Number" icon={<GiSmartphone className="size-5 "/>}/>

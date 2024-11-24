@@ -12,7 +12,7 @@ function AccountContentItem({content,type,icon}:accountContentItemProps) {
         <li className="flex  justify-between py-2 hover:bg-dasalight transition-all duration-105 items-center rounded-lg px-2 ">
                     <div className="flex items-center space-x-3"> <span className="bg-dasalight px-2 py-2 rounded-lg">
                 {icon}</span>
-            <span> {content}</span></div><IoIosArrowForward className="size-5"/>
+            <span className="font-medium"> {content}</span></div><IoIosArrowForward className="size-5"/>
                     </li>
 
 
@@ -21,7 +21,7 @@ function AccountContentItem({content,type,icon}:accountContentItemProps) {
         <li className="flex items-center px-2 justify-between py-2">
             <div className="flex items-center space-x-3"> <span className="bg-dasalight px-2 py-2 rounded-lg">
                 {icon}</span>
-            <span> {content}</span></div>
+            <span className="font-medium"> {content}</span></div>
                     <input type="checkbox" className=" indeterminate:bg-white toggle" defaultChecked />
                     </li>
     )
