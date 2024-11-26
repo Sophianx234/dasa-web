@@ -8,6 +8,7 @@ import { GiSmartphone } from "react-icons/gi"
 import ChangePasswordForm from "./ChangePasswordForm"
 import { useAppSelector } from "@/features/utils/hooks"
 import ChangeContactForm from "./ChangeContactForm"
+import ConfirmModal from "./ConfirmModal"
 
 function AccountContent() {
     const {isOpenChangePassword,showChangeContact} = useAppSelector(store=>store.nav)
@@ -21,6 +22,7 @@ function AccountContent() {
                 {isOpenChangePassword &&<ChangePasswordForm/>}
                 <AccountContentItem content="Change Phone Number" icon={<GiSmartphone className="size-5 "/>}/>
                 {!showChangeContact && <ChangeContactForm/>}
+                
                 
 
                 

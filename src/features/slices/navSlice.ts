@@ -5,7 +5,8 @@ const initialState = {
     openSidebar: false,
     openChatMenu: false,
     isOpenChangePassword:false,
-    showChangeContact: false
+    showChangeContact: false,
+    revealConfirmModal: false
 }
 const navSlice = createSlice({
     name: 'nav',
@@ -27,10 +28,13 @@ const navSlice = createSlice({
         },
         toggleChangeContact(state){
             state.showChangeContact = !state.showChangeContact
+        },
+        toggleRevealConfirmModal(state){
+            state.revealConfirmModal = !state.revealConfirmModal
         }
 
     }
 
 })
-export const {toggleNav,toggleSidebar,toggleChatMenu,toggleChangePassword,toggleChangeContact} = navSlice.actions
+export const {toggleNav,toggleSidebar,toggleChatMenu,toggleChangePassword,toggleChangeContact,toggleRevealConfirmModal} = navSlice.actions
 export default navSlice.reducer
