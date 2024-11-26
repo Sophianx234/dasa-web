@@ -16,6 +16,7 @@ function AccountContentItem({content,type,icon}:accountContentItemProps) {
     function handleOnclick(e){
         setIsRotate(rotate=>!rotate)
        if( content.includes('Password')) dispatch(toggleChangePassword())
+       if( content.includes('Phone')) dispatch(toggleChangeContact())
        
     }
     if(type !== 'toggle')

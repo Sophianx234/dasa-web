@@ -7,9 +7,10 @@ import { GoBell, GoLock, GoUnlock } from "react-icons/go"
 import { GiSmartphone } from "react-icons/gi"
 import ChangePasswordForm from "./ChangePasswordForm"
 import { useAppSelector } from "@/features/utils/hooks"
+import ChangeContactForm from "./ChangeContactForm"
 
 function AccountContent() {
-    const isOpenChangePassword = useAppSelector(store=>store.nav.isOpenChangePassword)
+    const {isOpenChangePassword,showChangeContact} = useAppSelector(store=>store.nav)
     return (
         <div className="mx-3 pt-10">
             <ul className="space-y-2 ">
@@ -19,6 +20,9 @@ function AccountContent() {
                 <AccountContentItem content="Change Password" icon={<GoLock className="size-5"/>}/>
                 {isOpenChangePassword &&<ChangePasswordForm/>}
                 <AccountContentItem content="Change Phone Number" icon={<GiSmartphone className="size-5 "/>}/>
+                {!showChangeContact && <ChangeContactForm/>}
+                
+
                 
                 <AccountContentItem content="Notification" type="toggle" icon={<GoBell className="size-5" />} />
                 
