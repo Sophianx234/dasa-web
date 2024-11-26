@@ -1,19 +1,30 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io"
 import { VscSymbolColor } from "react-icons/vsc";
 import ThemeController from "./ThemeController";
+import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
+import { toggleChangeContact, toggleChangePassword } from "@/features/slices/navSlice";
 export type accountContentItemProps = {
     content: string,
     type?: 'toggle',
     icon: ReactElement
 }
 function AccountContentItem({content,type,icon}:accountContentItemProps) {
+    const [isRotate,setIsRotate] = useState<boolean>(false)
+    const dispatch = useAppDispatch()
+    
+    function handleOnclick(e){
+        setIsRotate(rotate=>!rotate)
+       if( content.includes('Password')) dispatch(toggleChangePassword())
+       
+    }
     if(type !== 'toggle')
+
     return (
-        <li className="flex  justify-between py-2 group hover:bg-dasalight transition-all duration-105 items-center rounded-lg px-2 ">
-                    <div className="flex items-center space-x-3"> <span className="group-hover:bg-white shadow-sm transition-all duration-150 bg-dasalight px-2 py-2 rounded-lg">
+        <li onClick={handleOnclick} className="flex  justify-between py-2 group hover:bg-dasalight transition-all duration-105 items-center rounded-lg px-2 select-none">
+                    <div className="flex items-center space-x-3"> <span className="group-hover:bg-white shadow-sm transition-all duration-150 bg-dasalight px-2 py-2 rounded-lg ">
                 {icon}</span>
-            <span className="font-medium"> {content}</span></div><IoIosArrowForward className="size-5"/>
+            <span className="font-medium"> {content}</span></div><IoIosArrowForward className={`size-5 duration-150 ${isRotate && 'rotate-90'}`}/>
                     </li>
 
 

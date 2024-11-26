@@ -13,7 +13,9 @@ function ChangePasswordForm() {
     }= useForm()
     const password = watch('newPass')
     return (
-        <form onSubmit={handleSubmit((data)=>console.log(data))}>
+        <form onSubmit={handleSubmit((data)=>{
+          console.log(data)
+          reset()})}>
         
       <label className="input input-bordered flex items-center gap-2 bg-white">
       <TbPasswordUser/>
