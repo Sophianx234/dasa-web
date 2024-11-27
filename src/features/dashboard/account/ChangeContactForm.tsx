@@ -4,7 +4,7 @@ import { IoIosContact } from "react-icons/io"
 import Button from "./Button"
 import ConfirmModal from "./ConfirmModal"
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks"
-import { toggleRevealConfirmModal } from "@/features/slices/navSlice"
+import { toggleChangeContact, toggleRevealConfirmModal } from "@/features/slices/navSlice"
 
 function ChangeContactForm() {
     const {handleSubmit,reset, register}= useForm()
@@ -12,8 +12,8 @@ function ChangeContactForm() {
     const dispatch = useAppDispatch()
     function handleOnSubmit(data){
         console.log(data)
-        reset()
         dispatch(toggleRevealConfirmModal())
+        reset()
 
     } 
     return (

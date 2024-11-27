@@ -21,7 +21,7 @@ function AccountContent() {
                 <AccountContentItem content="Change Password" icon={<GoLock className="size-5"/>}/>
                 {isOpenChangePassword &&<ChangePasswordForm/>}
                 <AccountContentItem content="Change Phone Number" icon={<GiSmartphone className="size-5 "/>}/>
-                {!showChangeContact && <ChangeContactForm/>}
+                {showChangeContact && <ChangeContactForm/>}
                 
                 
 
