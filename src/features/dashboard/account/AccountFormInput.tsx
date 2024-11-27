@@ -25,7 +25,8 @@ function AccountFormInput({icon,errMsg,register,inputName,type,...rest}:accountF
       </>
     )
     else return (
-      <textarea className="textarea textarea-bordered w-full bg-white" placeholder="Bio"></textarea>
+      <textarea  className="textarea textarea-bordered w-full bg-white" placeholder="Bio"
+      {...register(inputName,{required:errMsg})} ></textarea>
     )
 }
 

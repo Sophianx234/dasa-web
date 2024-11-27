@@ -3,9 +3,13 @@ import AccountFormInput from "./AccountFormInput"
 import Button from "./Button"
 
 function ReportIssueForm() {
-    const {register, formState: {errors}} = useForm()
+    const {handleSubmit,reset,register, formState: {errors}} = useForm()
+    function onSubmitIssue (data){
+        console.log(data)
+        reset()
+    }
     return (
-        <form >
+        <form onSubmit={handleSubmit(onSubmitIssue)} >
 
             <AccountFormInput
             register={register}
