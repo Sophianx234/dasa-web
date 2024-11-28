@@ -1,8 +1,24 @@
+import { useEffect, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io"
 
 function AccountHeader() {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 10); // Adjust scroll distance as needed
+      };
+  
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, []);
     return (
-        <div className="sticky mb-8  left-0 right-0 top-0 py-2 pb-6  shadow-md bg-white">
+        <div className={`sticky  bg-white  z-50 w-full
+            pb-4 transition-all ${
+            isScrolled ? " -top-1 shadow-md duration-150 " : ""
+          }`}>
             <div className="flex pt-4 items-center justify-between mx-4">
             <IoIosArrowBack className="size-5"/>
             <button className="">Logout</button>
