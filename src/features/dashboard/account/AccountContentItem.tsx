@@ -3,7 +3,7 @@ import { IoIosArrowForward } from "react-icons/io"
 import { VscSymbolColor } from "react-icons/vsc";
 import ThemeController from "./ThemeController";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
-import { toggleChangeContact, toggleChangePassword } from "@/features/slices/navSlice";
+import { toggleChangeContact, toggleChangePassword, toggleRevealFaq, toggleRevealReportIssue } from "@/features/slices/navSlice";
 export type accountContentItemProps = {
     content: string,
     type?: 'toggle',
@@ -17,6 +17,8 @@ function AccountContentItem({content,type,icon}:accountContentItemProps) {
         setIsRotate(rotate=>!rotate)
        if( content.includes('Password')) dispatch(toggleChangePassword())
        if( content.includes('Phone')) dispatch(toggleChangeContact())
+       if( content.includes('Report')) dispatch(toggleRevealReportIssue())
+       if( content.includes('FAQ')) dispatch(toggleRevealFaq())
        
     }
     if(type !== 'toggle')

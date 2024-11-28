@@ -1,9 +1,13 @@
+import { useState } from "react"
 import { IoIosArrowForward } from "react-icons/io"
 import { RiDeleteBin5Line } from "react-icons/ri"
+import ConfirmModal from "./ConfirmModal"
 
 function DeleteAccount() {
+    const [showConfirmModal, setShowConfirmModal] = useState<boolean>(false)
     return (
-        <div className="py-6 mx-4">
+        <>
+        <div className="py-6 mx-4" onClick={()=>setShowConfirmModal(show=>!show)}>
             <h1 className="ml-2 font-Montserrat antialiased font-semibold text-lg">Danger Zone</h1>
             <div className=" group hover:bg-dasalight flex shadow-md px-4 mt-2 items-center py-2 rounded-md space-x-2 justify-between">
             <div className="flex items-center gap-2">
@@ -15,6 +19,8 @@ function DeleteAccount() {
             </div>
             
         </div>
+        {showConfirmModal &&<ConfirmModal setReveal={setShowConfirmModal} title="Delete Account" desc=" Are you sure you want to Delete Account."/>}
+        </>
     )
 }
 
