@@ -1,5 +1,6 @@
 import { FaArrowLeftLong } from "react-icons/fa6";
 import ProfileImage from "./ProfileImage";
+import RadialProgress from "./RadialProgress";
 
 function ProfileForm() {
   return (
@@ -17,9 +18,7 @@ function ProfileForm() {
             <p className="font-poppins text-sm">Complete your data, and get access to exclusive DaSA events.</p>
           </div>
           <div>
-          <div className="radial-progress text-dasadeep " style={{ "--value":70 }} role="progressbar">
-  70%
-</div>
+      <RadialProgress/>
           </div>
         </div>
         <div>
