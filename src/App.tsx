@@ -19,6 +19,8 @@ import ViewAnonymous from "./features/dashboard/anonymous/ViewAnonymous";
 import Conversation from "./features/dashboard/components/Conversation";
 import Account from "./features/dashboard/account/AccountHeader";
 import AccountPage from "./features/dashboard/pages/AccountPage";
+import Profile from "./features/dashboard/pages/ProfilePage";
+import ProfilePage from "./features/dashboard/pages/ProfilePage";
 
 function App() {
   return (
@@ -39,6 +41,10 @@ function App() {
           <Route
             path="/dashboard/account"
             element={<AccountPage />}
+          />
+          <Route
+            path="/dashboard/account/:id/profile"
+            element={<ProfilePage />}
           />
           
           <Route

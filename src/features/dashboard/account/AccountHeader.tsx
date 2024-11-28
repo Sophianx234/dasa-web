@@ -15,8 +15,8 @@ function AccountHeader() {
       };
     }, []);
     return (
-        <div className={`sticky  bg-white  z-50 w-full
-            pb-4 transition-all ${
+        <div className={`sticky  bg-white py-3 rounded-b-lg  z-50 w-full
+             transition-all ${
             isScrolled ? " -top-1 shadow-md duration-150 " : ""
           }`}>
             <div className="flex pt-4 items-center justify-between mx-4">
