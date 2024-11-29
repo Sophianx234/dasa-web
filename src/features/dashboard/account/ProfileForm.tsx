@@ -1,10 +1,35 @@
-import { FaArrowLeftLong, FaUser } from "react-icons/fa6";
+import { FaArrowLeftLong, FaRegUser, FaUser } from "react-icons/fa6";
 import ProfileImage from "./ProfileImage";
 import RadialProgress from "./RadialProgress";
 import AccountFormInput from "./AccountFormInput";
 import { useForm } from "react-hook-form";
+import { DatePicker } from "./DatePicker";
+import { IoMailOutline } from "react-icons/io5";
+import { IoIosPhonePortrait } from "react-icons/io";
+import SelectButton from "./SelectButton";
+
 
 function ProfileForm() {
+  const universityOfGhanaHostels = [
+    "Legon Hall",
+    "Akuafo Hall",
+    "Mensah Sarbah Hall",
+    "Commonwealth Hall",
+    "Volta Hall",
+    "Jean Nelson Aka Hall",
+    "Alexander Kwapong Hall",
+    "Hilla Limann Hall",
+    "Elizabeth Frances Sey Hall",
+    "Nelson Mandela Hall",
+    "James Topp Nelson Yankah Hall",
+    "African Union Hall (Pentagon)",
+    "Evandy Hostel",
+    "Bani Hostel",
+    "TF Hostel",
+    "Jubilee Hall",
+    "Korang Hall",
+    "Lashibi Hall",
+  ];
   const {register, handleSubmit} = useForm()
   return (
     <div>
@@ -25,10 +50,20 @@ function ProfileForm() {
       <form>
         
           <ProfileImage />
-          <div>
-            <AccountFormInput type="text" register={register} inputName="name" placeholder="name" errMsg="must enter name" icon={<FaUser/>}/>
-            <AccountFormInput type="email" register={register} inputName="email" placeholder="email" errMsg="must enter name" icon={<FaUser/>}/>
-            <AccountFormInput type="tel" register={register} inputName="phone" placeholder="number" errMsg="please enter number" icon={<FaUser/>}/>
+          <div className="space-y-2 mx-3 mt-6">
+            <AccountFormInput type="text" register={register} 
+            iconBorder={true}
+            inputName="name" placeholder="name" errMsg="must enter name" icon={<FaRegUser className="opacity-80"/>}/>
+            <AccountFormInput type="email" register={register} inputName="email" placeholder="email" 
+            iconBorder={true}
+            errMsg="must enter name" icon={<IoMailOutline/>}/>
+            <AccountFormInput type="tel" register={register} iconBorder={true} inputName="phone" placeholder="number" errMsg="please enter number" icon={<IoIosPhonePortrait/>}/>
+            <div className="flex  gap-3">
+
+            <DatePicker />
+         <SelectButton options={universityOfGhanaHostels} theme="Select Hall"/>
+            </div>
+
           </div>
       </form>
     </div>

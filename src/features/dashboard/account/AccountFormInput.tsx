@@ -7,19 +7,23 @@ export type accountFormInput = {
     inputName: string,
     icon?: ReactElement,
     errMsg: string,
-    type?: string
+    type?: string,
+    iconBorder?: boolean
     
     
 
 } & InputHTMLAttributes<HTMLInputElement>
 
-function AccountFormInput({icon,errMsg,register,inputName,type,...rest}:accountFormInput) {
+function AccountFormInput({icon,errMsg,register,inputName,type,iconBorder=false,...rest}:accountFormInput) {
   if(type !=='textarea')
     return (
       <>
-        <label className="input input-bordered flex items-center gap-2 bg-white">
+        <label className="input input-bordered flex items-center gap-2 relative bg-white">
+          <div className={`${iconBorder && 'bg-dasalight h-full flex justify-center items-center px-4 left-0 absolute  '}`}>
+
       {icon}
-        <input  className="grow "  {...register(inputName,{required:errMsg})} {...rest}  />
+          </div>
+        <input  className={`grow ${iconBorder&&'indent-10'} `}  {...register(inputName,{required:errMsg})} {...rest}  />
       </label>
       
       </>
