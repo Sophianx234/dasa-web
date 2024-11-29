@@ -7,7 +7,7 @@ export type accountFormInput = {
     inputName: string,
     icon?: ReactElement,
     errMsg: string,
-    type: string
+    type?: string
     
     
 
