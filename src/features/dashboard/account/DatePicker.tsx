@@ -13,13 +13,17 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export function DatePicker() {
+export type datePickerProps = {
+    field: ControllerRenderProps<FieldValues, string>,
+
+}
+export function DatePicker({field}:datePickerProps) {
   const [date, setDate] = React.useState<Date>()
 
   return (
-    <Popover>
+    <Popover >
       <PopoverTrigger asChild>
-        <Button
+        <Button 
           variant={"outline"}
           className={cn(
             " w-full py-6 justify-start text-left font-normal",
@@ -34,8 +38,10 @@ export function DatePicker() {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={setDate}
+          onSelect={field.onChange}
+          
           initialFocus
+          
         />
       </PopoverContent>
     </Popover>

@@ -61,8 +61,15 @@ function ProfileForm() {
             errMsg="must enter name" icon={<IoMailOutline/>}/>
             <AccountFormInput type="tel" register={register} iconBorder={true} inputName="phone" placeholder="number" errMsg="please enter number" icon={<IoIosPhonePortrait/>}/>
             
+            <Controller
+        name="birthDate"
+        rules={{required:'Please pick a day '}}
+        control={control}
+         defaultValue=''// Set the default value to an empty string
+        render={({field}) => (
+          <DatePicker field={field} />
 
-            <DatePicker />
+        )}/>
             <Controller
         name="hostel"
         rules={{required:'Hostel is required'}}
