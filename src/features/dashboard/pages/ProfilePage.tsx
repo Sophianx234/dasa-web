@@ -2,7 +2,7 @@ import ProfileForm from "../account/ProfileForm"
 
 function ProfilePage() {
     return (
-        <div>
+        <div className="bg-white">
            <ProfileForm/>
         </div>
     )

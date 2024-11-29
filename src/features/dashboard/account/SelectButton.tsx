@@ -1,22 +1,29 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { IoOptions } from "react-icons/io5"
+
 export type selectButtonProps = {
-    options: [string],
-    theme: string
+    options: string[],
+    theme: string,
+    
 }
-function SelectButton({options,theme}:selectButtonProps) {
-    return (
-        <Select>
-        <SelectTrigger className="w-[180px]">
+
+function SelectButton({field,options, theme }) {
+  return (
+    <div>
+      
+      <Select onValueChange={field.onChange}>
+        <SelectTrigger className="w-full py-6">
           <SelectValue placeholder={theme} />
         </SelectTrigger>
         <SelectContent>
-            {options.map(hall=><SelectItem value={hall.toLowerCase()}>{hall}</SelectItem>)}
-          
-          
+          {options.map((hall) => (
+            <SelectItem key={hall} value={hall.toLowerCase()}>
+              {hall}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
-    )
+    </div>
+  );
 }
 
-export default SelectButton
+export default SelectButton;

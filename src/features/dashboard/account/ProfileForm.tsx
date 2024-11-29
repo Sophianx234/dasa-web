@@ -2,11 +2,12 @@ import { FaArrowLeftLong, FaRegUser, FaUser } from "react-icons/fa6";
 import ProfileImage from "./ProfileImage";
 import RadialProgress from "./RadialProgress";
 import AccountFormInput from "./AccountFormInput";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { DatePicker } from "./DatePicker";
 import { IoMailOutline } from "react-icons/io5";
 import { IoIosPhonePortrait } from "react-icons/io";
 import SelectButton from "./SelectButton";
+import Button from "./Button";
 
 
 function ProfileForm() {
@@ -30,7 +31,7 @@ function ProfileForm() {
     "Korang Hall",
     "Lashibi Hall",
   ];
-  const {register, handleSubmit} = useForm()
+  const {control,register, handleSubmit,reset, formState: {errors}} = useForm()
   return (
     <div>
       <div className="py-4 px-2 bg-dasalight font-bold">
@@ -47,10 +48,10 @@ function ProfileForm() {
       <RadialProgress/>
           </div>
         </div>
-      <form>
         
           <ProfileImage />
-          <div className="space-y-2 mx-3 mt-6">
+      <form onSubmit={handleSubmit((data)=>console.log(data))}>
+          <div className="space-y-2 mx-3 mt-8">
             <AccountFormInput type="text" register={register} 
             iconBorder={true}
             inputName="name" placeholder="name" errMsg="must enter name" icon={<FaRegUser className="opacity-80"/>}/>
@@ -58,12 +59,29 @@ function ProfileForm() {
             iconBorder={true}
             errMsg="must enter name" icon={<IoMailOutline/>}/>
             <AccountFormInput type="tel" register={register} iconBorder={true} inputName="phone" placeholder="number" errMsg="please enter number" icon={<IoIosPhonePortrait/>}/>
-            <div className="flex  gap-3">
+            
 
             <DatePicker />
-         <SelectButton options={universityOfGhanaHostels} theme="Select Hall"/>
-            </div>
+            <Controller
+        name="hostel"
+        rules={'Hostel is required'}
+        control={control}
+         defaultValue=''// Set the default value to an empty string
+        render={({field}) => (
+          <SelectButton
+            
+             // Pass register
+             field={field}
+            options={universityOfGhanaHostels}
+            theme="Select Hall"
+          />
+        )}
+      />
 
+          </div>
+          <div className="mx-3 pt-4 pb-6">
+
+          <Button desc="Save changes " />
           </div>
       </form>
     </div>
