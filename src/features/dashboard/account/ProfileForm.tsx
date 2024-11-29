@@ -8,6 +8,7 @@ import { IoMailOutline } from "react-icons/io5";
 import { IoIosPhonePortrait } from "react-icons/io";
 import SelectButton from "./SelectButton";
 import Button from "./Button";
+import ControllerError from "./ControllerError";
 
 
 function ProfileForm() {
@@ -64,7 +65,7 @@ function ProfileForm() {
             <DatePicker />
             <Controller
         name="hostel"
-        rules={'Hostel is required'}
+        rules={{required:'Hostel is required'}}
         control={control}
          defaultValue=''// Set the default value to an empty string
         render={({field}) => (
@@ -77,6 +78,7 @@ function ProfileForm() {
           />
         )}
       />
+      <ControllerError inputName="hostel" err={errors}/>
 
           </div>
           <div className="mx-3 pt-4 pb-6">

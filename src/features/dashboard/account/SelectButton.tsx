@@ -1,15 +1,21 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { ControllerRenderProps, FieldValues } from "react-hook-form";
 
 export type selectButtonProps = {
-    options: string[],
-    theme: string,
-    
-}
+  options: string[];
+  theme: string;
+  field: ControllerRenderProps<FieldValues, string>;
+};
 
-function SelectButton({field,options, theme }) {
+function SelectButton({ field, options, theme }: selectButtonProps) {
   return (
     <div>
-      
       <Select onValueChange={field.onChange}>
         <SelectTrigger className="w-full py-6">
           <SelectValue placeholder={theme} />
