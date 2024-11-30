@@ -34,8 +34,8 @@ function ProfileForm() {
   ];
   const {control,register, handleSubmit,reset, formState: {errors}} = useForm()
   return (
-    <div>
-      <div className="py-4 px-2 bg-dasalight font-bold">
+    <div className="">
+      <div className="py-4 px-2 bg-dasalight  font-bold">
         <div className="flex items-center gap-2">
           <FaArrowLeftLong /> Edit Profile
         </div>
@@ -51,8 +51,8 @@ function ProfileForm() {
         </div>
         
           <ProfileImage />
-      <form onSubmit={handleSubmit((data)=>console.log(data))}>
-          <div className="space-y-2 mx-3 mt-8">
+      <form className="shadow-md bg-white rounded-md  mx-2 pt-2" onSubmit={handleSubmit((data)=>console.log(data))}>
+          <div className="space-y-2 mx-3 mt-8 ">
             <AccountFormInput type="text" register={register} 
             iconBorder={true}
             inputName="name" placeholder="name" errMsg="must enter name" icon={<FaRegUser className="opacity-80"/>}/>
@@ -70,6 +70,7 @@ function ProfileForm() {
           <DatePicker field={field} />
 
         )}/>
+        <ControllerError inputName="birthDate" err={errors}/>
             <Controller
         name="hostel"
         rules={{required:'Hostel is required'}}
@@ -88,7 +89,7 @@ function ProfileForm() {
       <ControllerError inputName="hostel" err={errors}/>
 
           </div>
-          <div className="mx-3 pt-4 pb-6">
+          <div className="mx-3 pt-4 pb-6 sticky bottom-0">
 
           <Button desc="Save changes " />
           </div>

@@ -19,10 +19,10 @@ export type datePickerProps = {
 }
 export function DatePicker({field}:datePickerProps) {
   const [date, setDate] = React.useState<Date>()
-
+ 
   return (
-    <Popover >
-      <PopoverTrigger asChild>
+    <Popover  >
+      <PopoverTrigger className="relative indent-10 " asChild>
         <Button 
           variant={"outline"}
           className={cn(
@@ -30,7 +30,10 @@ export function DatePicker({field}:datePickerProps) {
             !date && "text-muted-foreground"
           )}
         >
+          <div className=" bg-dasalight h-full flex justify-center items-center left-0  px-4 absolute">
+
           <CalendarIcon />
+          </div>
           {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
@@ -38,8 +41,11 @@ export function DatePicker({field}:datePickerProps) {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={field.onChange}
           
+          onSelect={(selectedDate) => {
+            setDate(selectedDate); // Update the local state
+            field.onChange(selectedDate); // Notify React Hook Form
+          }}
           initialFocus
           
         />
