@@ -54,7 +54,7 @@ function ProfileForm() {
           <ProfileImage />
 
       <form className="shadow-md bg-white rounded-md  mx-2 pt-2" onSubmit={handleSubmit((data)=>console.log(data))}>
-          <div className="space-y-2 mx-3 mt-8 ">
+          <div className="space-y-2 mx-3 ">
             <AccountFormInput type="text" register={register} 
             iconBorder={true}
             inputName="name" placeholder="name" errMsg="must enter name" icon={<FaRegUser className="opacity-80"/>}/>

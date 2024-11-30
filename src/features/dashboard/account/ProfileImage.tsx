@@ -5,7 +5,7 @@ import { toggleRevealUploadImage } from "@/features/slices/navSlice"
 function ProfileImage() {
   const dispatch = useAppDispatch()
     return (
-        <div className="mt-6  flex items-center justify-center">
+        <div className="pt-14 pb-16 bg-gray-50   flex items-center justify-center">
         <div className="avatar relative online">
   <div className="w-24  rounded-full overflow-y-auto">
     <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
