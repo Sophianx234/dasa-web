@@ -33,6 +33,7 @@ function ProfileForm() {
     "Lashibi Hall",
   ];
   const {control,register, handleSubmit,reset, formState: {errors}} = useForm()
+  
   return (
     <div className="">
       <div className="py-4 px-2 bg-dasalight  font-bold">
@@ -51,6 +52,7 @@ function ProfileForm() {
         </div>
         
           <ProfileImage />
+
       <form className="shadow-md bg-white rounded-md  mx-2 pt-2" onSubmit={handleSubmit((data)=>console.log(data))}>
           <div className="space-y-2 mx-3 mt-8 ">
             <AccountFormInput type="text" register={register} 

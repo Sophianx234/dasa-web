@@ -8,7 +8,8 @@ const initialState = {
     showChangeContact: false,
     revealConfirmModal: false,
     revealReportIssue: false,
-    revealFaq :false
+    revealFaq :false,
+    revealUploadProfile: false
 }
 const navSlice = createSlice({
     name: 'nav',
@@ -42,9 +43,13 @@ const navSlice = createSlice({
         toggleRevealFaq(state){
             state.revealFaq = !state.revealFaq
         }
+        ,
+        toggleRevealUploadImage(state){
+            state.revealUploadProfile = !state.revealUploadProfile
+        }
 
     }
 
 })
-export const {toggleNav,toggleSidebar,toggleChatMenu,toggleChangePassword,toggleChangeContact,toggleRevealConfirmModal,toggleRevealFaq,toggleRevealReportIssue} = navSlice.actions
+export const {toggleNav,toggleSidebar,toggleChatMenu,toggleChangePassword,toggleChangeContact,toggleRevealConfirmModal,toggleRevealFaq,toggleRevealReportIssue, toggleRevealUploadImage} = navSlice.actions
 export default navSlice.reducer
