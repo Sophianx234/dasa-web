@@ -10,13 +10,16 @@ export type confirmModalProps = {
   title?: string;
   desc?: string;
   setReveal?: () => any;
+  handleClose: ()=>boolean;
   type?: "confirm" | "form";
+
 };
 function ConfirmModal({
   title,
   register,
   desc,
   setReveal,
+  handleClose,
   type = "confirm",
 }: confirmModalProps) {
   const dispatch = useAppDispatch();
@@ -24,6 +27,7 @@ function ConfirmModal({
     if (title?.includes("Contact")) dispatch(toggleRevealConfirmModal());
     if (title?.includes("Delete")) setReveal?.((reveal) => !reveal);
     if(type === 'form') dispatch(toggleRevealUploadImage())
+    handleClose?.()
   }
 
   return (
