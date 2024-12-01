@@ -6,8 +6,10 @@ function GalleryPage() {
   return (
     <div className="bg-white">
       <HeaderDashboard />
-      <BriefGallery style="normal" />
       <UploadButton/>
+
+      <BriefGallery style="normal" />
+      
     </div>
   );
 }

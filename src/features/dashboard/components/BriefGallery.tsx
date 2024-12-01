@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { shuffleArray } from "@/features/utils/helpers";
+import UploadButton from "../account/UploadButton";
 export type BriefGalleryProps = {
     style: string
 }
@@ -28,7 +29,7 @@ function BriefGallery({style}:BriefGalleryProps) {
       const shuffledImageLinks = shuffleArray(imageLinks, 3)
     
     return (
-        <div className="mx-4 pt-8 rounded-lg overflow-hidden pb-6">
+        <div className="mx-4 pt-24 rounded-lg overflow-hidden pb-6">
             <h1 className="dash-title pb-6">Gallery</h1>
             <div className="grid grid-cols-3 ">
 
