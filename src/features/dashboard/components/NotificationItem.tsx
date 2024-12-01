@@ -1,7 +1,7 @@
 function NotificationItem() {
     return (
         <div>
-            <div className="flex items-center border space-x-4 mx-4 py-4 rounded-md px-3 relative">
+            <div className="flex items-center border space-x-4 mx-4 py-4 rounded-xl px-3 relative">
                 <div className="bg-dasalight rounded-full px-3 py-3">
 
                 <img src="https://i.ibb.co/Mnn5KD5/profile-icon-x.png" alt="profile-icon-x" className="w-14"/>

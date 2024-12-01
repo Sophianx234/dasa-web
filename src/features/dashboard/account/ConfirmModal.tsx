@@ -42,6 +42,7 @@ function ConfirmModal({
           )}
           {type === "form" && (
             <div className="pb-2">
+              <h1 className="pb-1">Please Select Photo</h1>
               <FileInputButton inputName="profileImg" register={register} />
             </div>
           )}
