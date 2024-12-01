@@ -44,7 +44,13 @@ function PaymentForm() {
           });
         };
     return (
-        <form  className='flex  pb-10  justify-center  shadow-lg pt-2 mt-10 mx-4 '  onSubmit={handleSubmit(onSubmit)}>
+      <>
+      <div className="mx-4 mt-10 py-2 rounded-md text-center bg-dasalight shadow-sm -space-y-7">
+
+      <h1 className="dash-title ">Pay Dues</h1>
+      <p className="leading-5 font-Montserrat opacity-80 font-semibold sticky  ">Unity <span className="font-bold text-6xl ">.</span> Growth <span className="font-bold text-6xl ">.</span> Impacts</p>
+      </div>
+        <form  className='flex  pb-10  justify-center  shadow-lg  mt-10 mx-4 '  onSubmit={handleSubmit(onSubmit)}>
       <div className=' w-full mx-6 flex flex-col space-y-2 '>
      <InputDashboard
      errors={errors}
@@ -91,6 +97,8 @@ function PaymentForm() {
       <input type="submit" className='bg-dasalight rounded-md py-2 font-bold text-[#33312e]' />
       </div>
     </form>
+    <p className="text-center text-sm mx-4 mt-6 pb-8 ">Your contribution, no matter how small, helps strengthen our bond and build a brighter future for all members of DaSA</p>
+            </>
 
     )
 }

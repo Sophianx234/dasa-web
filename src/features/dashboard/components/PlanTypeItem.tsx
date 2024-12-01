@@ -17,7 +17,7 @@ function PlanTypeItem({planType,planPackage,price,planDesc,register}:planTypeIte
     }
     return (
         <div >
-            <div className="" >
+            <div className=" " >
                 <div className={` border px-4 rounded-lg
                 pb-2
                  group`}>

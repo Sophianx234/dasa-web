@@ -7,6 +7,7 @@ import BriefGallery from "./BriefGallery";
 import Events from "./Events";
 import { useAppSelector } from "@/features/utils/hooks";
 import UserStats from "./UserStats";
+import Footer from "@/features/ui/Footer";
 
 function DashboardOverview() {
   const openSidebar = useAppSelector((store) => store.nav.openSidebar);
@@ -22,6 +23,7 @@ function DashboardOverview() {
       <AnonymousTiles />
       <Market style="overview" />
       <BriefGallery style="overview" />
+      <Footer navType="dash"/>
       </div>
     </div>
   );

@@ -39,15 +39,7 @@ function BriefGallery({style}:BriefGalleryProps) {
                     src={img}    
          /></div>)}
             </div>
-            {
-                 style== 'overview' &&
-            <div className="flex justify-center  ">
-                    
-                    <Link to="gallery" className="bg-dasalight text-[#33312e] px-4 py-2 text-lg font-bold font-mulish rounded-full mt-2 hover-primary duration-200">
-                
-                View more</Link>
-                </div>
-                }
+            
                 { style !=='overview'&&
                 <div className="pt-2">
 

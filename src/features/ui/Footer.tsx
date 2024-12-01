@@ -1,19 +1,24 @@
+import DashNavLinks from "../dashboard/components/DashNavLinks"
+import HomepageNavLinks from "./HomepageNavLinks"
 import Socials from "./Socials"
 import Svg from "./Svg"
-
-function Footer() {
+import {SVGLite as SVGLitex} from "./SVGLitex"
+export type footerProps = {
+    navType?: 'home'| 'dash'
+}
+function Footer({navType='home'}:footerProps) {
     return (
         <div className="">
             <div className=''>
                 <ul className="flex items-center justify-center gap-4 pb-4">
-                    <li>About</li>
-                    <li>Support</li>
-                    <li>Help</li>
-                    <li>Signup</li>
-                    <li>Login</li>
+                    {
+
+                     navType === 'home'?   <HomepageNavLinks/>: <DashNavLinks/>
+                    }
                 </ul>
-                <div className="flex items-center flex-col justify-center bg-dasalight pb-5 space-y-2 ">
-                    <Svg/>
+                <div className="flex items-center flex-col justify-center bg-dasalight  pb-5 space-y-2 ">
+<Svg/>
+                    
 
 
 <Socials/>
