@@ -1,4 +1,5 @@
 import { IoSearch } from "react-icons/io5"
+import { TbAlignCenter } from "react-icons/tb"
 
 function SearchBar() {
     return (
@@ -7,6 +8,10 @@ function SearchBar() {
                 <div className="flex justify-center  h-full items-center left-0 top-0 absolute w-9">
 
             <IoSearch className=" "/>
+                </div>
+                <div className="flex justify-center  h-full items-center right-0 top-0 absolute w-9">
+
+                <TbAlignCenter/>
                 </div>
 
             <input className="indent-6 w-full  bg-white outline-none  h-full" type="search" placeholder="Find what you need........." name="" id="" />
