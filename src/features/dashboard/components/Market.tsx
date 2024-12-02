@@ -7,9 +7,9 @@ export type marketProps ={
 function Market({style}:marketProps) {
     return (
         <>
-        {style !== 'overview'&&  <HeaderDashboard/>}
+        
         <div className="px-6  pt-10">
-            <h1 className="dash-title pb-2">Dasa Market Center</h1>
+            { style!== 'main' &&<h1 className="dash-title pb-2">Dasa Market Center</h1>}
 
             <MarketFeaturedList/>
         </div>

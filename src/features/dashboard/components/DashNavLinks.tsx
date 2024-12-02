@@ -4,7 +4,7 @@ function DashNavLinks() {
                <li>Account</li>
                <li>Market</li>
                <li>Anonymous</li>
-               <li>Notifications</li>
+               <li>Gallery</li>
                
    </>
   
