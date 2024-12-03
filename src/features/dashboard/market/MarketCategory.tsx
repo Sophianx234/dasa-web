@@ -8,14 +8,14 @@ import { RiArmchairFill } from "react-icons/ri"
 function MarketCategory() {
     return (
         <div className="grid grid-cols-4 mx-4 gap-y-6">
-            <CategoryItem icon={<MdPhoneIphone className="size-6"/>} title="Electronic"/>
-            <CategoryItem icon={<IoFastFood className="size-6"/>} title="Food & Drink"/>
-            <CategoryItem icon={<BiSolidWatch className="size-6"/>} title="Accessories"/>
-            <CategoryItem icon={<GiLipstick className="size-6"/>} title="Beauty"/>
-            <CategoryItem icon={<RiArmchairFill className="size-6"/>} title="Furniture"/>
-            <CategoryItem icon={<GiPoloShirt className="size-6"/>} title="Fashion"/>
-            <CategoryItem icon={<GiPill className="size-6"/>} title="Health"/>
-            <CategoryItem icon={<GiNotebook className="size-6"/>} title="Stationary"/>
+            <CategoryItem link="/electronics" icon={<MdPhoneIphone className="size-6"/>} title="Electronic"/>
+            <CategoryItem link="/food" icon={<IoFastFood className="size-6"/>} title="Food & Drink"/>
+            <CategoryItem link="/accessories" icon={<BiSolidWatch className="size-6"/>} title="Accessories"/>
+            <CategoryItem link="/beauty" icon={<GiLipstick className="size-6"/>} title="Beauty"/>
+            <CategoryItem link="/furniture" icon={<RiArmchairFill className="size-6"/>} title="Furniture"/>
+            <CategoryItem link="/fashion" icon={<GiPoloShirt className="size-6"/>} title="Fashion"/>
+            <CategoryItem link="/health" icon={<GiPill className="size-6"/>} title="Health"/>
+            <CategoryItem link="/stationary" icon={<GiNotebook className="size-6"/>} title="Stationary"/>
         </div>
     )
 }
