@@ -21,6 +21,7 @@ import Account from "./features/dashboard/account/AccountHeader";
 import AccountPage from "./features/dashboard/pages/AccountPage";
 import Profile from "./features/dashboard/pages/ProfilePage";
 import ProfilePage from "./features/dashboard/pages/ProfilePage";
+import ElectronicsScreen from "./features/dashboard/market/ElectronicsScreen";
 
 function App() {
   return (
@@ -62,7 +63,12 @@ function App() {
             <Route path="form" element={<Payment />} />
             <Route path="history" element={<PaymentHistory />} />
           </Route>
-          <Route path="/dashboard/market" element={<MarketPage />} />
+          <Route path="/dashboard/market" element={<MarketPage />}>
+
+          <Route index  element={<Market style="main" />} />
+          <Route path="electronic" element={<ElectronicsScreen/>}/>
+          
+          </Route>
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

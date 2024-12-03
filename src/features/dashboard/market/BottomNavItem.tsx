@@ -7,9 +7,9 @@ export type bottomNavItem = {
     icon: ReactElement;
     link:string;
 }
-function BottomNavItem({icon,title}:bottomNavItem) {
+function BottomNavItem({link,icon,title}:bottomNavItem) {
     return (
-        <Link to='' className="flex flex-col justify-center items-center">
+        <Link to={link} className="flex flex-col justify-center items-center">
                 <span>{icon}</span>
                 <span className="font-Montserrat font-semibold">{title}</span>
             </Link>

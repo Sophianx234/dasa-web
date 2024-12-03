@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Market from "../components/Market";
 import BottomNav from "../market/BottomNav";
 import MarketCategory from "../market/MarketCategory";
@@ -13,7 +14,7 @@ function MarketPage() {
       <SearchBar/>
       </div>
       <MarketCategory/>
-      <Market style="main" />
+      <Outlet/>
       <BottomNav/>
     </div>
   );

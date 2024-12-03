@@ -8,7 +8,7 @@ function Market({style}:marketProps) {
     return (
         <>
         
-        <div className="px-6  pt-10">
+        <div className="px-6 pb-20  pt-10">
             { style!== 'main' &&<h1 className="dash-title pb-2">Dasa Market Center</h1>}
 
             <MarketFeaturedList/>

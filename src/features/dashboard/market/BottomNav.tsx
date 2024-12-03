@@ -12,7 +12,7 @@ function BottomNav() {
             <BottomNavItem icon={<FaRegHeart className="size-5"/>} title="Wishlist" link="/"/>
             
             <BottomNavItem icon={<FiPlusCircle className="size-5"/>} title="Add" link="/"/>
-            <BottomNavItem icon={<FaRegUser className="size-5"/>} title="profile" link="/"/>
+            <BottomNavItem icon={<FaRegUser className="size-5"/>} title="profile" link="/dashboard/account"/>
         </div>
     )
 }
