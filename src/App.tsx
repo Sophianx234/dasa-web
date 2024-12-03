@@ -22,6 +22,12 @@ import AccountPage from "./features/dashboard/pages/AccountPage";
 import Profile from "./features/dashboard/pages/ProfilePage";
 import ProfilePage from "./features/dashboard/pages/ProfilePage";
 import ElectronicsScreen from "./features/dashboard/market/ElectronicsScreen";
+import FoodScreen from "./features/dashboard/market/FoodScreen";
+import AccessoriesScreen from "./features/dashboard/market/AccessoriesScreen";
+import BeautyScreen from "./features/dashboard/market/BeautyScreen";
+import StationaryScreen from "./features/dashboard/market/StationaryScreen";
+import FashionScreen from "./features/dashboard/market/FashionScreen";
+import FurnitureScreen from "./features/dashboard/market/FurnitureScreen";
 
 function App() {
   return (
@@ -67,6 +73,13 @@ function App() {
 
           <Route index  element={<Market style="main" />} />
           <Route path="electronic" element={<ElectronicsScreen/>}/>
+          <Route path="food" element={<FoodScreen/>}/>
+          <Route path="accessories" element={<AccessoriesScreen/>}/>
+          <Route path="beauty" element={<BeautyScreen/>}/>
+          <Route path="furniture" element={<FurnitureScreen/>}/>
+          <Route path="fashion" element={<FashionScreen/>}/>
+          <Route path="health" element={<BeautyScreen/>}/>
+          <Route path="stationary" element={<StationaryScreen/>}/>
           
           </Route>
         </Route>
