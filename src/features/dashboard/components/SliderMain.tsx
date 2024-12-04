@@ -12,18 +12,18 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 export type sliderMainProps={
-  el: ReactElement[],
+  el: ReactElement[] | string[],
   direction?: 'vertical'| 'horizontal' 
 }
 
-export default function SliderMain({el,direction}:sliderMainProps) {
+export default function SliderMain({el,direction='horizontal'}:sliderMainProps) {
   return (
     <div className='pt-6'>
-      <h1 className='dash-title mx-4 pb-4 '>Events</h1>
+      <>
       <Swiper
-        spaceBetween={30}
+        spaceBetween={direction?.startsWith('h')?30:''}
         direction={direction}
-        centeredSlides={true}
+        centeredSlides={direction?.startsWith('h')? true:false}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -31,13 +31,14 @@ export default function SliderMain({el,direction}:sliderMainProps) {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
+        navigation={direction?.startsWith('h')? true :false}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
-      >
-        {el.map((el,i)=><SwiperSlide key={i}>{el}</SwiperSlide>)}
+        >
+        {el.map((el,i)=><SwiperSlide key={i}>{typeof(el) ==='string'? <img src={el}/>: el}</SwiperSlide>)}
         
       </Swiper>
+        </>
     </div>
   );
 }

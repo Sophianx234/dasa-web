@@ -4,6 +4,8 @@ import { MdOutlineLocationOn } from "react-icons/md"
 
 function Event() {
     return (
+        <>
+
         <div className="grid grid-cols-1 border-dasalight border-2 mx-4 shadow-lg pb-6">
             
             <div>
@@ -18,6 +20,7 @@ function Event() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 
