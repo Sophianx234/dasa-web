@@ -4,10 +4,10 @@ import Market from "./Market";
 import AnonymousTiles from "../anonymous/AnonymousTiles";
 import AnnouncementList from "../announcement/AnnouncementList";
 import BriefGallery from "./BriefGallery";
-import Events from "./Events";
 import { useAppSelector } from "@/features/utils/hooks";
 import UserStats from "./UserStats";
 import Footer from "@/features/ui/Footer";
+import Events from "./Events";
 
 function DashboardOverview() {
   const openSidebar = useAppSelector((store) => store.nav.openSidebar);
