@@ -1,17 +1,16 @@
 import { Outlet } from "react-router-dom";
 import SideNav from "../components/SideNav";
-import ChatMenu from "../Chat/ChatMenu";
+import ChatMenu from "../chat/ChatMenu";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
-import OpenChatMenu from "../Chat/OpenChatMenu";
+import OpenChatMenu from "../chat/OpenChatMenu";
 
 function AppLayout() {
-  const openChatMenu = useAppSelector(store=>store.nav.openChatMenu)
+  const openChatMenu = useAppSelector((store) => store.nav.openChatMenu);
   return (
     <div className="h-dvh">
       <Outlet />
       <SideNav />
-      <OpenChatMenu/>
-
+      <OpenChatMenu />
     </div>
   );
 }
