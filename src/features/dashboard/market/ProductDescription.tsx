@@ -8,7 +8,7 @@ function ProductDescription() {
         setIsExpanded(!isExpanded);
     };
     return (
-        <div className="mx-4 pt-4">
+        <div className="mx-4 pt-4  ">
                 <div>
                     <div className="flex mt-4 justify-between items-center">
 
@@ -28,7 +28,7 @@ function ProductDescription() {
 
                 <div>
                     <h1 className="font-bold pt-6 pb-2 ">Product Description</h1>
-                    <p className="text-sm"> {!isExpanded?'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio suscipit maiores placeat perferendis quas debitis voluptas nesciunt optio ipsam quidem, dolor distinctio? Aut, nemo distinctio!....':'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore a debitis beatae? Illo possimus, deleniti incidunt quidem voluptas maiores quis magni soluta tempora nesciunt laudantium totam eaque excepturi accusamus debitis perspiciatis sunt veniam eveniet ab facilis mollitia odio aliquid? Enim.'} <span onClick={()=>setIsExpanded(expand=>!expand)} className="text-dasadeep">{isExpanded?'Read less':'Read more'}</span></p>
+                    <p className="text-sm "> {!isExpanded?'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio suscipit maiores placeat perferendis quas debitis voluptas nesciunt optio ipsam quidem, dolor distinctio? Aut, nemo distinctio!....':'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore a debitis beatae? Illo possimus, deleniti incidunt quidem voluptas maiores quis magni soluta tempora nesciunt laudantium totam eaque excepturi accusamus debitis perspiciatis sunt veniam eveniet ab facilis mollitia odio aliquid? Enim.'} <span onClick={()=>setIsExpanded(expand=>!expand)} className="text-dasadeep">{isExpanded?'Read less':'Read more'}</span></p>
                     
                     
                 </div>

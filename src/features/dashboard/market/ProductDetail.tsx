@@ -20,8 +20,8 @@ function ProductDetail() {
 
       
     return (
-        <div>
-            <div className="flex items-center justify-between px-3 pt-3">
+        <div className="bg-white">
+            <div className="flex items-center  justify-between px-3 pt-3">
             <div className="border p-2 rounded-full" onClick={()=>navigate(-1)}>
 
             <IoArrowBack className="size-5"/>
@@ -39,7 +39,7 @@ function ProductDetail() {
             </div>
             <ProductDescription/>
             </div>
-            <div className="flex items-center justify-center absolute bottom-0 left-0 right-0 py-4 gap-4 bg-white ">
+            <div className="flex items-center justify-center sticky bottom-0  py-4 gap-4 bg-white ">
                 <div className="flex items-center border border-dasadeep p-3 px-5 rounded-lg text-dasadeep gap-2">
                 <FaShoppingCart/><span> Add to Cart</span>
                 </div>
