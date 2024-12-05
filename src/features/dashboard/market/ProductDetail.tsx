@@ -7,6 +7,7 @@ import { FaRegHeart } from "react-icons/fa6"
 import { useState } from "react"
 import ProductDescription from "./ProductDescription"
 import { FaShoppingCart } from "react-icons/fa"
+import ProductNav from "./ProductNav"
 
 
 
@@ -21,17 +22,7 @@ function ProductDetail() {
       
     return (
         <div className="bg-white">
-            <div className="flex items-center  justify-between px-3 pt-3">
-            <div className="border p-2 rounded-full" onClick={()=>navigate(-1)}>
-
-            <IoArrowBack className="size-5"/>
-            </div>
-                <span className="font-bold">Product Detail</span>
-                <div className="border p-2 rounded-full">
-
-                <IoShareSocialOutline className="size-5"/>
-                </div>
-            </div>
+            <ProductNav title="Product Detail"/>
             <div >
 
             <div className="mx-8" >
@@ -39,7 +30,7 @@ function ProductDetail() {
             </div>
             <ProductDescription/>
             </div>
-            <div className="flex items-center justify-center sticky bottom-0  py-4 gap-4 bg-white ">
+            <div className="flex shadow-top  items-center justify-center sticky bottom-0  py-4 gap-4 bg-white ">
                 <div className="flex items-center border border-dasadeep p-3 px-5 rounded-lg text-dasadeep gap-2">
                 <FaShoppingCart/><span> Add to Cart</span>
                 </div>
