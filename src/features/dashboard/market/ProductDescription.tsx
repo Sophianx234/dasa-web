@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaRegHeart } from "react-icons/fa6"
+import Rating from "./Rating";
 
 function ProductDescription() {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -15,6 +16,7 @@ function ProductDescription() {
                     <h1 className="font-Montserrat font-bold">Ipad Pro 6th Generation 11 inch 2022</h1>
                     <FaRegHeart/>
                     </div>
+                    <Rating/>
                     <div className="flex gap-4 items-center pt-2">
                         <span className="text-lg font-bold">
                         GH₵15.299
