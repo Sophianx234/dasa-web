@@ -8,7 +8,7 @@ export type marketHeaderProps = {
 function ProductNav({title,type='normal'}:marketHeaderProps) {
     const navigate = useNavigate()
     return (
-        <div className="flex items-center  justify-between px-3 pt-3">
+        <div className="flex items-center  justify-between px-3 pt-3 ">
             <div className="border p-2 rounded-full" onClick={()=>navigate(-1)}>
 
             <IoArrowBack className="size-5"/>

@@ -20,10 +20,13 @@ function CartItem() {
                 <div>
                     <h1 className="text-sm  font-bold font-mulish tracking-tighter opacity-60 text-gray-700">Apple Watch Ultra 2 with Ocean Band</h1>
                     <p className=" font-bold ">GH₵ 65.99</p>
-                    <div className="flex items-center justify-between mr-4 pt-2 select-none" onClick={()=>setLove(love=>!love)} >{
-                        love?
-                <FaRegHeart className="size-5 opacity-55 "/>:
-                <FaHeart className="size-5"/>}
+                    <div className="flex items-center justify-between mr-4 pt-2 select-none" >
+                        <div onClick={()=>setLove(love=>!love)} >
+                            {
+                                !love?
+                                <FaRegHeart className="size-5 opacity-55 "/>:
+                                <FaHeart className="size-5"/>}
+                                </div>
                <QuantityNav/>
                 </div>
                 </div>
