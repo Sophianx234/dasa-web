@@ -30,6 +30,7 @@ import FashionScreen from "./features/dashboard/market/FashionScreen";
 import FurnitureScreen from "./features/dashboard/market/FurnitureScreen";
 import ProductDetail from "./features/dashboard/market/ProductDetail";
 import CartPage from "./features/dashboard/pages/CartPage";
+import OrderUser from "./features/dashboard/order/orderUser";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
             <Route path="history" element={<PaymentHistory />} />
           </Route>
           <Route path="/dashboard/market/productdetail" element={<ProductDetail />}/>
+          <Route path="/dashboard/market/:id/orders" element={<OrderUser />}/>
           <Route path="/dashboard/market/cart" element={<CartPage />}/>
           <Route path="/dashboard/market" element={<MarketPage />}>
 

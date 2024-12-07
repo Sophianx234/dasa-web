@@ -4,13 +4,14 @@ import AccountFormInput from "./AccountFormInput";
 import { FileInput } from "lucide-react";
 import FileInputButton from "./FileInput";
 import { UseFormRegister } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export type confirmModalProps = {
   register?: UseFormRegister<FormData>,
   title?: string;
   desc?: string;
   setReveal?: () => any;
-  handleClose: ()=>boolean;
+  handleClose: ()=>boolean | void;
   type?: "confirm" | "form";
 
 };
@@ -23,6 +24,10 @@ function ConfirmModal({
   type = "confirm",
 }: confirmModalProps) {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
+  function handleNav(){
+    navigate('/dashboard/market/45cde66/orders')
+  }
   function handleTrigger(e) {
     if (title?.includes("Contact")) dispatch(toggleRevealConfirmModal());
     if (title?.includes("Delete")) setReveal?.((reveal) => !reveal);
@@ -48,7 +53,7 @@ function ConfirmModal({
           )}
 
           <div className="card-actions justify-end">
-            <button
+            <button onClick={title?.toLocaleLowerCase().includes('checkout') ? handleNav: undefined} 
               className={`btn btn-primary ${
                 title?.includes("Delete") && "bg-red-600 text-red-950"
               } ${type === "form" && "bg-dasadeep"}`}
