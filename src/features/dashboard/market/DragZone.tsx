@@ -1,5 +1,6 @@
     import React, {ReactElement, useCallback, useState} from 'react'
     import {FileRejection, useDropzone} from 'react-dropzone'
+import { IoMdClose } from 'react-icons/io'
     export type extendFile = File & {
         preview: string
     }
@@ -22,9 +23,13 @@ if(rejectedFiles.length>0) return alert('Some files were rejected due to validat
 
   const renderPreviews  = () =>
     files?.map((file) => (
-      <div key={file?.name} style={{ margin: "10px" }}>
-        <img src={file?.preview} alt={file.name} style={{ width: "100px" }} />
-        <p>{file.name}</p>
+        
+      <div key={file?.name}  >
+        <div className='relative   '>
+        <IoMdClose className='absolute left-0'/>
+        <img src={file?.preview} alt={file.name} className='size-44 object-cover object-center ' />
+        <p className='text-center text-xs tracking-tight'>{file.name.split('.')[0]}</p>
+        </div>
       </div>
     ));
 
@@ -36,7 +41,7 @@ if(rejectedFiles.length>0) return alert('Some files were rejected due to validat
           <p>Drop the files here ...</p> :
           <p>Drag 'n' drop some files here, or click to select files</p>
       }
-      <div>{renderPreviews()}</div>
+      <div className='grid grid-cols-4 mx-2 gap-3'>{renderPreviews()}</div>
     </div>
   )
 }
