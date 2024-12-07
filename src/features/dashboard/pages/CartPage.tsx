@@ -11,10 +11,9 @@ function CartPage() {
     }
     return (
         <div className="bg-white">
-            <div className="sticky -top-1  left-0 bg-white z-40 py-2 pb-3 right-0">
+            
 
             <ProductNav title="My Cart" type="simple"/>
-            </div>
             <div className="space-y-2 pt-4 overflow-y-scroll">
                 
             <CartItem/>
