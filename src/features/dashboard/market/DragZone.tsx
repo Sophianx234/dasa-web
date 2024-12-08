@@ -1,6 +1,8 @@
 import React, { ReactElement, useCallback, useState } from "react";
 import { FileRejection, useDropzone } from "react-dropzone";
 import { IoMdClose } from "react-icons/io";
+import { IoFastFoodOutline } from "react-icons/io5";
+import ImportProductsTag from "./ImportProductsTag";
 export type extendFile = File & {
   preview: string;
 };
@@ -45,23 +47,28 @@ function DragZone() {
     ));
 
   return (
-    <div className="fixed bg-purple-50  top-0 bottom-0 left-0 right-0  flex justify-center items-center  z-40">
+    <div className="fixed bg-white  top-0 bottom-0 left-0 right-0  flex   pt-12  z-40">
 
-    <div {...getRootProps()} className="z-50  mx-4  ">
-      <div className="border ,ax-w-screen  py-7 rounded-lg ">
+
+    <div  className="z-50  mx-4 w-screen  ">
+      <ImportProductsTag/>
+      <div className=" border-2 border-dotted  mb-4  py-7 rounded-lg ">
 
       <div className="flex -space-x-3 justify-center pb-2 ">
         {imgs.map(img=><img className="size-14   rounded-full" src={img} key={img}/>)}
       </div>
+      <div {...getRootProps()}>
+
       <input {...getInputProps()} />
       {isDragActive ? (
         <p className="text-center font-bold font-mulish text-sm">Drop the files here ...</p>
       ) : (
-        <p className="text-center font-bold font-mulish text-sm">Drag 'n' drop some <span className="underline underline-offset-2 "> products</span>  here, <br /> or click to select files</p>
+        <p className="text-center font-bold font-mulish text-sm">Drag 'n' drop some <span className="underline decoration-2 underline-offset-2  decoration-dasadeep"> products</span>  here, <br /> or click to select files</p>
       )}
       <div className="text-center pt-3">
 
-      <button className="hover-primary bg-dasadeep px-2 py-1">Select Files</button>
+      <button className="hover-primary bg-dasadeep rounded-lg font-bold duration-150 px-2 py-1">Select Files</button>
+      </div>
       </div>
       </div>
       <div className="grid grid-cols-4 mx-2 gap-3">{renderPreviews()}</div>
