@@ -1,19 +1,21 @@
 import React, { ChangeEvent, FormEvent, ReactElement, useCallback, useState } from "react";
 import { FileRejection, useDropzone } from "react-dropzone";
 import { IoMdClose } from "react-icons/io";
-import { IoFastFoodOutline } from "react-icons/io5";
 import ImportProductsTag from "./ImportProductsTag";
+
+import { TiUploadOutline } from "react-icons/ti";
+import { useNavigate } from "react-router-dom";
 export type extendFile = File & {
   preview: string;
 };
 
 function DragZone() {
-  const [files, setFiles] = useState<extendFile[]>([]);
+  const [files, setFiles] = useState<extendFile[]|null>();
   
   const imgs = ["https://i.ibb.co/5T0GmMy/sneaker-2.png","https://i.ibb.co/F7K9fjg/sneaker-3.png","https://i.ibb.co/L5Z1hNM/sneaker-4.png","https://i.ibb.co/PcPBVyC/sneaker-1.jpg"
   ]
   function handleRemoveImage(id:number){
-   const filteredImgs = files.filter((_,i)=>i !==id )
+   const filteredImgs = files?.filter((_,i)=>i !==id )
    setFiles(filteredImgs)
     
     console.log('filtered',filteredImgs)
@@ -32,7 +34,7 @@ function DragZone() {
           preview: URL.createObjectURL(file),
         })
       );
-      setFiles(validFiles);
+      setFiles(file=>[...(file || []),...validFiles]);
       if (rejectedFiles.length > 0)
         return alert("Some files were rejected due to validation errors!");
     },
@@ -44,14 +46,14 @@ function DragZone() {
     files?.map((file,id) => (
       <div key={file?.name}>
         <div className="relative   ">
-          <IoMdClose className="absolute left-0" onClick={()=>handleRemoveImage(id)} />
+          <IoMdClose className="absolute  left-0 top-0" onClick={()=>handleRemoveImage(id)} />
           <img
             src={file?.preview}
             alt={file.name}
             className="size-44 object-cover object-center "
           />
           <p className="text-center text-xs tracking-tight">
-            {file.name.split(".")[0]}
+            {file.name.split(".")[0].slice(0,12)}
           </p>
         </div>
       </div>
@@ -83,6 +85,18 @@ function DragZone() {
       </div>
       </div>
       <div className="grid grid-cols-4 mx-2 gap-3">{renderPreviews()}</div>
+      {files?.length >0 &&
+      <div className="flex justify-center  pt-4">
+
+      <button className="text-sm font-bold bg-dasadeep hover-primary  px-3 py-1 rounded-lg flex items-center gap-2 justify-center">
+        Upload  
+        <TiUploadOutline className="size-6"/>
+        
+
+
+      </button>
+      </div>
+      }
       </div>
     </div>
   );
