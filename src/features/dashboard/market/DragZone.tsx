@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useState } from "react";
+import React, { ChangeEvent, FormEvent, ReactElement, useCallback, useState } from "react";
 import { FileRejection, useDropzone } from "react-dropzone";
 import { IoMdClose } from "react-icons/io";
 import { IoFastFoodOutline } from "react-icons/io5";
@@ -9,8 +9,19 @@ export type extendFile = File & {
 
 function DragZone() {
   const [files, setFiles] = useState<extendFile[]>([]);
+  
   const imgs = ["https://i.ibb.co/5T0GmMy/sneaker-2.png","https://i.ibb.co/F7K9fjg/sneaker-3.png","https://i.ibb.co/L5Z1hNM/sneaker-4.png","https://i.ibb.co/PcPBVyC/sneaker-1.jpg"
   ]
+  function handleRemoveImage(id:number){
+   const filteredImgs = files.filter((_,i)=>i !==id )
+   setFiles(filteredImgs)
+    
+    console.log('filtered',filteredImgs)
+    console.log('clicked')
+    
+
+
+  }
 
   const onDrop = useCallback(
     (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
@@ -30,10 +41,10 @@ function DragZone() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   const renderPreviews = () =>
-    files?.map((file) => (
+    files?.map((file,id) => (
       <div key={file?.name}>
         <div className="relative   ">
-          <IoMdClose className="absolute left-0" />
+          <IoMdClose className="absolute left-0" onClick={()=>handleRemoveImage(id)} />
           <img
             src={file?.preview}
             alt={file.name}
