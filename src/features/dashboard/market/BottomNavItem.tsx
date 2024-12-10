@@ -9,7 +9,7 @@ export type bottomNavItem = {
 }
 function BottomNavItem({link,icon,title}:bottomNavItem) {
     return (
-        <Link to={link} className="flex flex-col justify-center items-center">
+        <Link to={link} className="flex flex-col justify-center items-center group">
                 <span>{icon}</span>
                 <span className="font-Montserrat font-semibold">{title}</span>
             </Link>

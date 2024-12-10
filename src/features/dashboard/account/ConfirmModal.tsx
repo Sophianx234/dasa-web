@@ -5,12 +5,13 @@ import { FileInput } from "lucide-react";
 import FileInputButton from "./FileInput";
 import { UseFormRegister } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { ChangeEvent } from "react";
 
 export type confirmModalProps = {
   register?: UseFormRegister<FormData>,
   title?: string;
   desc?: string;
-  setReveal?: () => any;
+  setReveal?: () => void;
   handleClose: ()=>boolean | void;
   type?: "confirm" | "form";
 
@@ -28,9 +29,10 @@ function ConfirmModal({
   function handleNav(){
     navigate('/dashboard/market/45cde66/orders')
   }
-  function handleTrigger(e) {
+  function handleTrigger() {
+    
     if (title?.includes("Contact")) dispatch(toggleRevealConfirmModal());
-    if (title?.includes("Delete")) setReveal?.((reveal) => !reveal);
+    if (title?.includes("Delete")) setReveal?.((reveal:unknown) => !reveal);
     if(type === 'form') dispatch(toggleRevealUploadImage())
     handleClose?.()
   }

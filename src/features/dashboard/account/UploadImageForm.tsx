@@ -5,8 +5,8 @@ export type uploadImageFormProps = {
     handleClose: ()=>boolean
 }
 function UploadImageForm({handleClose}:uploadImageFormProps) {
-    const {handleSubmit,reset,register} = useForm()
-    function handleOnSubmit(data){
+    const {handleSubmit,register} = useForm()
+    function handleOnSubmit(data:unknown){
         console.log(data)
     }
     return (
