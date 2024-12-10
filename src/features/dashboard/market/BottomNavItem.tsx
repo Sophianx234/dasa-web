@@ -12,7 +12,7 @@ export type bottomNavItem = {
 function BottomNavItem({link,icon,title}:bottomNavItem) {
     const dispatch = useAppDispatch()
    
-    if(title.toLowerCase() !== 'wishlist')
+    if(title.toLowerCase() !== 'add')
     return (
         <Link to={link} className="flex flex-col justify-center items-center group">
                 <span>{icon}</span>

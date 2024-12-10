@@ -71,7 +71,7 @@ function DragZone() {
     ));
 
   return (
-    <div className="fixed bg-white  -top-1 bottom-0 left-0 right-0  flex   pt-12  z-50">
+    <div className="fixed bg-white  -top-1 bottom-0 left-0 right-0  flex   pt-12  z-50 overflow-y-scroll">
       <div className="z-50  mx-4 w-screen  ">
         <ImportProductsTag />
         <div className=" border-2 border-dotted  mb-4  py-7 rounded-lg ">
@@ -103,6 +103,8 @@ function DragZone() {
             </div>
           </div>
         </div>
+        <div className="h-fit  pb-10">
+
         <div className="grid grid-cols-4 mx-2 gap-3">{renderPreviews()}</div>
         {files && files?.length > 0 && (
           <div className="flex justify-center  pt-4">
@@ -118,6 +120,7 @@ function DragZone() {
         )}
       </div>
     </div>
+</div>
   );
 }
 
