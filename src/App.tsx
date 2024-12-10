@@ -49,15 +49,12 @@ function App() {
             path="/dashboard/notifications"
             element={<NotificationsPage />}
           />
-          <Route
-            path="/dashboard/account"
-            element={<AccountPage />}
-          />
+          <Route path="/dashboard/account" element={<AccountPage />} />
           <Route
             path="/dashboard/account/:id/profile"
             element={<ProfilePage />}
           />
-          
+
           <Route
             path="/dashboard/anonymous/write"
             element={<AnonymousMain />}
@@ -73,22 +70,26 @@ function App() {
             <Route path="form" element={<Payment />} />
             <Route path="history" element={<PaymentHistory />} />
           </Route>
-          <Route path="/dashboard/market/productdetail" element={<ProductDetail />}/>
-          <Route path="/dashboard/market/:id/orders" element={<OrderUser />}/>
-          <Route path="/dashboard/market/:id/uploadedproducts" element={<UploadedProducts />}/>
-          <Route path="/dashboard/market/:id/cart" element={<CartPage />}/>
+          <Route
+            path="/dashboard/market/productdetail"
+            element={<ProductDetail />}
+          />
+          <Route path="/dashboard/market/:id/orders" element={<OrderUser />} />
+          <Route
+            path="/dashboard/market/:id/uploadedproducts"
+            element={<UploadedProducts />}
+          />
+          <Route path="/dashboard/market/:id/cart" element={<CartPage />} />
           <Route path="/dashboard/market" element={<MarketPage />}>
-
-          <Route index  element={<Market style="main" />} />
-          <Route path="electronic" element={<ElectronicsScreen/>}/>
-          <Route path="food" element={<FoodScreen/>}/>
-          <Route path="accessories" element={<AccessoriesScreen/>}/>
-          <Route path="beauty" element={<BeautyScreen/>}/>
-          <Route path="furniture" element={<FurnitureScreen/>}/>
-          <Route path="fashion" element={<FashionScreen/>}/>
-          <Route path="health" element={<BeautyScreen/>}/>
-          <Route path="stationary" element={<StationaryScreen/>}/>
-          
+            <Route index element={<Market style="main" />} />
+            <Route path="electronic" element={<ElectronicsScreen />} />
+            <Route path="food" element={<FoodScreen />} />
+            <Route path="accessories" element={<AccessoriesScreen />} />
+            <Route path="beauty" element={<BeautyScreen />} />
+            <Route path="furniture" element={<FurnitureScreen />} />
+            <Route path="fashion" element={<FashionScreen />} />
+            <Route path="health" element={<BeautyScreen />} />
+            <Route path="stationary" element={<StationaryScreen />} />
           </Route>
         </Route>
         <Route path="*" element={<PageNotFound />} />
