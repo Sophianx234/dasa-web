@@ -2,16 +2,15 @@ import React, { ChangeEvent, FormEvent, ReactElement, useCallback, useState } fr
 import { FileRejection, useDropzone } from "react-dropzone";
 import { IoMdClose } from "react-icons/io";
 import ImportProductsTag from "./ImportProductsTag";
-
+import toast, {Toaster} from 'react-hot-toast'
 import { TiUploadOutline } from "react-icons/ti";
-import { useNavigate } from "react-router-dom";
 export type extendFile = File & {
   preview: string;
 };
 
 function DragZone() {
   const [files, setFiles] = useState<extendFile[]|null>();
-  
+  const notify = ()=> toast('Upload Complete')
   const imgs = ["https://i.ibb.co/5T0GmMy/sneaker-2.png","https://i.ibb.co/F7K9fjg/sneaker-3.png","https://i.ibb.co/L5Z1hNM/sneaker-4.png","https://i.ibb.co/PcPBVyC/sneaker-1.jpg"
   ]
   function handleRemoveImage(id:number){
@@ -88,7 +87,8 @@ function DragZone() {
       {files?.length >0 &&
       <div className="flex justify-center  pt-4">
 
-      <button className="text-sm font-bold bg-dasadeep hover-primary  px-3 py-1 rounded-lg flex items-center gap-2 justify-center">
+      <Toaster position="top-center"/>
+      <button onClick={notify} className="text-sm font-bold bg-dasadeep hover-primary  px-3 py-1 rounded-lg flex items-center gap-2 justify-center">
         Upload  
         <TiUploadOutline className="size-6"/>
         
