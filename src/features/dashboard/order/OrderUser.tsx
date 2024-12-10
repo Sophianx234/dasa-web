@@ -1,7 +1,6 @@
-import { FaBoxOpen } from "react-icons/fa6"
 import ProductNav from "../market/ProductNav"
 import { BiPackage } from "react-icons/bi"
-import DragZone from "../market/DragZone"
+import EmptyList from "./EmptyList"
 
 function OrderUser() {
     return (
@@ -12,14 +11,7 @@ function OrderUser() {
 
 
             
-            <div className="pt-36">
-                <div className="flex flex-col items-center">
-
-                <BiPackage className="size-24"/>
-            <p className="font-semibold text-gray-600">empty</p>
-                </div>
-            <DragZone/>
-    </div>
+          <EmptyList/>
             </div>
 </div>
         </div>

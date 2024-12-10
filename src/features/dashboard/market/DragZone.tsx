@@ -84,7 +84,7 @@ function DragZone() {
       </div>
       </div>
       <div className="grid grid-cols-4 mx-2 gap-3">{renderPreviews()}</div>
-      {files?.length >0 &&
+      {files && files?.length >0 &&
       <div className="flex justify-center  pt-4">
 
       <Toaster position="top-center"/>

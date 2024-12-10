@@ -31,6 +31,7 @@ import FurnitureScreen from "./features/dashboard/market/FurnitureScreen";
 import ProductDetail from "./features/dashboard/market/ProductDetail";
 import CartPage from "./features/dashboard/pages/CartPage";
 import OrderUser from "./features/dashboard/order/orderUser";
+import UploadedProducts from "./features/dashboard/pages/UploadedProducts";
 
 function App() {
   return (
@@ -74,7 +75,8 @@ function App() {
           </Route>
           <Route path="/dashboard/market/productdetail" element={<ProductDetail />}/>
           <Route path="/dashboard/market/:id/orders" element={<OrderUser />}/>
-          <Route path="/dashboard/market/cart" element={<CartPage />}/>
+          <Route path="/dashboard/market/:id/uploadedproducts" element={<UploadedProducts />}/>
+          <Route path="/dashboard/market/:id/cart" element={<CartPage />}/>
           <Route path="/dashboard/market" element={<MarketPage />}>
 
           <Route index  element={<Market style="main" />} />
