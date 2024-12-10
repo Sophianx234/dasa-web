@@ -8,7 +8,6 @@ import AppLayout from "./features/dashboard/pages/AppLayout";
 import DashboardOverview from "./features/dashboard/components/DashboardOverview";
 import GalleryPage from "./features/dashboard/pages/GalleryPage";
 import NotificationsPage from "./features/dashboard/pages/NotificationsPage";
-import AnonymousPage from "./features/dashboard/pages/AnonymousPage";
 import Market from "./features/dashboard/components/Market";
 import MarketPage from "./features/dashboard/pages/MarketPage";
 import PaymentPage from "./features/dashboard/pages/PaymentPage";
@@ -17,9 +16,7 @@ import PaymentHistory from "./features/dashboard/pages/PaymentHistory";
 import AnonymousMain from "./features/dashboard/pages/AnonymousMain";
 import ViewAnonymous from "./features/dashboard/anonymous/ViewAnonymous";
 import Conversation from "./features/dashboard/components/Conversation";
-import Account from "./features/dashboard/account/AccountHeader";
 import AccountPage from "./features/dashboard/pages/AccountPage";
-import Profile from "./features/dashboard/pages/ProfilePage";
 import ProfilePage from "./features/dashboard/pages/ProfilePage";
 import ElectronicsScreen from "./features/dashboard/market/ElectronicsScreen";
 import FoodScreen from "./features/dashboard/market/FoodScreen";
@@ -30,8 +27,8 @@ import FashionScreen from "./features/dashboard/market/FashionScreen";
 import FurnitureScreen from "./features/dashboard/market/FurnitureScreen";
 import ProductDetail from "./features/dashboard/market/ProductDetail";
 import CartPage from "./features/dashboard/pages/CartPage";
-import OrderUser from "./features/dashboard/order/orderUser";
 import UploadedProducts from "./features/dashboard/pages/UploadedProducts";
+import OrderUser from "./features/dashboard/order/OrderUser";
 
 function App() {
   return (
@@ -54,6 +51,7 @@ function App() {
             path="/dashboard/account/:id/profile"
             element={<ProfilePage />}
           />
+          {/* Chat Route */}
 
           <Route
             path="/dashboard/anonymous/write"
@@ -65,11 +63,16 @@ function App() {
             element={<Conversation />}
           />
 
+          {/* Payment Route */}
+
           <Route path="/dashboard/payment" element={<PaymentPage />}>
             <Route index element={<Navigate to="form" replace />} />
             <Route path="form" element={<Payment />} />
             <Route path="history" element={<PaymentHistory />} />
           </Route>
+
+          {/* Market  Route */}
+
           <Route
             path="/dashboard/market/productdetail"
             element={<ProductDetail />}
@@ -80,8 +83,10 @@ function App() {
             element={<UploadedProducts />}
           />
           <Route path="/dashboard/market/:id/cart" element={<CartPage />} />
+
+          
           <Route path="/dashboard/market" element={<MarketPage />}>
-            <Route index element={<Market style="main" />} />
+          <Route index element={<Market style="main" />} />
             <Route path="electronic" element={<ElectronicsScreen />} />
             <Route path="food" element={<FoodScreen />} />
             <Route path="accessories" element={<AccessoriesScreen />} />
