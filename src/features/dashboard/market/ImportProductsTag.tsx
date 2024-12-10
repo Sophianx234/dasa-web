@@ -1,7 +1,11 @@
+import { toggleRevealUploadImage, toggleRevealUploadProduct } from "@/features/slices/navSlice"
+import { useAppDispatch } from "@/features/utils/hooks"
 import { IoMdClose } from "react-icons/io"
 import { IoFastFoodOutline } from "react-icons/io5"
 
 function ImportProductsTag() {
+  const dispatch = useAppDispatch()
+
     return (
         <div className="flex relative mb-2">
         <div className="flex items-center gap-2">
@@ -16,7 +20,7 @@ function ImportProductsTag() {
 
         </div>
 
-        <IoMdClose className="absolute right-0"/>
+        <IoMdClose className="absolute right-0" onClick={()=>dispatch(toggleRevealUploadProduct())}/>
       </div>
     )
 }
