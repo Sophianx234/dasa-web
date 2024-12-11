@@ -11,12 +11,14 @@ import ImportProductsTag from "./ImportProductsTag";
 import toast, { Toaster } from "react-hot-toast";
 import { TiUploadOutline } from "react-icons/ti";
 import { useAppDispatch } from "@/features/utils/hooks";
+import UploadProductImg from "./uploadProductImg";
 export type extendFile = File & {
   preview: string;
 };
 
 function DragZone() {
   const [files, setFiles] = useState<extendFile[] | null>();
+  const [imgName,setImgName] = useState<string | null>()
   const notify = () => toast("Upload Complete");
   const imgs = [
     "https://i.ibb.co/5T0GmMy/sneaker-2.png",
@@ -24,7 +26,10 @@ function DragZone() {
     "https://i.ibb.co/L5Z1hNM/sneaker-4.png",
     "https://i.ibb.co/PcPBVyC/sneaker-1.jpg",
   ];
+  function handleRename(e:ChangeEvent<HTMLInputElement>){
+    setImgName(e.target.value)
 
+  }
   function handleRemoveImage(id: number) {
     const filteredImgs = files?.filter((_, i) => i !== id);
     setFiles(filteredImgs);
@@ -53,20 +58,7 @@ function DragZone() {
   const renderPreviews = () =>
     files?.map((file, id) => (
       <div key={file?.name}>
-        <div className="relative   ">
-          <IoMdClose
-            className="absolute  left-0 top-0"
-            onClick={() => handleRemoveImage(id)}
-          />
-          <img
-            src={file?.preview}
-            alt={file.name}
-            className="size-44 object-cover object-center "
-          />
-          <p className="text-center text-xs tracking-tight">
-            {file.name.split(".")[0].slice(0, 12)}
-          </p>
-        </div>
+        <UploadProductImg file={file} handleRename={handleRename} imgName={imgName}/>
       </div>
     ));
 
