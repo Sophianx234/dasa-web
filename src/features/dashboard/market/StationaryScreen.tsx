@@ -1,7 +1,9 @@
+import EmptyList from "../order/EmptyList"
+
 function StationaryScreen() {
     return (
         <div>
-            Stationary
+            <EmptyList desc="No Items"/>
         </div>
     )
 }

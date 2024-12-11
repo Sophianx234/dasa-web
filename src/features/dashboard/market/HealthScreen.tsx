@@ -1,7 +1,9 @@
+import EmptyList from "../order/EmptyList"
+
 function HealthScreen() {
     return (
         <div>
-            Health
+<EmptyList/>
         </div>
     )
 }

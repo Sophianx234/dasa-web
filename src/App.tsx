@@ -29,6 +29,7 @@ import ProductDetail from "./features/dashboard/market/ProductDetail";
 import CartPage from "./features/dashboard/pages/CartPage";
 import UploadedProducts from "./features/dashboard/pages/UploadedProducts";
 import OrderUser from "./features/dashboard/order/OrderUser";
+import WishListPage from "./features/dashboard/pages/WishListPage";
 
 function App() {
   return (
@@ -76,6 +77,10 @@ function App() {
           <Route
             path="/dashboard/market/productdetail"
             element={<ProductDetail />}
+          />
+          <Route
+            path="/dashboard/market/:id/wishlist"
+            element={<WishListPage />}
           />
           <Route path="/dashboard/market/:id/orders" element={<OrderUser />} />
           <Route

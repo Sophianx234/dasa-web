@@ -1,7 +1,9 @@
+import EmptyList from "../order/EmptyList"
+
 function BeautyScreen() {
     return (
         <div>
-            Beauty
+            <EmptyList desc="No Items"/>
         </div>
     )
 }

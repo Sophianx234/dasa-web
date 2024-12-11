@@ -1,7 +1,9 @@
+import EmptyList from "../order/EmptyList"
+
 function FoodScreen() {
     return (
         <div>
-            Food
+            <EmptyList desc="No Items"/>
         </div>
     )
 }

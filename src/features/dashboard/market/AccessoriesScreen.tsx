@@ -1,7 +1,9 @@
+import EmptyList from "../order/EmptyList"
+
 function AccessoriesScreen() {
     return (
         <div>
-            Accessories
+            <EmptyList desc="No Items"/>
         </div>
     )
 }
