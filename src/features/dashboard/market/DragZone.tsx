@@ -18,7 +18,7 @@ export type extendFile = File & {
 
 function DragZone() {
   const [files, setFiles] = useState<extendFile[] | null>();
-  const [imgName,setImgName] = useState<string | null>()
+  
   const notify = () => toast("Upload Complete");
   const imgs = [
     "https://i.ibb.co/5T0GmMy/sneaker-2.png",
@@ -26,10 +26,7 @@ function DragZone() {
     "https://i.ibb.co/L5Z1hNM/sneaker-4.png",
     "https://i.ibb.co/PcPBVyC/sneaker-1.jpg",
   ];
-  function handleRename(e:ChangeEvent<HTMLInputElement>){
-    setImgName(e.target.value)
-
-  }
+  
   function handleRemoveImage(id: number) {
     const filteredImgs = files?.filter((_, i) => i !== id);
     setFiles(filteredImgs);
@@ -58,7 +55,7 @@ function DragZone() {
   const renderPreviews = () =>
     files?.map((file, id) => (
       <div key={file?.name}>
-        <UploadProductImg file={file} handleRename={handleRename} imgName={imgName}/>
+        <UploadProductImg file={file} handleRemoveImage={handleRemoveImage} id={id}  />
       </div>
     ));
 
