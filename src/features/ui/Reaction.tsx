@@ -1,10 +1,14 @@
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 
 export type reactionProps = {
   outline: ReactElement;
   fill: ReactElement;
   isLiked?: boolean;
-  setIsLiked?: React.Dispatch<React.SetStateAction<boolean>>;
+  isLoved: boolean;
+  isSmiling: boolean;
+  setIsLiked?: () => void;
+  setIsLoved?: () => boolean;
+  setIsSmiling?: () => boolean;
 };
 function Reaction({ outline, fill, isLiked, setIsLiked }: reactionProps) {
   return (

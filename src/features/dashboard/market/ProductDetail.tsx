@@ -1,12 +1,7 @@
-import { IoArrowBack, IoShareSocialOutline } from "react-icons/io5"
-import { useNavigate } from "react-router-dom"
-import { Pagination } from "swiper/modules"
-import { Swiper, SwiperSlide } from "swiper/react"
-import SliderMain from "../components/SliderMain"
-import { FaRegHeart } from "react-icons/fa6"
-import { useState } from "react"
-import ProductDescription from "./ProductDescription"
 import { FaShoppingCart } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
+import SliderMain from "../components/SliderMain"
+import ProductDescription from "./ProductDescription"
 import ProductNav from "./ProductNav"
 
 

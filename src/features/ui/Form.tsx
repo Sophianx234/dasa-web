@@ -1,12 +1,12 @@
 import { FaRegUser } from "react-icons/fa6"
-import FormInput  from "../ui/FormInput"
-import { Link } from "react-router-dom"
-import { IoLockClosed, IoLockClosedOutline, IoLockOpenOutline, IoMailOutline } from "react-icons/io5"
+import { IoLockClosedOutline, IoLockOpenOutline, IoMailOutline } from "react-icons/io5"
+import { LuContact2 } from "react-icons/lu"
 import { PiBuildingApartmentLight } from "react-icons/pi"
+import { Link } from "react-router-dom"
+import FormInput from "../ui/FormInput"
 import { useAppSelector } from "../utils/hooks"
 import Select from "./Select"
 import SVGLite from "./SVGLite"
-import { LuContact2 } from "react-icons/lu"
 
 function Form() {
     const isAnnex = useAppSelector(store=>store.user.isAnnex)

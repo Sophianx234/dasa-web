@@ -1,5 +1,4 @@
-import { useAppDispatch, useAppSelector } from "@/features/utils/hooks"
-import ConfirmModal from "../account/ConfirmModal"
+import { useAppSelector } from "@/features/utils/hooks"
 import ProfileForm from "../account/ProfileForm"
 import UploadImageForm from "../account/UploadImageForm"
 

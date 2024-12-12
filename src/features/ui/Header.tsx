@@ -1,9 +1,8 @@
-import { Link, useNavigate} from "react-router-dom"
-import { FaWolfPackBattalion } from "react-icons/fa"
 import { IoMenu } from "react-icons/io5"
+import { Link, useNavigate } from "react-router-dom"
 
-import { toggleNav } from "../slices/navSlice"
 import { useDispatch } from "react-redux"
+import { toggleNav } from "../slices/navSlice"
 import { useAppSelector } from "../utils/hooks"
 
 function Header() {

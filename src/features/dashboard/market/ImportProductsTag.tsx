@@ -1,4 +1,4 @@
-import { toggleRevealUploadImage, toggleRevealUploadProduct } from "@/features/slices/navSlice"
+import { toggleRevealUploadProduct } from "@/features/slices/navSlice"
 import { useAppDispatch } from "@/features/utils/hooks"
 import { IoMdClose } from "react-icons/io"
 import { IoFastFoodOutline } from "react-icons/io5"

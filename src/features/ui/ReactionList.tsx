@@ -4,11 +4,11 @@ import { BsEmojiLaughing, BsFillEmojiLaughingFill } from "react-icons/bs";
 import { AiFillLike } from "react-icons/ai";
 import { SlLike } from "react-icons/sl";
 import { useState } from "react";
+import { useReactions } from "../services/hooks/reactionsHook";
 
 function ReactionList() {
-  const [isLoved, setIsLoved] = useState<boolean>(false);
-  const [isLiked, setIsLiked] = useState<boolean>(false);
-  const [isSmiling, setIsSmiling] = useState<boolean>(false);
+  const {isSmiling,isLoved,isLiked,setIsLiked,setIsLoved,setIsSmiling} = useReactions()
+  
   return (
     <div className="space-y-3">
       <Reaction
@@ -16,7 +16,7 @@ function ReactionList() {
         fill={
           <BsFillEmojiLaughingFill className="size-6  fill-[#ffe066] self-end  " />
         }
-        isLiked={isSmiling}
+        isLiked={isLiked}
         setIsLiked={setIsSmiling}
         setIsLoved={setIsLoved}
         setIsSmiling={setIsSmiling}

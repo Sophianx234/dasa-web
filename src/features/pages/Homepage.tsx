@@ -1,4 +1,4 @@
-import { motion,AnimatePresence } from "framer-motion"
+import { AnimatePresence } from "framer-motion"
 import Activities from "../ui/Activities"
 import Banner from "../ui/Banner"
 import BriefAbout from "../ui/BriefAbout"

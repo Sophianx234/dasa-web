@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import HeaderDashboard from "../components/HeaderDashboard";
-import PaymentForm from "../components/PaymentForm";
 import ToggleButton from "../components/ToggleButton";
 
 function PaymentPage() {

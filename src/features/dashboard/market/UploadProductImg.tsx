@@ -2,8 +2,6 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import { extendFile } from "./DragZone";
 
-import { toggleRenameImage } from "@/features/slices/navSlice";
-import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import DropDownButton from "./DropDownButton";

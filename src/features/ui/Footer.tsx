@@ -2,7 +2,6 @@ import DashNavLinks from "../dashboard/components/DashNavLinks"
 import HomepageNavLinks from "./HomepageNavLinks"
 import Socials from "./Socials"
 import Svg from "./Svg"
-import {SVGLite as SVGLitex} from "./SVGLitex"
 export type footerProps = {
     navType?: 'home'| 'dash'
 }

@@ -1,5 +1,4 @@
 import ProductNav from "../market/ProductNav"
-import { BiPackage } from "react-icons/bi"
 import EmptyList from "./EmptyList"
 
 function OrderUser() {
