@@ -1,10 +1,7 @@
-import { File } from "buffer";
+import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import { extendFile } from "./DragZone";
-import RenameFile from "./RenameFile";
-import { BiDotsVerticalRounded } from "react-icons/bi";
-import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
-import { DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
 import DropDownButton from "./DropDownButton";
 export type uploadPrductImgProps = {
   file: extendFile;
