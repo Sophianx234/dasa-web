@@ -4,21 +4,26 @@ export type reactionProps = {
   outline: ReactElement;
   fill: ReactElement;
   isLiked?: boolean;
-  isLoved: boolean;
-  isSmiling: boolean;
-  setIsLiked?: () => void;
-  setIsLoved?: () => boolean;
-  setIsSmiling?: () => boolean;
+  isLoved?: boolean;
+  isSmiling?: boolean;
+  handleLiked?: () => void;
+  handleLoved?: () => void;
+  handleSmiling?: () => void;
 };
-function Reaction({ outline, fill, isLiked, setIsLiked }: reactionProps) {
+function Reaction({ outline, fill, isLiked, isLoved,isSmiling,handleLiked,handleLoved,handleSmiling }: reactionProps) {
+  function handleReaction(){
+    if( handleLiked) handleLiked()
+    if(handleLoved) handleLoved()
+    if(handleSmiling) handleSmiling()
+  }
   return (
     <div>
       <button
         onClick={() => {
-          setIsLiked?.((isLiked) => !isLiked);
+          handleReaction()
         }}
       >
-        {isLiked ? fill : outline}
+        {isLiked || isSmiling || isLoved ? fill : outline}
       </button>
     </div>
   );

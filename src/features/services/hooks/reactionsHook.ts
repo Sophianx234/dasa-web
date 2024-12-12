@@ -5,5 +5,18 @@ export function useReactions(){
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [isSmiling, setIsSmiling] = useState<boolean>(false);
 
-  return {isLiked,setIsLiked,isLoved,setIsLoved,isSmiling,setIsSmiling}
+  function handleToggleLove(){
+    setIsLoved(love=>!love)
+
+  }
+  function handleToggleLike(){
+    setIsLiked(like=>!like)
+
+  }
+  function handleToggleSmiling(){
+    setIsSmiling(smile=>!smile)
+
+  }
+
+  return {isLiked,isLoved,isSmiling,handleToggleLike,handleToggleLove,handleToggleSmiling}
 }

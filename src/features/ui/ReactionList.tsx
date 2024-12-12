@@ -1,13 +1,12 @@
-import { FaHeart, FaRegHeart } from "react-icons/fa6";
-import Reaction from "./Reaction";
-import { BsEmojiLaughing, BsFillEmojiLaughingFill } from "react-icons/bs";
 import { AiFillLike } from "react-icons/ai";
+import { BsEmojiLaughing, BsFillEmojiLaughingFill } from "react-icons/bs";
+import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { SlLike } from "react-icons/sl";
-import { useState } from "react";
 import { useReactions } from "../services/hooks/reactionsHook";
+import Reaction from "./Reaction";
 
 function ReactionList() {
-  const {isSmiling,isLoved,isLiked,setIsLiked,setIsLoved,setIsSmiling} = useReactions()
+  const {isSmiling,isLoved,isLiked,handleToggleLike,handleToggleLove,handleToggleSmiling} = useReactions()
   
   return (
     <div className="space-y-3">
@@ -16,27 +15,23 @@ function ReactionList() {
         fill={
           <BsFillEmojiLaughingFill className="size-6  fill-[#ffe066] self-end  " />
         }
-        isLiked={isLiked}
-        setIsLiked={setIsSmiling}
-        setIsLoved={setIsLoved}
-        setIsSmiling={setIsSmiling}
+        isSmiling={isSmiling}
+        handleSmiling={handleToggleSmiling}
       />
       <Reaction
         outline={<SlLike className="size-6    " />}
         fill={<AiFillLike className="size-6  fill-[#339af0] self-end  " />}
         isLiked={isLiked}
-        setIsLiked={setIsLiked}
-        setIsLoved={setIsLoved}
-        setIsSmiling={setIsSmiling}
+        handleLiked={handleToggleLike}
+        
       />
 
       <Reaction
         outline={<FaRegHeart className="size-6    mb-10" />}
         fill={<FaHeart className="size-6  fill-[#fa5252] self-end  mb-10" />}
-        isLiked={isLoved}
-        setIsLiked={setIsLoved}
-        setIsLoved={setIsLoved}
-        setIsSmiling={setIsSmiling}
+        isLoved={isLoved}
+        handleLoved={handleToggleLove}
+       
       />
     </div>
   );
