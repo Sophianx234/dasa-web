@@ -18,5 +18,5 @@ export function useReactions(){
 
   }
 
-  return {isLiked,isLoved,isSmiling,handleToggleLike,handleToggleLove,handleToggleSmiling}
+  return {isLiked,isLoved,isSmiling,handleToggleLike,handleToggleLove,handleToggleSmiling,setIsSmiling,setIsLiked,setIsLoved}
 }

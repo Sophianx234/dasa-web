@@ -1,27 +1,38 @@
 import { ReactElement } from "react";
+import { useReactions } from "../services/hooks/reactionsHook";
 
 export type reactionProps = {
   outline: ReactElement;
   fill: ReactElement;
-  isLiked?: boolean;
-  isLoved?: boolean;
-  isSmiling?: boolean;
-  handleLiked?: () => void;
-  handleLoved?: () => void;
-  handleSmiling?: () => void;
+  type: 'like'|'smile'|'love'
 };
-function Reaction({ outline, fill, isLiked, isLoved,isSmiling,handleLiked,handleLoved,handleSmiling }: reactionProps) {
-  function handleReaction(){
-    if( handleLiked) handleLiked()
-    if(handleLoved) handleLoved()
-    if(handleSmiling) handleSmiling()
+function Reaction({ outline, fill,type}: reactionProps) {
+  const {isSmiling,isLoved,isLiked,setIsSmiling,setIsLiked,setIsLoved} = useReactions()
+  function handleReaction(e){
+    console.log(e)
+    if(type === 'smile'){
+      setIsSmiling(smile=>!smile)
+      setIsLiked?.(false)
+      setIsLoved?.(false)
+    }
+    if(type === 'love'){
+      
+      setIsLoved(love=>!love)
+      setIsSmiling?.(false)
+      setIsLiked?.(false)
+    }
+    if(type === 'like'){
+      
+      setIsLiked(like=>!like)
+      setIsSmiling?.(false)
+      setIsLoved?.(false)
+    }
+   
   }
   return (
     <div>
       <button
-        onClick={() => {
-          handleReaction()
-        }}
+        onClick={handleReaction}
       >
         {isLiked || isSmiling || isLoved ? fill : outline}
       </button>
