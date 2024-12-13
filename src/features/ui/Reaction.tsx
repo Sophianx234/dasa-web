@@ -8,8 +8,8 @@ export type reactionProps = {
 };
 function Reaction({ outline, fill,type}: reactionProps) {
   const {isSmiling,isLoved,isLiked,setIsSmiling,setIsLiked,setIsLoved} = useReactions()
-  function handleReaction(e){
-    console.log(e)
+  function handleReaction(){
+    
     if(type === 'smile'){
       setIsSmiling(smile=>!smile)
       setIsLiked?.(false)
