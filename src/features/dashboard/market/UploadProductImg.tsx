@@ -3,9 +3,8 @@ import { IoMdClose } from "react-icons/io";
 import { extendFile } from "./DragZone";
 
 import { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import DropDownButton from "./DropDownButton";
-import SelectButton from "../account/SelectButton";
 export type uploadPrductImgProps = {
   file: extendFile;
   id: number;
@@ -17,20 +16,7 @@ function UploadProductImg({
   file,
   handleRemoveImage,
 }: uploadPrductImgProps) {
-  const productCategories = [
-    "Electronics",
-    "Furniture",
-    "Fashion",
-    "Health & Beauty",
-    "Food & Beverages",
-    "Home & Living",
-    "Books & Stationery",
-    "Sports & Outdoors",
-    "Baby & Kids",
-    "Automotive",
-    "Services",
-    "Miscellaneous"
-  ];
+  
   
   const [renameImage, setRenameImage] = useState<boolean|null>()
   const [newImgName, setNewImgName] = useState<string|null>()
@@ -71,14 +57,6 @@ function UploadProductImg({
          <button   className="bg-dasadeep text-xs px-2 font-poppins font-semibold rounded-sm py-1 ">Rename</button>
       </div>
          }
-  <Controller
-    name='product-category'
-    control={control}
-    render={({ field }) => (
-      <SelectButton field={field} theme="select category" options={productCategories}/>
-       
-      )}
-    />
          </form>
     </div>
   );

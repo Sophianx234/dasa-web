@@ -6,6 +6,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
+import { LuShoppingBag } from "react-icons/lu";
 import { PiBuildingApartmentLight } from "react-icons/pi";
 
 export type selectButtonProps = {
@@ -15,20 +16,21 @@ export type selectButtonProps = {
   type?: string
 };
 
-function SelectButton({ field, options, theme }: selectButtonProps) {
+function SelectButton({ field, options, theme,type }: selectButtonProps) {
   return (
     <div>
       <Select onValueChange={field.onChange}>
         <SelectTrigger className="w-full py-6 relative indent-11">
           <div className="bg-dasalight absolute h-full flex items-center px-4 left-0">
+            { type ==='category'? <LuShoppingBag/>:
           <PiBuildingApartmentLight className="size-4"/>
-          </div>
+          }</div>
           <SelectValue placeholder={theme} />
         </SelectTrigger>
         <SelectContent>
-          {options.map((hall) => (
-            <SelectItem key={hall} value={hall.toLowerCase()}>
-              {hall}
+          {options.map((item) => (
+            <SelectItem key={item} value={item.toLowerCase()}>
+              {item}
             </SelectItem>
           ))}
         </SelectContent>

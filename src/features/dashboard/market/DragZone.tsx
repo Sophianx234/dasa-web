@@ -12,13 +12,15 @@ import toast, { Toaster } from "react-hot-toast";
 import { TiUploadOutline } from "react-icons/ti";
 import { useAppDispatch } from "@/features/utils/hooks";
 import UploadProductImg from "./uploadProductImg";
+import SelectButton from "../account/SelectButton";
+import { Controller, useForm } from "react-hook-form";
 export type extendFile = File & {
   preview: string;
 };
 
 function DragZone() {
   const [files, setFiles] = useState<extendFile[] | null>();
-  
+  const { control } = useForm();
   const notify = () => toast("Upload Complete");
   const imgs = [
     "https://i.ibb.co/5T0GmMy/sneaker-2.png",
@@ -26,7 +28,22 @@ function DragZone() {
     "https://i.ibb.co/L5Z1hNM/sneaker-4.png",
     "https://i.ibb.co/PcPBVyC/sneaker-1.jpg",
   ];
-  
+
+  const productCategories = [
+    "Electronics",
+    "Furniture",
+    "Fashion",
+    "Health & Beauty",
+    "Food & Beverages",
+    "Home & Living",
+    "Books & Stationery",
+    "Sports & Outdoors",
+    "Baby & Kids",
+    "Automotive",
+    "Services",
+    "Miscellaneous",
+  ];
+
   function handleRemoveImage(id: number) {
     const filteredImgs = files?.filter((_, i) => i !== id);
     setFiles(filteredImgs);
@@ -55,7 +72,11 @@ function DragZone() {
   const renderPreviews = () =>
     files?.map((file, id) => (
       <div key={file?.name}>
-        <UploadProductImg file={file} handleRemoveImage={handleRemoveImage} id={id}  />
+        <UploadProductImg
+          file={file}
+          handleRemoveImage={handleRemoveImage}
+          id={id}
+        />
       </div>
     ));
 
@@ -93,23 +114,39 @@ function DragZone() {
           </div>
         </div>
         <div className="h-fit  pb-10">
-
-        <div className="grid grid-cols-4 mx-2 gap-3">{renderPreviews()}</div>
-        {files && files?.length > 0 && (
-          <div className="flex justify-center  pt-4">
-            <Toaster position="top-center" />
-            <button
-              onClick={notify}
-              className="text-sm font-bold bg-dasadeep hover-primary  px-3 py-1 rounded-lg flex items-center gap-2 justify-center"
+          <form className="grid grid-cols-4 mx-2 gap-3">
+            {renderPreviews()}
+          </form>
+          {files && files?.length > 0 && (
+            <div
+              className="flex 
+           justify-center gap-3 flex-col  pt-4"
             >
-              Upload
-              <TiUploadOutline className="size-6" />
-            </button>
-          </div>
-        )}
+              <Toaster position="top-center" />
+              <Controller
+                name="product-category"
+                control={control}
+                render={({ field }) => (
+                  <SelectButton
+                    type="category"
+                    field={field}
+                    theme="select product category"
+                    options={productCategories}
+                  />
+                )}
+              />
+              <button
+                onClick={notify}
+                className="text-sm font-bold bg-dasadeep hover-primary  px-3 py-1 rounded-lg flex items-center gap-2 justify-center"
+              >
+                Upload
+                <TiUploadOutline className="size-6" />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
-</div>
   );
 }
 
