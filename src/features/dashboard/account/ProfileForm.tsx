@@ -1,14 +1,14 @@
-import { FaArrowLeftLong, FaRegUser, FaUser } from "react-icons/fa6";
-import ProfileImage from "./ProfileImage";
-import RadialProgress from "./RadialProgress";
-import AccountFormInput from "./AccountFormInput";
 import { Controller, useForm } from "react-hook-form";
-import { DatePicker } from "./DatePicker";
-import { IoMailOutline } from "react-icons/io5";
+import { FaArrowLeftLong, FaRegUser } from "react-icons/fa6";
 import { IoIosPhonePortrait } from "react-icons/io";
-import SelectButton from "./SelectButton";
+import { IoMailOutline } from "react-icons/io5";
+import AccountFormInput from "./AccountFormInput";
 import Button from "./Button";
 import ControllerError from "./ControllerError";
+import { DatePicker } from "./DatePicker";
+import ProfileImage from "./ProfileImage";
+import RadialProgress from "./RadialProgress";
+import SelectButton from "./SelectButton";
 
 
 function ProfileForm() {
@@ -32,7 +32,9 @@ function ProfileForm() {
     "Korang Hall",
     "Lashibi Hall",
   ];
-  const {control,register, handleSubmit,reset, formState: {errors}} = useForm()
+  const {control,register, handleSubmit, formState: {errors}} = useForm()
+
+  const onSubmit = (data:unknown) => console.log(data)
   
   return (
     <div className="">
@@ -53,7 +55,7 @@ function ProfileForm() {
         
           <ProfileImage />
 
-      <form className="shadow-md bg-white rounded-md  mx-2 pt-2" onSubmit={handleSubmit((data)=>console.log(data))}>
+      <form className="shadow-md bg-white rounded-md  mx-2 pt-2" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-2 mx-3 ">
             <AccountFormInput type="text" register={register} 
             iconBorder={true}

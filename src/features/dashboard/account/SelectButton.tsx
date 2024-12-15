@@ -22,7 +22,7 @@ function SelectButton({ field, options, theme,type }: selectButtonProps) {
       <Select onValueChange={field.onChange}>
         <SelectTrigger className="w-full py-6 relative indent-11">
           <div className="bg-dasalight absolute h-full flex items-center px-4 left-0">
-            { type ==='category'? <LuShoppingBag/>:
+            { type ==='category'? <LuShoppingBag className="size-4"/>:
           <PiBuildingApartmentLight className="size-4"/>
           }</div>
           <SelectValue placeholder={theme} />

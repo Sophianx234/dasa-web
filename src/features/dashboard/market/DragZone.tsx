@@ -1,26 +1,22 @@
-import React, {
-  ChangeEvent,
-  FormEvent,
-  ReactElement,
+import {
   useCallback,
-  useState,
+  useState
 } from "react";
 import { FileRejection, useDropzone } from "react-dropzone";
-import { IoMdClose } from "react-icons/io";
-import ImportProductsTag from "./ImportProductsTag";
+import { Controller, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { TiUploadOutline } from "react-icons/ti";
-import { useAppDispatch } from "@/features/utils/hooks";
-import UploadProductImg from "./uploadProductImg";
 import SelectButton from "../account/SelectButton";
-import { Controller, useForm } from "react-hook-form";
+import ImportProductsTag from "./ImportProductsTag";
+import UploadProductImg from "./UploadProductImg";
+
 export type extendFile = File & {
   preview: string;
 };
 
 function DragZone() {
   const [files, setFiles] = useState<extendFile[] | null>();
-  const { control } = useForm();
+  const { control,handleSubmit } = useForm();
   const notify = () => toast("Upload Complete");
   const imgs = [
     "https://i.ibb.co/5T0GmMy/sneaker-2.png",
@@ -82,7 +78,7 @@ function DragZone() {
 
   return (
     <div className="fixed bg-white  -top-1 bottom-0 left-0 right-0  flex   pt-12  z-50 overflow-y-scroll">
-      <div className="z-50  mx-4 w-screen  ">
+      <div className="z-50  mx-4 w-screen   ">
         <ImportProductsTag />
         <div className=" border-2 border-dotted  mb-4  py-7 rounded-lg ">
           <div className="flex -space-x-3 justify-center pb-2 ">
@@ -107,24 +103,25 @@ function DragZone() {
               </p>
             )}
             <div className="text-center pt-3">
-              <button className="hover-primary bg-dasadeep rounded-lg font-bold duration-150 px-2 py-1">
+              <button type='submit' className="hover-primary bg-dasadeep rounded-lg font-bold duration-150 px-2 py-1">
                 Select Files
               </button>
             </div>
           </div>
         </div>
-        <div className="h-fit  pb-10">
-          <form className="grid grid-cols-4 mx-2 gap-3">
+        <div 
+           className="h-fit  pb-10">
+          <div className="grid grid-cols-4 mx-2 gap-3">
             {renderPreviews()}
-          </form>
+          </div>
           {files && files?.length > 0 && (
-            <div
+          <form onSubmit={handleSubmit(()=>console.log('clicked'))}
               className="flex 
            justify-center gap-3 flex-col  pt-4"
             >
-              <Toaster position="top-center" />
               <Controller
                 name="product-category"
+                defaultValue=''
                 control={control}
                 render={({ field }) => (
                   <SelectButton
@@ -135,17 +132,19 @@ function DragZone() {
                   />
                 )}
               />
-              <button
-                onClick={notify}
-                className="text-sm font-bold bg-dasadeep hover-primary  px-3 py-1 rounded-lg flex items-center gap-2 justify-center"
+              
+              <div 
+                
+                className="text-sm font-bold bg-dasadeep    px-3 py-1 rounded-lg flex items-center gap-2 justify-center z-50"
               >
                 Upload
                 <TiUploadOutline className="size-6" />
-              </button>
-            </div>
+              </div>
+            </form>
           )}
         </div>
       </div>
+          <Toaster position="top-center" />
     </div>
   );
 }
