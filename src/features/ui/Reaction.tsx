@@ -1,41 +1,16 @@
 import { ReactElement } from "react";
-import { useReactions } from "../services/hooks/reactionsHook";
 
 export type reactionProps = {
   outline: ReactElement;
   fill: ReactElement;
-  type: 'like'|'smile'|'love'
+  type: "like" | "smile" | "love";
+  isLiked: boolean;
 };
-function Reaction({ outline, fill,type}: reactionProps) {
-  const {isSmiling,isLoved,isLiked,setIsSmiling,setIsLiked,setIsLoved} = useReactions()
-  function handleReaction(){
-    
-    if(type === 'smile'){
-      setIsSmiling(smile=>!smile)
-      setIsLiked?.(false)
-      setIsLoved?.(false)
-    }
-    if(type === 'love'){
-      
-      setIsLoved(love=>!love)
-      setIsSmiling?.(false)
-      setIsLiked?.(false)
-    }
-    if(type === 'like'){
-      
-      setIsLiked(like=>!like)
-      setIsSmiling?.(false)
-      setIsLoved?.(false)
-    }
-   
-  }
+function Reaction({ isLiked, outline, fill, type }: reactionProps) {
+  
   return (
     <div>
-      <button
-        onClick={handleReaction}
-      >
-        {isLiked || isSmiling || isLoved ? fill : outline}
-      </button>
+      {isLiked ? fill : outline}
     </div>
   );
 }
