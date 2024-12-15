@@ -7,12 +7,12 @@ function NotificationItem() {
                 <img src="https://i.ibb.co/Mnn5KD5/profile-icon-x.png" alt="profile-icon-x" className="w-14"/>
                 </div>
                 <div>
-                    <p className="font-semibold font-Montserrat">
+                    <p className="font-semibold font-Montserrat text-sm">
 
                     Ryo wants to edit SupaUI <br />
                     Design System
                     </p>
-                    <div className="flex justify-between font-mulish font-semibold">
+                    <div className="flex justify-between font-mulish font-semibold text-xs pt-2">
 
                     <p>1hour.ago</p>
                     <p>Anonymous</p>

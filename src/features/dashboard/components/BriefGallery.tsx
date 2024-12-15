@@ -1,12 +1,10 @@
-import { Pagination } from "@/components/ui/pagination";
-import { PaginationX } from "./Pagination";
-import { Link } from "react-router-dom";
+import { shuffleArray } from "@/features/utils/helpers";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { shuffleArray } from "@/features/utils/helpers";
-import UploadButton from "../account/UploadButton";
+import { PaginationX } from "./Pagination";
+import Footer from "@/features/ui/Footer";
 export type BriefGalleryProps = {
-    style: string
+    style: "overview"|'side'
 }
 function BriefGallery({style}:BriefGalleryProps) {
     const imageLinks = [
@@ -29,23 +27,31 @@ function BriefGallery({style}:BriefGalleryProps) {
       const shuffledImageLinks = shuffleArray(imageLinks, 3)
     
     return (
-        <div className="mx-4 pt-24 rounded-lg overflow-hidden pb-6">
+        <div>
+
+        <div className="mx-4  rounded-lg overflow-hidden pb-6">
             <h1 className="dash-title pb-6">Gallery</h1>
             <div className="grid grid-cols-3 ">
 
-            {shuffledImageLinks.map(img=><div className="overflow-hidden"> 
+            {shuffledImageLinks.map((img:string)=><div className="overflow-hidden"> 
                 <LazyLoadImage
                     effect='blur'
                     src={img}    
          /></div>)}
             </div>
             
+           </div>
                 { style !=='overview'&&
                 <div className="pt-2">
 
                 <PaginationX/>
+                <div className="pt-6">
+
+                <Footer navType="dash"/>
+                </div>
+
                 </div>}
-           </div>
+        </div>
     )
 }
 

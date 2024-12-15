@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 function MarketHeader() {
     return (
         <div className="mx-2 mr-6 flex items-center justify-between">
-            <Link to='/dashboard/market' >
+            <Link to='/dashboard/' >
             <DasaLogo title="Market"/>
             </Link>
             <div className="flex gap-4">

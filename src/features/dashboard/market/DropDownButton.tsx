@@ -1,13 +1,11 @@
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { toggleRenameImage } from "@/features/slices/navSlice";
-import { useAppDispatch } from "@/features/utils/hooks";
 import { ReactElement } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { LuTextCursorInput } from "react-icons/lu";
