@@ -1,7 +1,4 @@
-import {
-  useCallback,
-  useState
-} from "react";
+import { useCallback, useState } from "react";
 import { FileRejection, useDropzone } from "react-dropzone";
 import { Controller, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
@@ -9,6 +6,7 @@ import { TiUploadOutline } from "react-icons/ti";
 import SelectButton from "../account/SelectButton";
 import ImportProductsTag from "./ImportProductsTag";
 import UploadProductImg from "./UploadProductImg";
+import ControllerError from "../account/ControllerError";
 
 export type extendFile = File & {
   preview: string;
@@ -16,7 +14,7 @@ export type extendFile = File & {
 
 function DragZone() {
   const [files, setFiles] = useState<extendFile[] | null>();
-  const { control,handleSubmit } = useForm();
+  const { control, handleSubmit,formState: {errors} } = useForm();
   const notify = () => toast("Upload Complete");
   const imgs = [
     "https://i.ibb.co/5T0GmMy/sneaker-2.png",
@@ -48,6 +46,11 @@ function DragZone() {
     console.log("clicked");
   }
 
+  const onSubmit = (data:unknown)=>{
+    console.log(data)
+    notify()
+    
+  }
   const onDrop = useCallback(
     (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
       // Do something with the files
@@ -103,25 +106,28 @@ function DragZone() {
               </p>
             )}
             <div className="text-center pt-3">
-              <button type='submit' className="hover-primary bg-dasadeep rounded-lg font-bold duration-150 px-2 py-1">
+              <button
+                type="submit"
+                className="hover-primary bg-dasadeep rounded-lg font-bold duration-150 px-2 py-1"
+              >
                 Select Files
               </button>
             </div>
           </div>
         </div>
-        <div 
-           className="h-fit  pb-10">
-          <div className="grid grid-cols-4 mx-2 gap-3">
-            {renderPreviews()}
-          </div>
+        <div className="h-fit  pb-10">
+          <div className="grid grid-cols-4 mx-2 gap-3">{renderPreviews()}</div>
           {files && files?.length > 0 && (
-          <form onSubmit={handleSubmit(()=>console.log('clicked'))}
+            <form
+              onSubmit={handleSubmit(onSubmit)}
               className="flex 
            justify-center gap-3 flex-col  pt-4"
             >
               <Controller
                 name="product-category"
-                defaultValue=''
+                rules={{required:'Please select product category '}}
+
+                defaultValue=""
                 control={control}
                 render={({ field }) => (
                   <SelectButton
@@ -132,19 +138,17 @@ function DragZone() {
                   />
                 )}
               />
-              
-              <div 
-                
-                className="text-sm font-bold bg-dasadeep    px-3 py-1 rounded-lg flex items-center gap-2 justify-center z-50"
-              >
+              <ControllerError inputName="product-category" err={errors}/>
+
+              <button className="text-sm font-bold bg-dasadeep    px-3 py-1 rounded-lg flex items-center gap-2 justify-center z-50">
                 Upload
                 <TiUploadOutline className="size-6" />
-              </div>
+              </button>
             </form>
           )}
         </div>
       </div>
-          <Toaster position="top-center" />
+      <Toaster position="top-center" />
     </div>
   );
 }

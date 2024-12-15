@@ -1,5 +1,4 @@
 import { FieldError } from "react-hook-form"
-import { formErrorProps } from "./FormError"
 
 export type controllerErrorProps = {
     err: FieldError<FormData>,

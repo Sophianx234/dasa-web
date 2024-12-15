@@ -3,7 +3,7 @@ import { GoPlusCircle } from "react-icons/go";
 import UploadImageForm from "./UploadImageForm";
 function UploadButton() {
     const [revealUpload, setRevealUpload] = useState<boolean>()
-    function handleRevealUpload(e){
+    function handleRevealUpload(){
         setRevealUpload(reveal=>!reveal)
     }
     return (
