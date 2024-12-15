@@ -9,7 +9,7 @@ function AnonymousTile({title,message,to,time,name}:tileProps) {
     return (
         <div className="pt-5 space-y-2 ">
             
-            <div className="mx-4 border-dasalight border-2 px-4 shadow-md pt-2 pb-2">
+            <div className="mx-4 border-dasalight border-2 px-4 rounded-md shadow-md pt-2 pb-2">
                 
 
                 <div className="">

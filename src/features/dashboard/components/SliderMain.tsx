@@ -1,15 +1,15 @@
-import  { ReactElement, useRef, useState } from 'react';
+import { ReactElement } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 export type sliderMainProps={
   el: ReactElement[] | string[],
@@ -18,7 +18,7 @@ export type sliderMainProps={
 
 export default function SliderMain({el,direction='horizontal'}:sliderMainProps) {
   return (
-    <div className='pt-6'>
+    <div className=''>
       <>
       <Swiper
         spaceBetween={direction?.startsWith('h')?30:''}

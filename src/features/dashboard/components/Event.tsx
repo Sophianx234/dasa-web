@@ -6,7 +6,7 @@ function Event() {
     return (
         <>
 
-        <div className="grid grid-cols-1 border-dasalight border-2 mx-4 shadow-lg pb-6">
+        <div className="grid grid-cols-1  border-dasalight border-2 mx-4 shadow-lg pb-6 rounded-lg">
             
             <div>
             <img src="https://i.ibb.co/Snhv1YQ/d-2.png" alt="d-2" className="h-full"/>

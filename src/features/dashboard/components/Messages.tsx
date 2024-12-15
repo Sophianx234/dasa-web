@@ -1,10 +1,10 @@
 function Messages() {
     return (
-        <div className="pt-5 space-y-2">
+        <div className="pt-5 space-y-2 ">
             <h1 className="mx-4 dash-title pl-2">
                 Anonymous
             </h1>
-            <div className="mx-4 border-dasalight border-2 px-4 shadow-md pt-2">
+            <div className="mx-4 border-dasalight border-2 px-4 shadow-md pt-2 ">
                 
 
                 <div className="">
