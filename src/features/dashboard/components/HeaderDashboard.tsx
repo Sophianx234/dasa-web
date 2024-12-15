@@ -8,8 +8,8 @@ import { Link } from "react-router-dom"
 function HeaderDashboard() {
     const dispatch = useAppDispatch()
     return (
-        <div className="bg-dasadeep    pb-10 mb-10 sticky  z-40 top-0 left-0 right-0">
-                <div className="flex items-center px-4 justify-between border-b-[#33312e33] border-b-2 ">
+        <div className="bg-dasadeep    pb-10 mb-10 sticky  z-40 -top-1 left-0 right-0">
+                <div className="flex items-center px-4 pt-2 justify-between border-b-[#33312e33] border-b-2 ">
 
                 <div className="flex items-center">
                     <button onClick={()=>dispatch(toggleSidebar())} className="border  border-transparent hover:border rounded-md duration-100 hover:border-dasalight hover:scale-105">
@@ -23,7 +23,8 @@ function HeaderDashboard() {
 
                 <div className="flex items-center justify-center gap-4">
                     <Link to='notifications'
-                    className="border  border-transparent hover:border rounded-md duration-100 hover:border-dasalight">
+                    className="border  border-transparent hover:border rounded-md duration-100 hover:border-dasalight relative">
+                        <div className="absolute -right-1 -top-1 text-xs bg-dasalight px-2 py-1 shadow-md  font-mulish font-bold rounded-full">5</div>
 
                 <GoBell className="size-9 pt-1 fill-[#33312ee7] hover:scale-105"/>
                     </Link>
