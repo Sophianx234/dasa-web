@@ -11,17 +11,29 @@ import ControllerError from "../account/ControllerError";
 export type extendFile = File & {
   preview: string;
 };
+export type dragZoneProps = {
+  type: 'product'|'image'
+}
 
-function DragZone() {
+function DragZone({type}:dragZoneProps) {
   const [files, setFiles] = useState<extendFile[] | null>();
   const { control, handleSubmit,formState: {errors} } = useForm();
   const notify = () => toast("Upload Complete");
-  const imgs = [
-    "https://i.ibb.co/5T0GmMy/sneaker-2.png",
+  const productImg = [
+    
     "https://i.ibb.co/F7K9fjg/sneaker-3.png",
     "https://i.ibb.co/L5Z1hNM/sneaker-4.png",
     "https://i.ibb.co/PcPBVyC/sneaker-1.jpg",
   ];
+  const userImgs:string[] = [
+    
+    "https://i.ibb.co/tKPn0sJ/photo-25-2024-10-31-06-50-45.jpg",
+    "https://i.ibb.co/WpNrZ3Q/photo-41-2024-10-31-06-51-41.jpg",
+    "https://i.ibb.co/09h7ZjL/photo-26-2024-10-31-06-51-41.jpg",
+    "https://i.ibb.co/LdfLkxF/photo-89-2024-10-31-06-52-36.jpg",
+    "https://i.ibb.co/mSLzS1k/photo-19-2024-10-31-06-51-41.jpg",
+  ];
+  const imgs = type === 'product'? productImg:userImgs
 
   const productCategories = [
     "Electronics",
@@ -82,7 +94,7 @@ function DragZone() {
   return (
     <div className="fixed bg-white  -top-1 bottom-0 left-0 right-0  flex   pt-12  z-50 overflow-y-scroll">
       <div className="z-50  mx-4 w-screen   ">
-        <ImportProductsTag />
+        <ImportProductsTag type={type}/>
         <div className=" border-2 border-dotted  mb-4  py-7 rounded-lg ">
           <div className="flex -space-x-3 justify-center pb-2 ">
             {imgs.map((img) => (
@@ -123,6 +135,8 @@ function DragZone() {
               className="flex 
            justify-center gap-3 flex-col  pt-4"
             >
+              { type === 'product'&&
+                <>
               <Controller
                 name="product-category"
                 rules={{required:'Please select product category '}}
@@ -135,11 +149,12 @@ function DragZone() {
                     field={field}
                     theme="select product category"
                     options={productCategories}
+                    />
+                  )}
                   />
-                )}
-              />
               <ControllerError inputName="product-category" err={errors}/>
-
+                  </>
+}
               <button className="text-sm font-bold bg-dasadeep    px-3 py-1 rounded-lg flex items-center gap-2 justify-center z-50">
                 Upload
                 <TiUploadOutline className="size-6" />

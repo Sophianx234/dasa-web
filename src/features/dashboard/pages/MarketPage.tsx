@@ -16,7 +16,7 @@ function MarketPage() {
       <SearchBar/>
       </div>
       <MarketCategory/>
-      {isOpenUploadProduct && <DragZone/>}
+      {isOpenUploadProduct && <DragZone type="product"/>}
       <Outlet/>
       <BottomNav/>
     </div>
