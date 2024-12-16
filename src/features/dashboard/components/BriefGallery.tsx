@@ -3,6 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { PaginationX } from "./Pagination";
 import Footer from "@/features/ui/Footer";
+import ImageViewer from "./ImageViewer";
 export type BriefGalleryProps = {
     style: "overview"|'side'
 }
@@ -29,18 +30,14 @@ function BriefGallery({style}:BriefGalleryProps) {
     return (
         <div>
 
-        <div className="mx-4  rounded-lg overflow-hidden pb-6">
+        <div className="mx-4  rounded-lg  pb-6">
             <h1 className="dash-title pb-6">Gallery</h1>
-            <div className="grid grid-cols-3 ">
+           
 
-            {shuffledImageLinks.map((img:string)=><div className="overflow-hidden"> 
-                <LazyLoadImage
-                    effect='blur'
-                    src={img}    
-         /></div>)}
+            
+                <ImageViewer images={shuffledImageLinks}/>
             </div>
             
-           </div>
                 { style !=='overview'&&
                 <div className="pt-2">
 
