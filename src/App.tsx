@@ -36,9 +36,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index path="homepage" element={<Homepage />} />
-        <Route path="about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="homepage/about" element={<About />} />
+        <Route path="homepage/login" element={<Login />} />
+        <Route path="homepage/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<AppLayout />}>
           <Route index element={<Navigate to="overview" replace={true} />} />
           <Route path="overview" element={<DashboardOverview />} />

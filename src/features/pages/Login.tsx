@@ -2,7 +2,7 @@ import SignIn from "../ui/SignIn"
 
 function Login() {
     return (
-        <div>
+        <div className="bg-white">
             <SignIn/>
         </div>
     )

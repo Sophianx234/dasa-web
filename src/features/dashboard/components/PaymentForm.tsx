@@ -45,12 +45,12 @@ function PaymentForm() {
         };
     return (
       <>
-      <div className="mx-4 mt-10 py-2 rounded-md text-center bg-dasalight shadow-sm -space-y-7">
+      <div className="mx-4 mt-10 py-2 rounded-lg text-center bg-dasalight shadow-sm -space-y-7">
 
       <h1 className="dash-title ">Pay Dues</h1>
       <p className="leading-5 font-Montserrat opacity-80 font-semibold sticky  ">Unity <span className="font-bold text-6xl ">.</span> Growth <span className="font-bold text-6xl ">.</span> Impacts</p>
       </div>
-        <form  className='flex  pb-10  justify-center  shadow-lg  mt-10 mx-4 '  onSubmit={handleSubmit(onSubmit)}>
+        <form  className='flex  pb-10  justify-center  shadow-lg rounded-md  mt-10 mx-4 '  onSubmit={handleSubmit(onSubmit)}>
       <div className=' w-full mx-6 flex flex-col space-y-2 '>
      <InputDashboard
      errors={errors}

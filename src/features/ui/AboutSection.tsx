@@ -2,7 +2,7 @@ import SVGLite from "./SVGLite"
 
 function AboutSection() {
     return (
-        <div className=" max-w-90 px-1 mx-auto pb-10">
+        <div className=" max-w-90 px-1 mx-auto pb-10 pt-12">
             <div className="text-center font-mulish pb-4">
 
             <h1 className="text-lg font-bold  text-[#33312e]">About Dagbon  Students <br /> Association</h1>

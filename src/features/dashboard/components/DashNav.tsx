@@ -29,7 +29,7 @@ function DashNav() {
             opacity: 1, type:'spring',
             
         }}
-        className="fixed overflow-x-auto -top-1 bottom-0 bg-white  left-0 right-0  z-40   pb-5 px-4">
+        className="fixed overflow-x-auto -top-1 -bottom-3 bg-white  left-0 right-0  z-40   pb-5 px-4">
             <div className="flex flex-col justify-between h-dvh pt-8 pb-4">
             <div className="flex items-center   justify-between pb-4">
                 <img src="https://i.ibb.co/n8hRM6d/dasalogo-removebg.png" alt="" className="w-16"/>
@@ -80,7 +80,7 @@ function DashNav() {
                 
                
             </ul>
-            <div className="flex items-center space-x-2 pt-10">
+            <div className="flex items-center space-x-2 pt-10 pb-10">
                 <AvatarComponent/>
                 <div className="">
                     <h1 className="font-bold font-mulish text-sm">Damian</h1>

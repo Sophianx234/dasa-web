@@ -14,6 +14,7 @@ export type hallProps ={
     name: string,
     type: string,
     description: string,
+    style:string
     
 }
 function FormInput({icon,type,placeholder,addClass,style}:formInputProps) {
@@ -83,10 +84,9 @@ function FormInput({icon,type,placeholder,addClass,style}:formInputProps) {
       
        
     return (
-        <div className={`flex items-center relative ${addClass}`}>
-
+        <div className={`flex  items-center relative ${addClass}`}>
                     {icon} 
-           {type!== 'select' ? <input type={type} placeholder={placeholder}
+           {type!== 'select' ? <input type={type} placeholder={placeholder} 
             className={`py-2 pl-7 ${style} rounded-sm px-1 font-poppins h-full w-full outline-none focus:outline-offset-1 focus:outline-orange-300 `}/>:<select onChange={e=>dispatch(setAnnex(e.target.value))}  name="" id="" className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`}>
                 <option value="">Select hall</option>
                 {universityOfGhanaHostels &&universityOfGhanaHostels.map(hall=><option value={hall.type}>{hall.name}</option>)}

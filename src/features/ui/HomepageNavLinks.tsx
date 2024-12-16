@@ -1,11 +1,15 @@
+import DashNavLink from "../dashboard/components/DashNavLink"
+
 function HomepageNavLinks() {
     return (
         <>
-             <li>About</li>
-                    <li>Support</li>
-                    <li>Help</li>
-                    <li>Signup</li>
-                    <li>Login</li>
+         <DashNavLink title="About" link="about"/>
+         <DashNavLink title="Support" link="/homepage/support"/>
+         <DashNavLink title="Help" link="/homepage/help"/>
+         <DashNavLink title="Signup" link="/homepage/signup"/>
+         <DashNavLink title="login" link="/homepage/login"/>
+             
+                   
         </>
         
     )
