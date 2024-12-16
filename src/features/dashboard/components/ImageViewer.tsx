@@ -8,10 +8,14 @@ function ImageViewer({images}:imageViewerProps) {
 
  
     return (
-      <PhotoProvider>
+      <PhotoProvider
+      speed={() => 480}
+      easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
+    >
         <div className="grid grid-cols-3 w-full rounded-md overflow-hidden ">
           {images.map((item, index) => (
-            <PhotoView key={index} src={item}>
+            <PhotoView key={index} src={item}
+          >
               <LazyLoadImage
                     effect='blur'
                     src={item} 
