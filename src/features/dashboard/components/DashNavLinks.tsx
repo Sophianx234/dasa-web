@@ -1,10 +1,13 @@
+import DashNavLink from "./DashNavLink"
+
 function DashNavLinks() {
     return (
         <>
-               <li>Account</li>
-               <li>Market</li>
-               <li>Anonymous</li>
-               <li>Gallery</li>
+               <DashNavLink title="Account" link="/dashboard/account"/>
+               <DashNavLink title="Market" link="/dashboard/market"/>
+               <DashNavLink title="Anonymous" link="/dashboard/anonymous/write"/>
+               <DashNavLink title="Gallery" link="/dashboard/gallery"/>
+               
                
    </>
   

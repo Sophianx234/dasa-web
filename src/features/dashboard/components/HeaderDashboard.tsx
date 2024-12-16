@@ -22,14 +22,15 @@ function HeaderDashboard() {
                 </div>
 
                 <div className="flex items-center justify-center gap-4">
-                    <Link to='notifications'
-                    className="border  border-transparent hover:border rounded-md duration-100 hover:border-dasalight relative">
-                        <div className="absolute -right-1 -top-1 text-xs bg-dasalight px-2 py-1 shadow-md  font-mulish font-bold rounded-full">5</div>
+                    <Link to='/dashboard/notifications'
+                    className="border  border-transparent hover:border group rounded-md duration-100 hover:border-dasalight relative">
+                        <div className="absolute -right-1 -top-1 text-xs bg-dasalight px-2 py-1 shadow-md  font-mulish font-bold rounded-full group-hover:scale-110 z-30">5</div>
+                     
 
-                <GoBell className="size-9 pt-1 fill-[#33312ee7] hover:scale-105"/>
+                <GoBell className="size-9 pt-1 fill-[#33312ee7] group-hover:scale-105"/>
                     </Link>
                 
-        <Link to='account' className="hover:scale-105">
+        <Link to='/dashboard/account' className="hover:scale-105">
 
                 <AvatarComponent/>
         </Link>

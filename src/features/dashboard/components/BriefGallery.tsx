@@ -30,8 +30,8 @@ function BriefGallery({style}:BriefGalleryProps) {
     return (
         <div>
 
-        <div className="mx-4  rounded-lg  pb-6">
-            <h1 className="dash-title pb-6">Gallery</h1>
+        <div className={`mx-4  rounded-lg  pb-6 ${style==='side' && 'pt-20'}`}>
+            {style === 'overview'&&<h1 className="dash-title pb-6 pt-4">Gallery</h1>}
            
 
             
