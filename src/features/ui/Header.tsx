@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { toggleNav } from "../slices/navSlice"
 import { useAppSelector } from "../utils/hooks"
+import DasaLogo from "./DasaLogo"
 
 function Header() {
     const logo = ["https://i.ibb.co/n8hRM6d/dasalogo-removebg.png" ]
@@ -16,8 +17,7 @@ function Header() {
             
             <Link to='/homepage'  className="flex items-center text-sm " onClick={()=>{
                 }}>
-            <img src={logo[0]} className=" w-20 "/>
-           <span className="font-bold">DaSA</span>
+            <DasaLogo title="Dagbon Students Association"/>
             </Link>
             <button onClick={()=>dispatch(toggleNav())}>
 

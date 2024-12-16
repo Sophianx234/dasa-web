@@ -1,12 +1,13 @@
 export type logoProps = {
-    title: string
-}
-function DasaLogo({title}:logoProps) {
+    title: string,
+    clns?: string
+} 
+function DasaLogo({title,clns}:logoProps) {
     return (
         <div className="flex items-center">
 
-            <img src="https://i.ibb.co/n8hRM6d/dasalogo-removebg.png" className="w-14" />
-            <h1 className="leading-4 border-l-[1px] pl-2 font-semibold border-l-black ">{title.toLowerCase().includes('market')? <>DaSA <br />Market</>:title}</h1>
+            <img src="https://i.ibb.co/n8hRM6d/dasalogo-removebg.png" className={`size-20`} />
+            <h1 className="leading-4 border-l-[1px] pl-2 font-semibold border-l-black font-Montserrat py-1 ">{title.toLowerCase().includes('market')? <>DaSA <br />Market</>:<>{title.slice(0,title.indexOf('A'))} <br /> {title.slice(title.indexOf('A'))} </>}</h1>
             </div>
     )
 }

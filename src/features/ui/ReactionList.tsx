@@ -14,7 +14,7 @@ function ReactionList() {
     
   }
   return (
-    <div className="space-y-3">
+    <div className="space-y-3  h-fit mb-10 pt-10 px-2 rounded-md">
       <button  onClick={()=>handleReaction('smile')}>
 
       <Reaction
@@ -43,7 +43,7 @@ function ReactionList() {
       isLiked={activeReaction === 'love'}
       type="love"
       outline={<FaRegHeart className="size-6    mb-10" />}
-      fill={<FaHeart className="size-6  fill-[#fa5252] self-end  mb-10" />}
+      fill={<FaHeart className="size-6  fill-[#fa5252] self-end mb-10  " />}
       
       />
       </button>
