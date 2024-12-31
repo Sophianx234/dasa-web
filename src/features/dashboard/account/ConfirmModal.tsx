@@ -1,18 +1,15 @@
 import { toggleRevealConfirmModal, toggleRevealUploadImage } from "@/features/slices/navSlice";
-import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
-import AccountFormInput from "./AccountFormInput";
-import { FileInput } from "lucide-react";
-import FileInputButton from "./FileInput";
+import { useAppDispatch } from "@/features/utils/hooks";
 import { UseFormRegister } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { ChangeEvent } from "react";
+import FileInputButton from "./FileInput";
 
 export type confirmModalProps = {
   register?: UseFormRegister<FormData>,
   title?: string;
   desc?: string;
   setReveal?: () => void;
-  handleClose: ()=>boolean | void;
+  handleClose?: ()=>boolean | void;
   type?: "confirm" | "form";
 
 };
@@ -32,7 +29,7 @@ function ConfirmModal({
   function handleTrigger() {
     
     if (title?.includes("Contact")) dispatch(toggleRevealConfirmModal());
-    if (title?.includes("Delete")) setReveal?.((reveal:unknown) => !reveal);
+    if (title?.includes("Delete")) setReveal?.();
     if(type === 'form') dispatch(toggleRevealUploadImage())
     handleClose?.()
   }
@@ -50,7 +47,7 @@ function ConfirmModal({
           {type === "form" && (
             <div className="pb-2">
               <h1 className="pb-1">Please Select Photo</h1>
-              <FileInputButton inputName="profileImg" register={register} />
+              <FileInputButton inputName="profileImg" register={register!} />
             </div>
           )}
 

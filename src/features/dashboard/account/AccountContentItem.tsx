@@ -1,9 +1,8 @@
-import { ReactElement, useState } from "react";
-import { IoIosArrowForward } from "react-icons/io"
-import { VscSymbolColor } from "react-icons/vsc";
-import ThemeController from "./ThemeController";
-import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { toggleChangeContact, toggleChangePassword, toggleRevealFaq, toggleRevealReportIssue } from "@/features/slices/navSlice";
+import { useAppDispatch } from "@/features/utils/hooks";
+import { ReactElement, useState } from "react";
+import { IoIosArrowForward } from "react-icons/io";
+import ThemeController from "./ThemeController";
 export type accountContentItemProps = {
     content: string,
     type?: 'toggle',
@@ -13,7 +12,7 @@ function AccountContentItem({content,type,icon}:accountContentItemProps) {
     const [isRotate,setIsRotate] = useState<boolean>(false)
     const dispatch = useAppDispatch()
     
-    function handleOnclick(e){
+    function handleOnclick(){
         setIsRotate(rotate=>!rotate)
        if( content.includes('Password')) dispatch(toggleChangePassword())
        if( content.includes('Phone')) dispatch(toggleChangeContact())

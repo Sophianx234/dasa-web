@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import { IoIosLock } from "react-icons/io"
-import { TbPassword, TbPasswordUser } from "react-icons/tb"
+import { TbPasswordUser } from "react-icons/tb"
 import FormError from "./FormError"
 
 function ChangePasswordForm() {

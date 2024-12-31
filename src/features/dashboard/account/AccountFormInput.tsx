@@ -1,10 +1,10 @@
 import { InputHTMLAttributes, ReactElement } from "react"
-import { FieldErrors, UseFormRegister } from "react-hook-form"
-import FormError from "./FormError"
+import { UseFormRegister } from "react-hook-form"
+import { formValues } from "./ChangeContactForm"
 
 export type accountFormInput = {
-    register: UseFormRegister<any>,
-    inputName: string,
+    register: UseFormRegister<formValues>,
+    inputName: keyof formValues,
     icon?: ReactElement,
     errMsg: string,
     type?: string,

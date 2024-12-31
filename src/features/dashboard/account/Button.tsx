@@ -1,6 +1,5 @@
 import { toggleRevealConfirmModal } from "@/features/slices/navSlice"
 import { useAppDispatch } from "@/features/utils/hooks"
-import { useState } from "react"
 export type ButtonProps = {
     submittable?: boolean,
     desc: string

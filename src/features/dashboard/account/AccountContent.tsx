@@ -1,14 +1,10 @@
-import { IoIosArrowForward } from "react-icons/io"
-import AccountContentItem from "./AccountContentItem"
-import { VscSymbolColor } from "react-icons/vsc"
-import { CiBellOn } from "react-icons/ci"
-import { FaRegBell } from "react-icons/fa6"
-import { GoBell, GoLock, GoUnlock } from "react-icons/go"
-import { GiSmartphone } from "react-icons/gi"
-import ChangePasswordForm from "./ChangePasswordForm"
 import { useAppSelector } from "@/features/utils/hooks"
+import { GiSmartphone } from "react-icons/gi"
+import { GoBell, GoLock } from "react-icons/go"
+import { VscSymbolColor } from "react-icons/vsc"
+import AccountContentItem from "./AccountContentItem"
 import ChangeContactForm from "./ChangeContactForm"
-import ConfirmModal from "./ConfirmModal"
+import ChangePasswordForm from "./ChangePasswordForm"
 
 function AccountContent() {
     const {isOpenChangePassword,showChangeContact} = useAppSelector(store=>store.nav)

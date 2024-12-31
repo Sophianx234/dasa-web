@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom"
 function PageNotFound() {
     const navigate = useNavigate()
     return (
-        <div>
-            <div className="flex items-center">
+        <div className="bg-white h-dvh">
+            <div className="flex items-center ">
 
             <TbError404 className="size-96 "/>
             </div>

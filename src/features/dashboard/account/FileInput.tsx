@@ -1,7 +1,7 @@
 import { UseFormRegister } from "react-hook-form"
 
 export type fileInputButtonProps = {
-    register:UseFormRegister<FormData>,
+    register:UseFormRegister<FormData> ,
     inputName: string
 }
 function FileInputButton({register,inputName}:fileInputButtonProps) {

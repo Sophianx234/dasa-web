@@ -1,20 +1,14 @@
-import { FiSend } from "react-icons/fi";
-import ChatItem from "./ChatItem";
-import ChatMenu from "./ChatMenu";
-import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
-import { sendMessage } from "@/features/slices/userSlice";
-import { useForm } from "react-hook-form";
-import { LuSendHorizonal } from "react-icons/lu";
+import { useAppSelector } from "@/features/utils/hooks";
 import { useEffect, useRef } from "react";
+import ChatItem from "./ChatItem";
 import ChatSendInput from "./ChatSendInput";
 
 function ChatboxList() {
-  const dispatch = useAppDispatch()
   const messages = useAppSelector(store=>store.user.anonymousMessages)
   const lastMessageRef = useRef(null);
   useEffect(() => {
     if (lastMessageRef.current) {
-      lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+      lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
   
@@ -27,7 +21,7 @@ function ChatboxList() {
         key={i}
         ref={i === messages.length - 1 ? lastMessageRef : null}>
 
-        <ChatItem chat={text} orient={i % 2 == 0 && "reverse"} />
+        <ChatItem chat={text!} orient={i % 2 == 0 && "reverse"} />
         </div>
       ))}
     </div>

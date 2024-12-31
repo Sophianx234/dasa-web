@@ -1,7 +1,10 @@
-import { FieldError } from "react-hook-form"
+import { FieldErrors, FieldValues } from "react-hook-form"
+export type fieldTypes = {
+    message:string
+    }
 
 export type controllerErrorProps = {
-    err: FieldError<FormData>,
+    err: FieldErrors<FieldValues>,
     inputName: string
 }
 function ControllerError({err,inputName}:controllerErrorProps) {
