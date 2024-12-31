@@ -12,12 +12,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { ControllerRenderProps, FieldValues, Path } from "react-hook-form"
 
-export type datePickerProps = {
-    field: ControllerRenderProps<FieldValues, string>,
+export type datePickerProps<T extends FieldValues> = {
+    field: ControllerRenderProps<T, Path<T>>,
 
 }
-export function DatePicker({field}:datePickerProps) {
+export function DatePicker<T extends FieldValues>({field}:datePickerProps<T>) {
   const [date, setDate] = React.useState<Date>()
  
   return (
