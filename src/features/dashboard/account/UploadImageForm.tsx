@@ -4,6 +4,7 @@ import ConfirmModal from "./ConfirmModal"
 export type uploadImageFormProps = {
     handleClose: ()=>void
 }
+
 function UploadImageForm({handleClose}:uploadImageFormProps) {
     const {handleSubmit,register} = useForm()
     function handleOnSubmit(data:unknown){

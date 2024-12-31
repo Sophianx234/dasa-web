@@ -1,9 +1,8 @@
-import { shuffleArray } from "@/features/utils/helpers";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import { PaginationX } from "./Pagination";
 import Footer from "@/features/ui/Footer";
+import { shuffleArray } from "@/features/utils/helpers";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import ImageViewer from "./ImageViewer";
+import { PaginationX } from "./Pagination";
 export type BriefGalleryProps = {
     style: "overview"|'side'
 }

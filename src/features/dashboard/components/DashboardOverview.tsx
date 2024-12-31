@@ -1,16 +1,14 @@
-import HeaderDashboard from "./HeaderDashboard";
-import Welcome from "./Welcome";
-import Market from "./Market";
-import AnonymousTiles from "../anonymous/AnonymousTiles";
-import AnnouncementList from "../announcement/AnnouncementList";
-import BriefGallery from "./BriefGallery";
-import { useAppSelector } from "@/features/utils/hooks";
-import UserStats from "./UserStats";
 import Footer from "@/features/ui/Footer";
+import AnnouncementList from "../announcement/AnnouncementList";
+import AnonymousTiles from "../anonymous/AnonymousTiles";
+import BriefGallery from "./BriefGallery";
 import Events from "./Events";
+import HeaderDashboard from "./HeaderDashboard";
+import Market from "./Market";
+import UserStats from "./UserStats";
+import Welcome from "./Welcome";
 
 function DashboardOverview() {
-  const openSidebar = useAppSelector((store) => store.nav.openSidebar);
   return (
     <div className=" ">
       <HeaderDashboard />

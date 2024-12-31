@@ -1,10 +1,5 @@
-import { CiMedicalMask } from "react-icons/ci";
-import { FaArrowLeftLong, FaMasksTheater } from "react-icons/fa6";
-import { PiFaceMaskBold } from "react-icons/pi";
-import ChatItem from "../chat/ChatItem";
 import ChatHeader from "../chat/ChatHeader";
 import ChatboxList from "../chat/ChatboxList";
-import { FiSend } from "react-icons/fi";
 
 function WriteAnonymous() {
   return (

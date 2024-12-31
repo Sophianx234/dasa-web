@@ -1,11 +1,11 @@
 export type tileProps = {
-    title: string,
+    title?: string,
     message: string,
     to: string,
-    time: string 
+    time?: string 
 
 }
-function AnonymousTile({title,message,to,time,name}:tileProps) {
+function AnonymousTile({message,to,time}:tileProps) {
     return (
         <div className="pt-5 space-y-2 ">
             

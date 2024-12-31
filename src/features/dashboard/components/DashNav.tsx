@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom"
+import { toggleSidebar } from "@/features/slices/navSlice";
+import { useAppDispatch } from "@/features/utils/hooks";
+import { motion } from "framer-motion";
+import { FaRegUser } from "react-icons/fa6";
+import { GrGallery } from "react-icons/gr";
+import { IoIosArrowForward } from "react-icons/io";
+import { IoNotificationsOutline } from "react-icons/io5";
+import { MdOutlineStore } from "react-icons/md";
+import { PiSidebarFill } from "react-icons/pi";
 import { RiHome3Line, RiSecurePaymentLine } from "react-icons/ri";
 import { TbLogout2, TbMessage } from "react-icons/tb";
-import { IoNotificationsOutline } from "react-icons/io5";
-import { GrGallery } from "react-icons/gr";
-import { MdOutlineStore } from "react-icons/md";
 import AvatarComponent from "./AvatarComponent";
-import { IoIosArrowForward } from "react-icons/io";
-import { FaRegUser } from "react-icons/fa6";
-import { PiSidebarFill } from "react-icons/pi";
-import { useAppDispatch } from "@/features/utils/hooks";
-import { toggleSidebar } from "@/features/slices/navSlice";
-import { motion } from "framer-motion";
 import DashNavItem from "./DashNavItem";
 function DashNav() {
     const dispatch = useAppDispatch() 

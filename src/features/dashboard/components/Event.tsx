@@ -1,4 +1,3 @@
-import { CiLocationOn } from "react-icons/ci"
 import { FaRegCalendar } from "react-icons/fa6"
 import { MdOutlineLocationOn } from "react-icons/md"
 

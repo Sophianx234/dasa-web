@@ -1,24 +1,23 @@
 import React, { ReactElement } from "react";
-import { FieldError, useForm, UseFormRegister } from "react-hook-form";
-import { FaRegUser } from "react-icons/fa6";
-export type inputDashboardProps =
+import { FieldErrors, FieldValues, Path, UseFormRegister } from "react-hook-form";
+export type inputDashboardProps<T extends FieldValues> =
   React.InputHTMLAttributes<HTMLInputElement> & {
-    state: string;
+    state: Path <T> ;
     icon: ReactElement;
     type: string;
     name?: string;
-    register: UseFormRegister<any>;
-    errors: FieldError<any>;
+    register: UseFormRegister<T>;
+    errors: FieldErrors<T>;
   };
 
-function InputDashboard({
+function InputDashboard<T extends FieldValues>({
   state,
   icon,
   type,
   register,
   errors,
   ...rest
-}: inputDashboardProps) {
+}: inputDashboardProps<T>) {
   const universityOfGhanaHostels = [
     "Legon Hall",
     "Akuafo Hall",
@@ -57,7 +56,7 @@ function InputDashboard({
           </div>
         </div>
         <div className="pl-10 bg-dasalight rounded-lg font-Montserrat font-medium text-[#191817]">
-          {errors?.[state]?.message}
+          {errors?.[state]?.message as string}
         </div>
       </>
     );
@@ -66,7 +65,7 @@ function InputDashboard({
       <div className="relative rounded-lg overflow-hidden">
         <select
           required
-          {...register("hall")}
+          {...register("hall" as Path<T>) }
           className="border py-3 h-full w-full indent-16 text-zinc-400 focus:outline-dasadeep focus:outline-2 bg-white "
         >
           <option className=""> Select Hall </option>
@@ -80,7 +79,7 @@ function InputDashboard({
           {icon}
         </div>
         <div className="pl-10 bg-dasalight rounded-lg font-Montserrat font-medium text-[#191817]">
-          {errors?.[state]?.message}
+          {errors?.[state]?.message as string}
         </div>
       </div>
     );

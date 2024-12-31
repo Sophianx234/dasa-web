@@ -1,9 +1,7 @@
-import { FaPencilAlt } from "react-icons/fa";
-import { IoMdSend } from "react-icons/io";
-import { TbMessageChatbotFilled } from "react-icons/tb";
-import AnonymousMenuItem from "./AnonymousMenuItem";
 import { FaMasksTheater } from "react-icons/fa6";
 import { IoChatboxEllipsesSharp } from "react-icons/io5";
+import { TbMessageChatbotFilled } from "react-icons/tb";
+import AnonymousMenuItem from "./AnonymousMenuItem";
 
 function AnonymousSection() {
   return (

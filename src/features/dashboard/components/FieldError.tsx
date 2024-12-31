@@ -1,7 +1,9 @@
-export type FieldErrorProps = {
-    errors: FieldError<any>
+import { FieldError } from "react-hook-form";
+
+export type ErrorFieldProps = {
+    errors: FieldError
   };
-function FieldError({errors}:FieldErrorProps) {
+function ErrorFieldProps({errors}:ErrorFieldProps) {
     return (
         <>
         {errors &&
@@ -10,4 +12,4 @@ function FieldError({errors}:FieldErrorProps) {
     )
 }
 
-export default FieldError
+export default ErrorFieldProps

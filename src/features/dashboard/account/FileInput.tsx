@@ -2,7 +2,7 @@ import { FieldValues, Path, UseFormRegister } from "react-hook-form"
 
 export type fileInputButtonProps<T extends FieldValues> = {
     register:UseFormRegister<T> ,
-    inputName: Path <T>
+    inputName: Path <T> 
 }
 function FileInputButton<T extends FieldValues>({register,inputName}:fileInputButtonProps<T>) {
     return (

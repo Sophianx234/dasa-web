@@ -5,7 +5,7 @@ import ChatSendInput from "./ChatSendInput";
 
 function ChatboxList() {
   const messages = useAppSelector(store=>store.user.anonymousMessages)
-  const lastMessageRef = useRef(null);
+  const lastMessageRef = useRef<HTMLDivElement| null>(null);
   useEffect(() => {
     if (lastMessageRef.current) {
       lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });

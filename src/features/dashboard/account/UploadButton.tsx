@@ -1,4 +1,4 @@
-import { toggleRevealUplaoadUserImage, toggleRevealUploadImage } from "@/features/slices/navSlice";
+import { toggleRevealUplaoadUserImage } from "@/features/slices/navSlice";
 import { useAppDispatch } from "@/features/utils/hooks";
 function UploadButton() {
     
