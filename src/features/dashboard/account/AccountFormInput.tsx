@@ -1,10 +1,9 @@
 import { InputHTMLAttributes, ReactElement } from "react"
-import { UseFormRegister } from "react-hook-form"
-import { profileFormValues } from "./ProfileForm"
+import { FieldValues, Path, UseFormRegister } from "react-hook-form"
 
-export type accountFormInput = {
-    register: UseFormRegister<profileFormValues>,
-    inputName: keyof profileFormValues,
+export type accountFormInput<T extends FieldValues> = {
+    register: UseFormRegister<T>,
+    inputName: Path<T>,
     icon?: ReactElement,
     errMsg: string,
     type?: string,
@@ -14,7 +13,7 @@ export type accountFormInput = {
 
 } & InputHTMLAttributes<HTMLInputElement>
 
-function AccountFormInput({icon,errMsg,register,inputName,type,iconBorder=false,...rest}:accountFormInput) {
+function AccountFormInput<T extends FieldValues>({icon,errMsg,register,inputName,type,iconBorder=false,...rest}:accountFormInput<T>) {
   if(type !=='textarea')
     return (
       <>
