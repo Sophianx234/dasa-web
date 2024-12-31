@@ -1,15 +1,18 @@
-import { useForm } from "react-hook-form"
+import { SubmitHandler, useForm } from "react-hook-form"
 import AccountFormInput from "./AccountFormInput"
 import Button from "./Button"
 
+export type reportIssueFormValues = {
+    complaint: string,
+    
+}
 function ReportIssueForm() {
-    const {handleSubmit,reset,register, formState: {errors}} = useForm()
-    function onSubmitIssue (data){
+    const {handleSubmit,register } = useForm<reportIssueFormValues>()
+    const onSubmit:SubmitHandler<reportIssueFormValues> = (data:reportIssueFormValues)=>{
         console.log(data)
-        reset()
     }
     return (
-        <form onSubmit={handleSubmit(onSubmitIssue)} >
+        <form onSubmit={handleSubmit(onSubmit)} >
 
             <AccountFormInput
             register={register}
