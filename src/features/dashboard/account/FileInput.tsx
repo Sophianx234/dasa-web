@@ -1,10 +1,10 @@
-import { UseFormRegister } from "react-hook-form"
+import { FieldValues, Path, UseFormRegister } from "react-hook-form"
 
-export type fileInputButtonProps = {
-    register:UseFormRegister<FormData> ,
-    inputName: string
+export type fileInputButtonProps<T extends FieldValues> = {
+    register:UseFormRegister<T> ,
+    inputName: Path <T>
 }
-function FileInputButton({register,inputName}:fileInputButtonProps) {
+function FileInputButton<T extends FieldValues>({register,inputName}:fileInputButtonProps<T>) {
     return (
         <input {...register(inputName,{required: 'please select an image'})}
   type="file"

@@ -3,12 +3,14 @@ import { useAppDispatch } from "@/features/utils/hooks";
 import { UseFormRegister } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import FileInputButton from "./FileInput";
+import { SetStateAction } from "react";
+import { Action, Dispatch } from "@reduxjs/toolkit";
 
-export type confirmModalProps = {
+export type confirmModalProps= {
   register?: UseFormRegister<FormData>,
   title?: string;
   desc?: string;
-  setReveal?: () => void;
+  setReveal?: () => void ;
   handleClose?: ()=>boolean | void;
   type?: "confirm" | "form";
 

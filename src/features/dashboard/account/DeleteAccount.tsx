@@ -19,7 +19,7 @@ function DeleteAccount() {
             </div>
             
         </div>
-        {showConfirmModal &&<ConfirmModal setReveal={setShowConfirmModal} title="Delete Account" desc=" Are you sure you want to Delete Account."/>}
+        {showConfirmModal &&<ConfirmModal  title="Delete Account" desc=" Are you sure you want to Delete Account."/>}
         </>
     )
 }
