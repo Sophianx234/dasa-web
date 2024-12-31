@@ -5,18 +5,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ControllerRenderProps, FieldValues } from "react-hook-form";
+import { ControllerRenderProps, FieldValues, Path } from "react-hook-form";
 import { LuShoppingBag } from "react-icons/lu";
 import { PiBuildingApartmentLight } from "react-icons/pi";
 
-export type selectButtonProps = {
+export type selectButtonProps<T extends FieldValues> = {
   options: string[];
   theme: string;
-  field: ControllerRenderProps<FieldValues, string>;
+  field: ControllerRenderProps<T, Path<T>>;
   type?: string
 };
 
-function SelectButton({ field, options, theme,type }: selectButtonProps) {
+function SelectButton<T extends FieldValues>({ field, options, theme,type }: selectButtonProps<T>) {
   return (
     <div>
       <Select onValueChange={field.onChange}>

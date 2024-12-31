@@ -117,7 +117,7 @@ function ProfileForm() {
             render={({ field }) => (
               <SelectButton
                 // Pass register
-                field={field}
+                field={field }
                 options={universityOfGhanaHostels}
                 theme="Select Hall"
               />
