@@ -1,5 +1,4 @@
 import { ReactElement } from "react"
-import { FaScaleUnbalancedFlip } from "react-icons/fa6"
 export type valueProps = {
     icon: ReactElement,
     title: string,

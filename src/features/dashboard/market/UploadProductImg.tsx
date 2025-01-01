@@ -3,13 +3,17 @@ import { IoMdClose } from "react-icons/io";
 import { extendFile } from "./DragZone";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import DropDownButton from "./DropDownButton";
 export type uploadPrductImgProps = {
   file: extendFile;
   id: number;
   handleRemoveImage: (id:number) => void;
 };
+
+export type productImgFormValues = {
+  imgName: string
+}
 
 function UploadProductImg({
   id,
@@ -20,8 +24,8 @@ function UploadProductImg({
   
   const [renameImage, setRenameImage] = useState<boolean|null>()
   const [newImgName, setNewImgName] = useState<string|null>()
-  const {handleSubmit,register,reset,control} = useForm()
-  function handleRename(data:unknown){
+  const {handleSubmit,register,reset} = useForm<productImgFormValues>()
+  const onSubmit: SubmitHandler<productImgFormValues>=(data:productImgFormValues)=>{
     
     setNewImgName(data?.imgName)
     reset()
@@ -43,7 +47,7 @@ function UploadProductImg({
         className="size-48 object-cover object-center "
       />
 
-      <form onSubmit={handleSubmit((data)=>handleRename(data))}>
+      <form onSubmit={handleSubmit(onSubmit)}>
       <div className="text-center text-xs tracking-tighter leading-4 flex justify-between items-center pt-1  font-bold">
         
         {renameImage?<input type="text" {...register("imgName")} id="" className="bg-white w-full focus:outline-none focus:border indent-2 border-dasadeep py-1" />:

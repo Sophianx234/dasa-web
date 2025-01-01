@@ -1,7 +1,7 @@
-import AccordionBar, { AccordionBarProps } from "./Accordion"
+import AccordionBar, { accordionBarProps, faqsType } from "./Accordion"
 
 function AccordionList() {
-    const faqs: AccordionBarProps[] = [
+    const faqs: faqsType[] = [
         {
           question: "What is DaSA?",
           answer: "DaSA stands for the Dagbon Students Association, an organization aimed at supporting Dagbon students at the University of Ghana."
@@ -75,7 +75,7 @@ function AccordionList() {
         <div className="space-y-3">
             <h1 className="text-center font-semibold">Frequently Asked Questions</h1>
             <div>
-                <AccordionBar faqs={faqs}/>
+                <AccordionBar faqs={faqs }/>
                 
             </div>
         </div>

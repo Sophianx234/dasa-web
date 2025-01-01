@@ -17,6 +17,7 @@ function Select({icon,addClass,placeholder,form,style}:formInputProps) {
           description: "Provides single, double, and triple room options in a quieter environment compared to larger hostels.",
         }
       ]
+      const annexes: string[] =  ['A','B','C','D']
       const universityOfGhanaPrograms = [
         // College of Health Sciences
         "Medicine and Surgery",
@@ -103,15 +104,15 @@ function Select({icon,addClass,placeholder,form,style}:formInputProps) {
       ];
       
 
-    const annexes = isAnnex==='Annex' ?['A','B','C','D']: isAnnex === 'UGEL Hostel'? UGEL: null
       if(isAnnex === 'Annex')
     return (
         <div className={`flex items-center relative ${addClass}`}>
             {icon}
+            { isAnnex === 'Annex' &&
             <select   name="" id="" className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`}>
                 <option >Select {placeholder}</option>
-                {annexes.map(annex=><option value={annex}>{ annex}</option>)}
-            </select> 
+                {annexes?.map(annex=><option value={annex}>{ annex}</option>)}
+            </select>} 
         </div>
     )
     if(isAnnex === 'UGEL Hostel')
@@ -120,7 +121,7 @@ function Select({icon,addClass,placeholder,form,style}:formInputProps) {
             {icon}
             <select   name="" id="" className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`}>
                 <option >Select {placeholder}</option>
-                {annexes.map(annex=><option value={annex?.name}>{ annex?.name}</option>)}
+                {UGEL.map(annex=><option value={annex?.name}>{ annex?.name}</option>)}
             </select> 
         </div>
         )

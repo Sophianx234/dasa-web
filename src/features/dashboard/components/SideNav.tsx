@@ -1,6 +1,7 @@
 import { useAppSelector } from "@/features/utils/hooks"
-import DashNav from "./dashNav"
 import { AnimatePresence } from "framer-motion"
+import DashNavSlider from "./DashNavSlider"
+
 
 function SideNav() {
     const openSidebar = useAppSelector(store=>store.nav.openSidebar)
@@ -9,7 +10,7 @@ function SideNav() {
         <AnimatePresence>
             
             {openSidebar &&
-       <DashNav/>}
+       <DashNavSlider/>}
        </AnimatePresence>
        </>
 

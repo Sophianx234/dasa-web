@@ -2,7 +2,7 @@ export type logoProps = {
     title: string,
     clns?: string
 } 
-function DasaLogo({title,clns}:logoProps) {
+function DasaLogo({title}:logoProps) {
     return (
         <div className="flex items-center">
 

@@ -1,4 +1,3 @@
-import SVGLitex from "../../ui/SVGLitex"
 
 function Welcome() {
     return (

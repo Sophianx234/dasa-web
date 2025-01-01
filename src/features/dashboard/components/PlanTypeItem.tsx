@@ -1,20 +1,20 @@
-import { useState } from "react"
-import { GiReceiveMoney } from "react-icons/gi"
-import { TbBusinessplan } from "react-icons/tb"
-export type planTypeItemProps = {
+import { Path, UseFormRegister } from "react-hook-form";
+import { GiReceiveMoney } from "react-icons/gi";
+import { paymentFormValues } from "./PaymentForm";
+export type planTypeItemProps<T extends paymentFormValues> = {
     planType: string,
     planPackage: string,
     planDesc: string,
     price: number,
-    register: UseFormRegister<any>;
+    register: UseFormRegister<T>;
     
 
 }
-function PlanTypeItem({planType,planPackage,price,planDesc,register}:planTypeItemProps) {
-    const [toggleRadio, setToggleRadio] = useState(false)
-    function handleSelection(e){
+function PlanTypeItem<T extends paymentFormValues>({planType,planPackage,price,planDesc,register}:planTypeItemProps<T>) {
+    /* const [, setToggleRadio] = useState(false)
+    function handleSelection(){
         setToggleRadio(toggle=>!toggle)
-    }
+    } */
     return (
         <div >
             <div className=" " >
@@ -26,7 +26,7 @@ function PlanTypeItem({planType,planPackage,price,planDesc,register}:planTypeIte
 
                     <label >
 
-                       <input  type="radio" className=' hidden peer ' {...register('price')} value={+price}  />
+                       <input  type="radio" className=' hidden peer ' {...register('price' as Path <T>) } value={+price}  />
                        <div className=" peer-checked border-4  size-6 rounded-full enabled peer-checked:border-dasadeep
                        group:peer-checked:border-dasadeep
                         "></div>

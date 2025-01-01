@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import ConfirmModal from "./ConfirmModal"
 
 export type uploadImageFormProps = {
-    handleClose: ()=>void
+    handleClose?: ()=>void
 }
 
 function UploadImageForm({handleClose}:uploadImageFormProps) {

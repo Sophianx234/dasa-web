@@ -7,7 +7,7 @@ function ProfilePage() {
     return (
         <div className="bg-white">
            <ProfileForm/>
-           {revealUploadProfile&&<UploadImageForm/>}
+           {revealUploadProfile&&<UploadImageForm />}
         </div>
     )
 }

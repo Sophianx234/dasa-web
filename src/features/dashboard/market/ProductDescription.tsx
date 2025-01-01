@@ -5,9 +5,9 @@ import Rating from "./Rating";
 function ProductDescription() {
     const [isExpanded, setIsExpanded] = useState(false);
 
-    function toggleReadMore(){
+    /* function toggleReadMore(){
         setIsExpanded(!isExpanded);
-    };
+    }; */
     return (
         <div className="mx-4 pt-4  pb-6  ">
                 <div>

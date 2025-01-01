@@ -4,12 +4,10 @@ import { TbBrandOpenvpn } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 import FormInput from "../ui/FormInput";
 import DasaLogo from "./DasaLogo";
-import { slidesImagesType } from "./Hero";
 import SVGLite from "./SVGLite";
-import { FormEvent, MouseEventHandler } from "react";
 
 function SignIn() {
-  const slideImages: slidesImagesType[] = [
+  /* const slideImages: slidesImagesType[] = [
     {
       url: "https://i.ibb.co/Yfy7hZR/photo-5-2024-10-31-06-51-41.jpg",
     },
@@ -28,10 +26,10 @@ function SignIn() {
     {
       url: "https://i.ibb.co/jgk1phW/IMG-20241107-WA0013.jpg",
     },
-  ];
+  ]; */
   const navigate = useNavigate()
-  function handleLogin(e: FormEvent<FormData>){
-    e.preventDefault()
+  function handleLogin(){
+    
     navigate('/dashboard')
 
   }
@@ -43,7 +41,8 @@ function SignIn() {
       </div>
       <div className="     absolute top-28 ">
        
-        <form className="flex flex-col px-2  ">
+    e.preventDefault()
+        <form className="flex flex-col px-2  " onSubmit={()=>handleLogin()}>
             <div className="flex  items-center gap-4 pb-4">
 
           <h1  className="font-poppins font-semibold text-3xl text-[#33312e] pb-4 pt-4">
@@ -79,7 +78,7 @@ function SignIn() {
               </Link>
             </div>
           </div>
-          <button onClick={handleLogin} className=" bg-dasadeep mt-3 rounded-sm py-2 text-sm font-bold font-Montserrat ">Login</button>
+          <button  className=" bg-dasadeep mt-3 rounded-sm py-2 text-sm font-bold font-Montserrat ">Login</button>
         </form>
       </div>
       <div className="absolute bottom-1">

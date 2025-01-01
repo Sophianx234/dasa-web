@@ -1,9 +1,7 @@
-import { Table } from "@/components/ui/table"
-import DemoPage from "./payment/page"
+import Footer from "@/features/ui/Footer"
+import { TbClearAll } from "react-icons/tb"
 import NotificationItem from "./NotificationItem"
 import { PaginationX } from "./Pagination"
-import { TbClearAll } from "react-icons/tb"
-import Footer from "@/features/ui/Footer"
 
 function NotificationList() {
     return (

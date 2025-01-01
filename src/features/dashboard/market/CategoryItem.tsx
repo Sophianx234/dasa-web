@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import { MdPhoneIphone } from "react-icons/md";
 import { Link } from "react-router-dom";
 export type categoryItemProps = {
   icon: ReactElement;

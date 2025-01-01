@@ -1,10 +1,9 @@
-import {  BsInstagram } from "react-icons/bs"
-import { FaHeart, FaRegHeart, FaXTwitter } from "react-icons/fa6"
+import { BsInstagram } from "react-icons/bs"
+import { FaXTwitter } from "react-icons/fa6"
 import { FiFacebook } from "react-icons/fi"
 import { PiTelegramLogo } from "react-icons/pi"
-import SVGLite from "./SVGLite"
-import Reaction from "./Reaction"
 import ReactionList from "./ReactionList"
+import SVGLite from "./SVGLite"
 
 export type videoPlayerProps = {
     src: string

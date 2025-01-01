@@ -5,14 +5,14 @@ function Activities() {
    
     
       
-      
-      const slideImages: constslidesImagesType[] = [
+      /* 
+      const slideImages = [
         {
           url: 'https://i.ibb.co/z4Qb9CJ/das-1.jpg',
           
         },
        
-      ];
+      ]; */
     return (
         <div className="py-10 pb-20 ">
             <h1 className="text-center font-bold font-rethink">Experience the Fun with Us</h1>

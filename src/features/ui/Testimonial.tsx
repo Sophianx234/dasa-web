@@ -18,7 +18,7 @@ function Testimonial({testimonial, name,role,img}:testimonialProp) {
             <p className="text-center font-poppins font-bold">{role}</p>
         </div>
             </div>
-            <SVGLite/>
+            <SVGLite type="sticks"/>
         </div>
     )
 }

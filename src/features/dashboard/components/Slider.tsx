@@ -1,9 +1,8 @@
 import 'swiper/css';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react';
 function Slider() {
   const sneakers = [
     { name: "Air Max 2024", brand: "Nike", src: "https://i.ibb.co/5T0GmMy/sneaker-2.png" },

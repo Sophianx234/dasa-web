@@ -1,8 +1,7 @@
 import { FaScaleUnbalanced } from "react-icons/fa6"
-import SVGLite from "./SVGLite"
-import Value from "./Value"
-import { PiUsersFourFill } from "react-icons/pi"
 import { LiaSeedlingSolid, LiaSlideshare } from "react-icons/lia"
+import { PiUsersFourFill } from "react-icons/pi"
+import Value from "./Value"
 
 function Values() {
     return (
