@@ -3,11 +3,11 @@ import ChatMenu from "./ChatMenu"
 import { useAppSelector } from "@/features/utils/hooks"
 
 function OpenChatMenu() {
-    const openChatMenu = useAppSelector(store=>store.nav.openChatMenu)
+    const openChatMenuOptions = useAppSelector(store=>store.nav.openChatMenuOptions)
     return (
         <div>
             <AnimatePresence>
-               {openChatMenu && <ChatMenu/>}
+               {openChatMenuOptions && <ChatMenu/>}
             </AnimatePresence>
         </div>
     )

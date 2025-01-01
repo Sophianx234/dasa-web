@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     isOpen: false,
     openSidebar: false,
-    openChatMenu: false,
+    openChatMenuOptions: false,
     isOpenChangePassword:false,
     showChangeContact: false,
     revealConfirmModal: false,
