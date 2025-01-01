@@ -1,4 +1,4 @@
-export function shuffleArray(array, freezeCount) {
+export function shuffleArray<T>(array:T[], freezeCount:number) {
     const limit = array.length - freezeCount;
     for (let i = limit - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
