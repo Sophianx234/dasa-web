@@ -32,13 +32,13 @@ function NavLinks({swap= 'flex'}:navLinksProps) {
                 <Link to='/homepage' onClick={()=>dispatch(toggleNav())}>
                     Home
                 </Link>
-                <NavLink to='about' onClick={()=>dispatch(toggleNav())}>
+                <NavLink to='/homepage/about' onClick={()=>dispatch(toggleNav())}>
                     About
                 </NavLink>
-                <NavLink to='login' onClick={()=>dispatch(toggleNav())}>
+                <NavLink to='/homepage/login' onClick={()=>dispatch(toggleNav())}>
                     Login
                 </NavLink>
-                <NavLink to='signup' className='text-center bg-dasalight py-2 font-semibold hover:rounded-sm hover:bg-white hover:border-2 border-2 border-white hover:border-dasalight transition-all duration-150 rounded-sm' onClick={()=>dispatch(toggleNav())}>
+                <NavLink to='/homepage/signup' className='text-center bg-dasalight py-2 font-semibold hover:rounded-sm hover:bg-white hover:border-2 border-2 border-white hover:border-dasalight transition-all duration-150 rounded-sm' onClick={()=>dispatch(toggleNav())}>
                     Join the Community
                 </NavLink>
             </ul>
