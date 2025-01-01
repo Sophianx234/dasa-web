@@ -35,13 +35,13 @@ function SignIn() {
   }
 
   return (
-    <div className="flex flex-col  items-center  h-dvh   text-[60%] space-y-12 ">
+    <div className="flex flex-col   items-center  h-dvh   text-[60%] space-y-12 ">
       <div className="absolute top-1">
         <SVGLite type="sticks" />
       </div>
-      <div className="     absolute top-28 ">
+      <div className="   shadow-lg px-2 rounded-md border py-8  absolute top-28 ">
        
-        <form className="flex flex-col px-2  " onSubmit={()=>handleLogin()}>
+        <form className="flex flex-col  px-2  " onSubmit={()=>handleLogin()}>
             <div className="flex  items-center gap-4 pb-4">
 
           <h1  className="font-poppins font-semibold text-3xl text-[#33312e] pb-4 pt-4">

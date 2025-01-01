@@ -103,7 +103,17 @@ function Select({icon,addClass,placeholder,form,style}:formInputProps) {
         "Diploma in Youth Development Work"
       ];
       
-
+      if(form==='course')
+        return (
+            <div className={`flex items-center relative ${addClass}`}>
+            {icon}
+            <select   name="" id=""
+             className={` ${style} indent-6 font-poppins h-full w-full text-gray-400`}>
+                <option >Select {placeholder}</option>
+                {universityOfGhanaPrograms.map(course=><option value={course}>{course}</option>)}
+            </select> 
+        </div>
+    )
       if(isAnnex === 'Annex')
     return (
         <div className={`flex items-center relative ${addClass}`}>
@@ -125,17 +135,7 @@ function Select({icon,addClass,placeholder,form,style}:formInputProps) {
             </select> 
         </div>
         )
-    if(form==='course')
-        return (
-            <div className={`flex items-center relative ${addClass}`}>
-            {icon}
-            <select   name="" id=""
-             className={` ${style} indent-6 font-poppins h-full w-full text-gray-400`}>
-                <option >Select {placeholder}</option>
-                {universityOfGhanaPrograms.map(course=><option value={course}>{course}</option>)}
-            </select> 
-        </div>
-    )
+    
 }
 
 export default Select

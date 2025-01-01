@@ -13,7 +13,7 @@ function PageNotFound() {
 
             <div className="space-y-3">
                 <h1 className="text-center font-semibold font-poppins  px-3 ">
-                Grab some kulikuli and sit tight! Looks like this page took a detour.
+                 Looks like this page took a detour.
                 </h1>
                 <p className=" text-center font-Montserrat font-medium">Let’s find our way back together!"</p>
             </div>
