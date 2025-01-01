@@ -9,7 +9,7 @@ function Header() {
     const dispatch = useDispatch()
     
     return (
-        <div className="flex sticky  -top-2 shadow-md z-40 items-center justify-between px-2 py-2 bg-[#FEF3E7]">
+        <div className="flex fixed  right-0 left-0 -top-2 shadow-md z-40 items-center justify-between px-2 py-2 bg-[#FEF3E7]">
             
             <Link to='/homepage'  className="flex items-center text-sm " onClick={()=>{
                 }}>

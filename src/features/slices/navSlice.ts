@@ -26,7 +26,7 @@ const navSlice = createSlice({
         }
         ,
         toggleChatMenu(state){
-            state.openChatMenu = !state.openChatMenu
+            state.openChatMenuOptions = !state.openChatMenuOptions
         }
         ,
         toggleChangePassword(state){

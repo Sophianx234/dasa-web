@@ -45,7 +45,7 @@ function Hero() {
 
     return (
       <>
-        <div className="slide-container ">
+        <div className="slide-container mt-[5.6rem] ">
         <Slide>
          {slideImages.map((slideImage, index)=> (
             <div key={index} className='bg-[#0000009d]'>
@@ -60,6 +60,7 @@ function Hero() {
             </div>
           ))} 
         </Slide>
+        <div className='text-[#ffe8cb] absolute top-[16rem] left-0 right-0 flex justify-center text-center font-extrabold tracking-wide font-inter text-2xl'>Dagbon Tooni Tibu <br /> Shikuru Bihi Nuu Beni</div>
       </div>
       <div className='pt-10 bg-dasalight uppercase text-xs pb-8 font-mulish px-1 '>
         <h1 className='font-bold text-center text-[#33312e]'>Your gateway to a world of networking, mentorship, and cultural exchange.</h1>

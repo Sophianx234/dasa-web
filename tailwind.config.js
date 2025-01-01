@@ -18,6 +18,8 @@ export default {
 		  Montserrat: 'Montserrat',
 		  lobster: 'Lobster',
 		  chewy: 'Chewy',
+		  inter: 'Inter',
+		  quicksand: 'Quick-sand'
 		},
 		colors: {
 		  dasalight: '#FEF3E7',
