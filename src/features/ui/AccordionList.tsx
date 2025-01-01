@@ -1,4 +1,4 @@
-import AccordionBar, { accordionBarProps, faqsType } from "./Accordion"
+import AccordionBar, { faqsType } from "./Accordion"
 
 function AccordionList() {
     const faqs: faqsType[] = [

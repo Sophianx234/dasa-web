@@ -3,9 +3,7 @@ import { ReactElement } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import 'swiper/css.min.css';
-import 'swiper/css/navigation.min.css';
-import 'swiper/css/pagination.min.css';
+import 'swiper/swiper-bundle.css';
 
 
 // import required modules
