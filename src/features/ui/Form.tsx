@@ -17,7 +17,7 @@ function Form() {
   console.log(isAnnex);
 
   return (
-    <div className="bg-dasalight  h-full pt-6 ">
+    <div className="bg-dasalight  h-dvh pt-6 overflow-y-hidden ">
       <div className="px-4">
         <div>
           <h1 className="text-[#33312e] font-bold pb-2 text-3xl ">
@@ -26,8 +26,8 @@ function Form() {
           <p className=" font-mulish text-sm pb-4  ">
             Create your DaSA account. Already <br /> registered?{" "}
             <Link
-              to="/policy"
-              className="text-blue-950 font-bold hover:underline italic"
+              to="/homepage/login"
+              className="text-blue-600 font-bold  hover:underline italic"
             >
               Login here
             </Link>

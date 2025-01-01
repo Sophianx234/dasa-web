@@ -103,21 +103,21 @@ function PaymentForm() {
                 price={25}
                 register={register}
                 planType="Business"
-                planPackage="Dues"
+                planPackage="Dues "
                 planDesc="Covers only the payment of annual DaSA dues, ensuring active membership in the association."
               />
               <PlanTypeItem
                 price={32}
                 register={register}
                 planType="Standard"
-                planPackage="Dues+ T-shirt"
+                planPackage="+ T-shirt"
                 planDesc="Includes payment of DaSA dues and a DaSA-branded T-shirt to show your pride."
               />
               <PlanTypeItem
                 register={register}
                 price={32}
                 planType="Premium"
-                planPackage="Dues + Suveniers"
+                planPackage="+Suveniers"
                 planDesc="Includes payment of DaSA dues and all souvenirs, offering the complete membership experience."
               />
             </div>

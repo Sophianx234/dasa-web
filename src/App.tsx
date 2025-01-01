@@ -30,10 +30,12 @@ import CartPage from "./features/dashboard/pages/CartPage";
 import UploadedProducts from "./features/dashboard/pages/UploadedProducts";
 import OrderUser from "./features/dashboard/order/OrderUser";
 import WishListPage from "./features/dashboard/pages/WishListPage";
+import ScrollToTop from "./features/utils/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop/>
       <Routes>
         <Route  path="homepage" element={<Homepage />} />
         <Route index element={<Navigate to={'/homepage'}/>}/>

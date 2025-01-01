@@ -9,6 +9,7 @@ import { DatePicker } from "./DatePicker";
 import ProfileImage from "./ProfileImage";
 import RadialProgress from "./RadialProgress";
 import SelectButton from "./SelectButton";
+import { useNavigate } from "react-router-dom";
 
 export type profileFormValues = {
   name: string;
@@ -44,14 +45,15 @@ function ProfileForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<profileFormValues>();
+  const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<profileFormValues> = (data: profileFormValues) => console.log(data.email);
 
   return (
     <div className="">
       <div className="py-4 px-2 bg-dasalight  font-bold">
-        <div className="flex items-center gap-2">
-          <FaArrowLeftLong /> Edit Profile
+        <div className="flex items-center gap-2" >
+          <FaArrowLeftLong onClick={()=>navigate(-1)}/> Edit Profile
         </div>
       </div>
       <div className="flex items-center justify-center mt-4 shadow-md py-4 px-3 rounded-md mx-2">

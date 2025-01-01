@@ -75,6 +75,8 @@ function SignIn() {
                 <TbBrandOpenvpn className="size-4 " />
                 <span className="self-end">Forgot Password?</span>
               </Link>
+              <div className="pt-2">
+              Already have an account <Link to='/homepage/signup' className="text-blue-600 font-medium hover:underline">Signup</Link></div>
             </div>
           </div>
           <button  className=" bg-dasadeep mt-3 rounded-sm py-2 text-sm font-bold font-Montserrat ">Login</button>

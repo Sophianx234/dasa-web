@@ -35,8 +35,8 @@ function PlanTypeItem<T extends paymentFormValues>({planType,planPackage,price,p
                        
                     <h1 className="font-bold font-mulish">{planType}</h1>
                     </div>
-                    <div className="flex items-center gap-1 border rounded-full mx-2 px-2 ">
-                    <GiReceiveMoney className="fill-dasadeep size-8"/> <p>{planPackage} </p>
+                    <div className="flex justify-center py-1 border rounded-full mx-2 px-2 ">
+                    <p className=" text-[.65rem] font-bold leading-1">{planPackage} </p>
                     </div>
                     <p className="justify-self-end text-dasadeep font-mulish font-bold"> ₵{price}/sem</p>
                     </div>

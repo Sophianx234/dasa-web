@@ -1,5 +1,6 @@
 import { MdPersonOutline } from "react-icons/md"
 import CTImages from "./CTImages"
+import { Link } from "react-router-dom"
 
 function CTA() {
     const ctaImages = [
@@ -19,7 +20,7 @@ function CTA() {
                 <h1 className="font-bold font-rethink text-center">Join <span className=" border-b-dasalight border-b-[3px]">5,482</span> other Members</h1>
                 <p className="text-xs text-center px-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam temporibus voluptatibus eligendi dignissimos pariatur!</p>
                 <div className="  text-center flex justify-center  pt-2 ">
-                    <button className="bg-dasalight text-sm px-3  flex justify-center items-center rounded-full gap-1  hover-primary py-3"> <MdPersonOutline className="size-4" />Get innstant access</button>
+                    <Link to='signup' className="bg-dasalight text-sm px-3  flex justify-center items-center rounded-full gap-1  hover-primary py-3"> <MdPersonOutline className="size-4" />Get instant access</Link>
                 </div>
                 </div>
             </div>
