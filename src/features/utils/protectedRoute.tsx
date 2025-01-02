@@ -13,5 +13,5 @@ export function ProtectedRoute({children}:protectedRouteProp){
         if(!isAuthenticated) navigate('/')
     },[navigate,isAuthenticated])
 
-    return isAuthenticated?children :null
+    return isAuthenticated? children :null
 }

@@ -48,7 +48,7 @@ export function useLogin(navigate: NavigateFunction) {
 
     onSuccess: () => {
       toast.success("Login Successfully");
-      dispatch(toggleIsAuthenticated(false));
+      dispatch(toggleIsAuthenticated(true));
 
       setTimeout(() => {
         navigate("/dashboard/overview");

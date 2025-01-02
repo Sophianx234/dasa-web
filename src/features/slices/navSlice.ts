@@ -56,7 +56,7 @@ const navSlice = createSlice({
       state.revealUplaoadUserImage = !state.revealUplaoadUserImage;
     },
     toggleIsAuthenticated(state, action) {
-      state.revealUplaoadUserImage = action.payload;
+      state.isAuthenticated = action.payload;
     },
   },
 });
