@@ -13,6 +13,9 @@ export type LoginCredentials ={
       email: string;
     };
 }
+export type logoutResponse = {
+  status:string
+}
 
 
  export async function login(creds:LoginCredentials):Promise<LoginResponse>{
@@ -22,3 +25,9 @@ export type LoginCredentials ={
         
         
     }
+
+export async function logout():Promise<logoutResponse>{
+  const {data} = await axios.post("https://dasa-api.onrender.com/api/v1/users/logout")
+  return data
+
+}

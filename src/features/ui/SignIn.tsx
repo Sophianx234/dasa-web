@@ -87,7 +87,7 @@ function SignIn() {
           </div>
           <div className="space-y-4 ">
             <FormInput
-            errors={errors}
+              errMsg="Email is required"
               register={register}
               inputName="email"
               style="bg-white border-dasadeep border "
@@ -95,6 +95,8 @@ function SignIn() {
               type="email"
               placeholder="Enter Email Address"
             />
+            {errors&&<div className="bg-black">{errors.email?.message}</div>}
+            
             <FormInput
               register={register}
               inputName="password"
@@ -103,6 +105,7 @@ function SignIn() {
               type="password"
               placeholder="Password"
             />
+
 
             <div>
               <div className="flex  text-xs gap-2">

@@ -11,6 +11,7 @@ import { RiHome3Line, RiSecurePaymentLine } from "react-icons/ri";
 import { TbLogout2, TbMessage } from "react-icons/tb";
 import AvatarComponent from "./AvatarComponent";
 import DashNavItem from "./DashNavItem";
+import { Toaster } from "react-hot-toast";
 function DashNavSlider() {
   const dispatch = useAppDispatch();
 
@@ -99,6 +100,8 @@ function DashNavSlider() {
             </div>
           </div>
         </div>
+        <Toaster
+        position="top-center"/>
       </div>
     </motion.div>
   );

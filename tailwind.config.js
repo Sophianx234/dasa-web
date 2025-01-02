@@ -97,6 +97,9 @@ export default {
 		  'accordion-up': 'accordion-up 0.2s ease-out',
 		},
 	  },
+	  daisyui:{
+		theme: false
+	  }
 	},
 	plugins: [require("tailwindcss-animate"), require('daisyui')],
   };
