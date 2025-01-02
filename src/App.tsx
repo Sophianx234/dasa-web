@@ -32,6 +32,7 @@ import UploadedProducts from "./features/dashboard/pages/UploadedProducts";
 import OrderUser from "./features/dashboard/order/OrderUser";
 import WishListPage from "./features/dashboard/pages/WishListPage";
 import ScrollToTop from "./features/utils/ScrollToTop";
+import { ProtectedRoute } from "./features/utils/protectedRoute";
 
 const queryClient = new QueryClient()
 function App() {
@@ -40,13 +41,20 @@ function App() {
 
     <BrowserRouter>
     <ScrollToTop/>
+
       <Routes>
         <Route  path="homepage" element={<Homepage />} />
         <Route index element={<Navigate to={'/homepage'}/>}/>
         <Route path="homepage/about" element={<About />} />
         <Route path="homepage/login" element={<Login />} />
         <Route path="homepage/signup" element={<SignUp />} />
-        <Route path="/dashboard" element={<AppLayout />}>
+    
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <AppLayout />
+          </ProtectedRoute>
+
+          }>
           <Route index element={<Navigate to="overview" replace={true} />} />
           <Route path="overview" element={<DashboardOverview />} />
           <Route path="/dashboard/gallery" element={<GalleryPage />} />
@@ -69,7 +77,7 @@ function App() {
           <Route
             path="/dashboard/anonymous/conversation"
             element={<Conversation />}
-          />
+            />
 
           {/* Payment Route */}
 

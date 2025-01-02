@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import FormInput from "../ui/FormInput";
 import DasaLogo from "./DasaLogo";
 import SVGLite from "./SVGLite";
+import { useLogin } from "../utils/hooks";
 
 export type loginFormValues = {
   email: string;
@@ -38,33 +39,7 @@ function SignIn() {
   const navigate = useNavigate();
   const { handleSubmit, register,formState: {errors} } = useForm<loginFormValues>();
 
-  const {mutateAsync:handleLogin} = useMutation({
-    mutationFn: login,
-    onMutate: ()=>{
-      toast.loading('Authentication',{
-        duration: 1000
-      })
-    },
-    
-    onSuccess: () => {
-      
-      
-      toast.success("Login Successfully");
-      
-      setTimeout(()=>{
-        navigate('/dashboard/overview')
-        
-      },2*1000)
-    },
-    onError: ()=>{
-      
-      toast.error("Login Failed",{
-        duration: 4000,
-        position: 'top-center'});
-
-    },
-    
-  });
+  const {handleLogin} = useLogin(navigate)
   const onSubmit: SubmitHandler<loginFormValues> = (data:loginFormValues)=>{
     console.log(data)
     console.log(errors)

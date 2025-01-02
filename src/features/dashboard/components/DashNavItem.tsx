@@ -1,9 +1,6 @@
 import { toggleSidebar } from "@/features/slices/navSlice"
-import { useAppDispatch } from "@/features/utils/hooks"
-import { logout } from "@/services/apiServices"
-import { useMutation } from "@tanstack/react-query"
+import { useAppDispatch, useLogout } from "@/features/utils/hooks"
 import { ReactElement } from "react"
-import toast from "react-hot-toast"
 import { Link, useNavigate } from "react-router-dom"
 
 export type dashNavItem = {
@@ -14,26 +11,7 @@ export type dashNavItem = {
 }
 function DashNavItem({icon, arrIcon,navTitle, link}:dashNavItem) {
     const navigate = useNavigate()
-    const {mutateAsync:handleLogout} = useMutation({
-        mutationFn: logout,
-        onMutate: ()=>{
-            toast.loading('logging out',{
-                duration: 1000
-            })
-
-        },
-        onSuccess: ()=>{
-            toast.success('logout successful')
-            setTimeout(()=>{
-                navigate('/homepage')
-
-            },1000)
-        },
-        onError: ()=>{
-            
-            toast.error('logout unsuccessful')
-        }
-    })
+    const {handleLogout} = useLogout(navigate)
     function handleNavLinkOnClick(){
         if(navTitle.toLowerCase().includes('logout')){
             handleLogout()
