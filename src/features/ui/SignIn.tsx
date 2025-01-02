@@ -1,3 +1,7 @@
+import { login } from "@/services/apiServices";
+import { useMutation } from "@tanstack/react-query";
+import { SubmitHandler, useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 import { FaRegUser } from "react-icons/fa6";
 import { IoLockClosed } from "react-icons/io5";
 import { TbBrandOpenvpn } from "react-icons/tb";
@@ -6,6 +10,10 @@ import FormInput from "../ui/FormInput";
 import DasaLogo from "./DasaLogo";
 import SVGLite from "./SVGLite";
 
+export type loginFormValues = {
+  email: string;
+  password: string;
+};
 function SignIn() {
   /* const slideImages: slidesImagesType[] = [
     {
@@ -27,12 +35,30 @@ function SignIn() {
       url: "https://i.ibb.co/jgk1phW/IMG-20241107-WA0013.jpg",
     },
   ]; */
-  const navigate = useNavigate()
-  function handleLogin(){
-    
-    navigate('/dashboard')
+  const navigate = useNavigate();
+  const { handleSubmit, register } = useForm<loginFormValues>();
 
-  }
+  const {mutateAsync:handleLogin} = useMutation({
+    mutationFn: login,
+    onSuccess: () => {
+
+      toast.success("Login Successfully");
+      setTimeout(()=>{
+        navigate('/dashboard/overview')
+
+      },2*1000)
+    },
+    onError: ()=>{
+      toast.error("Login Failed",{
+        duration: 4000,
+        position: 'top-center'});
+
+    }
+  });
+  const onSubmit: SubmitHandler<loginFormValues> = (data:loginFormValues)=>{
+    console.log(data)
+    handleLogin(data)
+  };
 
   return (
     <div className="flex flex-col   items-center  h-dvh   text-[60%] space-y-12 ">
@@ -40,23 +66,25 @@ function SignIn() {
         <SVGLite type="sticks" />
       </div>
       <div className="   shadow-lg px-2 rounded-md border py-8  absolute top-28 ">
-       
-        <form className="flex flex-col  px-2  " onSubmit={()=>handleLogin()}>
-            <div className="flex  items-center gap-4 pb-4">
-
-          <h1  className="font-poppins font-semibold text-3xl text-[#33312e] pb-4 pt-4">
-            Login
-          </h1>
-          <DasaLogo title="Dagbon Students Association" />
-            </div>
+        <form className="flex flex-col  px-2  " onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex  items-center gap-4 pb-4">
+            <h1 className="font-poppins font-semibold text-3xl text-[#33312e] pb-4 pt-4">
+              Login
+            </h1>
+            <DasaLogo title="Dagbon Students Association" />
+          </div>
           <div className="space-y-4 ">
             <FormInput
+              register={register}
+              inputName="email"
               style="bg-white border-dasadeep border "
               icon={<FaRegUser className="absolute left-2 " />}
               type="email"
               placeholder="Enter Email Address"
             />
             <FormInput
+              register={register}
+              inputName="password"
               style="bg-white border-dasadeep border "
               icon={<IoLockClosed className="absolute left-2  " />}
               type="password"
@@ -76,13 +104,28 @@ function SignIn() {
                 <span className="self-end">Forgot Password?</span>
               </Link>
               <div className="pt-2">
-              Already have an account <Link to='/homepage/signup' className="text-blue-600 font-medium hover:underline">Signup</Link></div>
+                Already have an account{" "}
+                <Link
+                  to="/homepage/signup"
+                  className="text-blue-600 font-medium hover:underline"
+                >
+                  Signup
+                </Link>
+              </div>
             </div>
           </div>
-          <button  className=" bg-dasadeep mt-3 rounded-sm py-2 text-sm font-bold font-Montserrat ">Login</button>
+          <button className=" bg-dasadeep mt-3 rounded-sm py-2 text-sm font-bold font-Montserrat " onClick={()=>toast.loading('Authentication',{
+            duration: 2000
+          })} >
+            Login
+          </button>
         </form>
       </div>
       <div className="absolute bottom-1">
+<Toaster
+  position="top-center"
+  
+/>
         <SVGLite type="sticks" />
       </div>
     </div>

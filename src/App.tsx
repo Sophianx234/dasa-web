@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import Homepage from "./features/pages/Homepage";
 import About from "./features/pages/About";
 import PageNotFound from "./features/pages/PageNotFound";
@@ -32,8 +33,11 @@ import OrderUser from "./features/dashboard/order/OrderUser";
 import WishListPage from "./features/dashboard/pages/WishListPage";
 import ScrollToTop from "./features/utils/ScrollToTop";
 
+const queryClient = new QueryClient()
 function App() {
   return (
+    <QueryClientProvider client={queryClient}>
+
     <BrowserRouter>
     <ScrollToTop/>
       <Routes>
@@ -54,13 +58,13 @@ function App() {
           <Route
             path="/dashboard/account/:id/profile"
             element={<ProfilePage />}
-          />
+            />
           {/* Chat Route */}
 
           <Route
             path="/dashboard/anonymous/write"
             element={<AnonymousMain />}
-          />
+            />
           <Route path="/dashboard/anonymous/view" element={<ViewAnonymous />} />
           <Route
             path="/dashboard/anonymous/conversation"
@@ -108,6 +112,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
+            </QueryClientProvider>
   );
 }
 

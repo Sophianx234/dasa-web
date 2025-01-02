@@ -1,5 +1,4 @@
 import { Path, UseFormRegister } from "react-hook-form";
-import { GiReceiveMoney } from "react-icons/gi";
 import { paymentFormValues } from "./PaymentForm";
 export type planTypeItemProps<T extends paymentFormValues> = {
     planType: string,

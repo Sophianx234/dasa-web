@@ -1,23 +1,26 @@
 import { ReactElement } from "react"
+import { FieldValues, Path, UseFormRegister } from "react-hook-form"
 import { setAnnex } from "../slices/userSlice"
 import { useAppDispatch } from "../utils/hooks"
 
-export type formInputProps = {
+export type formInputProps<T extends FieldValues> = {
 icon: ReactElement,
 type?: string,
 form?: string
 placeholder: string,
 addClass?: string
 style?:string
+register: UseFormRegister<T>
+inputName: Path<T>
 }
-export type hallProps ={
+export type hallProps={
     name: string,
     type: string,
     description: string,
     style:string
     
 }
-function FormInput({icon,type,placeholder,addClass,style}:formInputProps) {
+function FormInput<T extends FieldValues>({icon,type,placeholder,addClass,style,inputName,register}:formInputProps<T>) {
     const universityOfGhanaHostels = [
         {
           name: "Legon Hall",
@@ -87,7 +90,7 @@ function FormInput({icon,type,placeholder,addClass,style}:formInputProps) {
         <div className={`flex  items-center relative ${addClass}`}>
                     {icon} 
            {type!== 'select' ? <input type={type} placeholder={placeholder} 
-            className={`py-2 pl-7 ${style} rounded-sm px-1 font-poppins h-full w-full outline-none focus:outline-offset-1 focus:outline-orange-300 `}/>:<select onChange={e=>dispatch(setAnnex(e.target.value))}  name="" id="" className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`}>
+            className={`py-2 pl-7 ${style} rounded-sm px-1 font-poppins h-full w-full outline-none focus:outline-offset-1 focus:outline-orange-300 `} {...register(inputName)} />:<select onChange={e=>dispatch(setAnnex(e.target.value))}  name="" id="" className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`}>
                 <option value="">Select hall</option>
                 {universityOfGhanaHostels &&universityOfGhanaHostels.map(hall=><option value={hall.type}>{hall.name}</option>)}
             </select> }
