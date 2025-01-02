@@ -1,10 +1,13 @@
+import { useLogout } from "@/features/utils/hooks";
 import { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import { IoIosArrowBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom";
 
 function AccountHeader() {
     const [isScrolled, setIsScrolled] = useState(false);
     const navigate = useNavigate()
+    const {handleLogout} = useLogout(navigate)
 
     useEffect(() => {
       const handleScroll = () => {
@@ -23,8 +26,10 @@ function AccountHeader() {
           }`}>
             <div className="flex pt-4 items-center justify-between mx-4">
             <IoIosArrowBack className="size-5" onClick={()=>navigate(-1)}/>
-            <button className="">Logout</button>
+            <button className="" onClick={()=>handleLogout()}>Logout</button>
             </div>
+            <Toaster
+            position="top-center"/>
         </div>
     )
 }
