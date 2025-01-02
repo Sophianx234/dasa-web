@@ -11,10 +11,29 @@ import FormInput from "../ui/FormInput";
 import { useAppSelector } from "../utils/hooks";
 import Select from "./Select";
 import SVGLite from "./SVGLite";
+import { SubmitHandler, useForm } from "react-hook-form";
 
+export type signupFormValues = {
+  firstName: string;
+  lastName: string;
+  course: string;
+  hall: string;
+  annex: string;
+  email: string;
+  contact: string;
+  password: string;
+  confirmPassword: string;
+};
 function Form() {
+  const { handleSubmit, register } = useForm<signupFormValues>();
   const isAnnex = useAppSelector((store) => store.user.isAnnex);
   console.log(isAnnex);
+
+  const onSubmit: SubmitHandler<signupFormValues> = (
+    data: signupFormValues
+  ) => {
+    console.log(data);
+  };
 
   return (
     <div className="bg-dasalight  h-dvh pt-6 overflow-y-hidden ">
@@ -34,9 +53,15 @@ function Form() {
           </p>
         </div>
 
-        <form action="" className="grid grid-cols-2 gap-x-5 gap-y-3">
+        <form
+          action=""
+          className="grid grid-cols-2 gap-x-5 gap-y-3"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <FormInput
             type="text"
+            register={register}
+            inputName="firstName"
             placeholder="First name"
             style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none "
             icon={<FaRegUser className="absolute left-2  " />}
@@ -44,6 +69,8 @@ function Form() {
 
           <FormInput
             type="text"
+            register={register}
+            inputName="lastName"
             placeholder="Last name"
             style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none "
             icon={<FaRegUser className="absolute left-2  " />}
@@ -51,6 +78,8 @@ function Form() {
 
           <FormInput
             type="email"
+            register={register}
+            inputName="email"
             addClass="col-span-2"
             style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none "
             placeholder="Enter your email address"
@@ -59,6 +88,8 @@ function Form() {
 
           <FormInput
             type="select"
+            register={register}
+            inputName="hall"
             placeholder="Hall of Residence "
             style="bg-transparent border-b-2 border-b-dasadeep text-xs"
             icon={<PiBuildingApartmentLight className="absolute left-2   " />}
@@ -66,6 +97,8 @@ function Form() {
 
           {isAnnex === "Annex" || isAnnex === "UGEL Hostel" ? (
             <Select
+              register={register}
+              inputName="annex"
               type="select"
               style="bg-transparent border-b-2 border-b-dasadeep"
               placeholder={`${isAnnex}`}
@@ -74,6 +107,8 @@ function Form() {
           ) : null}
 
           <Select
+            register={register}
+            inputName="course"
             style="bg-transparent border-b-2 border-b-dasadeep text-sm "
             type="select"
             form="course"
@@ -82,12 +117,16 @@ function Form() {
           />
           <FormInput
             style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none indent-2 "
+            register={register}
+            inputName="contact"
             type="tel"
             placeholder="Contact "
             addClass="col-span-2"
             icon={<LuContact2 className="absolute left-2   " />}
           />
           <FormInput
+            register={register}
+            inputName="password"
             style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none indent-2 "
             type="password"
             placeholder="Password "
@@ -99,6 +138,8 @@ function Form() {
             type="password"
             style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none  indent-2 "
             addClass="col-span-2"
+            register={register}
+            inputName="confirmPassword"
             placeholder="Confirm Password "
             icon={<IoLockOpenOutline className="absolute left-2   " />}
           />

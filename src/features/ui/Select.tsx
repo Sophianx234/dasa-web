@@ -1,7 +1,8 @@
+import { FieldValues } from "react-hook-form"
 import { useAppSelector } from "../utils/hooks"
 import { formInputProps } from "./FormInput"
 
-function Select({icon,addClass,placeholder,form,style}:formInputProps) {
+function Select<T extends FieldValues>({icon,addClass,placeholder,form,style,register,inputName}:formInputProps<T>) {
     const isAnnex = useAppSelector(store=>store.user.isAnnex)
     const UGEL = [
         {
@@ -107,8 +108,9 @@ function Select({icon,addClass,placeholder,form,style}:formInputProps) {
         return (
             <div className={`flex items-center relative ${addClass}`}>
             {icon}
-            <select   name="" id=""
-             className={` ${style} indent-6 font-poppins h-full w-full text-gray-400`}>
+            <select   
+             className={` ${style} indent-6 font-poppins h-full w-full text-gray-400`}
+             {...register(inputName)}>
                 <option >Select {placeholder}</option>
                 {universityOfGhanaPrograms.map(course=><option value={course}>{course}</option>)}
             </select> 
