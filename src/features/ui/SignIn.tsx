@@ -36,32 +36,44 @@ function SignIn() {
     },
   ]; */
   const navigate = useNavigate();
-  const { handleSubmit, register } = useForm<loginFormValues>();
+  const { handleSubmit, register,formState: {errors} } = useForm<loginFormValues>();
 
   const {mutateAsync:handleLogin} = useMutation({
     mutationFn: login,
+    onMutate: ()=>{
+      toast.loading('Authentication',{
+        duration: 1000
+      })
+    },
+    
     onSuccess: () => {
-
+      
+      
       toast.success("Login Successfully");
+      
       setTimeout(()=>{
         navigate('/dashboard/overview')
-
+        
       },2*1000)
     },
     onError: ()=>{
+      
       toast.error("Login Failed",{
         duration: 4000,
         position: 'top-center'});
 
-    }
+    },
+    
   });
   const onSubmit: SubmitHandler<loginFormValues> = (data:loginFormValues)=>{
     console.log(data)
+    console.log(errors)
+    if(!data.email ||!data.password) return
     handleLogin(data)
   };
 
   return (
-    <div className="flex flex-col   items-center  h-dvh   text-[60%] space-y-12 ">
+    <div className="flex flex-col   items-center  h-dvh overflow-x-hidden overflow-y-hidden   text-[60%] space-y-12 ">
       <div className="absolute top-1">
         <SVGLite type="sticks" />
       </div>
@@ -75,6 +87,7 @@ function SignIn() {
           </div>
           <div className="space-y-4 ">
             <FormInput
+            errors={errors}
               register={register}
               inputName="email"
               style="bg-white border-dasadeep border "
@@ -114,9 +127,7 @@ function SignIn() {
               </div>
             </div>
           </div>
-          <button className=" bg-dasadeep mt-3 rounded-sm py-2 text-sm font-bold font-Montserrat " onClick={()=>toast.loading('Authentication',{
-            duration: 2000
-          })} >
+          <button className=" bg-dasadeep mt-3 rounded-sm py-2 text-sm font-bold font-Montserrat " >
             Login
           </button>
         </form>

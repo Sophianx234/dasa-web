@@ -1,5 +1,5 @@
 import { ReactElement } from "react"
-import { FieldValues, Path, UseFormRegister } from "react-hook-form"
+import { FieldErrors, FieldValues, Path, UseFormRegister } from "react-hook-form"
 import { setAnnex } from "../slices/userSlice"
 import { useAppDispatch } from "../utils/hooks"
 
@@ -12,6 +12,7 @@ addClass?: string
 style?:string
 register: UseFormRegister<T>
 inputName: Path<T>
+errors: FieldErrors<T>
 }
 export type hallProps={
     name: string,
