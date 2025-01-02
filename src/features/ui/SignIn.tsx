@@ -1,15 +1,13 @@
-import { login } from "@/services/apiServices";
-import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { FaRegUser } from "react-icons/fa6";
 import { IoLockClosed } from "react-icons/io5";
 import { TbBrandOpenvpn } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 import FormInput from "../ui/FormInput";
+import { useLogin } from "../utils/hooks";
 import DasaLogo from "./DasaLogo";
 import SVGLite from "./SVGLite";
-import { useLogin } from "../utils/hooks";
 
 export type loginFormValues = {
   email: string;
@@ -62,7 +60,6 @@ function SignIn() {
           </div>
           <div className="space-y-4 ">
             <FormInput
-              errMsg="Email is required"
               register={register}
               inputName="email"
               style="bg-white border-dasadeep border "

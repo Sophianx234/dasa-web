@@ -1,9 +1,8 @@
 import { ReactElement } from "react";
 import {
-  FieldErrors,
   FieldValues,
   Path,
-  UseFormRegister,
+  UseFormRegister
 } from "react-hook-form";
 import { setAnnex } from "../slices/userSlice";
 import { useAppDispatch } from "../utils/hooks";
@@ -17,7 +16,6 @@ export type formInputProps<T extends FieldValues> = {
   style?: string;
   register: UseFormRegister<T>;
   inputName: Path<T>;
-  errMsg: string;
 };
 export type hallProps = {
   name: string;
@@ -32,7 +30,7 @@ function FormInput<T extends FieldValues>({
   addClass,
   style,
   inputName,
-  register, errMsg
+  register, 
 }: formInputProps<T>) {
   const universityOfGhanaHostels = [
     {

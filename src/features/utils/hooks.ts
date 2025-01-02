@@ -22,9 +22,9 @@ export function useLogout(navigate: NavigateFunction) {
     },
     onSuccess: () => {
       toast.success("logout successful");
-      dispatch(toggleIsAuthenticated(false));
       setTimeout(() => {
-        navigate("/homepage");
+          navigate("/homepage");
+          dispatch(toggleIsAuthenticated(false));
       }, 1000);
     },
     onError: () => {
