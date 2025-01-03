@@ -104,9 +104,10 @@ function Select<T extends FieldValues>({icon,addClass,placeholder,form,style,reg
         "Diploma in Youth Development Work"
       ];
       
-      if(form==='course')
+      if(form==='course'){
+
         return (
-            <div className={`flex items-center relative ${addClass}`}>
+          <div className={`flex items-center relative ${addClass}`}>
             {icon}
             <select   
              className={` ${style} indent-6 font-poppins h-full w-full text-gray-400`}
@@ -116,22 +117,25 @@ function Select<T extends FieldValues>({icon,addClass,placeholder,form,style,reg
             </select> 
         </div>
     )
-      if(isAnnex === 'Annex')
-    return (
-        <div className={`flex items-center relative ${addClass}`}>
+  }
+     else if(isAnnex === 'Annex'){
+
+       return (
+         <div className={`flex items-center relative ${addClass}`}>
             {icon}
-            { isAnnex === 'Annex' &&
-            <select   name="" id="" className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`}>
+            
+            <select    className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`} {...register(inputName)}>
                 <option >Select {placeholder}</option>
                 {annexes?.map(annex=><option value={annex}>{ annex}</option>)}
-            </select>} 
+            </select>
         </div>
     )
-    if(isAnnex === 'UGEL Hostel')
+  }
+   else if(isAnnex === 'UGEL Hostel')
         return (
             <div className={`flex items-center relative ${addClass}`}>
             {icon}
-            <select   name="" id="" className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`}>
+            <select   id="" className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`} {...register(inputName)}>
                 <option >Select {placeholder}</option>
                 {UGEL.map(annex=><option value={annex?.name}>{ annex?.name}</option>)}
             </select> 

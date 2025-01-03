@@ -1,4 +1,4 @@
-import { login, logout } from "@/services/apiServices";
+import { login, logout, signup } from "@/services/apiServices";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
@@ -63,4 +63,33 @@ export function useLogin(navigate: NavigateFunction) {
   });
 
   return { handleLogin };
+}
+export function useSignup(navigate: NavigateFunction) {
+  const dispatch = useAppDispatch();
+
+  const { mutateAsync: handleSignup } = useMutation({
+    mutationFn: signup,
+    onMutate: () => {
+      toast.loading("Processing your signup request....", {
+        duration: 1000,
+      });
+    },
+
+    onSuccess: () => {
+      toast.success("Signup Successful");
+      dispatch(toggleIsAuthenticated(true));
+
+      setTimeout(() => {
+        navigate("/dashboard/overview");
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.error("Signup Failed", {
+        duration: 4000,
+        position: "top-center",
+      });
+    },
+  });
+
+  return { handleSignup };
 }

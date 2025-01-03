@@ -6,12 +6,14 @@ import {
 } from "react-icons/io5";
 import { LuContact2 } from "react-icons/lu";
 import { PiBuildingApartmentLight } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormInput from "../ui/FormInput";
-import { useAppSelector } from "../utils/hooks";
+import { useAppSelector, useSignup } from "../utils/hooks";
 import Select from "./Select";
 import SVGLite from "./SVGLite";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 export type signupFormValues = {
   firstName: string;
@@ -25,15 +27,27 @@ export type signupFormValues = {
   confirmPassword: string;
 };
 function Form() {
-  const { handleSubmit, register } = useForm<signupFormValues>();
+  const { handleSubmit, register,watch } = useForm<signupFormValues>();
+  const navigate = useNavigate()
   const isAnnex = useAppSelector((store) => store.user.isAnnex);
-  console.log(isAnnex);
-
+  
+const {handleSignup} = useSignup(navigate)
   const onSubmit: SubmitHandler<signupFormValues> = (
     data: signupFormValues
   ) => {
     console.log(data);
+    handleSignup(data)
   };
+  const [passwordMatchError,setPasswordMatchError] = useState<string| null>()
+  const password = watch('password')
+  const confirmPassword = watch('confirmPassword')
+  useEffect(() => {
+    if (confirmPassword && password !== confirmPassword) {
+      setPasswordMatchError("Passwords do not match");
+    } else {
+      setPasswordMatchError(null);
+    }
+  }, [password, confirmPassword]);
 
   return (
     <div className="bg-dasalight  h-dvh pt-6 overflow-y-hidden ">
@@ -52,12 +66,14 @@ function Form() {
             </Link>
           </p>
         </div>
-
+      <Toaster position="top-center"/>
         <form
           action=""
-          className="grid grid-cols-2 gap-x-5 gap-y-3"
+          
           onSubmit={handleSubmit(onSubmit)}
         >
+          <div className="grid grid-cols-2 gap-x-5 gap-y-3">
+
           <FormInput
             type="text"
             register={register}
@@ -93,7 +109,7 @@ function Form() {
             placeholder="Hall of Residence "
             style="bg-transparent border-b-2 border-b-dasadeep text-xs"
             icon={<PiBuildingApartmentLight className="absolute left-2   " />}
-          />
+            />
 
           {isAnnex === "Annex" || isAnnex === "UGEL Hostel" ? (
             <Select
@@ -103,8 +119,8 @@ function Form() {
               style="bg-transparent border-b-2 border-b-dasadeep"
               placeholder={`${isAnnex}`}
               icon={<PiBuildingApartmentLight className="absolute left-2   " />}
-            />
-          ) : null}
+              />
+            ) : null}
 
           <Select
             register={register}
@@ -114,7 +130,7 @@ function Form() {
             form="course"
             placeholder={`Course`}
             icon={<PiBuildingApartmentLight className="absolute left-2   " />}
-          />
+            />
           <FormInput
             style="bg-transparent border-b-2 border-b-dasadeep focus:outline-none indent-2 "
             register={register}
@@ -142,14 +158,15 @@ function Form() {
             inputName="confirmPassword"
             placeholder="Confirm Password "
             icon={<IoLockOpenOutline className="absolute left-2   " />}
-          />
-        </form>
+            />
+            </div>
+            {passwordMatchError && <p className="bg-red-200 mt-2 py-2 px-2 w-full">{passwordMatchError}</p>}
         <p className="pt-7 pb-5">
           By signing up, you acknowledge that you’ve read and accepted our{" "}
           <Link
             to="/terms"
             className="text-blue-950 font-bold hover:underline italic"
-          >
+            >
             {" "}
             Terms of Service
           </Link>{" "}
@@ -157,7 +174,7 @@ function Form() {
           <Link
             to="/policy"
             className="text-blue-950 font-bold hover:underline italic"
-          >
+            >
             Privacy Policy.
           </Link>
         </p>
@@ -166,6 +183,7 @@ function Form() {
             Signup
           </button>
         </div>
+            </form>
       </div>
       <SVGLite type="sticks" />
     </div>

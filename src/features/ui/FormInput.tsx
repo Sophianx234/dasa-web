@@ -4,8 +4,6 @@ import {
   Path,
   UseFormRegister
 } from "react-hook-form";
-import { setAnnex } from "../slices/userSlice";
-import { useAppDispatch } from "../utils/hooks";
 
 export type formInputProps<T extends FieldValues> = {
   icon: ReactElement;
@@ -103,7 +101,7 @@ function FormInput<T extends FieldValues>({
         "Managed by the University of Ghana Enterprise Limited, offering modern accommodation options for students.",
     },
   ];
-  const dispatch = useAppDispatch();
+  
 
   return (
     <div className={`flex  items-center relative ${addClass}`}>
@@ -117,15 +115,14 @@ function FormInput<T extends FieldValues>({
         required />
       ) : (
         <select
-          onChange={(e) => dispatch(setAnnex(e.target.value))}
-          name=""
-          id=""
+          
+          {...register(inputName)}
           className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`}
         >
           <option value="">Select hall</option>
           {universityOfGhanaHostels &&
             universityOfGhanaHostels.map((hall) => (
-              <option value={hall.type}>{hall.name}</option>
+              <option value={hall.name}>{hall.name}</option>
             ))}
         </select>
       )}
