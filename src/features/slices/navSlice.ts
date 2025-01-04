@@ -14,6 +14,7 @@ const initialState = {
   renameImage: false,
   revealUplaoadUserImage: false,
   isAuthenticated: false,
+  showToaster: false
 };
 const navSlice = createSlice({
   name: "nav",
@@ -58,9 +59,13 @@ const navSlice = createSlice({
     toggleIsAuthenticated(state, action) {
       state.isAuthenticated = action.payload;
     },
+    toggleShowToaster(state) {
+      state.showToaster = !state.showToaster;
+    },
   },
 });
 export const {
+  toggleShowToaster,
   toggleNav,
   toggleSidebar,
   toggleChatMenu,

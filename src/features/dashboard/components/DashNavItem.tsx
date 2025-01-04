@@ -17,14 +17,10 @@ function DashNavItem({icon, arrIcon,navTitle, link}:dashNavItem) {
             handleLogout()
             
 
-        } else{
-
-            dispatch(toggleSidebar())
         }
         
 
     }
-    const dispatch = useAppDispatch()
     return (
         <li  >
             <Link to={`${link.includes('logout')?'':`/${link}`}`} onClick={handleNavLinkOnClick} className="flex  items-center gap-3 border py-4 px-2 font-Montserrat text-xl group hover:bg-dasalight hover:py-4 hover:px-4 rounded-xl transition-all duration-150 font-bold text-[#191817] ">

@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { FaRegUser } from "react-icons/fa6";
 import { IoLockClosed } from "react-icons/io5";
 import { TbBrandOpenvpn } from "react-icons/tb";
@@ -34,16 +35,22 @@ function SignIn() {
       url: "https://i.ibb.co/jgk1phW/IMG-20241107-WA0013.jpg",
     },
   ]; */
-  const navigate = useNavigate();
-  const { handleSubmit, register,formState: {errors} } = useForm<loginFormValues>();
 
-  const {handleLogin} = useLogin(navigate)
-  const onSubmit: SubmitHandler<loginFormValues> = (data:loginFormValues)=>{
-    console.log(data)
-    console.log(errors)
-    if(!data.email ||!data.password) return
-    handleLogin(data)
+  const navigate = useNavigate();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<loginFormValues>();
+
+  const { handleLogin } = useLogin(navigate);
+  const onSubmit: SubmitHandler<loginFormValues> = (data: loginFormValues) => {
+    console.log(data);
+    console.log(errors);
+    if (!data.email || !data.password) return;
+    handleLogin(data);
   };
+  
 
   return (
     <div className="flex flex-col   items-center  h-dvh overflow-x-hidden overflow-y-hidden   text-[60%] space-y-12 ">
@@ -51,7 +58,10 @@ function SignIn() {
         <SVGLite type="sticks" />
       </div>
       <div className="   shadow-lg px-2 rounded-md border py-8  absolute top-28 ">
-        <form className="flex flex-col  px-2  " onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="flex flex-col  px-2  "
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <div className="flex  items-center gap-4 pb-4">
             <h1 className="font-poppins font-semibold text-3xl text-[#33312e] pb-4 pt-4">
               Login
@@ -67,8 +77,8 @@ function SignIn() {
               type="email"
               placeholder="Enter Email Address"
             />
-            {errors&&<div className="bg-black">{errors.email?.message}</div>}
-            
+            {errors && <div className="bg-black">{errors.email?.message}</div>}
+
             <FormInput
               register={register}
               inputName="password"
@@ -77,7 +87,6 @@ function SignIn() {
               type="password"
               placeholder="Password"
             />
-
 
             <div>
               <div className="flex  text-xs gap-2">
@@ -102,18 +111,15 @@ function SignIn() {
               </div>
             </div>
           </div>
-          <button className=" bg-dasadeep mt-3 rounded-sm py-2 text-sm font-bold font-Montserrat " >
+          <button className=" bg-dasadeep mt-3 rounded-sm py-2 text-sm font-bold font-Montserrat ">
             Login
           </button>
         </form>
       </div>
       <div className="absolute bottom-1">
-<Toaster
-  position="top-center"
-  
-/>
         <SVGLite type="sticks" />
       </div>
+      <Toaster position={"top-center"} />
     </div>
   );
 }

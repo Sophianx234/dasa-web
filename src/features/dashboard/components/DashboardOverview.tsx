@@ -9,6 +9,9 @@ import UserStats from "./UserStats";
 import Welcome from "./Welcome";
 
 function DashboardOverview() {
+  
+  
+
   return (
     <div className=" ">
       <HeaderDashboard />
@@ -23,6 +26,7 @@ function DashboardOverview() {
       <BriefGallery style="overview" />
       <Footer navType="dash"/>
       </div>
+      
     </div>
   );
 }
