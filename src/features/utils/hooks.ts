@@ -70,9 +70,7 @@ export function useSignup(navigate: NavigateFunction) {
   const { mutateAsync: handleSignup } = useMutation({
     mutationFn: signup,
     onMutate: () => {
-      toast.loading("Processing your signup request....", {
-        duration: 1000,
-      });
+      toast.loading("Processing your signup request....")
     },
 
     onSuccess: () => {

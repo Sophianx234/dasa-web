@@ -45,7 +45,7 @@ export async function logout(): Promise<logoutResponse> {
 
 export async function signup(
   userInfo: signupCredentials
-) {
+):Promise<unknown> {
   const { data } = await axios.post(
     "https://dasa-api.onrender.com/api/v1/users/signup",
     userInfo

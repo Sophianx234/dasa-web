@@ -102,5 +102,8 @@ export default {
 	  }
 	},
 	plugins: [require("tailwindcss-animate"), require('daisyui')],
+	 daisyui: {
+    themes: ["light"], // Keep only the light theme or other themes you prefer
+  },
   };
   
