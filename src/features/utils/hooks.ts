@@ -1,14 +1,15 @@
-import { login, logout, signup } from "@/services/apiServices";
-import { useMutation } from "@tanstack/react-query";
+import { getUser, login, logout, signup } from "@/services/apiServices";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { NavigateFunction } from "react-router-dom";
-import type { AppDispatch, RootState } from "./../../../store";
 import { toggleIsAuthenticated, toggleSidebar } from "../slices/navSlice";
+import type { AppDispatch, RootState } from "./../../../store";
 
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
 export const useAppSelector = useSelector.withTypes<RootState>();
+
 
 
 export function useLogout(navigate: NavigateFunction) {
@@ -107,3 +108,15 @@ export function useSignup(navigate: NavigateFunction) {
 
   return { handleSignup };
 }
+
+export function useGetUser() {
+
+  const { isLoading,data:user,error } =  useQuery({
+    queryKey: ['user'],
+    queryFn: getUser,
+    
+  });
+
+  return { isLoading,user,error };
+}
+
