@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { FaRegUser } from "react-icons/fa6";
 import { IoLockClosed } from "react-icons/io5";
 import { TbBrandOpenvpn } from "react-icons/tb";

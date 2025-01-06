@@ -48,12 +48,7 @@ export async function getUser(): Promise<signupCredentials> {
   
 
   const { data } = await axios.get(`${API_URL}/users/getme`,{
-    headers:{
-      "Content-Type": "application/json"
-
-    }
-    ,
-    withCredentials:true
+    
   }
     
   )
