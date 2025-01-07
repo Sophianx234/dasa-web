@@ -63,10 +63,9 @@ export function useLogin(navigate: NavigateFunction) {
     onError: () => {
       toast.dismiss()
       toast.error("Login Failed", {
-        duration: 4000,
+        duration: 1000,
         position: "top-center",
       });
-      toast.dismiss()
 
     },
   });
@@ -98,10 +97,9 @@ export function useSignup(navigate: NavigateFunction) {
     onError: () => {
       toast.dismiss()
       toast.error("Signup Failed", {
-        duration: 4000,
+        duration: 1000,
         position: "top-center",
       });
-      toast.dismiss()
 
     },
   });

@@ -1,14 +1,12 @@
-import { GoBell } from "react-icons/go"
-import AvatarComponent from "./AvatarComponent"
-import { IoMenuOutline } from "react-icons/io5"
-import { useAppDispatch, useAppSelector } from "@/features/utils/hooks"
 import { toggleSidebar } from "@/features/slices/navSlice"
+import { useAppDispatch } from "@/features/utils/hooks"
+import { GoBell } from "react-icons/go"
+import { IoMenuOutline } from "react-icons/io5"
 import { Link } from "react-router-dom"
-import { useEffect } from "react"
+import AvatarComponent from "./AvatarComponent"
 
 function HeaderDashboard() {
     const dispatch = useAppDispatch()
-    const {openSidebar} = useAppSelector(store=>store.nav)
     
     return (
         <div className="bg-dasadeep    pb-10 mb-10 sticky  z-40 -top-1 left-0 right-0">

@@ -2,7 +2,7 @@ import { getUser } from "@/services/apiServices"
 import { useQuery } from "@tanstack/react-query"
 
 function Welcome() {
-  const {data:user,isLoading,error} = useQuery({
+  const {data:user,isLoading} = useQuery({
     queryKey: ['user'],
     queryFn: getUser
   })

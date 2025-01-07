@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const API_URL = "https://dasa-api.onrender.com/api/v1"
+// const API_URL = "localhost:/api/v1"
+// const API_URL = "127.0.0.1:8000/api/v1"
+// const API_URL = "https://dasa-api.onrender.com/api/v1"
+const API_URL = "http://localhost:8000/api/v1"
+
 export type LoginCredentials = {
   email: string;
   password: string;
@@ -40,7 +44,9 @@ export async function logout(): Promise<logoutResponse> {
 }
 
 export async function signup(userInfo: signupCredentials): Promise<unknown> {
-  const { data } = await axios.post(`${API_URL}/users/signup`, userInfo);
+  const { data } = await axios.post(`${API_URL}/users/signup`, userInfo,{
+    withCredentials:true
+  });
   return data;
 }
 
