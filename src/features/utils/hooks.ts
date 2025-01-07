@@ -47,7 +47,7 @@ export function useLogin(navigate: NavigateFunction) {
   const { mutateAsync: handleLogin } = useMutation({
     mutationFn: login,
     onMutate: () => {
-      toast.loading("Authentication");
+      toast.loading("Authenticating");
     },
 
     onSuccess: () => {

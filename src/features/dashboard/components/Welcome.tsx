@@ -1,14 +1,15 @@
-import { getUser } from "@/services/apiServices"
+import { getUser, userType } from "@/services/apiServices"
 import { useQuery } from "@tanstack/react-query"
 
 function Welcome() {
-  const {data:user,isLoading} = useQuery({
+  const {data,isLoading} = useQuery({
     queryKey: ['user'],
     queryFn: getUser
   })
   
   if(isLoading) return <>loading</>
-  console.log(user)
+  const {user} = data as userType
+  console.log(data)
     return (
         <div className="border-2 mx-4 my-6 shadow-md rounded-md ">
           <div className="px-2 py-2 pb-7">

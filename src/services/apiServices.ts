@@ -2,8 +2,8 @@ import axios from "axios";
 
 // const API_URL = "localhost:/api/v1"
 // const API_URL = "127.0.0.1:8000/api/v1"
-// const API_URL = "https://dasa-api.onrender.com/api/v1"
-const API_URL = "http://localhost:8000/api/v1"
+const API_URL = "https://dasa-api.onrender.com/api/v1"
+// const API_URL = "http://localhost:8000/api/v1"
 
 export type LoginCredentials = {
   email: string;
@@ -32,8 +32,13 @@ export type signupCredentials = {
 export type logoutResponse = {
   status: string;
 };
+export type userType ={
+  status: string,
+  user: signupCredentials
+} 
 
 export async function login(creds: LoginCredentials): Promise<LoginResponse> {
+  axios.defaults.withCredentials = true;
   const { data } = await axios.post(`${API_URL}/users/login`, creds);
   return data;
 }
@@ -50,17 +55,12 @@ export async function signup(userInfo: signupCredentials): Promise<unknown> {
   return data;
 }
 
-export async function getUser(): Promise<signupCredentials> {
-  
-
-  const { data } = await axios.get(`${API_URL}/users/getme`,{
-    
-  }
-    
-  )
+export async function getUser(): Promise<userType> {
+  axios.defaults.withCredentials = true;
+  const { data } = await axios.get(`${API_URL}/users/getme`)
   return data;
 }
-export async function getUsers(): Promise<signupCredentials[]> {
+export async function getUsers(): Promise<unknown[]> {
   const { data } = await axios.get(`${API_URL}/users`);
   return data;
 }
