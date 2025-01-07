@@ -109,12 +109,12 @@ export function useSignup(navigate: NavigateFunction) {
 
 export function useGetUser() {
 
-  const { isLoading,data:user,error } =  useQuery({
+  const { isLoading,data,error } =  useQuery({
     queryKey: ['user'],
     queryFn: getUser,
     
   });
 
-  return { isLoading,user,error };
+  return { isLoading,data,error };
 }
 
