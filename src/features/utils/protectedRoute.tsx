@@ -1,17 +1,20 @@
 import { ReactNode, useEffect } from "react";
-import { useAppSelector } from "./hooks";
+import { useAppDispatch, useAppSelector } from "./hooks";
 import { useNavigate } from "react-router-dom";
+import { toggleIsAuthenticated } from "../slices/navSlice";
 
 export type protectedRouteProp = {
     children:ReactNode
 }
 export function ProtectedRoute({children}:protectedRouteProp){
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
     const {isAuthenticated} = useAppSelector(store=>store.nav)
-
     useEffect(function(){
-        if(!isAuthenticated) navigate('/')
-    },[navigate,isAuthenticated])
+        const token = localStorage.getItem('token')
+        if(!token) navigate('/')
+            dispatch(toggleIsAuthenticated(true))
+    },[navigate,dispatch])
 
     return isAuthenticated? children :null
 }

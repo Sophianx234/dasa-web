@@ -1,4 +1,4 @@
-import { getUser, login, logout, signup } from "@/services/apiServices";
+import { getUser, login, LoginResponse, logout, signup } from "@/services/apiServices";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +23,7 @@ export function useLogout(navigate: NavigateFunction) {
     onSuccess: () => {
       toast.dismiss()
       toast.success("logout successful");
+      localStorage.removeItem('token')
       setTimeout(() => {
         
         toast.dismiss()
@@ -50,9 +51,10 @@ export function useLogin(navigate: NavigateFunction) {
       toast.loading("Authenticating");
     },
 
-    onSuccess: () => {
+    onSuccess: (data:LoginResponse) => {
       toast.dismiss()
       toast.success("Login Successfully");
+      localStorage.setItem('token',data.token)
       dispatch(toggleIsAuthenticated(true));
 
       setTimeout(() => {

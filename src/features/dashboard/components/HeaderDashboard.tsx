@@ -1,5 +1,5 @@
 import { toggleSidebar } from "@/features/slices/navSlice"
-import { useAppDispatch } from "@/features/utils/hooks"
+import { useAppDispatch, useGetUser } from "@/features/utils/hooks"
 import { GoBell } from "react-icons/go"
 import { IoMenuOutline } from "react-icons/io5"
 import { Link } from "react-router-dom"
@@ -7,6 +7,7 @@ import AvatarComponent from "./AvatarComponent"
 
 function HeaderDashboard() {
     const dispatch = useAppDispatch()
+    const {isLoading,data} = useGetUser()
     
     return (
         <div className="bg-dasadeep    pb-10 mb-10 sticky  z-40 -top-1 left-0 right-0">

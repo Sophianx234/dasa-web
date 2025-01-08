@@ -2,7 +2,7 @@ import SignIn from "../ui/SignIn"
 
 function Login() {
     return (
-        <div className="bg-white overflow-x-hidden">
+        <div className="overflow-hidden">
             <SignIn/>
         </div>
     )
