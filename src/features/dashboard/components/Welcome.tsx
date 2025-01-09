@@ -12,7 +12,7 @@ function Welcome() {
           <div className="px-2 py-2 pb-7">
             <div className="overflow-hidden flex justify-center  ">
 
-          <img className="  w-full" src="https://i.ibb.co/YtfKtdq/photo-79-2024-10-31-06-52-36.jpg" alt="photo-79-2024-10-31-06-52-36" />
+          <img className="  w-full" src={user.profileImage} alt="photo-79-2024-10-31-06-52-36" />
             </div>
             <h1 className=" font-mulish font-bold text-lg  pt-4">Hey {user?.firstName} 👋</h1>
             <p className="font-poppins tracking-wide text-sm py-1 pb-2  ">

@@ -10,6 +10,7 @@ import ProfileImage from "./ProfileImage";
 import RadialProgress from "./RadialProgress";
 import SelectButton from "./SelectButton";
 import { useNavigate } from "react-router-dom";
+import UserAccountCard from "./UserAccountCard";
 
 export type profileFormValues = {
   name: string;
@@ -56,17 +57,7 @@ function ProfileForm() {
           <FaArrowLeftLong onClick={()=>navigate(-1)}/> Edit Profile
         </div>
       </div>
-      <div className="flex items-center justify-center mt-4 shadow-md py-4 px-3 rounded-md mx-2">
-        <div>
-          <h1 className="font-bold font-Montserrat">You only need 20% more!</h1>
-          <p className="font-poppins text-sm">
-            Complete your data, and get access to exclusive DaSA events.
-          </p>
-        </div>
-        <div>
-          <RadialProgress />
-        </div>
-      </div>
+      <UserAccountCard/>
 
       <ProfileImage />
 

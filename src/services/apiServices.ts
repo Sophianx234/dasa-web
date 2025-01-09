@@ -26,15 +26,20 @@ export type signupCredentials = {
   contact: string;
   hall?: string;
   course?: string;
-
+  
   confirmPassword?: string | boolean | null;
 };
+export type signupCredentialsExtended =  signupCredentials&{
+  username: string,
+  profileImage: string
+
+}
 export type logoutResponse = {
   status: string;
 };
 export type userType ={
   status: string,
-  user: signupCredentials
+  user: signupCredentialsExtended
 } 
 
 export async function login(creds: LoginCredentials): Promise<LoginResponse> {
