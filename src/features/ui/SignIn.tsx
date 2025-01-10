@@ -52,9 +52,12 @@ function SignIn() {
   
 
   return (
-    <div className="flex flex-col   items-center  h-dvh overflow-x-hidden overflow-y-hidden   text-[60%] space-y-12 ">
+    <div className="flex flex-col overflow-hidden  items-center  h-dvh text-[60%] space-y-12 ">
       <div className="absolute top-1">
+        <div className="overflow-x-hidden w-[25rem]">
+
         <SVGLite type="sticks" />
+        </div>
       </div>
       <div className="   shadow-lg px-2 rounded-md border py-8  absolute top-28 ">
         <form
@@ -116,7 +119,10 @@ function SignIn() {
         </form>
       </div>
       <div className="absolute bottom-1">
+      <div className="overflow-x-hidden w-[25rem]">
+
         <SVGLite type="sticks" />
+      </div>
       </div>
       <Toaster position={"top-center"} />
     </div>

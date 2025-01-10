@@ -3,7 +3,7 @@ export type svgLiteProps = {
 };
 function SVGLite({ type }: svgLiteProps) {
   return (
-    <div>
+    <div className="overflow-hidden ">
       {type === "lines" ? (
        <svg viewBox="18.954254901960784 260.41268 854.7058823529412 60.55999999999999" y="0px" x="0px" xmlns="http://www.w3.org/2000/svg" id="Capa_1" version="1.1" width="1364.7058823529412" height="30.55999999999999">
        <g>

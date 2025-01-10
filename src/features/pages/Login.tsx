@@ -2,7 +2,7 @@ import SignIn from "../ui/SignIn"
 
 function Login() {
     return (
-        <div className="overflow-hidden">
+        <div className=" ">
             <SignIn/>
         </div>
     )
