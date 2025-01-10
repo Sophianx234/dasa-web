@@ -69,3 +69,18 @@ export async function getUsers(): Promise<unknown[]> {
   const { data } = await axios.get(`${API_URL}/users`);
   return data;
 }
+export async function updateUser(update:unknown): Promise<unknown[]> {
+  console.log(update)
+  axios.defaults.withCredentials = true;
+  const { data } = await axios.patch(`${API_URL}/users/update-user`,update,{
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  })
+  return data;
+}
+export async function changeProfile(update:unknown): Promise<unknown[]> {
+  console.log(update)
+  const { data } = await axios.patch(`${API_URL}/users/upload`,update)
+  return data;
+}

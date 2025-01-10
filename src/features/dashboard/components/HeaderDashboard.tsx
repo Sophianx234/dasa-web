@@ -20,7 +20,7 @@ function HeaderDashboard() {
                 <IoMenuOutline className="size-9 stroke-[#33312ee7]"/>
                     </button>
                     <Link to='/dashboard/overview' className="hover:scale-105">
-                <img src="https://i.ibb.co/n8hRM6d/dasalogo-removebg.png" className="w-16" />
+                <img src="https://i.ibb.co/n8hRM6d/dasalogo-removebg.png" className="w-16 " />
                     </Link>
                 </div>
 

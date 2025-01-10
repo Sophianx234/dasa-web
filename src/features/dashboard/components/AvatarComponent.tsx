@@ -1,19 +1,18 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useGetUser } from "@/features/utils/hooks"
 import { userType } from "@/services/apiServices"
-import ProfileSkeleton from "@/skeletons/profileSkeleton"
 
 
 function AvatarComponent() {
     const {isLoading,data } = useGetUser()
-    if(isLoading) return <ProfileSkeleton/>
+    if(isLoading) return <>loading</>
     const {user} = data as userType 
     const abbrName = user.username.split(' ').map((name:string)=>name[0]).join('')
     console.log(abbrName)
     return (
         <div>
             <Avatar>
-  <AvatarImage src={user.profileImage} />
+  <AvatarImage src={user.profileImage} className="object-cover object-top" />
   <AvatarFallback>{abbrName}</AvatarFallback>
 
 </Avatar>

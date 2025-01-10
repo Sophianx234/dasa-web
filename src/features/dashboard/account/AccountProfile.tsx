@@ -10,9 +10,9 @@ function AccountProfile() {
         <div className="">
             <div>
                 <div className="flex justify-center">
-            <div className="bg-dasalight w-fit   rounded-full overflow-hidden">
+            <div className="bg-dasalight w-fit   rounded-full overflow-hidden ">
 
-            <img src={user.profileImage} alt="profile-icon-x" className="w-16"/>
+            <img src={user.profileImage} alt="profile-icon-x" className="  object-cover size-24"/>
             </div>
                 </div>
                 <div className="pb-2 text-center  " >
