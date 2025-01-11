@@ -84,3 +84,7 @@ export async function changeProfile(update:unknown): Promise<unknown[]> {
   const { data } = await axios.patch(`${API_URL}/users/upload`,update)
   return data;
 }
+export async function getGallery(page:number,limit:number): Promise<unknown[]> {
+  const { data } = await axios.get(`${API_URL}/media?field=_id,secure_url,public_id,format&page=${page}&limit=${limit}`)
+  return data;
+}

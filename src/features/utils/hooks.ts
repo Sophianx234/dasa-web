@@ -1,5 +1,6 @@
 import {
   changeProfile,
+  getGallery,
   getUser,
   login,
   LoginResponse,
@@ -16,6 +17,50 @@ import type { AppDispatch, RootState } from "./../../../store";
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
 export const useAppSelector = useSelector.withTypes<RootState>();
+
+
+
+class queryOptions {
+  queryClient = useQueryClient();
+  sInfor: string
+  err: string
+  pending: string
+  key: string
+  constructor(sInfo:string,err:string,pending:string,key:string){
+    this.key = key
+    this.sInfor = sInfo
+    this.err = err
+    this.pending = pending
+    
+
+  }
+  onMutate(){
+       toast.loading(this.pending);
+       return this
+    }
+    
+    onSuccess(){
+      toast.dismiss();
+      toast.success(this.sInfor);
+      this.queryClient.invalidateQueries({
+        queryKey: [this.key],
+      });
+    
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+      return this
+    }
+    onError(){
+      toast.dismiss();
+      toast.error(this.err, {
+        duration: 1000,
+        position: "top-center",
+      });
+
+    }
+    
+  }
 
 export function useLogout(navigate: NavigateFunction) {
   const dispatch = useAppDispatch();
@@ -179,4 +224,13 @@ export function useChangeUserProfile() {
   });
 
   return { handleChangeProfile };
+}
+export function useGallery(page:number,limit:number) {
+  const {isLoading, data,error} = useQuery({
+    queryFn: ()=>getGallery(page,limit),
+    queryKey: ['gallery',page,limit]
+
+  })
+
+  return { isLoading,data,error };
 }

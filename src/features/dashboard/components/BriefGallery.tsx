@@ -7,6 +7,7 @@ export type BriefGalleryProps = {
     style: "overview"|'side'
 }
 function BriefGallery({style}:BriefGalleryProps) {
+    
     const imageLinks = [
         "https://i.ibb.co/jgk1phW/IMG-20241107-WA0013.jpg",
         "https://i.ibb.co/ngfp99X/IMG-20241107-WA0007.jpg",
