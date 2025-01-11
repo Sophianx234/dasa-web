@@ -10,20 +10,40 @@ export function shuffleArray<T>(array:T[], freezeCount:number) {
 
 
  
-export function paginationRange(totalPages:number){
-      const range = [];
-      const maxPage = totalPages;
+  export function paginationRange(
+    totalPages: number,
+    currentPage: number
+  ): (number | string)[] {
+    const range: (number | string)[] = [];
+    const firstPages = Math.min(3, totalPages);
   
-      // First 5 pages (if available)
-      for (let i = 1; i <= Math.min(3, maxPage); i++) {
+    // Add first 3 pages
+    for (let i = 1; i <= firstPages; i++) {
+      range.push(i);
+    }
+  
+    // If we're on a page before the ellipsis, show the next 3 pages
+    if (currentPage >= firstPages && currentPage < totalPages - 2) {
+      // Add ellipsis if there's more pages after
+      range.push('...');
+  
+      // Add the next 3 pages after the first 3
+      const nextPageStart = currentPage + 1;
+      const nextPageEnd = Math.min(currentPage + 3, totalPages - 1);
+      for (let i = nextPageStart; i <= nextPageEnd; i++) {
         range.push(i);
       }
+    }
   
-      // Show ellipsis if there are more pages beyond 5
-      if (maxPage > 3) {
-        range.push('...');
-        range.push(maxPage); // Last page
-      }
+    // Always show the last page
+    if (totalPages > 1 && range[range.length - 1] !== totalPages) {
+      range.push(totalPages);
+    }
   
-      return range;
-    };
+    // Add ellipsis only if there are more pages after the 3rd group
+    if (totalPages > 3 && !range.includes('...')) {
+      range.push('...');
+    }
+  
+    return range;
+  }

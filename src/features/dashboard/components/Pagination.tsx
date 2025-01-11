@@ -10,16 +10,17 @@ import { paginationRange } from "@/features/utils/helpers";
 import { useState } from "react";
 
 export function PaginationX() {
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(10);
+  const [currPage, setCurrPage] = useState<number>(1);
 
 
 
-  const range = paginationRange(12);
+  const range = paginationRange(page,currPage);
   function handlePrevious() {
-    if (page > 1) setPage((page) => page - 1);
+    if (currPage > 1) setCurrPage((page) => page - 1);
   }
   function handleNext() {
-    setPage((page) => page + 1);
+    setCurrPage((page) => page + 1);
   }
 
   return (
