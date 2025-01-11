@@ -1,22 +1,20 @@
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
-  PaginationPrevious,
+  PaginationPrevious
 } from "@/components/ui/pagination";
-import { useGallery } from "@/features/utils/hooks";
-import { getGalleryResponse, mediaType } from "@/services/apiServices";
+import { paginationRange } from "@/features/utils/helpers";
 import { useState } from "react";
 
 export function PaginationX() {
   const [page, setPage] = useState<number>(1);
 
-  const { isLoading, data } = useGallery(page, 12);
-  if (isLoading) return <>loading</>;
-  const { media } = data as getGalleryResponse;
+
+
+  const range = paginationRange(12);
   function handlePrevious() {
     if (page > 1) setPage((page) => page - 1);
   }
@@ -30,25 +28,23 @@ export function PaginationX() {
         <PaginationItem>
           <PaginationPrevious onClick={handlePrevious} />
         </PaginationItem>
-        {media.map((item: mediaType, i: number) => {
-          return (
-            <PaginationItem key={item._id}>
-              <PaginationLink onClick={()=>setPage(i) } className={`${i==page? "isActive":null}`} >{i}</PaginationLink>
-            </PaginationItem>
-          );
+        {range.map((item, i) => {
+          if (item === "...") {
+            return (
+              <PaginationItem key={item}>
+                <PaginationLink onClick={() => setPage(i)}>...</PaginationLink>
+              </PaginationItem>
+            );
+          }
+
+            return (
+              <PaginationItem key={item}>
+                <PaginationLink  onClick={() => setPage(i)} isActive={i===page&&true} >{i+1}</PaginationLink>
+              </PaginationItem>
+            );
+          
         })}
 
-        <PaginationItem>
-          <PaginationLink href="#" isActive>
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
         <PaginationItem>
           <PaginationNext onClick={handleNext} />
         </PaginationItem>
