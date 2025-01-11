@@ -42,6 +42,38 @@ export type userType ={
   user: signupCredentialsExtended
 } 
 
+export type mediaType =  {
+  _id: string
+  asset_id: string,
+  public_id: string,
+  version: number,
+  version_id: string,
+  signature: string,
+  width: number,
+  height: number,
+  format: string,
+  resource_type: string,
+  created_at: Date,
+  tags: string[],
+  bytes: number,
+  type: string,
+  etag: string,
+  placeholder: boolean,
+  url: string,
+  secure_url: string,
+  asset_folder: string,
+  display_name: string,
+  original_filename:string
+  
+,
+    uploadedAt: Date
+}
+export type getGalleryResponse = {
+  status: string,
+  numMedia: number,
+  media: mediaType[]
+}
+
 export async function login(creds: LoginCredentials): Promise<LoginResponse> {
   axios.defaults.withCredentials = true;
   const { data } = await axios.post(`${API_URL}/users/login`, creds);
@@ -84,7 +116,7 @@ export async function changeProfile(update:unknown): Promise<unknown[]> {
   const { data } = await axios.patch(`${API_URL}/users/upload`,update)
   return data;
 }
-export async function getGallery(page:number,limit:number): Promise<unknown[]> {
+export async function getGallery(page:number,limit:number): Promise<getGalleryResponse> {
   const { data } = await axios.get(`${API_URL}/media?field=_id,secure_url,public_id,format&page=${page}&limit=${limit}`)
   return data;
 }
