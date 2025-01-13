@@ -86,58 +86,19 @@ function BriefGallery({ style }: BriefGalleryProps) {
     }
   ];
   
-  const [page, setPage] = useState<number>(1);
-  const [images, setImages] = useState<mediaType[] | null>(null);
-  const [hasMore, setHasMore] = useState<boolean>(false);
-  const spinnerRef = useRef<HTMLDivElement | null>(null);
-  const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
-  const { isLoading, error, data } = useGallery(page, 12);
-
+  
+  
 //   const shuffledImageLinks = shuffleArray(imageLinks, 3);
 
-  useEffect(
-    function () {
-      if (isIntersecting) {
-        setPage((page) => page + 1);
-      }
-    },
-    [page, isIntersecting]
-  );
+  
+  const { isLoading, error, data } = useGallery(1, 12);
 
-  useEffect(function(){
-    if(data){
-        const {media} = data as getGalleryResponse
-        console.log(media)
-        setImages(images=>{
-            if(!images) return media
-            return [...images,...media]
-        })
-    }
-  },[data])
+  
 
-  useEffect(
-    function () {
-      const ref = spinnerRef.current;
-      const observer = new IntersectionObserver(
-        function ([entry]) {
-          setIsIntersecting(entry.isIntersecting);
-        },
-        {
-          root: null,
-          rootMargin: "0px",
-          threshold: 1,
-        }
-      );
-      if (ref) {
-        observer.observe(ref);
-      }
-      return () =>{
-        if(ref) observer.unobserve(ref as HTMLDivElement);}
-    },
-    [spinnerRef]
-  );
 
-  if (isLoading) return <>loading</>;
+
+if (isLoading) return <>loading</>;
+const {media} = data as getGalleryResponse
   if (error) return <>{error.message}</>;
 
   return (
@@ -152,9 +113,9 @@ function BriefGallery({ style }: BriefGalleryProps) {
 
       {style !== "overview" && (
         <div className="pt-2 ">
-          <ImageViewer images={images as mediaType[]} />
+          <ImageViewer images={imageLinks as mediaType[]} />
           <div className="flex justify-center py-5">
-            <PropagateLoader size={18} ref={spinnerRef} />
+            <PropagateLoader size={18}  />
           </div>
 
           <div className="pt-6">
