@@ -7,6 +7,8 @@ import { useEffect, useRef, useState } from "react";
 import { useGallery } from "@/features/utils/hooks";
 import { PropagateLoader } from "react-spinners";
 import { getGalleryResponse, mediaType } from "@/services/apiServices";
+import InfiniteScroll from "react-infinite-scroller";
+import axios from "axios";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -89,17 +91,25 @@ function BriefGallery({ style }: BriefGalleryProps) {
   
   
 //   const shuffledImageLinks = shuffleArray(imageLinks, 3);
+const [images,setImages] = useState<mediaType[]|null>(null)
+async function loadMore(){
+    
+    const { data } = await axios.get(`http://localhost:8000/api/v1/media?field=_id,secure_url,public_id,format&page=${4}&limit=${12}`)
+    console.log(data)
+    if(data)
+    const {media} = data as getGalleryResponse
+    if(media)
+        setTimeout(function(){
+            setImages((data:mediaType[])=>[...data,...media])
+        },
+1000)
+    }
 
   
-  const { isLoading, error, data } = useGallery(1, 12);
-
-  
 
 
 
-if (isLoading) return <>loading</>;
-const {media} = data as getGalleryResponse
-  if (error) return <>{error.message}</>;
+
 
   return (
     <div>
@@ -112,16 +122,26 @@ const {media} = data as getGalleryResponse
       </div>
 
       {style !== "overview" && (
-        <div className="pt-2 ">
-          <ImageViewer images={imageLinks as mediaType[]} />
-          <div className="flex justify-center py-5">
+        <>
+                <InfiniteScroll loader={
+                    <div className="flex justify-center py-5">
+                
             <PropagateLoader size={18}  />
           </div>
+        }
+        hasMore={true}
+        loadMore={loadMore}>
 
+        <div className="pt-2 ">
+          <ImageViewer images={images as mediaType[]} />
+          </div>
+          
+
+        </InfiniteScroll>
           <div className="pt-6">
             <Footer navType="dash" />
           </div>
-        </div>
+              </>
       )}
     </div>
   );

@@ -12,9 +12,9 @@ export function ProtectedRoute({children}:protectedRouteProp){
     const {isAuthenticated} = useAppSelector(store=>store.nav)
     useEffect(function(){
         const token = localStorage.getItem('token')
-        if(!token) navigate('/')
+        if(!token && !isAuthenticated) navigate('/')
             dispatch(toggleIsAuthenticated(true))
-    },[navigate,dispatch])
+    },[navigate,dispatch,isAuthenticated])
 
     return isAuthenticated? children :null
 }

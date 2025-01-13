@@ -16,7 +16,7 @@ function Slider() {
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      {sneakers.map(sneaker=><SwiperSlide className='w-screen'>
+      {sneakers.map(sneaker=><SwiperSlide key={sneaker.brand} className='w-screen'>
         <img src={sneaker.src} className="w-full" key={sneaker.name} alt={sneaker.brand} />
         <p className='text-xs text-left font-bold  pt-1'>{sneaker.name}</p>
         <p className='font-poppins '>{sneaker.brand}</p>
