@@ -3,6 +3,9 @@ import { shuffleArray } from "@/features/utils/helpers";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import ImageViewer from "./ImageViewer";
 import { PaginationX } from "./Pagination";
+import { useEffect, useRef, useState } from "react";
+import { useGallery } from "@/features/utils/hooks";
+import { PropagateLoader } from "react-spinners";
 export type BriefGalleryProps = {
     style: "overview"|'side'
 }
@@ -24,9 +27,27 @@ function BriefGallery({style}:BriefGalleryProps) {
     
     
     ];
-    
+    const [page, setPage] = useState<number>(1)
+    const [images,setImages] = useState<string[]|null>(null)
+    const {isLoading,error,data} = useGallery(page,12)
+    const [isIntersecting,setIsIntersecting] = useState<boolean>(false)
+    const [hasMore,setHasMore] = useSate<boolean>(false)
+    const spinnerRef = useRef<HTMLDivElement|null>(null)
       const shuffledImageLinks = shuffleArray(imageLinks, 3)
-    
+    useEffect(function(){
+        const ref = spinnerRef.current
+        const observer = new IntersectionObserver(function([entry]){
+            setIsIntersecting(entry.isIntersecting)
+        },{
+            root: null,
+            rootMargin: '0px',
+            threshold: 1
+        })
+        if(spinnerRef.current){
+            observer.observe(spinnerRef.current)
+        }
+        return ()=> observer.unobserve(ref as HTMLDivElement)
+    },[spinnerRef])
     return (
         <div>
 
@@ -35,13 +56,17 @@ function BriefGallery({style}:BriefGalleryProps) {
            
 
             
-                <ImageViewer images={shuffledImageLinks}/>
+                { style==='overview'&&<ImageViewer images={shuffledImageLinks}/>}
             </div>
             
                 { style !=='overview'&&
-                <div className="pt-2">
+                <div className="pt-2 ">
+                    <ImageViewer images={shuffledImageLinks}/>
+                    <div className="flex justify-center py-5">
 
-                <PaginationX/>
+                    <PropagateLoader size={18} ref={spinnerRef} />
+                    </div>
+
                 <div className="pt-6">
 
                 <Footer navType="dash"/>
