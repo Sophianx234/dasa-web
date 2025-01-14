@@ -98,7 +98,7 @@ async function loadMore(){
 
       setTimeout(function(){
         if(images){
-          setImages(images=>[...images,...media])
+          setImages(images=>images&&[...images,...media])
           setPage(page=>page+1)
         }else{
           
