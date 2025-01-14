@@ -89,12 +89,16 @@ function BriefGallery({ style }: BriefGalleryProps) {
   const [page,setPage] = useState<number>(1)
 //   const shuffledImageLinks = shuffleArray(imageLinks, 3);
 const [images,setImages] = useState<mediaType[]|null>(null)
+const [numMedia,setNumMedia] = useState<number>(1)
+console.log(numMedia)
 async function loadMore(){
     console.log(page)
+    if(!numMedia) return
     const { data } = await axios.get(`http://localhost:8000/api/v1/media?field=_id,secure_url,public_id,format&page=${page}&limit=${12}`)
     console.log(data)
     const {media} = data as getGalleryResponse
-    if(media){
+    if(!data.numMedia) setNumMedia(data.numMedia)
+    if(!media)return 
 
       setTimeout(function(){
         if(images){
@@ -107,7 +111,7 @@ async function loadMore(){
         }
       },
 1000)
-  }
+  
 
     }
 
@@ -131,8 +135,8 @@ async function loadMore(){
         <>
                 <InfiniteScroll loader={
                     <div className="flex justify-center py-5">
-                
-            <PropagateLoader size={18}  />
+        {        
+         numMedia?   <PropagateLoader size={18}  />:null}
           </div>
         }
         hasMore={true}
