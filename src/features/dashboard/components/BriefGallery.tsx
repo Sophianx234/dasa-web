@@ -1,14 +1,11 @@
 import Footer from "@/features/ui/Footer";
-import { shuffleArray } from "@/features/utils/helpers";
-import "react-lazy-load-image-component/src/effects/blur.css";
-import ImageViewer from "./ImageViewer";
-import { PaginationX } from "./Pagination";
-import { useEffect, useRef, useState } from "react";
-import { useGallery } from "@/features/utils/hooks";
-import { PropagateLoader } from "react-spinners";
 import { getGalleryResponse, mediaType } from "@/services/apiServices";
-import InfiniteScroll from "react-infinite-scroller";
 import axios from "axios";
+import { useState } from "react";
+import InfiniteScroll from "react-infinite-scroller";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { PropagateLoader } from "react-spinners";
+import ImageViewer from "./ImageViewer";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -89,20 +86,29 @@ function BriefGallery({ style }: BriefGalleryProps) {
   ];
   
   
-  
+  const [page,setPage] = useState<number>(1)
 //   const shuffledImageLinks = shuffleArray(imageLinks, 3);
 const [images,setImages] = useState<mediaType[]|null>(null)
 async function loadMore(){
-    
-    const { data } = await axios.get(`http://localhost:8000/api/v1/media?field=_id,secure_url,public_id,format&page=${4}&limit=${12}`)
+    console.log(page)
+    const { data } = await axios.get(`http://localhost:8000/api/v1/media?field=_id,secure_url,public_id,format&page=${page}&limit=${12}`)
     console.log(data)
-    if(data)
     const {media} = data as getGalleryResponse
-    if(media)
-        setTimeout(function(){
-            setImages((data:mediaType[])=>[...data,...media])
-        },
+    if(media){
+
+      setTimeout(function(){
+        if(images){
+          setImages(images=>[...images,...media])
+          setPage(page=>page+1)
+        }else{
+          
+          setImages(media)
+          setPage(page=>page+1)
+        }
+      },
 1000)
+  }
+
     }
 
   
