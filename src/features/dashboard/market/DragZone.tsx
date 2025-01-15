@@ -77,14 +77,12 @@ const dispatch = useAppDispatch()
       formData.append('file',file)
     })
     handleUploadImages(formData)
-    for (const [key, value] of formData.entries()) {
-  console.log(key, value); // Should log "file" and each file object
-}
-   /*  setFiles([])
+    
+     setFiles([])
     setTimeout(function(){
       dispatch(toggleRevealUplaoadUserImage())
 
-    },2000) */
+    },2000) 
 
     
   }

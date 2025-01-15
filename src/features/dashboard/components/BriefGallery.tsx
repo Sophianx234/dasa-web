@@ -7,6 +7,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import { PropagateLoader } from "react-spinners";
 import ImageViewer from "./ImageViewer";
 import { shuffleArray } from "@/features/utils/helpers";
+import { useGallery } from "@/features/utils/hooks";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -103,15 +104,17 @@ function BriefGallery({ style }: BriefGalleryProps) {
   const [images, setImages] = useState<mediaType[] | null>(null);
   const [numMedia, setNumMedia] = useState<number>(1);
   console.log(numMedia);
+  const {data} = useGallery(page,12)
   async function loadMore() {
     console.log(page);
     if (!numMedia) return;
-    const { data } = await axios.get(
+    /* const { data } = await axios.get(
       `http://localhost:8000/api/v1/media?field=_id,secure_url,public_id,format&page=${page}&limit=${12}`
-    );
+    ); */
+    if(data)
     console.log(data);
     const { media } = data as getGalleryResponse;
-    if (!data.numMedia) setNumMedia(data.numMedia);
+    if (!data?.numMedia) setNumMedia(data?.numMedia as number);
     if (!media) return;
 
     setTimeout(function () {
