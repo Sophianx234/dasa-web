@@ -1,4 +1,4 @@
-import { useAppDispatch, useUploadImages } from "@/features/utils/hooks";
+import { useAppDispatch, useAppSelector, useUploadImages } from "@/features/utils/hooks";
 import { useCallback, useState } from "react";
 import { FileRejection, useDropzone } from "react-dropzone";
 import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -8,7 +8,7 @@ import ControllerError from "../account/ControllerError";
 import SelectButton from "../account/SelectButton";
 import ImportProductsTag from "./ImportProductsTag";
 import UploadProductImg from "./UploadProductImg";
-import { toggleRevealUplaoadUserImage } from "@/features/slices/navSlice";
+import { setImages, toggleRevealUplaoadUserImage } from "@/features/slices/navSlice";
 import { useQueryClient } from "@tanstack/react-query";
 
 export type extendFile = File & {
@@ -59,6 +59,8 @@ function DragZone({type}:dragZoneProps) {
 
   
 const dispatch = useAppDispatch()
+const {page} = useAppSelector(store=>store.nav)
+
   function handleRemoveImage(id: number) {
     const filteredImgs = files?.filter((_, i) => i !== id);
     setFiles(filteredImgs);
@@ -70,17 +72,18 @@ const dispatch = useAppDispatch()
   const {handleUploadImages} = useUploadImages()
   const queryClient = useQueryClient()
   /* Handling form submission */
-  const onSubmit:SubmitHandler<formDataType> = (data:formDataType)=>{
+  const onSubmit:SubmitHandler<formDataType> = async (data:formDataType)=>{
     console.log('data',data)
 
     const formData = new FormData()
     files?.forEach((file:File)=>{
       formData.append('file',file)
     })
-    handleUploadImages(formData)
+    await handleUploadImages(formData)
     
      setFiles([])
     setTimeout(function(){
+      dispatch(setImages([]))
       dispatch(toggleRevealUplaoadUserImage())
       queryClient.invalidateQueries({
         queryKey: ['gallery']

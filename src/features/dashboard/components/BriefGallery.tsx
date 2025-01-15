@@ -1,14 +1,13 @@
+import { increasePageNumber, setImages } from "@/features/slices/navSlice";
 import Footer from "@/features/ui/Footer";
+import { shuffleArray } from "@/features/utils/helpers";
+import { useAppDispatch, useAppSelector, useGallery } from "@/features/utils/hooks";
 import { getGalleryResponse, mediaType } from "@/services/apiServices";
-import axios from "axios";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { PropagateLoader } from "react-spinners";
 import ImageViewer from "./ImageViewer";
-import { shuffleArray } from "@/features/utils/helpers";
-import { useAppDispatch, useAppSelector, useGallery } from "@/features/utils/hooks";
-import { increasePageNumber } from "@/features/slices/navSlice";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -100,9 +99,8 @@ function BriefGallery({ style }: BriefGalleryProps) {
     },
   ];
   const dispatch = useAppDispatch()
-  const {page} = useAppSelector(store=>store.nav)
+  const {page,images} = useAppSelector(store=>store.nav)
   const shuffledImageLinks = shuffleArray(imageLinks, 3);
-  const [images, setImages] = useState<mediaType[] | null>(null);
   const [numMedia, setNumMedia] = useState<number>(1);
   console.log(numMedia);
   const {data} = useGallery(page,12)
@@ -120,10 +118,11 @@ function BriefGallery({ style }: BriefGalleryProps) {
 
     setTimeout(function () {
       if (images) {
-        setImages((images) => images && [...images, ...media]);
+        dispatch(setImages([...images, ...media]))
         dispatch(increasePageNumber())
       } else {
-        setImages(media);
+        
+        dispatch(setImages([media]))
         dispatch(increasePageNumber())
       }
     }, 1000);

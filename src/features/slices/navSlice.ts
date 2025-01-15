@@ -15,7 +15,8 @@ const initialState = {
   revealUplaoadUserImage: false,
   isAuthenticated: false,
   showToaster: false,
-  page: 1
+  page: 1,
+  images:[]
 };
 const navSlice = createSlice({
   name: "nav",
@@ -66,6 +67,9 @@ const navSlice = createSlice({
     increasePageNumber(state) {
       state.page = state.page +1;
     },
+    setImages(state,action) {
+      state.images = action.payload;
+    },
   },
 });
 export const {
@@ -83,6 +87,6 @@ export const {
   toggleRenameImage,
   toggleRevealUplaoadUserImage,
   toggleIsAuthenticated,
-  increasePageNumber
+  increasePageNumber,setImages
 } = navSlice.actions;
 export default navSlice.reducer;
