@@ -6,6 +6,7 @@ import InfiniteScroll from "react-infinite-scroller";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { PropagateLoader } from "react-spinners";
 import ImageViewer from "./ImageViewer";
+import { shuffleArray } from "@/features/utils/helpers";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -98,7 +99,7 @@ function BriefGallery({ style }: BriefGalleryProps) {
   ];
 
   const [page, setPage] = useState<number>(1);
-  //   const shuffledImageLinks = shuffleArray(imageLinks, 3);
+    const shuffledImageLinks = shuffleArray(imageLinks, 3);
   const [images, setImages] = useState<mediaType[] | null>(null);
   const [numMedia, setNumMedia] = useState<number>(1);
   console.log(numMedia);
@@ -132,7 +133,7 @@ function BriefGallery({ style }: BriefGalleryProps) {
         )}
 
         {style === "overview" && (
-          <ImageViewer images={imageLinks as mediaType[]} />
+          <ImageViewer images={shuffledImageLinks as mediaType[]} />
         )}
       </div>
 
