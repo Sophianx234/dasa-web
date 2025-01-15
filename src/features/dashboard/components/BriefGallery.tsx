@@ -3,11 +3,12 @@ import Footer from "@/features/ui/Footer";
 import { shuffleArray } from "@/features/utils/helpers";
 import { useAppDispatch, useAppSelector, useGallery } from "@/features/utils/hooks";
 import { getGalleryResponse, mediaType } from "@/services/apiServices";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { PropagateLoader } from "react-spinners";
 import ImageViewer from "./ImageViewer";
+import { useQueryClient } from "@tanstack/react-query";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -98,12 +99,17 @@ function BriefGallery({ style }: BriefGalleryProps) {
       _id: "12",
     },
   ];
+  
   const dispatch = useAppDispatch()
+  useEffect(function(){
+    dispatch(increasePageNumber())
+  },[])
   const {page,images} = useAppSelector(store=>store.nav)
   const shuffledImageLinks = shuffleArray(imageLinks, 3);
   const [numMedia, setNumMedia] = useState<number>(1);
-  console.log(numMedia);
+  
   const {data} = useGallery(page,12)
+  const queryClient = useQueryClient()
   async function loadMore() {
     console.log(page);
     if (!numMedia) return;
@@ -120,10 +126,18 @@ function BriefGallery({ style }: BriefGalleryProps) {
       if (images) {
         dispatch(setImages([...images, ...media]))
         dispatch(increasePageNumber())
+        queryClient.invalidateQueries({
+          queryKey: ['gallery']
+
+        })
       } else {
         
         dispatch(setImages([media]))
         dispatch(increasePageNumber())
+        queryClient.invalidateQueries({
+          queryKey: ['gallery']
+
+        })
       }
     }, 1000);
   }
