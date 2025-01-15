@@ -21,7 +21,7 @@ export const useAppSelector = useSelector.withTypes<RootState>();
 
 
 
-class queryOptions {
+/* class queryOptions {
   queryClient = useQueryClient();
   sInfor: string
   err: string
@@ -36,8 +36,8 @@ class queryOptions {
 
   }
   onMutate(){
-       toast.loading(this.pending);
-       return this
+    toast.loading(this.pending);
+    return this
     }
     
     onSuccess(){
@@ -58,10 +58,11 @@ class queryOptions {
         duration: 1000,
         position: "top-center",
       });
-
+      
     }
     
   }
+  */
 
 export function useLogout(navigate: NavigateFunction) {
   const dispatch = useAppDispatch();

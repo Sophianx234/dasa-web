@@ -9,6 +9,7 @@ import SelectButton from "../account/SelectButton";
 import ImportProductsTag from "./ImportProductsTag";
 import UploadProductImg from "./UploadProductImg";
 import { toggleRevealUplaoadUserImage } from "@/features/slices/navSlice";
+import { useQueryClient } from "@tanstack/react-query";
 
 export type extendFile = File & {
   preview: string;
@@ -67,7 +68,7 @@ const dispatch = useAppDispatch()
   }
 
   const {handleUploadImages} = useUploadImages()
-
+  const queryClient = useQueryClient()
   /* Handling form submission */
   const onSubmit:SubmitHandler<formDataType> = (data:formDataType)=>{
     console.log('data',data)
@@ -81,6 +82,9 @@ const dispatch = useAppDispatch()
      setFiles([])
     setTimeout(function(){
       dispatch(toggleRevealUplaoadUserImage())
+      queryClient.invalidateQueries({
+        queryKey: ['gallery']
+      })
 
     },2000) 
 

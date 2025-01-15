@@ -14,7 +14,8 @@ const initialState = {
   renameImage: false,
   revealUplaoadUserImage: false,
   isAuthenticated: false,
-  showToaster: false
+  showToaster: false,
+  page: 1
 };
 const navSlice = createSlice({
   name: "nav",
@@ -62,6 +63,9 @@ const navSlice = createSlice({
     toggleShowToaster(state) {
       state.showToaster = !state.showToaster;
     },
+    increasePageNumber(state) {
+      state.page = state.page +1;
+    },
   },
 });
 export const {
@@ -78,6 +82,7 @@ export const {
   toggleRevealUploadProduct,
   toggleRenameImage,
   toggleRevealUplaoadUserImage,
-  toggleIsAuthenticated
+  toggleIsAuthenticated,
+  increasePageNumber
 } = navSlice.actions;
 export default navSlice.reducer;

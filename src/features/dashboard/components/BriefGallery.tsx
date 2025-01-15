@@ -7,7 +7,8 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import { PropagateLoader } from "react-spinners";
 import ImageViewer from "./ImageViewer";
 import { shuffleArray } from "@/features/utils/helpers";
-import { useGallery } from "@/features/utils/hooks";
+import { useAppDispatch, useAppSelector, useGallery } from "@/features/utils/hooks";
+import { increasePageNumber } from "@/features/slices/navSlice";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -98,9 +99,9 @@ function BriefGallery({ style }: BriefGalleryProps) {
       _id: "12",
     },
   ];
-
-  const [page, setPage] = useState<number>(1);
-    const shuffledImageLinks = shuffleArray(imageLinks, 3);
+  const dispatch = useAppDispatch()
+  const {page} = useAppSelector(store=>store.nav)
+  const shuffledImageLinks = shuffleArray(imageLinks, 3);
   const [images, setImages] = useState<mediaType[] | null>(null);
   const [numMedia, setNumMedia] = useState<number>(1);
   console.log(numMedia);
@@ -120,10 +121,10 @@ function BriefGallery({ style }: BriefGalleryProps) {
     setTimeout(function () {
       if (images) {
         setImages((images) => images && [...images, ...media]);
-        setPage((page) => page + 1);
+        dispatch(increasePageNumber())
       } else {
         setImages(media);
-        setPage((page) => page + 1);
+        dispatch(increasePageNumber())
       }
     }, 1000);
   }
