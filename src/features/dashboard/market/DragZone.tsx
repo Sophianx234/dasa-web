@@ -1,12 +1,14 @@
+import { useAppDispatch, useUploadImages } from "@/features/utils/hooks";
 import { useCallback, useState } from "react";
 import { FileRejection, useDropzone } from "react-dropzone";
-import { Controller, useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
+import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { Toaster } from "react-hot-toast";
 import { TiUploadOutline } from "react-icons/ti";
+import ControllerError from "../account/ControllerError";
 import SelectButton from "../account/SelectButton";
 import ImportProductsTag from "./ImportProductsTag";
 import UploadProductImg from "./UploadProductImg";
-import ControllerError from "../account/ControllerError";
+import { toggleRevealUplaoadUserImage } from "@/features/slices/navSlice";
 
 export type extendFile = File & {
   preview: string;
@@ -14,11 +16,15 @@ export type extendFile = File & {
 export type dragZoneProps = {
   type: 'product'|'image'
 }
+export type formDataType =  {
+  files?: File[]
+  
+}&FieldValues 
+
 
 function DragZone({type}:dragZoneProps) {
   const [files, setFiles] = useState<extendFile[] | null>();
   const { control, handleSubmit,formState: {errors} } = useForm();
-  const notify = () => toast("Upload Complete");
   const productImg = [
     
     "https://i.ibb.co/F7K9fjg/sneaker-3.png",
@@ -50,6 +56,8 @@ function DragZone({type}:dragZoneProps) {
     "Miscellaneous",
   ];
 
+  
+const dispatch = useAppDispatch()
   function handleRemoveImage(id: number) {
     const filteredImgs = files?.filter((_, i) => i !== id);
     setFiles(filteredImgs);
@@ -58,9 +66,26 @@ function DragZone({type}:dragZoneProps) {
     console.log("clicked");
   }
 
-  const onSubmit = (data:unknown)=>{
-    console.log(data)
-    notify()
+  const {handleUploadImages} = useUploadImages()
+
+  /* Handling form submission */
+  const onSubmit:SubmitHandler<formDataType> = (data:formDataType)=>{
+    console.log('data',data)
+
+    const formData = new FormData()
+    files?.forEach((file:File)=>{
+      formData.append('file',file)
+    })
+    handleUploadImages(formData)
+    for (const [key, value] of formData.entries()) {
+  console.log(key, value); // Should log "file" and each file object
+}
+   /*  setFiles([])
+    setTimeout(function(){
+      dispatch(toggleRevealUplaoadUserImage())
+
+    },2000) */
+
     
   }
   const onDrop = useCallback(

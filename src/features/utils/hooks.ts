@@ -7,6 +7,7 @@ import {
   logout,
   signup,
   updateUser,
+  uploadImages,
 } from "@/services/apiServices";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -196,7 +197,7 @@ export function useUpdateUser() {
 }
 export function useChangeUserProfile() {
   const queryClient = useQueryClient();
-
+  
   const { mutateAsync: handleChangeProfile } = useMutation({
     mutationFn: changeProfile,
     onMutate: () => {
@@ -233,4 +234,35 @@ export function useGallery(page:number,limit:number) {
   })
 
   return { isLoading,data,error };
+}
+
+export function useUploadImages(){
+  const queryClient = useQueryClient();
+  const {mutateAsync:handleUploadImages}= useMutation({
+    mutationFn:uploadImages,
+    
+    onMutate: () => {
+      toast.loading("Uploading images....");
+    },
+
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Uploaded successfully");
+      queryClient.invalidateQueries({
+        queryKey: ["media"],
+      });
+
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Could not upload images", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+  })
+  return {handleUploadImages}
 }

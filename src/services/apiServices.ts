@@ -120,3 +120,9 @@ export async function getGallery(page:number,limit:number): Promise<getGalleryRe
   const { data } = await axios.get(`${API_URL}/media?field=_id,secure_url,public_id,format&page=${page}&limit=${limit}`)
   return data;
 }
+
+export async function uploadImages(update:unknown): Promise<unknown[]> {
+  console.log(update)
+  const { data } = await axios.post(`${API_URL}/media/upload`,update)
+  return data;
+}
