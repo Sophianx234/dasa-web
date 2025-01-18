@@ -68,7 +68,7 @@ const navSlice = createSlice({
       state.page = state.page +1;
     },
     resetPageNumber(state) {
-      state.page = 1;
+      state.page = 0;
     },
     setImages(state,action) {
       state.images = action.payload;

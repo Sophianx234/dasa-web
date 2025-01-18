@@ -97,11 +97,12 @@ function DragZone({ type }: dragZoneProps) {
     dispatch(resetPageNumber());
     setTimeout(function () {
       dispatch(setImages([]));
-      navigate('/dashboard/gallery')
       dispatch(toggleRevealUplaoadUserImage());
       queryClient.invalidateQueries({
         queryKey: ["gallery"],
       });
+      dispatch(resetPageNumber())
+      navigate('/dashboard/gallery')
     }, 2000);
   };
   const onDrop = useCallback(

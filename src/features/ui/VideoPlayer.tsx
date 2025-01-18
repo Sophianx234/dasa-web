@@ -4,11 +4,35 @@ import { FiFacebook } from "react-icons/fi"
 import { PiTelegramLogo } from "react-icons/pi"
 import ReactionList from "./ReactionList"
 import SVGLite from "./SVGLite"
+import { useEffect, useRef, useState } from "react"
 
 export type videoPlayerProps = {
     src: string
 } 
 function VideoPlayer({src}:videoPlayerProps) {
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVideoLoaded(true); // Load video when in view
+          videoRef.current?.play(); // Play video automatically
+        } else {
+          videoRef.current?.pause(); // Pause video when out of view
+        }
+      },
+      { threshold: 0.5 } // Trigger when 50% of the video is in view
+    );
+
+    const videoElement = videoRef.current;
+    if (videoElement) observer.observe(videoElement);
+
+    return () => {
+      if (videoElement) observer.unobserve(videoElement);
+    };
+  }, []);
     
     return (
         
@@ -26,7 +50,18 @@ function VideoPlayer({src}:videoPlayerProps) {
             </div>
             </div>
 
-        <video className="w-64  pb-10" src={src} controls autoPlay muted loop></video>
+            {isVideoLoaded && (
+          <video
+            ref={videoRef}
+            className="w-64 pb-10"
+            src={src}
+            controls
+            muted
+            loop
+          ></video>
+        )}
+        
+
         <div className="flex">
             <div className="self-end">
                 <ReactionList/>
