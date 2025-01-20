@@ -1,8 +1,18 @@
+import axios from "axios";
 import SVGLite from "./SVGLite";
 import VideoPlayer from "./VideoPlayer";
+import { useQuery } from "@tanstack/react-query";
+import { getVideos } from "@/services/apiServices";
 
 function Activities() {
-   
+    
+
+    const {isLoading, data} = useQuery({
+      queryKey: ['videos'],
+      queryFn: getVideos
+    })
+    if(isLoading) return <>loading</>
+    console.log(data)
     
       
       /* 

@@ -29,13 +29,16 @@ function NavLinks({swap= 'flex'}:navLinksProps) {
                 </button>
             </div>
             <ul className={swap === 'col'? 'flex flex-col px-4 gap-6': 'flex gap-10'}>
-                <Link to='/homepage' onClick={()=>dispatch(toggleNav())}>
+                <Link to='/homepage'
+                className="hover:bg-dasalight py-2" onClick={()=>dispatch(toggleNav())} >
                     Home
                 </Link>
-                <NavLink to='/homepage/about' onClick={()=>dispatch(toggleNav())}>
+                <NavLink to='/homepage/about' onClick={()=>dispatch(toggleNav())}
+                className="hover:bg-dasalight py-2">
                     About
                 </NavLink>
-                <NavLink to='/homepage/login' onClick={()=>dispatch(toggleNav())}>
+                <NavLink to='/homepage/login' onClick={()=>dispatch(toggleNav())}
+                className="hover:bg-dasalight py-2">
                     Login
                 </NavLink>
                 <NavLink to='/homepage/signup' className='text-center bg-dasalight py-2 font-semibold hover:rounded-sm hover:bg-white hover:border-2 border-2 border-white hover:border-dasalight transition-all duration-150 rounded-sm' onClick={()=>dispatch(toggleNav())}>

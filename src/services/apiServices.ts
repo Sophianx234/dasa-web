@@ -117,7 +117,11 @@ export async function changeProfile(update:unknown): Promise<unknown[]> {
   return data;
 }
 export async function getGallery(page:number,limit:number): Promise<getGalleryResponse> {
-  const { data } = await axios.get(`${API_URL}/media?field=_id,secure_url,public_id,format&page=${page}&limit=${limit}`)
+  const { data } = await axios.get(`${API_URL}/media/images?field=_id,secure_url,public_id,format&page=${page}&limit=${limit}`)
+  return data;
+}
+export async function getVideos(): Promise<getGalleryResponse> {
+  const { data } = await axios.get(`${API_URL}/media/videos?field=_id,secure_url,public_id,format`)
   return data;
 }
 
