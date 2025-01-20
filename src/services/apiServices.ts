@@ -1,3 +1,4 @@
+import { videosResponse } from "@/features/ui/Activities";
 import axios from "axios";
 
 // const API_URL = "localhost:/api/v1"
@@ -120,7 +121,7 @@ export async function getGallery(page:number,limit:number): Promise<getGalleryRe
   const { data } = await axios.get(`${API_URL}/media/images?field=_id,secure_url,public_id,format&page=${page}&limit=${limit}`)
   return data;
 }
-export async function getVideos(): Promise<getGalleryResponse> {
+export async function getVideos(): Promise<videosResponse> {
   const { data } = await axios.get(`${API_URL}/media/videos?field=_id,secure_url,public_id,format`)
   return data;
 }

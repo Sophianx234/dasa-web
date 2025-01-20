@@ -64,6 +64,7 @@ function VideoPlayer({ src }: videoPlayerProps) {
               <BsInstagram className="size-5 fill-[#ffd8a8]" />
           </div>
           </div>
+          
       <video
         ref={videoRef}
         loop
