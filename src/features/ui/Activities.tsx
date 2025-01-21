@@ -3,6 +3,7 @@ import SVGLite from "./SVGLite";
 import VideoPlayer from "./VideoPlayer";
 import { useQuery } from "@tanstack/react-query";
 import { getVideos } from "@/services/apiServices";
+import VideoSkeleton from "@/skeletons/VideoSkeleton";
 interface videoI{
   
     format: string;
@@ -22,11 +23,9 @@ function Activities() {
     queryKey: ["videos"],
     queryFn: getVideos,
   });
-
-  if (isLoading) return <>loading</>;
   const {videos} = data as videosResponse
-  console.log(data);
 
+  
   /* 
       const slideImages = [
         {
@@ -48,12 +47,9 @@ function Activities() {
           <SVGLite type="sticks" />
         </div>
         <div className=" w-full items-center space-y-6 flex flex-col pt-10">
-          {videos.map((video:videoI)=><VideoPlayer src={video.secure_url} />
-)}
-          <VideoPlayer src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/das-x.MOV?t=2024-11-07T14%3A20%3A02.433Z" />
-          <VideoPlayer src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/dasa-12.mp4" />
-          <VideoPlayer src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/dasa-3.MOV" />
-          <VideoPlayer src="https://cwpgmkocgvfhkpwjntrl.supabase.co/storage/v1/object/public/dasa-video/dasa-2.MOV" />
+
+          {videos.map((video:videoI)=><VideoPlayer src={video.secure_url} />)}
+          
         </div>
         <p className="text-center text-sm font-chewy pt-10 ">
           Laughter, Community, and Lifelong <br /> Memories.
