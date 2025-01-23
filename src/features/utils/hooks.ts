@@ -94,7 +94,6 @@ export function useLogout(navigate: NavigateFunction) {
 }
 
 export function useLogin(navigate: NavigateFunction) {
-  const dispatch = useAppDispatch();
 
   const { mutateAsync: handleLogin } = useMutation({
     mutationFn: login,
@@ -102,11 +101,10 @@ export function useLogin(navigate: NavigateFunction) {
       toast.loading("Authenticating");
     },
 
-    onSuccess: (data: LoginResponse) => {
+    onSuccess: () => {
       toast.dismiss();
       toast.success("Login Successfully");
-      localStorage.setItem("token", data.token);
-      dispatch(toggleIsAuthenticated(true));
+      localStorage.setItem("isAuthenticated", 'true');
 
       setTimeout(() => {
         toast.dismiss();

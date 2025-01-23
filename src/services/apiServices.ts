@@ -95,14 +95,13 @@ export async function login(creds: LoginCredentials): Promise<LoginResponse> {
 }
 
 export async function logout(): Promise<logoutResponse> {
+  
   const { data } = await axios.post(`${API_URL}/users/logout`);
   return data;
 }
 
 export async function signup(userInfo: signupCredentials): Promise<unknown> {
-  const { data } = await axios.post(`${API_URL}/users/signup`, userInfo,{
-    withCredentials:true
-  });
+  const { data } = await axios.post(`${API_URL}/users/signup`, userInfo);
   return data;
 }
 
@@ -110,6 +109,7 @@ export async function getUser(): Promise<userType> {
   
 
     
+  axios.defaults.withCredentials = true
     const { data } = await axios.get(`${API_URL}/users/getme`);
     console.log('Data:', data); // Process the data
     

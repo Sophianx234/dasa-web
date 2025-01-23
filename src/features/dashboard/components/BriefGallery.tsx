@@ -124,17 +124,17 @@ function BriefGallery({ style }: BriefGalleryProps) {
       if(!images){
         setTimeout(function(){
           dispatch(setImages(imgs))
-          dispatch(increasePageNumber())
           setIsLoading(false)
+          dispatch(increasePageNumber())
           
         },2000)
         
       }else{
         dispatch(setImages([...images,...imgs]))
         setTimeout(function(){
-          dispatch(increasePageNumber())
           dispatch(setNumMedia(numImages))
           setIsLoading(false)
+          dispatch(increasePageNumber())
           
         },2000)
 
