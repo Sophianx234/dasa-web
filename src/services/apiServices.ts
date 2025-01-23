@@ -1,5 +1,6 @@
 import { videosResponse } from "@/features/ui/Activities";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // const API_URL = "localhost:/api/v1"
 // const API_URL = "127.0.0.1:8000/api/v1"
@@ -10,6 +11,18 @@ export type LoginCredentials = {
   email: string;
   password: string;
 };
+
+export type errorType ={
+
+    status: string,
+    error: {
+        statusCode: number,
+        status: "fail",
+        operational: boolean
+    },
+    message: string,
+    
+}
 
 export type LoginResponse = {
   token: string;
@@ -71,8 +84,8 @@ export type mediaType =  {
 }
 export type getGalleryResponse = {
   status: string,
-  numMedia: number,
-  media: mediaType[]
+  numImages: number,
+  images: mediaType[]
 }
 
 export async function login(creds: LoginCredentials): Promise<LoginResponse> {
@@ -94,10 +107,22 @@ export async function signup(userInfo: signupCredentials): Promise<unknown> {
 }
 
 export async function getUser(): Promise<userType> {
-  axios.defaults.withCredentials = true;
-  const { data } = await axios.get(`${API_URL}/users/getme`)
-  return data;
-}
+  
+
+    
+    const { data } = await axios.get(`${API_URL}/users/getme`);
+    console.log('Data:', data); // Process the data
+    
+    return data;
+    
+ 
+  }
+    
+    
+  
+  
+  
+
 export async function getUsers(): Promise<unknown[]> {
   const { data } = await axios.get(`${API_URL}/users`);
   return data;

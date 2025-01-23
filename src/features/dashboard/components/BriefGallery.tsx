@@ -1,14 +1,14 @@
-import { increasePageNumber, setImages } from "@/features/slices/navSlice";
+import { increasePageNumber, setImages, setNumMedia } from "@/features/slices/navSlice";
 import Footer from "@/features/ui/Footer";
 import { shuffleArray } from "@/features/utils/helpers";
 import { useAppDispatch, useAppSelector, useGallery } from "@/features/utils/hooks";
 import { getGalleryResponse, mediaType } from "@/services/apiServices";
-import { useEffect, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroller";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { PropagateLoader } from "react-spinners";
 import ImageViewer from "./ImageViewer";
-import { useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -101,45 +101,42 @@ function BriefGallery({ style }: BriefGalleryProps) {
   ];
   
   const dispatch = useAppDispatch()
-  useEffect(function(){
-    dispatch(increasePageNumber())
-  },[])
-  const {page,images} = useAppSelector(store=>store.nav)
-  const shuffledImageLinks = shuffleArray(imageLinks, 3);
-  const [numMedia, setNumMedia] = useState<number>(1);
   
-  const {data} = useGallery(page,12)
-  const queryClient = useQueryClient()
+  const {page,images,numMedia} = useAppSelector(store=>store.nav)
+  const shuffledImageLinks = shuffleArray(imageLinks, 3);
+  
+  console.log(page)
+  console.log(numMedia)
+  
+
+
   async function loadMore() {
-    console.log(page);
-    if (!numMedia) return;
-    /* const { data } = await axios.get(
-      `http://localhost:8000/api/v1/media?field=_id,secure_url,public_id,format&page=${page}&limit=${12}`
-    ); */
-    if(data)
-    console.log(data);
-    const { media } = data as getGalleryResponse;
-    if (!data?.numMedia) setNumMedia(data?.numMedia as number);
-    if (!media) return;
+    if(!numMedia) return
+    console.log(page)
+   const {data} = await axios.get(`http://localhost:8000/api/v1/media/images?field=_id,secure_url,public_id,format&page=${page}&limit=12`)
+   console.log(data)
+      const { images:imgs,numImages } = data as getGalleryResponse;
+      console.log('media',images)
 
-    setTimeout(function () {
-      if (images) {
-        dispatch(setImages([...images, ...media]))
-        dispatch(increasePageNumber())
-        queryClient.invalidateQueries({
-          queryKey: ['gallery']
+      if(!images){
+        setTimeout(function(){
+          dispatch(setImages(imgs))
+          dispatch(increasePageNumber())
 
-        })
-      } else {
+        },2000)
         
-        dispatch(setImages([media]))
-        dispatch(increasePageNumber())
-        queryClient.invalidateQueries({
-          queryKey: ['gallery']
+      }else{
+        setTimeout(function(){
+          dispatch(setImages([...images,...imgs]))
+          dispatch(increasePageNumber())
+          dispatch(setNumMedia(numImages))
 
-        })
+        },2000)
+
       }
-    }, 1000);
+    
+    
+     
   }
 
   return (
@@ -166,7 +163,7 @@ function BriefGallery({ style }: BriefGalleryProps) {
             loadMore={loadMore}
           >
             <div className="pt-2 ">
-              <ImageViewer images={images as mediaType[]} />
+             {images && <ImageViewer images={images as mediaType[]} />}
             </div>
           </InfiniteScroll>
           <div className="pt-6">

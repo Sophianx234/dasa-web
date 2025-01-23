@@ -23,6 +23,7 @@ function Activities() {
     queryKey: ["videos"],
     queryFn: getVideos,
   });
+  if(isLoading) return <>loading</> 
   const {videos} = data as videosResponse
 
   

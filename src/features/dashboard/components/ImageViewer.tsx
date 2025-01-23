@@ -6,7 +6,6 @@ export type imageViewerProps = {
   images: mediaType[]
 }
 function ImageViewer({images}:imageViewerProps) {
-  if(!images) return <>loading</>
 
   return (
       <PhotoProvider
