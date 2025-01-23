@@ -41,9 +41,12 @@ import WishListPage from "./features/dashboard/pages/WishListPage";
 import ScrollToTop from "./features/utils/ScrollToTop";
 import { ProtectedRoute } from "./features/utils/protectedRoute";
 import Spinner from "./features/ui/Spinner";
+import axios from "axios";
 
 const queryClient = new QueryClient();
+axios.defaults.withCredentials = true;
 function App() {
+  
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>

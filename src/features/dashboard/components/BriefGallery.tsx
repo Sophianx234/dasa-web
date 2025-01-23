@@ -1,4 +1,4 @@
-import { increasePageNumber, setImages, setNumMedia } from "@/features/slices/navSlice";
+import { increasePageNumber, setImages, setIsLoading, setNumMedia } from "@/features/slices/navSlice";
 import Footer from "@/features/ui/Footer";
 import { shuffleArray } from "@/features/utils/helpers";
 import { useAppDispatch, useAppSelector, useGallery } from "@/features/utils/hooks";
@@ -104,9 +104,9 @@ function BriefGallery({ style }: BriefGalleryProps) {
   
   const dispatch = useAppDispatch()
   
-  const {page,images,numMedia} = useAppSelector(store=>store.nav)
+  const {page,images,numMedia,isLoading} = useAppSelector(store=>store.nav)
   const shuffledImageLinks = shuffleArray(imageLinks, 3);
-  const [isLoading,setIsLoading] = useState<boolean>(false)
+  
   console.log(page)
   console.log(numMedia)
   
@@ -114,7 +114,7 @@ function BriefGallery({ style }: BriefGalleryProps) {
 
   async function loadMore() {
     if(!numMedia || isLoading) return
-    setIsLoading(true)
+    dispatch(setIsLoading(true))
     console.log(page)
    const {data} = await axios.get(`http://localhost:8000/api/v1/media/images?field=_id,secure_url,public_id,format&page=${page}&limit=12`)
    console.log(data)
@@ -133,7 +133,7 @@ function BriefGallery({ style }: BriefGalleryProps) {
         dispatch(setImages([...images,...imgs]))
         setTimeout(function(){
           dispatch(setNumMedia(numImages))
-          setIsLoading(false)
+          dispatch(setIsLoading(false))
           dispatch(increasePageNumber())
           
         },2000)
@@ -165,7 +165,7 @@ function BriefGallery({ style }: BriefGalleryProps) {
                 {numMedia ? <PropagateLoader size={18} /> : null}
               </div>
             }
-            hasMore={true}
+            hasMore={Boolean(numMedia)}
             loadMore={loadMore}
             useWindow
           >

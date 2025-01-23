@@ -89,13 +89,12 @@ export type getGalleryResponse = {
 }
 
 export async function login(creds: LoginCredentials): Promise<LoginResponse> {
-  axios.defaults.withCredentials = true;
   const { data } = await axios.post(`${API_URL}/users/login`, creds);
   return data;
 }
 
 export async function logout(): Promise<logoutResponse> {
-  
+
   const { data } = await axios.post(`${API_URL}/users/logout`);
   return data;
 }
@@ -129,7 +128,6 @@ export async function getUsers(): Promise<unknown[]> {
 }
 export async function updateUser(update:unknown): Promise<unknown[]> {
   console.log(update)
-  axios.defaults.withCredentials = true;
   const { data } = await axios.patch(`${API_URL}/users/update-user`,update,{
     headers: {
       'Content-Type': 'multipart/form-data',

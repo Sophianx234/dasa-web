@@ -17,7 +17,8 @@ const initialState = {
   showToaster: false,
   page: 1,
   images:[],
-  numMedia: 1
+  numMedia: 1,
+  isLoading: false
 };
 const navSlice = createSlice({
   name: "nav",
@@ -56,6 +57,9 @@ const navSlice = createSlice({
     toggleRenameImage(state) {
       state.renameImage = !state.renameImage;
     },
+    setIsLoading(state,action) {
+      state.isLoading = action.payload;
+    },
     toggleRevealUplaoadUserImage(state) {
       state.revealUplaoadUserImage = !state.revealUplaoadUserImage;
     },
@@ -72,10 +76,10 @@ const navSlice = createSlice({
       state.numMedia = action.payload;
     },
     resetPageNumber(state) {
-      state.page = 0;
+      state.page = 1;
     },
     resetNumMedia(state) {
-      state.numMedia = 0;
+      state.numMedia = 1;
     },
     setImages(state,action) {
       state.images = action.payload;
@@ -100,6 +104,7 @@ export const {
   increasePageNumber,setImages,
   resetPageNumber,
   setNumMedia,
-  resetNumMedia
+  resetNumMedia,
+  setIsLoading
 } = navSlice.actions;
 export default navSlice.reducer;

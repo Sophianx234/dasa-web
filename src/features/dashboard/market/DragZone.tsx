@@ -18,8 +18,10 @@ import SelectButton from "../account/SelectButton";
 import ImportProductsTag from "./ImportProductsTag";
 import UploadProductImg from "./UploadProductImg";
 import {
+  resetNumMedia,
   resetPageNumber,
   setImages,
+  setIsLoading,
   toggleRevealUplaoadUserImage,
 } from "@/features/slices/navSlice";
 import { useQueryClient } from "@tanstack/react-query";
@@ -97,10 +99,10 @@ function DragZone({ type }: dragZoneProps) {
     dispatch(resetPageNumber());
     setTimeout(function () {
       dispatch(setImages([]));
+      dispatch(resetNumMedia())
+
       dispatch(toggleRevealUplaoadUserImage());
-      queryClient.invalidateQueries({
-        queryKey: ["gallery"],
-      });
+      dispatch(setIsLoading(false))
       dispatch(resetPageNumber())
       navigate('/dashboard/gallery')
     }, 2000);
