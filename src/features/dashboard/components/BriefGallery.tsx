@@ -4,11 +4,13 @@ import { shuffleArray } from "@/features/utils/helpers";
 import { useAppDispatch, useAppSelector, useGallery } from "@/features/utils/hooks";
 import { getGalleryResponse, mediaType } from "@/services/apiServices";
 import { useQueryClient } from "@tanstack/react-query";
+import debounce from 'debounce'
 import InfiniteScroll from "react-infinite-scroller";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { PropagateLoader } from "react-spinners";
 import ImageViewer from "./ImageViewer";
 import axios from "axios";
+import { useState } from "react";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -104,14 +106,15 @@ function BriefGallery({ style }: BriefGalleryProps) {
   
   const {page,images,numMedia} = useAppSelector(store=>store.nav)
   const shuffledImageLinks = shuffleArray(imageLinks, 3);
-  
+  const [isLoading,setIsLoading] = useState<boolean>(false)
   console.log(page)
   console.log(numMedia)
   
 
 
   async function loadMore() {
-    if(!numMedia) return
+    if(!numMedia || isLoading) return
+    setIsLoading(true)
     console.log(page)
    const {data} = await axios.get(`http://localhost:8000/api/v1/media/images?field=_id,secure_url,public_id,format&page=${page}&limit=12`)
    console.log(data)
@@ -122,15 +125,17 @@ function BriefGallery({ style }: BriefGalleryProps) {
         setTimeout(function(){
           dispatch(setImages(imgs))
           dispatch(increasePageNumber())
-
+          setIsLoading(false)
+          
         },2000)
         
       }else{
+        dispatch(setImages([...images,...imgs]))
         setTimeout(function(){
-          dispatch(setImages([...images,...imgs]))
           dispatch(increasePageNumber())
           dispatch(setNumMedia(numImages))
-
+          setIsLoading(false)
+          
         },2000)
 
       }
@@ -138,6 +143,7 @@ function BriefGallery({ style }: BriefGalleryProps) {
     
      
   }
+  
 
   return (
     <div>
@@ -161,6 +167,7 @@ function BriefGallery({ style }: BriefGalleryProps) {
             }
             hasMore={true}
             loadMore={loadMore}
+            useWindow
           >
             <div className="pt-2 ">
              {images && <ImageViewer images={images as mediaType[]} />}
