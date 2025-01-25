@@ -1,9 +1,7 @@
-import axios from "axios";
+import { getVideos } from "@/services/apiServices";
+import { useQuery } from "@tanstack/react-query";
 import SVGLite from "./SVGLite";
 import VideoPlayer from "./VideoPlayer";
-import { useQuery } from "@tanstack/react-query";
-import { getVideos } from "@/services/apiServices";
-import VideoSkeleton from "@/skeletons/VideoSkeleton";
 interface videoI{
   
     format: string;
@@ -25,7 +23,7 @@ function Activities() {
   });
   if(isLoading) return <>loading</> 
   const {videos} = data as videosResponse
-
+console.log(videos)
   
   /* 
       const slideImages = [

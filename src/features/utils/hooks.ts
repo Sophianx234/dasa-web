@@ -3,7 +3,6 @@ import {
   getGallery,
   getUser,
   login,
-  LoginResponse,
   logout,
   signup,
   updateUser,

@@ -1,6 +1,5 @@
 import { videosResponse } from "@/features/ui/Activities";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 // const API_URL = "localhost:/api/v1"
 // const API_URL = "127.0.0.1:8000/api/v1"
@@ -108,7 +107,6 @@ export async function getUser(): Promise<userType> {
   
 
     
-  axios.defaults.withCredentials = true
     const { data } = await axios.get(`${API_URL}/users/getme`);
     console.log('Data:', data); // Process the data
     
@@ -145,6 +143,7 @@ export async function getGallery(page:number,limit:number): Promise<getGalleryRe
   return data;
 }
 export async function getVideos(): Promise<videosResponse> {
+  
   const { data } = await axios.get(`${API_URL}/media/videos?field=_id,secure_url,public_id,format`)
   return data;
 }

@@ -1,11 +1,11 @@
+import { useCallback, useEffect, useRef } from "react";
 import { BsInstagram } from "react-icons/bs";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiFacebook } from "react-icons/fi";
 import { PiTelegramLogo } from "react-icons/pi";
+import { useIsVisible } from "../utils/useIsVisible";
 import ReactionList from "./ReactionList";
 import SVGLite from "./SVGLite";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useIsVisible } from "../utils/useIsVisible";
 
 export type videoPlayerProps = {
   src: string;

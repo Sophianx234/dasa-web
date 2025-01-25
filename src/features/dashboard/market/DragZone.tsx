@@ -1,7 +1,13 @@
 import {
+  resetNumMedia,
+  resetPageNumber,
+  setImages,
+  setIsLoading,
+  toggleRevealUplaoadUserImage,
+} from "@/features/slices/navSlice";
+import {
   useAppDispatch,
-  useAppSelector,
-  useUploadImages,
+  useUploadImages
 } from "@/features/utils/hooks";
 import { useCallback, useState } from "react";
 import { FileRejection, useDropzone } from "react-dropzone";
@@ -13,19 +19,11 @@ import {
 } from "react-hook-form";
 import { Toaster } from "react-hot-toast";
 import { TiUploadOutline } from "react-icons/ti";
+import { useNavigate } from "react-router-dom";
 import ControllerError from "../account/ControllerError";
 import SelectButton from "../account/SelectButton";
 import ImportProductsTag from "./ImportProductsTag";
 import UploadProductImg from "./UploadProductImg";
-import {
-  resetNumMedia,
-  resetPageNumber,
-  setImages,
-  setIsLoading,
-  toggleRevealUplaoadUserImage,
-} from "@/features/slices/navSlice";
-import { useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
 
 export type extendFile = File & {
   preview: string;
@@ -84,7 +82,6 @@ function DragZone({ type }: dragZoneProps) {
   }
 
   const { handleUploadImages } = useUploadImages();
-  const queryClient = useQueryClient();
   /* Handling form submission */
   const onSubmit: SubmitHandler<formDataType> = async (data: formDataType) => {
     console.log("data", data);

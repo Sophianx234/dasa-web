@@ -1,16 +1,13 @@
 import { increasePageNumber, setImages, setIsLoading, setNumMedia } from "@/features/slices/navSlice";
 import Footer from "@/features/ui/Footer";
 import { shuffleArray } from "@/features/utils/helpers";
-import { useAppDispatch, useAppSelector, useGallery } from "@/features/utils/hooks";
+import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { getGalleryResponse, mediaType } from "@/services/apiServices";
-import { useQueryClient } from "@tanstack/react-query";
-import debounce from 'debounce'
+import axios from "axios";
 import InfiniteScroll from "react-infinite-scroller";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { PropagateLoader } from "react-spinners";
 import ImageViewer from "./ImageViewer";
-import axios from "axios";
-import { useState } from "react";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
