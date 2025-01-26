@@ -42,6 +42,7 @@ import ScrollToTop from "./features/utils/ScrollToTop";
 import { ProtectedRoute } from "./features/utils/protectedRoute";
 import Spinner from "./features/ui/Spinner";
 import axios from "axios";
+import { SocketProvider } from "./context/SocketContext";
 
 const queryClient = new QueryClient();
 axios.defaults.withCredentials = true;
@@ -68,33 +69,34 @@ function App() {
                 <AppLayout />
               </ProtectedRoute>
             }
-          >
+            >
+              
             <Route index element={<Navigate to="overview" replace={true} />} />
             <Route path="overview" element={<DashboardOverview />} />
             <Route path="/dashboard/gallery" element={<GalleryPage />} />
             <Route
               path="/dashboard/notifications"
               element={<NotificationsPage />}
-            />
+              />
             <Route path="/dashboard/account" element={<AccountPage />} />
             <Route
               path="/dashboard/account/:id/profile"
               element={<ProfilePage />}
-            />
+              />
             {/* Chat Route */}
 
             <Route
               path="/dashboard/anonymous/write"
-              element={<AnonymousMain />}
+              element={<SocketProvider><AnonymousMain /></SocketProvider>}
               />
             <Route
               path="/dashboard/anonymous/view"
-              element={<ViewAnonymous />}
-            />
+              element={<SocketProvider><ViewAnonymous /></SocketProvider>}
+              />
             <Route
               path="/dashboard/anonymous/conversation"
-              element={<Conversation />}
-            />
+              element={<SocketProvider><Conversation /></SocketProvider>}
+              />
 
             {/* Payment Route */}
 
@@ -109,7 +111,7 @@ function App() {
             <Route
               path="/dashboard/market/productdetail"
               element={<ProductDetail />}
-            />
+              />
             <Route
               path="/dashboard/market/:id/wishlist"
               element={<WishListPage />}
@@ -117,7 +119,7 @@ function App() {
             <Route
               path="/dashboard/market/:id/orders"
               element={<OrderUser />}
-            />
+              />
             <Route
               path="/dashboard/market/:id/uploadedproducts"
               element={<UploadedProducts />}

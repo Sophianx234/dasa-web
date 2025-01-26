@@ -18,7 +18,8 @@ const initialState = {
   page: 1,
   images:[],
   numMedia: 1,
-  isLoading: false
+  isLoading: false,
+  user: {}
 };
 const navSlice = createSlice({
   name: "nav",
@@ -84,6 +85,9 @@ const navSlice = createSlice({
     setImages(state,action) {
       state.images = action.payload;
     },
+    setUser(state,action) {
+      state.user = action.payload;
+    },
   },
 });
 export const {
@@ -105,6 +109,7 @@ export const {
   resetPageNumber,
   setNumMedia,
   resetNumMedia,
-  setIsLoading
+  setIsLoading,
+  setUser
 } = navSlice.actions;
 export default navSlice.reducer;

@@ -1,6 +1,6 @@
 
-import { useGetUser } from '@/features/utils/hooks';
-import { userType } from '@/services/apiServices';
+import { useAppSelector } from '@/features/utils/hooks';
+import { signupCredentialsExtended } from '@/services/apiServices';
 import { createContext, ReactNode, useContext, useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
 
@@ -10,17 +10,18 @@ type socketProviderProps = {
   children: ReactNode
 }
 
-const socketInstance = io('http://localhost:8000/api/v1');
 
 function SocketProvider({children}:socketProviderProps) {
   const socket = useRef<Socket | null>(null);
-  const {data} = useGetUser()
-  const {user:userInfo} = data as userType
+  const {user} = useAppSelector(store=>store.nav)
+  const userInfo = user as signupCredentialsExtended
+  console.log(userInfo)
   useEffect(() => {
-    if (userInfo) {
-      socket.current = io("http://localhost:8000/api/v1", {
+    if (userInfo ) {
+      socket.current = io("ws://localhost:8000/api/v1", {
         withCredentials: true,
-        query: { userId: userInfo._id },
+        query: { userId: userInfo._id},
+        transports:["websocket"]
       });
 
       
@@ -45,6 +46,5 @@ function useSocket(){
     return context;
 }
 
-export {useSocket,SocketProvider}
+export { SocketProvider, useSocket };
 
-export default SocketProvider

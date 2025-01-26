@@ -1,7 +1,9 @@
-import { useGetUser } from "@/features/utils/hooks"
+import { setUser } from "@/features/slices/navSlice"
+import { useAppDispatch, useGetUser } from "@/features/utils/hooks"
 import { userType } from "@/services/apiServices"
 
 function Welcome() {
+  const dispatch = useAppDispatch()
   const {data,isLoading,error} = useGetUser()
   
   if(error) console.log('error',error)
@@ -9,6 +11,7 @@ function Welcome() {
   
   
   const {user} = data as userType
+  dispatch(setUser(user))
     return (
         <div className="border-2 mx-4 my-6 shadow-md rounded-md ">
           <div className="px-2 py-2 pb-7">
