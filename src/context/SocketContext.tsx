@@ -17,11 +17,13 @@ function SocketProvider({children}:socketProviderProps) {
   const userInfo = user as signupCredentialsExtended
   console.log(userInfo)
   useEffect(() => {
-    if (userInfo ) {
-      socket.current = io("ws://localhost:8000/api/v1", {
+    if (userInfo._id ) {
+      socket.current = io("http://localhost:8000", {
         withCredentials: true,
         query: { userId: userInfo._id},
-        transports:["websocket"]
+        reconnection: true,
+        reconnectionAttempts: 5,
+        transports: ['websocket']
       });
 
       
@@ -29,7 +31,10 @@ function SocketProvider({children}:socketProviderProps) {
       // socket.current.on("receiveMessage", handleReceiveMessage);
       
       return () => {
-        socket?.current?.disconnect();
+        if(socket.current){
+          socket.current.disconnect();
+
+        }
       };
     }
   }, [userInfo]);
