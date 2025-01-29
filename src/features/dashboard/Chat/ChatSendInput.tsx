@@ -17,7 +17,7 @@ function ChatSendInput() {
   ) => {
     console.log(data)
     
-    socket?.emit("sample", { content: data.message }, (response:Response) => {
+    socket?.emit("anonymous", { content: data.message }, (response:Response) => {
       console.log("Server response:", response); 
     });
     dispatch(sendMessage(data.message));
