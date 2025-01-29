@@ -1,6 +1,4 @@
 import { useSocket } from "@/context/SocketContext";
-import { sendMessage } from "@/features/slices/userSlice";
-import { useAppDispatch } from "@/features/utils/hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LuSendHorizonal } from "react-icons/lu";
 import { formValues } from "../account/ChangeContactForm";
@@ -9,7 +7,6 @@ type sendMessageFormValues = formValues & {
 };
 function ChatSendInput() {
   const socket = useSocket();
-  const dispatch = useAppDispatch();
   const { handleSubmit, register, reset } = useForm<sendMessageFormValues>();
 
   const handleSendAnonymous: SubmitHandler<sendMessageFormValues> = (
@@ -20,7 +17,6 @@ function ChatSendInput() {
     socket?.emit("anonymous", { content: data.message }, (response:Response) => {
       console.log("Server response:", response); 
     });
-    dispatch(sendMessage(data.message));
     reset();
   }
 

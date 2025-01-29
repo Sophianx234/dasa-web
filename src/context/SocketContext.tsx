@@ -1,8 +1,9 @@
 localStorage.debug = "*";
 
-import { useAppSelector } from '@/features/utils/hooks';
+import { sendMessage } from '@/features/slices/userSlice';
+import { useAppDispatch, useAppSelector } from '@/features/utils/hooks';
 import { signupCredentialsExtended } from '@/services/apiServices';
-import { createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 
 type SocketContextType = Socket | null;
@@ -18,6 +19,7 @@ function useSocket(){
 }
 
 function SocketProvider({children}:socketProviderProps) {
+  const dispatch = useAppDispatch()
   const [socket,setSocket] = useState<Socket | null>(null);
   const {user} = useAppSelector(store=>store.nav)
   const userInfo = user as signupCredentialsExtended
@@ -38,6 +40,11 @@ function SocketProvider({children}:socketProviderProps) {
       
 
       // socket.current.on("receiveMessage", handleReceiveMessage);
+        socketInstance.on('recieveAnonymous',(content)=>{
+          console.log(content)
+    dispatch(sendMessage(content));
+
+        })
       
       return () => {
         if(socketInstance){
@@ -57,5 +64,5 @@ function SocketProvider({children}:socketProviderProps) {
 
 
 
-export { SocketProvider, useSocket};
+export { SocketProvider, useSocket };
 
