@@ -1,12 +1,47 @@
+import { loadMessages } from "@/features/slices/userSlice";
 import { useAppDispatch, useAppSelector, useGetAnonymous } from "@/features/utils/hooks";
-import { useEffect, useRef } from "react";
+import { anonymousResponse, messagesType } from "@/services/apiServices";
+import { useEffect, useRef, useState } from "react";
 import ChatItem from "./ChatItem";
 import ChatSendInput from "./ChatSendInput";
-import { anonymousResponse, anonymousType, messagesType } from "@/services/apiServices";
-import { loadMessages, sendMessage } from "@/features/slices/userSlice";
 
 function ChatboxList() {
-  const {data,isLoading,error} = useGetAnonymous()
+  const {data,isLoading} = useGetAnonymous()
+  const dispatch = useAppDispatch()
+  const [texts,setTexts] = useState<messagesType[]| null>(null)
+  const messages = useAppSelector(store=>store.user.anonymousMessages)
+  const lastMessageRef = useRef<HTMLDivElement| null>(null);
+  useEffect(() => {
+    if (lastMessageRef.current) {
+      lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+  /* 
+  {
+    "_id": "679a0add446db6269a09da62",
+    "messageType": "text",
+    "content": "Hello",
+    "createdAt": "2025-01-29T11:02:53.074Z",
+    "updatedAt": "2025-01-29T11:02:53.074Z",
+    "__v": 0
+}
+     */
+useEffect(()=>{
+  if(data){
+    const {anonymous:{messages}} = data as anonymousResponse
+    // const textModified = messages.map(msg=>msg.content)
+    if(messages){
+      console.log('msg',messages)
+      dispatch(loadMessages(messages))
+
+    }
+  }
+
+},[dispatch,])
+
+console.log(messages)
+
+
   /* 
   {
     "status": "success",
@@ -26,41 +61,20 @@ function ChatboxList() {
         }
     ]
 }
+
   */
-  const dispatch = useAppDispatch()
-  if(isLoading) <>loading</> 
-  if(isLoading) <>err</> 
-  console.log(data)
-const {anonymous:{messages:texts}} = data as anonymousResponse
-console.log('texts',texts)
-// const  = anonymous as anonymousType
-  // const {anonymous} = data as anonymousResponse
-  // console.log('anoymous: ',anonymous)
+ // console.log(data)
+ 
+ 
   
+    
+  if(isLoading) return <>loading</> 
 
-  // const {anonymous} = data as anonymousResponse
-  // console.log(anonymous)
-  // 
-  useEffect(()=>{
-    if(data){
-      dispatch(loadMessages(texts))
-
-    }
-  },[data,dispatch,texts])  
-
-  const messages = useAppSelector(store=>store.user.anonymousMessages)
-  const lastMessageRef = useRef<HTMLDivElement| null>(null);
-  useEffect(() => {
-    if (lastMessageRef.current) {
-      lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
-  
   return (
     <>
 
     <div className="relative overflow-y-scroll h-dvh z-30">
-      {messages?.map((text, i) => (
+      { messages && messages?.map((text, i) => (
         <div
         key={i}
         ref={i === messages.length - 1 ? lastMessageRef : null}>
