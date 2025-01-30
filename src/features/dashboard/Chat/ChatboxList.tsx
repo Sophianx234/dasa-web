@@ -37,7 +37,7 @@ useEffect(()=>{
     }
   }
 
-},[dispatch,])
+},[dispatch,data])
 
 console.log(messages)
 
