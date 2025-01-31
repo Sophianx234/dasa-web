@@ -1,4 +1,6 @@
 import { useSocket } from "@/context/SocketContext";
+import { useAppSelector } from "@/features/utils/hooks";
+import { signupCredentialsExtended } from "@/services/apiServices";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LuSendHorizonal } from "react-icons/lu";
 import { formValues } from "../account/ChangeContactForm";
@@ -8,13 +10,18 @@ type sendMessageFormValues = formValues & {
 function ChatSendInput() {
   const socket = useSocket();
   const { handleSubmit, register, reset } = useForm<sendMessageFormValues>();
+  const {user} = useAppSelector(store=>store.nav)
 
   const handleSendAnonymous: SubmitHandler<sendMessageFormValues> = (
     data: sendMessageFormValues
   ) => {
     console.log(data)
     
-    socket?.emit("anonymous", { content: data.message }, (response:Response) => {
+    const userInfo = user as signupCredentialsExtended
+    console.log('loggedInUserID:', userInfo._id)
+    
+    
+    socket?.emit("anonymous", { content: data.message,userId:userInfo?._id }, (response:Response) => {
       console.log("Server response:", response); 
     });
     reset();
@@ -23,7 +30,7 @@ function ChatSendInput() {
     return (
       <form
         onSubmit={handleSubmit(handleSendAnonymous)}
-        className="flex py-3 text-white items-center space-x-2 z-40 justify-center  bg-dasalight"
+        className="flex py-3  items-center space-x-2 z-40 justify-center  bg-dasalight text-black "
       >
         <input
           {...register("message")}

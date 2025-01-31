@@ -6,18 +6,18 @@ import axios from "axios";
 // const API_URL = "https://dasa-api.onrender.com/api/v1"
 const API_URL = "http://localhost:8000/api/v1";
 export type messagesType = {
-  content: string
-
-}
-export type anonymousType =   {
+  content: string;
+  userId: string;
+};
+export type anonymousType = {
   name: string;
   members: string[];
   messages: messagesType[];
 };
 export type anonymousResponse = {
-  status: string
-  anonymous: anonymousType
-}
+  status: string;
+  anonymous: anonymousType;
+};
 export type LoginCredentials = {
   email: string;
   password: string;
@@ -122,7 +122,9 @@ export async function getUsers(): Promise<unknown[]> {
   return data;
 }
 export async function getAnonymous(): Promise<anonymousResponse> {
-  const { data } = await axios.get(`${API_URL}/messages/anonymous?field=messages`);
+  const { data } = await axios.get(
+    `${API_URL}/messages/anonymous?field=messages`
+  );
   return data;
 }
 export async function updateUser(update: unknown): Promise<unknown[]> {

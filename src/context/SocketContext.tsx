@@ -32,7 +32,7 @@ function SocketProvider({ children }: socketProviderProps) {
   const userInfo = user as signupCredentialsExtended;
   console.log(userInfo);
   useEffect(() => {
-    if (userInfo._id) {
+    if (userInfo) {
       const socketInstance = io("http://localhost:8000", {
         query: { userId: userInfo._id },
         reconnection: true,
@@ -45,7 +45,6 @@ function SocketProvider({ children }: socketProviderProps) {
 
       // socket.current.on("receiveMessage", handleReceiveMessage);
       socketInstance.on("recieveAnonymous", (content) => {
-        console.log(content);
         dispatch(sendMessage(content));
       });
 
@@ -55,7 +54,7 @@ function SocketProvider({ children }: socketProviderProps) {
         }
       };
     }
-  }, [dispatch,userInfo._id]);
+  }, [userInfo,dispatch]);
   return (
     <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
   );

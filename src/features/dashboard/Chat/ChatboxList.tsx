@@ -1,15 +1,16 @@
 import { loadMessages } from "@/features/slices/userSlice";
 import { useAppDispatch, useAppSelector, useGetAnonymous } from "@/features/utils/hooks";
-import { anonymousResponse, messagesType } from "@/services/apiServices";
-import { useEffect, useRef, useState } from "react";
+import { anonymousResponse, signupCredentialsExtended } from "@/services/apiServices";
+import { useEffect, useRef } from "react";
 import ChatItem from "./ChatItem";
 import ChatSendInput from "./ChatSendInput";
 
 function ChatboxList() {
   const {data,isLoading} = useGetAnonymous()
   const dispatch = useAppDispatch()
-  const [texts,setTexts] = useState<messagesType[]| null>(null)
-  const messages = useAppSelector(store=>store.user.anonymousMessages)
+  const {anonymousMessages:messages} = useAppSelector(store=>store.user)
+  const {user} = useAppSelector(store=>store.nav)
+  const userInfo = user as signupCredentialsExtended
   const lastMessageRef = useRef<HTMLDivElement| null>(null);
   useEffect(() => {
     if (lastMessageRef.current) {
@@ -74,12 +75,12 @@ console.log(messages)
     <>
 
     <div className="relative overflow-y-scroll h-dvh z-30">
-      { messages && messages?.map((text, i) => (
+      { messages && messages?.map((message, i) => (
         <div
         key={i}
         ref={i === messages.length - 1 ? lastMessageRef : null}>
 
-        <ChatItem chat={text.content!} orient={i % 2 == 0 && "reverse"} />
+        <ChatItem chat={message.content!} orient={message.sender === userInfo._id  && "reverse"} />
         </div>
       ))}
     </div>
