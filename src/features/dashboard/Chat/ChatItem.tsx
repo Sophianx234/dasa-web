@@ -1,5 +1,7 @@
+import { anonymousMessagesType } from "@/features/slices/userSlice"
+
 export type chatItemProps = {
-    chat: string,
+    chat:anonymousMessagesType,
     orient?:string |boolean
 }
 function ChatItem({chat,orient}:chatItemProps) {
@@ -20,7 +22,7 @@ function ChatItem({chat,orient}:chatItemProps) {
           Obi-Wan Kenobi
           <time className="text-xs opacity-50 ">12:45</time>
         </div>
-        <div className="chat-bubble bg-[#FDF4DF] text-[#33312d] ">{chat}</div>
+        <div className="chat-bubble bg-[#FDF4DF] text-[#33312d] ">{chat?.content}</div>
         <div className="chat-footer opacity-50 text-blue-900">Delivered</div>
       </div>
       </>
@@ -39,7 +41,7 @@ else return (
     Anakin
     <time className="text-xs opacity-100 ">12:46</time>
   </div>
-  <div className="chat-bubble text-gray-200">{chat}</div>
+  <div className="chat-bubble text-gray-200">{chat.content}</div>
   <div className="chat-footer opacity-50 text-blue-900">Seen at 12:46</div>
 </div>
         </>

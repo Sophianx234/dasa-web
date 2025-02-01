@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-type anonymousMessagesType = {
+export type anonymousMessagesType = {
   messageType: string;
   content: string;
   sender: string;
+  createdAt: string;
 };
 
 export type initialStateProp = {

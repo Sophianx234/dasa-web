@@ -1,12 +1,16 @@
-import { loadMessages } from "@/features/slices/userSlice";
+import { anonymousMessagesType, loadMessages } from "@/features/slices/userSlice";
 import { useAppDispatch, useAppSelector, useGetAnonymous } from "@/features/utils/hooks";
-import { anonymousResponse, signupCredentialsExtended } from "@/services/apiServices";
+import { anonymousResponse, signupCredentialsExtended, userType } from "@/services/apiServices";
 import { useEffect, useRef } from "react";
 import ChatItem from "./ChatItem";
 import ChatSendInput from "./ChatSendInput";
+import axios from "axios";
+import { setUser } from "@/features/slices/navSlice";
+import { isEmpty } from "@/features/utils/helpers";
 
 function ChatboxList() {
-  const {data,isLoading} = useGetAnonymous()
+  // const {data,isLoading} = useGetAnonymous()
+  const API_URL = "http://localhost:8000/api/v1"
   const dispatch = useAppDispatch()
   const {anonymousMessages:messages} = useAppSelector(store=>store.user)
   const {user} = useAppSelector(store=>store.nav)
@@ -28,6 +32,18 @@ function ChatboxList() {
 }
      */
 useEffect(()=>{
+  const getUser = async() =>{
+    const { data } = await axios.get(`${API_URL}/users/getme`);
+  console.log("Data:", data);
+  const {user} = data as userType
+  dispatch(setUser(user)) // Process the data
+
+  }
+  const fetchMessages = async()=>{
+
+    const { data } = await axios.get(
+      `${API_URL}/messages/anonymous?field=messages`
+    );
   if(data){
     const {anonymous:{messages}} = data as anonymousResponse
     // const textModified = messages.map(msg=>msg.content)
@@ -37,8 +53,14 @@ useEffect(()=>{
 
     }
   }
+}
+console.log('userInfo',)
+if(isEmpty(userInfo)){
+  getUser()
+}
+fetchMessages()
 
-},[dispatch,data])
+},[])
 
 console.log(messages)
 
@@ -69,7 +91,6 @@ console.log(messages)
  
   
     
-  if(isLoading) return <>loading</> 
 
   return (
     <>
@@ -80,7 +101,7 @@ console.log(messages)
         key={i}
         ref={i === messages.length - 1 ? lastMessageRef : null}>
 
-        <ChatItem chat={message.content!} orient={message.sender === userInfo._id  && "reverse"} />
+        <ChatItem chat={message } orient={message.sender === userInfo._id  && "reverse"} />
         </div>
       ))}
     </div>

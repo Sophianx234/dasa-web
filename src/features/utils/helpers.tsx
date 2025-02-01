@@ -1,4 +1,4 @@
-
+import day from 'dayjs'
 export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount: number): T[] {
   const limit = array.length - freezeCount;
 
@@ -48,4 +48,22 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
     }
   
     return range;
+  }
+
+  export function isoToDate(iso:string){
+    const now  = day().toISOString()
+    const date = day(now).diff(day(iso))
+    console.log("date:",date)
+    
+
+    
+    
+    
+    // console.log("time: ",time)
+    return date
+  }
+
+  export function isEmpty(obj:object){
+    return Object.keys(obj).length === 0
+
   }
