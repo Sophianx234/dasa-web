@@ -1,17 +1,19 @@
-import { anonymousMessagesType, loadMessages } from "@/features/slices/userSlice";
-import { useAppDispatch, useAppSelector, useGetAnonymous } from "@/features/utils/hooks";
-import { anonymousResponse, signupCredentialsExtended, userType } from "@/services/apiServices";
+import { setUser } from "@/features/slices/navSlice";
+import { loadMessages } from "@/features/slices/userSlice";
+import { isEmpty } from "@/features/utils/helpers";
+import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
+import { anonymousResponse, API_URL, signupCredentialsExtended, userType } from "@/services/apiServices";
+import axios from "axios";
 import { useEffect, useRef } from "react";
 import ChatItem from "./ChatItem";
 import ChatSendInput from "./ChatSendInput";
-import axios from "axios";
-import { setUser } from "@/features/slices/navSlice";
-import { isEmpty } from "@/features/utils/helpers";
 
 function ChatboxList() {
   // const {data,isLoading} = useGetAnonymous()
-  const API_URL = "http://localhost:8000/api/v1"
+  // const API_URL = "http://localhost:8000/api/v1"
+  // const API_URL = "https://dasa-api.onrender.com/api/v1"
   const dispatch = useAppDispatch()
+  
   const {anonymousMessages:messages} = useAppSelector(store=>store.user)
   const {user} = useAppSelector(store=>store.nav)
   const userInfo = user as signupCredentialsExtended
@@ -21,16 +23,7 @@ function ChatboxList() {
       lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
-  /* 
-  {
-    "_id": "679a0add446db6269a09da62",
-    "messageType": "text",
-    "content": "Hello",
-    "createdAt": "2025-01-29T11:02:53.074Z",
-    "updatedAt": "2025-01-29T11:02:53.074Z",
-    "__v": 0
-}
-     */
+  
 useEffect(()=>{
   const getUser = async() =>{
     const { data } = await axios.get(`${API_URL}/users/getme`);
@@ -60,34 +53,12 @@ if(isEmpty(userInfo)){
 }
 fetchMessages()
 
+
 },[])
 
-console.log(messages)
+console.log(user)
 
 
-  /* 
-  {
-    "status": "success",
-    "anonymous": [
-        {
-            "_id": "6799daad6a28af6d73b2030c",
-            "messages": [
-                {
-                    "_id": "6799f29ba549e452773af807",
-                    "messageType": "text",
-                    "content": "Hello bro ",
-                    "createdAt": "2025-01-29T09:19:24.020Z",
-                    "updatedAt": "2025-01-29T09:19:24.020Z",
-                    "__v": 0
-                }
-            ]
-        }
-    ]
-}
-
-  */
- // console.log(data)
- 
  
   
     

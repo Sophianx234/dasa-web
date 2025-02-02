@@ -1,4 +1,6 @@
+import { signupCredentialsExtended, userType } from "@/services/apiServices";
 import { createSlice } from "@reduxjs/toolkit";
+import { genRandomName } from "../utils/helpers";
 
 const initialState = {
   isOpen: false,
@@ -86,7 +88,7 @@ const navSlice = createSlice({
       state.images = action.payload;
     },
     setUser(state,action) {
-      state.user = action.payload;
+      state.user = {...action?.payload as signupCredentialsExtended,anonymousName: genRandomName()};
     },
   },
 });

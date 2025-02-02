@@ -4,7 +4,7 @@ import axios from "axios";
 // const API_URL = "localhost:/api/v1"
 // const API_URL = "127.0.0.1:8000/api/v1"
 // const API_URL = "https://dasa-api.onrender.com/api/v1"
-const API_URL = "http://localhost:8000/api/v1";
+export const API_URL = "http://localhost:8000/api/v1";
 export type messagesType = {
   content: string;
   userId: string;
@@ -56,6 +56,7 @@ export type signupCredentialsExtended = signupCredentials & {
   username: string;
   profileImage: string;
   _id: string;
+  anonymousName: string;
 };
 export type logoutResponse = {
   status: string;

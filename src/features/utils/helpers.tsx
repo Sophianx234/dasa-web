@@ -1,4 +1,12 @@
 import day from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime';
+import isToday from 'dayjs/plugin/isToday';
+import isYesterday from 'dayjs/plugin/isYesterday';
+import {uniqueNamesGenerator, animals, adjectives,Style} from 'unique-names-generator'
+day.extend(relativeTime);
+day.extend(isToday);
+day.extend(isYesterday);
+
 export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount: number): T[] {
   const limit = array.length - freezeCount;
 
@@ -51,19 +59,36 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
   }
 
   export function isoToDate(iso:string){
-    const now  = day().toISOString()
-    const date = day(now).diff(day(iso))
-    console.log("date:",date)
+    const date = day(iso)
+    if(date.isToday()){
+      return date.fromNow()
+    }
+
+    if(date.isYesterday()){
+      return "Yesterday"
+    }
+
+    return date.format("MM/D/YYYY")
     
 
     
     
     
-    // console.log("time: ",time)
-    return date
   }
 
   export function isEmpty(obj:object){
     return Object.keys(obj).length === 0
 
   }
+
+  export function genRandomName (){
+    const customConfig = {
+      dictionaries: [adjectives,animals],
+      seperator: '',
+      length: 2,
+      style: 'capital' as Style
+
+    }
+    return  uniqueNamesGenerator(customConfig).replace("_",'') + Math.floor(Math.random()*100)
+
+  } 

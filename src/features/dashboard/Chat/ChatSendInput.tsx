@@ -38,7 +38,7 @@ function ChatSendInput() {
           placeholder="Type here"
           className="input input-bordered  max-w-xs"
         />
-        <button>
+        <button >
           <LuSendHorizonal className="hover:stroke-dasadeep duration-150 transition-all size-9 stroke-slate-900 " />
         </button>
       </form>
