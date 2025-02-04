@@ -112,12 +112,25 @@ function Select<T extends FieldValues>({icon,addClass,placeholder,form,style,reg
             <select   
              className={` ${style} indent-6 font-poppins h-full w-full text-gray-400`}
              {...register(inputName)}>
-                <option >Select {placeholder}</option>
+                <option disabled >Select {placeholder}</option>
                 {universityOfGhanaPrograms.map(course=><option value={course}>{course}</option>)}
             </select> 
         </div>
     )
   }
+  if(form === "gender")
+    return (
+      <div className={`flex items-center relative ${addClass}`}>
+      {icon}
+      
+      <select    className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`} {...register(inputName)}>
+          <option disabled>Select {placeholder}</option>
+          <option value='male'>Male</option>
+          <option value='female'>Female</option>
+      </select>
+  </div>
+
+  )
      else if(isAnnex === 'Annex'){
 
        return (
@@ -125,7 +138,7 @@ function Select<T extends FieldValues>({icon,addClass,placeholder,form,style,reg
             {icon}
             
             <select    className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`} {...register(inputName)}>
-                <option >Select {placeholder}</option>
+                <option disabled >Select {placeholder}</option>
                 {annexes?.map(annex=><option value={annex}>{ annex}</option>)}
             </select>
         </div>
@@ -136,7 +149,7 @@ function Select<T extends FieldValues>({icon,addClass,placeholder,form,style,reg
             <div className={`flex items-center relative ${addClass}`}>
             {icon}
             <select   id="" className={`indent-6 font-poppins h-full w-full text-gray-400 ${style}`} {...register(inputName)}>
-                <option >Select {placeholder}</option>
+                <option disabled >Select {placeholder}</option>
                 {UGEL.map(annex=><option value={annex?.name}>{ annex?.name}</option>)}
             </select> 
         </div>

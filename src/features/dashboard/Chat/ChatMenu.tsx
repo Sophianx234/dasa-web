@@ -1,13 +1,13 @@
-import { setUser, toggleChatMenu } from "@/features/slices/navSlice";
+import { toggleChatMenu } from "@/features/slices/navSlice";
 import { useAppDispatch } from "@/features/utils/hooks";
-import { motion } from "framer-motion";
-import { IoIosClose } from "react-icons/io";
-import ChatProfile from "./ChatProfile";
-import { FaMasksTheater } from "react-icons/fa6";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { API_URL, signupCredentialsExtended } from "@/services/apiServices";
 import axios from "axios";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { FaMasksTheater } from "react-icons/fa6";
+import { IoIosClose } from "react-icons/io";
+import { Link } from "react-router-dom";
+import ChatProfile from "./ChatProfile";
 export type usersResponse = {
   totalUsers: number;
   users: signupCredentialsExtended[];
