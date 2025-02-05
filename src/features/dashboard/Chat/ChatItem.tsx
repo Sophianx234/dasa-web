@@ -21,8 +21,8 @@ function ChatItem({ chat, orient }: chatItemProps) {
             </div>
           </div>
 
-          <div className="chat-bubble  bg-[#FDF4DF] text-[#33312d] ">
-            <div className="text-sm flex pb-1 justify-start font-bold text-green-700">
+          <div className="chat-bubble  bg-[#33312d] text-[#fdf4df] ">
+            <div className="text-sm flex pb-1 justify-start font-bold text-green-600">
               {chat?.anonymousName}
             </div>
             <div className="flex    ">
@@ -36,7 +36,7 @@ function ChatItem({ chat, orient }: chatItemProps) {
                 {chat?.content}
                 </span>
                 
-                <span className="  text-black font-bold opacity-60       text-xs text-nowrap       ">
+                <span className="   font-bold opacity-60       text-xs text-nowrap  text-blue-400 contrast-200     ">
                   {date}
                 </span>
               </div>
@@ -49,16 +49,24 @@ function ChatItem({ chat, orient }: chatItemProps) {
     return (
       <>
         <div className="chat chat-end">
-          <div className="chat-bubble  text-gray-200  ">
-            <div className="text-sm flex pb-1 justify-end">
+          <div className="chat-bubble  text-gray-200 bg-[#0B192C]   ">
+            <div className="text-sm flex pb-1 justify-end text-[#F4D793]">
               {chat?.anonymousName}
             </div>
-            <div className="flex justify-between   items-center">
-              <div className="     flex flex-row-reverse leading-5     ">
+            <div className="flex    ">
+              <div
+                className={` leading-5 
+                  flex flex-col
+                  text-wrap   break-words      `}
+              >
+                <span className="text-[#e7e8ea]">
+
                 {chat?.content}
-                <div className="chat-footer  text-black font-bold opacity-60 flex justify-end    text-xs text-nowrap self-end   pb-1">
+                </span>
+                
+                <span className="   font-bold opacity-60       text-xs text-nowrap  text-blue-400 contrast-200     ">
                   {date}
-                </div>
+                </span>
               </div>
             </div>
           </div>
