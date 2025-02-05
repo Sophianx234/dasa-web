@@ -75,6 +75,10 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
     
     
   }
+  export function formatTime(iso:string){
+    const time = day(iso).format("hh:mm A")
+    return time
+  }
 
   export function isEmpty(obj:object){
     return Object.keys(obj).length === 0
@@ -92,3 +96,5 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
     return  uniqueNamesGenerator(customConfig).replace("_",'') + Math.floor(Math.random()*100)
 
   } 
+
+  

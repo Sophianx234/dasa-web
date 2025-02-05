@@ -4,6 +4,7 @@ export type anonymousMessagesType = {
   content: string;
   sender: string;
   createdAt: string;
+  anonymousName: string;
 };
 
 export type initialStateProp = {

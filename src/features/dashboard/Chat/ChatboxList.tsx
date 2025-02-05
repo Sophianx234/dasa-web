@@ -26,7 +26,7 @@ function ChatboxList() {
   
 useEffect(()=>{
   const getUser = async() =>{
-    const { data } = await axios.get(`${API_URL}/users/getme`);
+  const { data } = await axios.get(`${API_URL}/users/getme`);
   console.log("Data:", data);
   const {user} = data as userType
   dispatch(setUser(user)) // Process the data
@@ -35,7 +35,7 @@ useEffect(()=>{
   const fetchMessages = async()=>{
 
     const { data } = await axios.get(
-      `${API_URL}/messages/anonymous?field=messages`
+      `${API_URL}/messages/anonymous`
     );
   if(data){
     const {anonymous:{messages}} = data as anonymousResponse
@@ -57,6 +57,7 @@ fetchMessages()
 },[])
 
 console.log(user)
+console.log('messages: ',messages)
 
 
  
