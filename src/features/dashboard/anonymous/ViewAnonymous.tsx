@@ -22,7 +22,7 @@ function ViewAnonymous() {
 
         }
         getUserInfo()
-    },[user,id])
+    },[id])
     console.log('getUserInfo',user)
     return (
         <div>
