@@ -90,7 +90,7 @@ function App() {
               element={<SocketProvider><AnonymousMain /></SocketProvider>}
               />
             <Route
-              path="/dashboard/anonymous/view"
+              path="/dashboard/chat/:id"
               element={<SocketProvider><ViewAnonymous /></SocketProvider>}
               />
             <Route

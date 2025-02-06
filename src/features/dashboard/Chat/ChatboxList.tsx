@@ -8,7 +8,10 @@ import { useEffect, useRef } from "react";
 import ChatItem from "./ChatItem";
 import ChatSendInput from "./ChatSendInput";
 
-function ChatboxList() {
+type chatBoxListProps = {
+  type: 'direct' |'channel'
+}
+function ChatboxList({type}:chatBoxListProps) {
   // const {data,isLoading} = useGetAnonymous()
   // const API_URL = "http://localhost:8000/api/v1"
   // const API_URL = "https://dasa-api.onrender.com/api/v1"

@@ -3,7 +3,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { mediaType } from '@/services/apiServices';
 export type imageViewerProps = {
-  images: mediaType[]
+  images: mediaType[] 
 }
 function ImageViewer({images}:imageViewerProps) {
 

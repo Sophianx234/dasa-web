@@ -11,6 +11,7 @@ import ChatProfile from "./ChatProfile";
 export type usersResponse = {
   totalUsers: number;
   users: signupCredentialsExtended[];
+  user: signupCredentialsExtended
 };
 function ChatMenu() {
   const dispatch = useAppDispatch();
@@ -76,9 +77,8 @@ function ChatMenu() {
         <div className=" ">
           {users?.map((user) => (
             <ChatProfile
-              profile={user.profileImage}
+              user= {user}
               text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet ? "
-              name={user.username}
             />
           ))}
         </div>
