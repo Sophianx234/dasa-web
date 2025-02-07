@@ -57,6 +57,7 @@ export type signupCredentialsExtended = signupCredentials & {
   profileImage: string;
   _id: string;
   anonymousName: string;
+  anonymousProfile: string;
 };
 export type logoutResponse = {
   status: string;

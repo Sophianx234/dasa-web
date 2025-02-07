@@ -1,8 +1,9 @@
+import { signupCredentialsExtended } from "@/services/apiServices";
 import { createSlice } from "@reduxjs/toolkit";
 export type anonymousMessagesType = {
   messageType: string;
   content: string;
-  sender: string;
+  sender: signupCredentialsExtended;
   createdAt: string;
   anonymousName: string;
 };

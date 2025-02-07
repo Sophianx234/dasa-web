@@ -76,7 +76,7 @@ console.log('messages: ',messages)
         key={i}
         ref={i === messages.length - 1 ? lastMessageRef : null}>
 
-        <ChatItem chat={message } orient={message.sender === userInfo._id  && "reverse"} />
+        <ChatItem chat={message} orient={message.sender._id === userInfo._id  && "reverse"} />
         </div>
       ))}
     </div>

@@ -16,14 +16,14 @@ function ChatItem({ chat, orient }: chatItemProps) {
             <div className="w-10 rounded-full">
               <img
                 alt="Tailwind CSS chat bubble component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                src={chat.sender.anonymousProfile}
               />
             </div>
           </div>
 
           <div className="chat-bubble  bg-[#33312d] text-[#fdf4df] ">
             <div className="text-sm flex pb-1 justify-start font-bold text-green-600">
-              {chat?.anonymousName}
+              {chat?.sender.anonymousName}
             </div>
             <div className="flex    ">
               <div
@@ -51,7 +51,7 @@ function ChatItem({ chat, orient }: chatItemProps) {
         <div className="chat chat-end">
           <div className="chat-bubble  text-gray-200 bg-[#0B192C]   ">
             <div className="text-sm flex pb-1 justify-end text-[#F4D793]">
-              {chat?.anonymousName}
+              {chat?.sender.anonymousName}
             </div>
             <div className="flex    ">
               <div
