@@ -22,7 +22,7 @@ import PaymentPage from "./features/dashboard/pages/PaymentPage";
 import Payment from "./features/dashboard/pages/Payment";
 import PaymentHistory from "./features/dashboard/pages/PaymentHistory";
 import AnonymousMain from "./features/dashboard/pages/AnonymousMain";
-import ViewAnonymous from "./features/dashboard/anonymous/ViewAnonymous";
+import ViewAnonymous from "./features/dashboard/anonymous/DirectMessage";
 import Conversation from "./features/dashboard/components/Conversation";
 import AccountPage from "./features/dashboard/pages/AccountPage";
 import ProfilePage from "./features/dashboard/pages/ProfilePage";

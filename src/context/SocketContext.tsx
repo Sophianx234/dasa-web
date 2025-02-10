@@ -1,6 +1,6 @@
 localStorage.debug = "*";
 
-import { sendMessage } from "@/features/slices/userSlice";
+import { sendAnonymousMessage, sendMessage } from "@/features/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { signupCredentialsExtended } from "@/services/apiServices";
 import {
@@ -47,7 +47,12 @@ function SocketProvider({ children }: socketProviderProps) {
 
       // socket.current.on("receiveMessage", handleReceiveMessage);
       socketInstance.on("recieveAnonymous", (content) => {
-        dispatch(sendMessage(content));
+        dispatch(sendAnonymousMessage(content));
+      });
+      socketInstance.on("recieveMessage", (message) => {
+
+        console.log('message',message)
+        // dispatch(sendMessage(content));
       });
 
       return () => {

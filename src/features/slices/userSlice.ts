@@ -7,16 +7,17 @@ export type anonymousMessagesType = {
   createdAt: string;
   anonymousName: string;
 };
-
 export type initialStateProp = {
   isLiked: boolean;
   isAnnex: string;
   anonymousMessages: anonymousMessagesType[];
+  directMessages:anonymousMessagesType[]
 };
 const initialState: initialStateProp = {
   isLiked: false,
   isAnnex: "",
   anonymousMessages: [],
+  directMessages:[]
   /*    anonymousMessages: ["There’s this girl in DaSA I can’t stop thinking about. Anytime you smile, my heart skips a beat. Fati… one day, you’ll call me yours. 🥺",
     "To the most beautiful girl in DaSA, you’ve got me crushing hard. Zainab, I know I’m not your favorite person yet, but just wait—I’ll change that soon. 😉",
     "There’s a star in DaSA that shines brighter than the rest, and her name is Mariam. I hope one day I’ll be lucky enough to stand by her side.",
@@ -36,8 +37,14 @@ const userSlice = createSlice({
     setAnnex(state, action) {
       state.isAnnex = action.payload;
     },
+    sendAnonymousMessage(state, action) {
+      state.anonymousMessages.push(action.payload);
+    },
     sendMessage(state, action) {
       state.anonymousMessages.push(action.payload);
+    },
+    loadAnonymousMessage(state, action) {
+      state.anonymousMessages = action.payload;
     },
     loadMessages(state, action) {
       state.anonymousMessages = action.payload;
@@ -45,6 +52,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { toggleLike, setAnnex, sendMessage, loadMessages } =
+export const { toggleLike, setAnnex, sendMessage, loadMessages,sendAnonymousMessage,loadAnonymousMessage } =
   userSlice.actions;
 export default userSlice.reducer;

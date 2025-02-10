@@ -1,11 +1,11 @@
+import { API_URL, signupCredentialsExtended } from "@/services/apiServices"
+import axios from "axios"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import ChatboxList from "../chat/ChatboxList"
 import ChatHeader from "../chat/ChatHeader"
-import WriteAnonymous from "./WriteAnonymous"
-import { useEffect, useState } from "react"
-import axios from "axios"
-import { API_URL, signupCredentialsExtended, userType } from "@/services/apiServices"
 import { usersResponse } from "../chat/ChatMenu"
+import WriteAnonymous from "./WriteAnonymous"
 
 function ViewAnonymous() {
     const {id} = useParams()
