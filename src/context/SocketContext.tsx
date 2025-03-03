@@ -50,9 +50,9 @@ function SocketProvider({ children }: socketProviderProps) {
         dispatch(sendAnonymousMessage(content));
       });
       socketInstance.on("recieveMessage", (message) => {
-
+        
         console.log('message',message)
-        // dispatch(sendMessage(content));
+        dispatch(sendMessage(message));
       });
 
       return () => {

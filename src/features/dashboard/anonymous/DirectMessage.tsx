@@ -4,8 +4,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import ChatboxList from "../chat/ChatboxList"
 import ChatHeader from "../chat/ChatHeader"
-import { usersResponse } from "../chat/ChatMenu"
 import WriteAnonymous from "./WriteAnonymous"
+import { usersResponse } from "../chat/ChatMenu"
 
 function ViewAnonymous() {
     const {id} = useParams()

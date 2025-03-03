@@ -4,13 +4,17 @@ import { signupCredentialsExtended } from "@/services/apiServices";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LuSendHorizonal } from "react-icons/lu";
 import { formValues } from "../account/ChangeContactForm";
+import { useChatType } from "@/hooks/useChat";
+import { useParams } from "react-router-dom";
 type sendMessageFormValues = formValues & {
   message: string;
 };
-function ChatSendInput() {
+
+function ChatSendInput({type}:useChatType) {
   const socket = useSocket();
   const { handleSubmit, register, reset } = useForm<sendMessageFormValues>();
   const {user} = useAppSelector(store=>store.nav)
+  const {id:recipientId} = useParams()
 
   const handleSendAnonymous: SubmitHandler<sendMessageFormValues> = (
     data: sendMessageFormValues
@@ -22,6 +26,9 @@ function ChatSendInput() {
     
     
     socket?.emit("anonymous", { content: data.message,userId:userInfo?._id }, (response:Response) => {
+      console.log("Server response:", response); 
+    });
+    socket?.emit("message", { content: data.message,userId:userInfo?._id, recipientId }, (response:Response) => {
       console.log("Server response:", response); 
     });
     reset();
