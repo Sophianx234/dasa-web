@@ -33,6 +33,18 @@ export type errorType = {
   message: string;
 };
 
+export type dmType = {
+    sender: string,
+    recipient: string,
+    messageType: 'text' |'file',
+    content: string,
+    _id: string,
+    createdAt: string
+  }
+export type directMessageType ={
+  messages: dmType[]
+}
+
 export type LoginResponse = {
   token: string;
   user: {

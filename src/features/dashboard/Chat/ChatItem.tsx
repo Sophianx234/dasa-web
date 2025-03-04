@@ -1,14 +1,19 @@
 import { anonymousMessagesType } from "@/features/slices/userSlice";
 import { formatTime } from "@/features/utils/helpers";
+import { useAppSelector } from "@/features/utils/hooks";
+import { directMessageType, dmType, signupCredentialsExtended } from "@/services/apiServices";
+import { useQuery } from "@tanstack/react-query";
 
 export type chatItemProps = {
-  chat: anonymousMessagesType;
+  chat: anonymousMessagesType | dmType;
   orient?: string | boolean;
 };
 function ChatItem({ chat, orient }: chatItemProps) {
-  const date = formatTime(chat.createdAt);
-
-  if (orient !== "reverse")
+  const date = formatTime((chat.createdAt));
+  const {user} = useAppSelector(store=>store.nav)
+  const userInfo = user as signupCredentialsExtended
+  // const {user} = useQuery()
+  if (orient !== "reverse" )
     return (
       <>
         <div className="chat chat-start ">
@@ -16,14 +21,14 @@ function ChatItem({ chat, orient }: chatItemProps) {
             <div className="w-10 rounded-full">
               <img
                 alt="Tailwind CSS chat bubble component"
-                src={chat.sender.anonymousProfile}
+                src={(chat as anonymousMessagesType).sender?.anonymousProfile || userInfo?.profileImage }
               />
             </div>
           </div>
 
           <div className="chat-bubble  bg-[#33312d] text-[#fdf4df] ">
             <div className="text-sm flex pb-1 justify-start font-bold text-green-600">
-              {chat?.sender.anonymousName}
+              {(chat as anonymousMessagesType)?.sender.anonymousName || (chat as dmType).sender}
             </div>
             <div className="flex    ">
               <div
@@ -51,7 +56,7 @@ function ChatItem({ chat, orient }: chatItemProps) {
         <div className="chat chat-end">
           <div className="chat-bubble  text-gray-200 bg-[#0B192C]   ">
             <div className="text-sm flex pb-1 justify-end text-[#F4D793]">
-              {chat?.sender.anonymousName}
+              {(chat as anonymousMessagesType)?.sender.anonymousName}
             </div>
             <div className="flex    ">
               <div

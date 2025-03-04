@@ -1,4 +1,8 @@
-import { signupCredentialsExtended } from "@/services/apiServices";
+import {
+  directMessageType,
+  dmType,
+  signupCredentialsExtended,
+} from "@/services/apiServices";
 import { createSlice } from "@reduxjs/toolkit";
 export type anonymousMessagesType = {
   messageType: string;
@@ -11,13 +15,13 @@ export type initialStateProp = {
   isLiked: boolean;
   isAnnex: string;
   anonymousMessages: anonymousMessagesType[];
-  directMessages:anonymousMessagesType[]
+  directMessages: unknown;
 };
 const initialState: initialStateProp = {
   isLiked: false,
   isAnnex: "",
   anonymousMessages: [],
-  directMessages:[]
+  directMessages: [],
   /*    anonymousMessages: ["There’s this girl in DaSA I can’t stop thinking about. Anytime you smile, my heart skips a beat. Fati… one day, you’ll call me yours. 🥺",
     "To the most beautiful girl in DaSA, you’ve got me crushing hard. Zainab, I know I’m not your favorite person yet, but just wait—I’ll change that soon. 😉",
     "There’s a star in DaSA that shines brighter than the rest, and her name is Mariam. I hope one day I’ll be lucky enough to stand by her side.",
@@ -52,6 +56,12 @@ const userSlice = createSlice({
   },
 });
 
-export const { toggleLike, setAnnex, sendMessage, loadMessages,sendAnonymousMessage,loadAnonymousMessage } =
-  userSlice.actions;
+export const {
+  toggleLike,
+  setAnnex,
+  sendMessage,
+  loadMessages,
+  sendAnonymousMessage,
+  loadAnonymousMessage,
+} = userSlice.actions;
 export default userSlice.reducer;

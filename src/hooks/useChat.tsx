@@ -1,8 +1,8 @@
 import { setUser } from "@/features/slices/navSlice"
-import { loadAnonymousMessage } from "@/features/slices/userSlice"
+import { loadAnonymousMessage, sendMessage } from "@/features/slices/userSlice"
 import { isEmpty } from "@/features/utils/helpers"
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks"
-import { anonymousResponse, API_URL, signupCredentialsExtended, userType } from "@/services/apiServices"
+import { anonymousResponse, API_URL, directMessageType, signupCredentialsExtended, userType } from "@/services/apiServices"
 import axios from "axios"
 import { useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
@@ -15,9 +15,8 @@ export type useChatType ={
 export function useChat({type}:useChatType){
   const dispatch = useAppDispatch()
   const {id:recipientId} = useParams()
-  console.log('id',recipientId)
   
-  const {anonymousMessages:messages} = useAppSelector(store=>store.user)
+  const {anonymousMessages:messages,directMessages} = useAppSelector(store=>store.user)
   const {user} = useAppSelector(store=>store.nav)
   const userInfo = user as signupCredentialsExtended
   const lastMessageRef = useRef<HTMLDivElement| null>(null);
@@ -37,9 +36,9 @@ useEffect(()=>{
   }
   const fetchAnonymousMessages = async()=>{
     const { data } = await axios.get(
-      `${API_URL}/messages/${type==='channel'? "anonymous": ''}`
+      `${API_URL}/messages/${type==='channel'? "anonymous": recipientId}`
     );
-  if(data){
+  if(data && type==='channel'){
     const {anonymous:{messages}} = data as anonymousResponse
     // const textModified = messages.map(msg=>msg.content)
     if(messages){
@@ -47,6 +46,11 @@ useEffect(()=>{
       dispatch(loadAnonymousMessage(messages))
 
     }
+  }
+  if(data && type=='direct'){
+    const { messages:directMsg} = data as directMessageType
+    console.log('messages X',directMsg)
+    dispatch(sendMessage(directMsg))
   }
 }
 
@@ -65,8 +69,10 @@ fetchMessages()
 
 
 },[])
+console.log('dm',directMessages)
 
-return {userInfo,messages,lastMessageRef}
+
+return {userInfo,messages,lastMessageRef,directMessages}
 
 
  
