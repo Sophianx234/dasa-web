@@ -20,7 +20,7 @@ function ProfileImage() {
 
       const file = e?.target.files[0];
       if (file) {
-        console.log("Selected file:", file); 
+        // console.log("Selected file:", file); 
         const formData = new FormData() 
         formData.append('image',file)    
         handleChangeProfile(formData)

@@ -30,7 +30,6 @@ function SocketProvider({ children }: socketProviderProps) {
   const [socket, setSocket] = useState<Socket | null>(null);
   const { user } = useAppSelector((store) => store.nav);
   const userInfo = user as signupCredentialsExtended;
-  console.log(userInfo);
   const serverURL = "http://localhost:8000"
   // const serverURL = "https://dasa-api.onrender.com"
   useEffect(() => {
@@ -43,7 +42,6 @@ function SocketProvider({ children }: socketProviderProps) {
         transports: ["websocket"],
       });
       setSocket(socketInstance);
-      console.log("Socket initialized:", socket);
 
       // socket.current.on("receiveMessage", handleReceiveMessage);
       socketInstance.on("recieveAnonymous", (content) => {
@@ -51,7 +49,6 @@ function SocketProvider({ children }: socketProviderProps) {
       });
       socketInstance.on("recieveMessage", (message) => {
         
-        console.log('message',message)
         dispatch(sendMessage(message));
       });
 

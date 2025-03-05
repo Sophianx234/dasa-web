@@ -1,8 +1,7 @@
 import { anonymousMessagesType } from "@/features/slices/userSlice";
 import { formatTime } from "@/features/utils/helpers";
 import { useAppSelector } from "@/features/utils/hooks";
-import { directMessageType, dmType, signupCredentialsExtended } from "@/services/apiServices";
-import { useQuery } from "@tanstack/react-query";
+import { dmType, signupCredentialsExtended } from "@/services/apiServices";
 
 export type chatItemProps = {
   chat: anonymousMessagesType | dmType;
@@ -13,6 +12,7 @@ function ChatItem({ chat, orient }: chatItemProps) {
   const {user} = useAppSelector(store=>store.nav)
   const userInfo = user as signupCredentialsExtended
   // const {user} = useQuery()
+  console.log('chat',chat)
   if (orient !== "reverse" )
     return (
       <>
@@ -25,10 +25,9 @@ function ChatItem({ chat, orient }: chatItemProps) {
               />
             </div>
           </div>
-
           <div className="chat-bubble  bg-[#33312d] text-[#fdf4df] ">
             <div className="text-sm flex pb-1 justify-start font-bold text-green-600">
-              {(chat as anonymousMessagesType)?.sender.anonymousName || (chat as dmType).sender}
+            {/* { (chat as anonymousMessagesType)?.sender?.anonymousName ||(chat as dmType).recipient?.firstName} */}
             </div>
             <div className="flex    ">
               <div
@@ -56,7 +55,7 @@ function ChatItem({ chat, orient }: chatItemProps) {
         <div className="chat chat-end">
           <div className="chat-bubble  text-gray-200 bg-[#0B192C]   ">
             <div className="text-sm flex pb-1 justify-end text-[#F4D793]">
-              {(chat as anonymousMessagesType)?.sender.anonymousName}
+              {/* {(chat as anonymousMessagesType)?.sender?.anonymousName  || (chat as dmType).recipient.firstName} */}
             </div>
             <div className="flex    ">
               <div

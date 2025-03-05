@@ -50,26 +50,21 @@ useEffect(()=>{
   if(data && type=='direct'){
     const { messages:directMsg} = data as directMessageType
     console.log('messages X',directMsg)
-    dispatch(sendMessage(directMsg))
+    if(directMessages){
+      dispatch(sendMessage(directMsg))
+
+    }
   }
 }
 
-const fetchMessages = async()=>{
-  const {data} = await axios.get(`${API_URL}/messages/${userInfo._id}/${recipientId}`)
-  if(data){
-    console.log(data)
 
-  }
-}
 if(isEmpty(userInfo)){
   getUser()
 }
 fetchAnonymousMessages()
-fetchMessages()
 
 
 },[])
-console.log('dm',directMessages)
 
 
 return {userInfo,messages,lastMessageRef,directMessages}

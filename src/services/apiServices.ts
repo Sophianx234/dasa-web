@@ -34,8 +34,8 @@ export type errorType = {
 };
 
 export type dmType = {
-    sender: string,
-    recipient: string,
+    sender: signupCredentialsExtended,
+    recipient: signupCredentialsExtended,
     messageType: 'text' |'file',
     content: string,
     _id: string,

@@ -8,17 +8,20 @@ type chatBoxListProps = {
 }
 function ChatboxList({type}:chatBoxListProps) {
   const {messages,userInfo,lastMessageRef,directMessages} = useChat({type})
+  console.log('direct', directMessages)
+  console.log(directMessages[0]?.sender?._id)
   if(type==='channel')
   return (
     <>
 
     <div className="relative overflow-y-scroll h-dvh z-30">
-      { messages && messages?.map((message, i) => (
+      { messages && messages?.map((message, i) =>
+       (
         <div
         key={i}
         ref={i === messages.length - 1 ? lastMessageRef : null}>
 
-        <ChatItem chat={message} orient={message.sender._id === userInfo._id  && "reverse"} />
+        <ChatItem chat={message} orient={message.sender?._id === userInfo._id  && "reverse"} />
         </div>
       ))}
     </div>
@@ -32,11 +35,12 @@ function ChatboxList({type}:chatBoxListProps) {
   
       <div className="relative overflow-y-scroll h-dvh z-30">
         { directMessages && directMessages?.map((message, i) => (
+          
           <div
           key={i}
           ref={i === messages.length - 1 ? lastMessageRef : null}>
   
-          <ChatItem chat={message as dmType} orient={(message as dmType)?.sender === userInfo._id  && "reverse"} />
+          <ChatItem chat={message as dmType} orient={(message as dmType)?.sender?._id === userInfo._id  && "reverse"} />
           </div>
         ))}
       </div>

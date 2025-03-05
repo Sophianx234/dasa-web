@@ -15,7 +15,7 @@ export type initialStateProp = {
   isLiked: boolean;
   isAnnex: string;
   anonymousMessages: anonymousMessagesType[];
-  directMessages: unknown;
+  directMessages: dmType[];
 };
 const initialState: initialStateProp = {
   isLiked: false,
@@ -45,7 +45,7 @@ const userSlice = createSlice({
       state.anonymousMessages.push(action.payload);
     },
     sendMessage(state, action) {
-      state.anonymousMessages.push(action.payload);
+      state.directMessages.push(action.payload);
     },
     loadAnonymousMessage(state, action) {
       state.anonymousMessages = action.payload;
