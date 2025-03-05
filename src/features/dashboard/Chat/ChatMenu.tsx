@@ -1,5 +1,5 @@
 import { toggleChatMenu } from "@/features/slices/navSlice";
-import { useAppDispatch } from "@/features/utils/hooks";
+import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { API_URL, signupCredentialsExtended } from "@/services/apiServices";
 import axios from "axios";
 import { motion } from "framer-motion";
@@ -16,6 +16,8 @@ export type usersResponse = {
 function ChatMenu() {
   const dispatch = useAppDispatch();
   const [users, setUsers] = useState<signupCredentialsExtended[] | null>(null);
+  const {user} = useAppSelector(store=>store.nav)
+  const userInfo = user as signupCredentialsExtended
   const profileImgs = [
     "https://i.ibb.co/tKPn0sJ/photo-25-2024-10-31-06-50-45.jpg",
     "https://i.ibb.co/jvRPsZd/photo-30-2024-10-31-06-51-41.jpg",
@@ -57,13 +59,13 @@ function ChatMenu() {
               <IoIosClose className="size-9 fill-gray-700 " />
             </div>
 
-            <span className="flex ">
+            <Link to='/dashboard/overview' className="fle " onClick={()=>dispatch(toggleChatMenu())}>
               <img
                 src="https://i.ibb.co/n8hRM6d/dasalogo-removebg.png"
                 className="w-16"
                 alt=""
               />
-            </span>
+            </Link>
           </a>
         </div>
         <div className="flex justify-between pr-6 pt-6">
@@ -76,7 +78,7 @@ function ChatMenu() {
         </div>
         <div className=" ">
           {users?.map((user) => (
-            <ChatProfile
+            user._id !== userInfo._id && <ChatProfile
               user= {user}
               text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet ? "
             />
