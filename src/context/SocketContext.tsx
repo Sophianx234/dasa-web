@@ -48,6 +48,7 @@ function SocketProvider({ children }: socketProviderProps) {
         dispatch(sendAnonymousMessage(content));
       });
       socketInstance.on("recieveMessage", (message) => {
+        console.log('xxxy',message)
         dispatch(sendMessage(message));
       });
 

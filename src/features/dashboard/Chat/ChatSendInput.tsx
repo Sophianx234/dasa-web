@@ -25,11 +25,11 @@ function ChatSendInput({type}:useChatType) {
     console.log('loggedInUserID:', userInfo._id)
     
     
-    socket?.emit("anonymous", { content: data.message,userId:userInfo?._id }, (response:Response) => {
-      console.log("Server response:", response); 
+    if(type==='channel')socket?.emit("anonymous", { content: data.message,userId:userInfo?._id }, (response:Response) => {
+      console.log("Server response Y:", response); 
     });
-    socket?.emit("message", { content: data.message,userId:userInfo?._id, recipientId }, (response:Response) => {
-      console.log("Server response:", response); 
+    if(type==='direct')socket?.emit("message", { content: data.message,userId:userInfo?._id, recipientId }, (response:Response) => {
+      console.log("Server response X :", response); 
     });
     reset();
   }

@@ -46,7 +46,7 @@ const userSlice = createSlice({
     },
     sendMessage(state, action) {
       
-      state.directMessages.push(...action.payload);
+      state.directMessages.push(action.payload);
     },
     loadDirectMessage(state, action) {
       
@@ -55,9 +55,7 @@ const userSlice = createSlice({
     loadAnonymousMessage(state, action) {
       state.anonymousMessages = action.payload;
     },
-    loadMessages(state, action) {
-      state.anonymousMessages = action.payload;
-    },
+    
   },
 });
 
@@ -65,7 +63,6 @@ export const {
   toggleLike,
   setAnnex,
   sendMessage,
-  loadMessages,
   sendAnonymousMessage,
   loadAnonymousMessage,
   loadDirectMessage

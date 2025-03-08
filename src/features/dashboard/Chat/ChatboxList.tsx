@@ -37,7 +37,7 @@ function ChatboxList({type}:chatBoxListProps) {
           
           <div
           key={i}
-          ref={i === messages.length - 1 ? lastMessageRef : null}>
+          ref={i === directMessages.length - 1 ? lastMessageRef : null}>
   
           <ChatItem chat={message as dmType} orient={(message as dmType)?.sender?._id === userInfo._id  && "reverse"} />
           </div>
