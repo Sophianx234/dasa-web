@@ -45,7 +45,12 @@ const userSlice = createSlice({
       state.anonymousMessages.push(action.payload);
     },
     sendMessage(state, action) {
-      state.directMessages.push(action.payload);
+      
+      state.directMessages.push(...action.payload);
+    },
+    loadDirectMessage(state, action) {
+      
+      state.directMessages = action.payload;
     },
     loadAnonymousMessage(state, action) {
       state.anonymousMessages = action.payload;
@@ -63,5 +68,6 @@ export const {
   loadMessages,
   sendAnonymousMessage,
   loadAnonymousMessage,
+  loadDirectMessage
 } = userSlice.actions;
 export default userSlice.reducer;

@@ -9,7 +9,6 @@ type chatBoxListProps = {
 function ChatboxList({type}:chatBoxListProps) {
   const {messages,userInfo,lastMessageRef,directMessages} = useChat({type})
   console.log('direct', directMessages)
-  console.log(directMessages[0]?.sender?._id)
   if(type==='channel')
   return (
     <>

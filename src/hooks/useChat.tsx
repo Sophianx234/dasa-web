@@ -1,5 +1,5 @@
 import { setUser } from "@/features/slices/navSlice"
-import { loadAnonymousMessage, sendMessage } from "@/features/slices/userSlice"
+import { loadAnonymousMessage, loadDirectMessage, sendMessage } from "@/features/slices/userSlice"
 import { isEmpty } from "@/features/utils/helpers"
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks"
 import { anonymousResponse, API_URL, directMessageType, signupCredentialsExtended, userType } from "@/services/apiServices"
@@ -24,7 +24,7 @@ export function useChat({type}:useChatType){
     if (lastMessageRef.current) {
       lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages]);
+  }, [messages,directMessages]);
   
 useEffect(()=>{
   const getUser = async() =>{
@@ -51,7 +51,7 @@ useEffect(()=>{
     const { messages:directMsg} = data as directMessageType
     console.log('messages X',directMsg)
     if(directMessages){
-      dispatch(sendMessage(directMsg))
+      dispatch(loadDirectMessage(directMsg))
 
     }
   }
