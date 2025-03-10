@@ -1,13 +1,25 @@
 import { useChat } from "@/hooks/useChat";
-import ChatItem from "./ChatItem";
-import ChatSendInput from "./ChatSendInput";
 import { dmType } from "@/services/apiServices";
+import ChatItem from "./ChatItem";
+import ChatSendInput, { sendMessageFormValues } from "./ChatSendInput";
+
+import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
+import Picker from '@emoji-mart/react';
+import { addEmoji, emojiType } from "@/hooks/addEmoji";
+import { useForm, UseFormReturn } from "react-hook-form";
+import { closeEmojiMart, toggleOpenEmojiMart } from "@/features/slices/navSlice";
 
 type chatBoxListProps = {
   type: 'direct' |'channel'
 }
 function ChatboxList({type}:chatBoxListProps) {
+  const {watch,setValue,...hookForm} =
+    useForm<sendMessageFormValues>();
+    
+  const dispatch = useAppDispatch()
   const {messages,userInfo,lastMessageRef,directMessages} = useChat({type})
+  const {openEmojiMart} = useAppSelector(store=>store.nav)
+
   console.log('direct', directMessages)
   if(type==='channel')
   return (
@@ -24,7 +36,7 @@ function ChatboxList({type}:chatBoxListProps) {
         </div>
       ))}
     </div>
-    <ChatSendInput type={type}/>
+    <ChatSendInput type={type} />
     
       </>
   );
@@ -43,7 +55,13 @@ function ChatboxList({type}:chatBoxListProps) {
           </div>
         ))}
       </div>
-      <ChatSendInput type={type}/>
+      <div className="grid grid-cols-[.5fr_1fr] ">
+        <div className=""></div>
+      {openEmojiMart && <Picker onEmojiSelect={(emoji:emojiType)=>addEmoji(emoji,watch,setValue)} onClickOutside={()=>{
+        console.log('damian')
+        dispatch(toggleOpenEmojiMart(false))}} />}
+      </div>
+      <ChatSendInput type={type} hookForm={hookForm as UseFormReturn<sendMessageFormValues>} />
       
         </>
     );

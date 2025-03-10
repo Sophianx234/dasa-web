@@ -1,3 +1,4 @@
+import { sendMessageFormValues } from "@/features/dashboard/chat/ChatSendInput"
 import { setUser } from "@/features/slices/navSlice"
 import { loadAnonymousMessage, loadDirectMessage, sendMessage } from "@/features/slices/userSlice"
 import { isEmpty } from "@/features/utils/helpers"
@@ -5,11 +6,13 @@ import { useAppDispatch, useAppSelector } from "@/features/utils/hooks"
 import { anonymousResponse, API_URL, directMessageType, signupCredentialsExtended, userType } from "@/services/apiServices"
 import axios from "axios"
 import { useEffect, useRef } from "react"
+import { UseFormReturn } from "react-hook-form"
 import { useParams } from "react-router-dom"
 
 
 export type useChatType ={
-  type: "direct"|"channel"
+  type: "direct"|"channel";
+  hookForm?: UseFormReturn<sendMessageFormValues>
 }
 
 export function useChat({type}:useChatType){

@@ -1,55 +1,80 @@
 import { useSocket } from "@/context/SocketContext";
-import { useAppSelector } from "@/features/utils/hooks";
-import { signupCredentialsExtended } from "@/services/apiServices";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { LuSendHorizonal } from "react-icons/lu";
-import { formValues } from "../account/ChangeContactForm";
+import { toggleOpenEmojiMart } from "@/features/slices/navSlice";
+import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { useChatType } from "@/hooks/useChat";
+import { signupCredentialsExtended } from "@/services/apiServices";
+import { SubmitHandler, useForm, UseFormReturn } from "react-hook-form";
+import { BsEmojiGrin, BsSend } from "react-icons/bs";
+import { IoMdAttach } from "react-icons/io";
 import { useParams } from "react-router-dom";
-type sendMessageFormValues = formValues & {
+import { formValues } from "../account/ChangeContactForm";
+export type sendMessageFormValues = formValues & {
   message: string;
 };
 
-function ChatSendInput({type}:useChatType) {
+function ChatSendInput({ type, hookForm }: useChatType) {
+  // const [emoji,setEmoji] = useState<string|null>('')
+  const dispatch = useAppDispatch();
   const socket = useSocket();
-  const { handleSubmit, register, reset } = useForm<sendMessageFormValues>();
-  const {user} = useAppSelector(store=>store.nav)
-  const {id:recipientId} = useParams()
+  const { register, reset, handleSubmit,setValue } = hookForm!;
+
+  const { user } = useAppSelector((store) => store.nav);
+  const { id: recipientId } = useParams();
 
   const handleSendAnonymous: SubmitHandler<sendMessageFormValues> = (
     data: sendMessageFormValues
   ) => {
-    console.log(data)
-    
-    const userInfo = user as signupCredentialsExtended
-    console.log('loggedInUserID:', userInfo._id)
-    
-    
-    if(type==='channel')socket?.emit("anonymous", { content: data.message,userId:userInfo?._id }, (response:Response) => {
-      console.log("Server response Y:", response); 
-    });
-    if(type==='direct')socket?.emit("message", { content: data.message,userId:userInfo?._id, recipientId }, (response:Response) => {
-      console.log("Server response X :", response); 
-    });
-    reset();
-  }
+    console.log(data);
 
-    return (
+    const userInfo = user as signupCredentialsExtended;
+    console.log("loggedInUserID:", userInfo._id);
+
+    if (!data.message) return;
+    if (type === "channel")
+      socket?.emit(
+        "anonymous",
+        { content: data.message, userId: userInfo?._id },
+        (response: Response) => {
+          console.log("Server response Y:", response);
+        }
+      );
+    if (type === "direct")
+      socket?.emit(
+        "message",
+        { content: data.message, userId: userInfo?._id, recipientId },
+        (response: Response) => {
+          console.log("Server response X :", response);
+        }
+      );
+    reset();
+  };
+
+  return (
+    <>
       <form
         onSubmit={handleSubmit(handleSendAnonymous)}
-        className="flex py-3  items-center space-x-2 z-40 justify-center  bg-dasalight text-black "
+        className="flex py-3  items-center space-x-2 z-40 justify-center   text-black "
       >
-        <input
-          {...register("message")}
-          type="text"
-          placeholder="Type here"
-          className="input input-bordered  max-w-xs"
-        />
-        <button >
-          <LuSendHorizonal className="hover:stroke-dasadeep duration-150 transition-all size-9 stroke-slate-900 " />
-        </button>
+        <label className="flex relative w-screen  items-center ">
+          <input
+            {...register("message")}
+            type="text"
+            placeholder="Type here"
+            className="input mx-4 w-full      "
+          />
+          <div className="flex space-x-1 items-center right-[2%] pr-4 absolute">
+            <BsEmojiGrin onClick={(e:Event) =>{
+              e.stopPropagation()
+              dispatch(toggleOpenEmojiMart(true))}} />
+            <IoMdAttach />
+            <button className="bg-dasadeep p-2 rounded-full">
+              <BsSend className="hover:stroke-white duration-150 transition-all size-4 stroke-slate-900 " />
+            </button>
+          </div>
+        </label>
       </form>
-    );
-  };
+    </>
+  );
+}
 
 export default ChatSendInput;

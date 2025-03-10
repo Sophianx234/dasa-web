@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { genRandomName } from "../utils/helpers";
 
 const initialState = {
+  openEmojiMart: false,
   isOpen: false,
   openSidebar: false,
   openChatMenuOptions: false,
@@ -51,6 +52,9 @@ const navSlice = createSlice({
     toggleRevealFaq(state) {
       state.revealFaq = !state.revealFaq;
     },
+    toggleOpenEmojiMart(state,action) {
+      state.openEmojiMart = action.payload;
+    },
     toggleRevealUploadImage(state) {
       state.revealUploadProfile = !state.revealUploadProfile;
     },
@@ -87,6 +91,7 @@ const navSlice = createSlice({
     setImages(state,action) {
       state.images = action.payload;
     },
+    
     setUser(state,action) {
       state.user = {...action?.payload as signupCredentialsExtended,anonymousName: genRandomName()};
     },
@@ -112,6 +117,8 @@ export const {
   setNumMedia,
   resetNumMedia,
   setIsLoading,
-  setUser
+  setUser,
+  toggleOpenEmojiMart,
+  
 } = navSlice.actions;
 export default navSlice.reducer;
