@@ -3,7 +3,7 @@ import { toggleOpenEmojiMart } from "@/features/slices/navSlice";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { useChatType } from "@/hooks/useChat";
 import { signupCredentialsExtended } from "@/services/apiServices";
-import { SubmitHandler, useForm, UseFormReturn } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form";
 import { BsEmojiGrin, BsSend } from "react-icons/bs";
 import { IoMdAttach } from "react-icons/io";
 import { useParams } from "react-router-dom";
@@ -17,7 +17,7 @@ function ChatSendInput({ type, hookForm }: useChatType) {
   const dispatch = useAppDispatch();
   const socket = useSocket();
   const { register, reset, handleSubmit,setValue } = hookForm!;
-
+  
   const { user } = useAppSelector((store) => store.nav);
   const { id: recipientId } = useParams();
 
@@ -63,9 +63,7 @@ function ChatSendInput({ type, hookForm }: useChatType) {
             className="input mx-4 w-full      "
           />
           <div className="flex space-x-1 items-center right-[2%] pr-4 absolute">
-            <BsEmojiGrin onClick={(e:Event) =>{
-              e.stopPropagation()
-              dispatch(toggleOpenEmojiMart(true))}} />
+            <BsEmojiGrin onClick={() =>dispatch(toggleOpenEmojiMart(true))} />
             <IoMdAttach />
             <button className="bg-dasadeep p-2 rounded-full">
               <BsSend className="hover:stroke-white duration-150 transition-all size-4 stroke-slate-900 " />
