@@ -16,9 +16,8 @@ function ChatSendInput({ type, hookForm }: useChatType) {
   // const [emoji,setEmoji] = useState<string|null>('')
   const dispatch = useAppDispatch();
   const socket = useSocket();
-  // const { register,handleSubmit,setValue } = hookForm;
-  const { register, reset,handleSubmit  } = useForm<sendMessageFormValues>();
-  
+  const { register, reset, handleSubmit } = useForm<sendMessageFormValues>();
+
   const { user } = useAppSelector((store) => store.nav);
   const { id: recipientId } = useParams();
 
@@ -31,7 +30,8 @@ function ChatSendInput({ type, hookForm }: useChatType) {
     console.log("loggedInUserID:", userInfo._id);
 
     if (!data.message) return;
-    if (type === "channel")
+    if (type === "channel"){
+
       socket?.emit(
         "anonymous",
         { content: data.message, userId: userInfo?._id },
@@ -39,7 +39,10 @@ function ChatSendInput({ type, hookForm }: useChatType) {
           console.log("Server response Y:", response);
         }
       );
-    if (type === "direct")
+      console.log('testXXX')
+    }
+    if (type === "direct"){
+
       socket?.emit(
         "message",
         { content: data.message, userId: userInfo?._id, recipientId },
@@ -47,24 +50,27 @@ function ChatSendInput({ type, hookForm }: useChatType) {
           console.log("Server response X :", response);
         }
       );
-    reset();
+    }
+
+    if (hookForm) hookForm?.reset();
+    else reset();
   };
 
   return (
     <>
       <form
-        onSubmit={hookForm?.handleSubmit(handleSendAnonymous) || handleSubmit(handleSendAnonymous) }
+        onSubmit={hookForm? hookForm?.handleSubmit(handleSendAnonymous):handleSubmit(handleSendAnonymous)}
         className="flex py-3  items-center space-x-2 z-40 justify-center   text-black "
       >
         <label className="flex relative w-screen  items-center ">
           <input
-            {...hookForm?.register("message") || {...register("message")}}
+            {...(hookForm?.register("message") || { ...register("message") })}
             type="text"
             placeholder="Type here"
             className="input mx-4 w-full      "
           />
           <div className="flex space-x-1 items-center right-[2%] pr-4 absolute">
-            <BsEmojiGrin onClick={() =>dispatch(toggleOpenEmojiMart(true))} />
+            <BsEmojiGrin onClick={() => dispatch(toggleOpenEmojiMart(true))} />
             <IoMdAttach />
             <button className="bg-dasadeep p-2 rounded-full">
               <BsSend className="hover:stroke-white duration-150 transition-all size-4 stroke-slate-900 " />
