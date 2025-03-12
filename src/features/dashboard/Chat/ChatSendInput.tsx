@@ -3,7 +3,7 @@ import { toggleOpenEmojiMart } from "@/features/slices/navSlice";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { useChatType } from "@/hooks/useChat";
 import { signupCredentialsExtended } from "@/services/apiServices";
-import { SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { BsEmojiGrin, BsSend } from "react-icons/bs";
 import { IoMdAttach } from "react-icons/io";
 import { useParams } from "react-router-dom";
@@ -16,7 +16,8 @@ function ChatSendInput({ type, hookForm }: useChatType) {
   // const [emoji,setEmoji] = useState<string|null>('')
   const dispatch = useAppDispatch();
   const socket = useSocket();
-  const { register, reset, handleSubmit,setValue } = hookForm!;
+  // const { register,handleSubmit,setValue } = hookForm;
+  const { register, reset,handleSubmit  } = useForm<sendMessageFormValues>();
   
   const { user } = useAppSelector((store) => store.nav);
   const { id: recipientId } = useParams();
@@ -52,12 +53,12 @@ function ChatSendInput({ type, hookForm }: useChatType) {
   return (
     <>
       <form
-        onSubmit={handleSubmit(handleSendAnonymous)}
+        onSubmit={hookForm?.handleSubmit(handleSendAnonymous) || handleSubmit(handleSendAnonymous) }
         className="flex py-3  items-center space-x-2 z-40 justify-center   text-black "
       >
         <label className="flex relative w-screen  items-center ">
           <input
-            {...register("message")}
+            {...hookForm?.register("message") || {...register("message")}}
             type="text"
             placeholder="Type here"
             className="input mx-4 w-full      "
