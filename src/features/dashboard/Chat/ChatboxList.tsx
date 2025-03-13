@@ -4,11 +4,9 @@ import ChatItem from "./ChatItem";
 import ChatSendInput, { sendMessageFormValues } from "./ChatSendInput";
 
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
-import Picker from '@emoji-mart/react';
 import { addEmoji, emojiType } from "@/hooks/addEmoji";
+import Picker from '@emoji-mart/react';
 import { useForm, UseFormReturn } from "react-hook-form";
-import { closeEmojiMart, toggleOpenEmojiMart } from "@/features/slices/navSlice";
-import EmojiPicker from "@emoji-mart/react";
 
 type chatBoxListProps = {
   type: 'direct' |'channel'
@@ -57,8 +55,7 @@ function ChatboxList({type}:chatBoxListProps) {
         ))}
       </div>
       <div className="grid grid-cols-[.5fr_1fr] ">
-        <div className=""></div>
-      {openEmojiMart && <EmojiPicker onEmojiClick={(emoji:emojiType)=>addEmoji(emoji,watch,setValue)} />}
+      {openEmojiMart && <Picker onEmojiSelect={(emoji:emojiType)=>addEmoji(emoji,watch,setValue)} />}
       </div>
       <ChatSendInput type={type} hookForm={hookForm as UseFormReturn<sendMessageFormValues>} />
       
