@@ -19,10 +19,10 @@ const initialState = {
   isAuthenticated: false,
   showToaster: false,
   page: 1,
-  images:[],
+  images: [],
   numMedia: 1,
   isLoading: false,
-  user: {}
+  user: {},
 };
 const navSlice = createSlice({
   name: "nav",
@@ -52,8 +52,8 @@ const navSlice = createSlice({
     toggleRevealFaq(state) {
       state.revealFaq = !state.revealFaq;
     },
-    toggleOpenEmojiMart(state,action) {
-      state.openEmojiMart = action.payload;
+    toggleOpenEmojiMart(state) {
+      state.openEmojiMart = !state.openEmojiMart;
     },
     toggleRevealUploadImage(state) {
       state.revealUploadProfile = !state.revealUploadProfile;
@@ -64,7 +64,7 @@ const navSlice = createSlice({
     toggleRenameImage(state) {
       state.renameImage = !state.renameImage;
     },
-    setIsLoading(state,action) {
+    setIsLoading(state, action) {
       state.isLoading = action.payload;
     },
     toggleRevealUplaoadUserImage(state) {
@@ -77,9 +77,9 @@ const navSlice = createSlice({
       state.showToaster = !state.showToaster;
     },
     increasePageNumber(state) {
-      state.page = state.page +1;
+      state.page = state.page + 1;
     },
-    setNumMedia(state,action) {
+    setNumMedia(state, action) {
       state.numMedia = action.payload;
     },
     resetPageNumber(state) {
@@ -88,12 +88,18 @@ const navSlice = createSlice({
     resetNumMedia(state) {
       state.numMedia = 1;
     },
-    setImages(state,action) {
+    setImages(state, action) {
       state.images = action.payload;
     },
-    
-    setUser(state,action) {
-      state.user = {...action?.payload as signupCredentialsExtended,anonymousName: genRandomName()};
+    setEmojiMart(state,action){
+      state.openEmojiMart = action.payload
+    },
+
+    setUser(state, action) {
+      state.user = {
+        ...(action?.payload as signupCredentialsExtended),
+        anonymousName: genRandomName(),
+      };
     },
   },
 });
@@ -112,13 +118,14 @@ export const {
   toggleRenameImage,
   toggleRevealUplaoadUserImage,
   toggleIsAuthenticated,
-  increasePageNumber,setImages,
+  increasePageNumber,
+  setImages,
   resetPageNumber,
   setNumMedia,
   resetNumMedia,
   setIsLoading,
   setUser,
   toggleOpenEmojiMart,
-  
+  setEmojiMart
 } = navSlice.actions;
 export default navSlice.reducer;

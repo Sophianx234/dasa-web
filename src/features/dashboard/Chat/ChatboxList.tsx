@@ -3,9 +3,11 @@ import { dmType } from "@/services/apiServices";
 import ChatItem from "./ChatItem";
 import ChatSendInput, { sendMessageFormValues } from "./ChatSendInput";
 
+import { setEmojiMart } from "@/features/slices/navSlice";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { addEmoji, emojiType } from "@/hooks/addEmoji";
 import Picker from '@emoji-mart/react';
+import { useEffect, useRef } from "react";
 import { useForm, UseFormReturn } from "react-hook-form";
 
 type chatBoxListProps = {
@@ -14,10 +16,23 @@ type chatBoxListProps = {
 function ChatboxList({type}:chatBoxListProps) {
   const {watch,setValue,...hookForm} =
     useForm<sendMessageFormValues>();
+    const emojiRef = useRef<HTMLDivElement | null>(null)
     
   const dispatch = useAppDispatch()
   const {messages,userInfo,lastMessageRef,directMessages} = useChat({type})
   const {openEmojiMart} = useAppSelector(store=>store.nav)
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (emojiRef.current && !emojiRef.current.contains(event.target)) {
+        dispatch(setEmojiMart(false))
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [emojiRef]);
 
   console.log('direct', directMessages)
   if(type==='channel')
@@ -54,7 +69,7 @@ function ChatboxList({type}:chatBoxListProps) {
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-[.5fr_1fr] ">
+      <div className="grid grid-cols-[.5fr_1fr] " ref={emojiRef}>
       {openEmojiMart && <Picker onEmojiSelect={(emoji:emojiType)=>addEmoji(emoji,watch,setValue)} />}
       </div>
       <ChatSendInput type={type} hookForm={hookForm as UseFormReturn<sendMessageFormValues>} />
