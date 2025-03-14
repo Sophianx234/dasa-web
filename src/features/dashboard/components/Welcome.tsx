@@ -1,17 +1,26 @@
 import { setUser } from "@/features/slices/navSlice"
 import { useAppDispatch, useGetUser } from "@/features/utils/hooks"
 import { userType } from "@/services/apiServices"
+import { useEffect } from "react"
 
 function Welcome() {
   const dispatch = useAppDispatch()
   const {data,isLoading,error} = useGetUser()
+  useEffect(()=>{
+    if(data){
+      dispatch(setUser(user))
+      
+    }
+    
+  },[dispatch,data])
   
   if(error) console.log('error',error)
-  if(isLoading) return <>loading</>
-  
-  
+    if(isLoading) return <>loading</>
   const {user} = data as userType
-  dispatch(setUser(user))
+  
+  
+  
+  
     return (
         <div className="border-2 mx-4 my-6 shadow-md rounded-md ">
           <div className="px-2 py-2 pb-7">

@@ -17,14 +17,13 @@ function ChatSendInput({ type, hookForm }: useChatType) {
   const dispatch = useAppDispatch();
   const socket = useSocket();
   const { register, reset, handleSubmit } = useForm<sendMessageFormValues>();
-
+  console.log('hookform', typeof(hookForm))
   const { user } = useAppSelector((store) => store.nav);
   const { id: recipientId } = useParams();
 
   const handleSendAnonymous: SubmitHandler<sendMessageFormValues> = (
     data: sendMessageFormValues
   ) => {
-    console.log(data);
 
     const userInfo = user as signupCredentialsExtended;
     console.log("loggedInUserID:", userInfo._id);
@@ -66,7 +65,7 @@ function ChatSendInput({ type, hookForm }: useChatType) {
       >
         <label className="flex relative w-screen  items-center ">
           <input
-            {...(hookForm?.register("message") || { ...register("message") })}
+             {...(type=='direct' ?hookForm?.register("message"): register("message") )}
             type="text"
             placeholder="Type here"
             className="input mx-4 w-full      "
