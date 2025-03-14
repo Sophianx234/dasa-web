@@ -16,15 +16,14 @@ function ChatSendInput({ type, hookForm }: useChatType) {
   // const [emoji,setEmoji] = useState<string|null>('')
   const dispatch = useAppDispatch();
   const socket = useSocket();
-  const { register, reset, handleSubmit } = useForm<sendMessageFormValues>();
-  console.log('hookform', typeof(hookForm))
+  // const { register, reset, handleSubmit } = useForm<sendMessageFormValues>();
+  console.log("hookform", typeof hookForm);
   const { user } = useAppSelector((store) => store.nav);
   const { id: recipientId } = useParams();
 
   const handleSendAnonymous: SubmitHandler<sendMessageFormValues> = (
     data: sendMessageFormValues
   ) => {
-
     const userInfo = user as signupCredentialsExtended;
     console.log("loggedInUserID:", userInfo._id);
 
@@ -49,23 +48,18 @@ function ChatSendInput({ type, hookForm }: useChatType) {
       );
     }
 
-    if (hookForm) hookForm?.reset();
-    else reset();
+    hookForm?.reset();
   };
 
   return (
     <>
       <form
-        onSubmit={
-          hookForm
-            ? hookForm?.handleSubmit(handleSendAnonymous)
-            : handleSubmit(handleSendAnonymous)
-        }
+        onSubmit={hookForm?.handleSubmit(handleSendAnonymous)}
         className="flex py-3  items-center space-x-2 z-40 justify-center   text-black "
       >
         <label className="flex relative w-screen  items-center ">
           <input
-             {...(type=='direct' ?hookForm?.register("message"): register("message") )}
+            {...hookForm?.register("message")}
             type="text"
             placeholder="Type here"
             className="input mx-4 w-full      "
