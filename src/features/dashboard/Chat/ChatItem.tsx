@@ -15,7 +15,7 @@ function ChatItem({ chat, orient }: chatItemProps) {
   if (orient !== "reverse")
     return (
       <>
-        <div className="chat chat-start ">
+        <div className="chat chat-start  ">
           <div className="chat-image avatar">
             {(chat as anonymousMessagesType).sender?.anonymousProfile && (
               <div className="w-8 rounded-full">
@@ -26,7 +26,7 @@ function ChatItem({ chat, orient }: chatItemProps) {
               </div>
             )}
           </div>
-          <div className="chat-bubble  bg-[#33312d] text-[#fdf4df] ">
+          <div className="chat-bubble shadow-lg  bg-[#33312d] text-[#fdf4df] ">
             <div className="text-xs flex  justify-start font-bold text-green-600">
               {(chat as anonymousMessagesType)?.sender?.anonymousName ||
                 (chat as dmType).recipient?.firstName}
@@ -52,7 +52,7 @@ function ChatItem({ chat, orient }: chatItemProps) {
     return (
       <>
         <div className="chat chat-end">
-          <div className="chat-bubble  text-gray-200 bg-[#0B192C]   ">
+          <div className="chat-bubble shadow-lg text-gray-200 bg-[#0B192C]   ">
             <div className="text-xs flex pb-1 justify-end text-[#F4D793]">
               {(chat as anonymousMessagesType)?.sender?.anonymousName ||
                 (chat as dmType).recipient.firstName}

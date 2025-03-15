@@ -73,7 +73,7 @@ function ChatboxList({type}:chatBoxListProps) {
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-[.5fr_1fr] " ref={emojiRef}>
+      <div className=" " ref={emojiRef}>
       {openEmojiMart && <Picker previewPosition='none' onEmojiSelect={(emoji:emojiType)=>addEmoji(emoji,watch,setValue)} />}
       </div>
       <ChatSendInput type={type} hookForm={hookForm as UseFormReturn<sendMessageFormValues>} />
