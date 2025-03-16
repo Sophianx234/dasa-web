@@ -13,8 +13,8 @@ function AttachFile({attachFileRef}:attachFileProps) {
       
         <ul className=" ">
           
-          <AttachFileLink icon={<MdInsertPhoto className="size-6"/>} text="Photos & videos"/>
-          <AttachFileLink icon={<IoDocumentText className="size-6"/>} text="Document"/>
+          <AttachFileLink icon={<MdInsertPhoto className="size-6"/>} text="Photos & videos" accept="image/*,video/*"/>
+          <AttachFileLink icon={<IoDocumentText className="size-6"/>} text="Document" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"/>
           
         </ul>
       </div>

@@ -1,5 +1,9 @@
 import { useSocket } from "@/context/SocketContext";
-import { toggleOpenEmojiMart } from "@/features/slices/navSlice";
+import {
+  setIsOpenAttachFile,
+  toggleIsOpenAttachFile,
+  toggleOpenEmojiMart,
+} from "@/features/slices/navSlice";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { useChatType } from "@/hooks/useChat";
 import { signupCredentialsExtended } from "@/services/apiServices";
@@ -18,7 +22,8 @@ function ChatSendInput({ type, hookForm }: useChatType) {
   // const [emoji,setEmoji] = useState<string|null>('')
   const dispatch = useAppDispatch();
   const socket = useSocket();
-  const [isOpenAttachFile, setIsOpenAttachFile] = useState<boolean>(false);
+  const { isOpenAttachFile } = useAppSelector((store) => store.nav);
+
   const attachFileRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -27,13 +32,13 @@ function ChatSendInput({ type, hookForm }: useChatType) {
         attachFileRef.current &&
         !attachFileRef.current.contains(event?.target as Node)
       ) {
-        setIsOpenAttachFile(false);
+        dispatch(setIsOpenAttachFile(false));
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown',handleClickOutside)
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
   // const { register, reset, handleSubmit } = useForm<sendMessageFormValues>();
@@ -92,10 +97,10 @@ function ChatSendInput({ type, hookForm }: useChatType) {
               className="size-5"
               onClick={() => dispatch(toggleOpenEmojiMart())}
             />
-            <div >
+            <div>
               <IoMdAttach
                 className="size-5"
-                onClick={() => setIsOpenAttachFile((isOpen) => !isOpen)}
+                onClick={() => dispatch(toggleIsOpenAttachFile())}
               />
             </div>
             <button className="bg-dasadeep p-2 rounded-full">

@@ -23,6 +23,7 @@ const initialState = {
   numMedia: 1,
   isLoading: false,
   user: {},
+  isOpenAttachFile: false,
 };
 const navSlice = createSlice({
   name: "nav",
@@ -76,6 +77,12 @@ const navSlice = createSlice({
     toggleShowToaster(state) {
       state.showToaster = !state.showToaster;
     },
+    setIsOpenAttachFile(state, action) {
+      state.isOpenAttachFile = action.payload;
+    },
+    toggleIsOpenAttachFile(state) {
+      state.isOpenAttachFile = !state.isOpenAttachFile;
+    },
     increasePageNumber(state) {
       state.page = state.page + 1;
     },
@@ -91,8 +98,8 @@ const navSlice = createSlice({
     setImages(state, action) {
       state.images = action.payload;
     },
-    setEmojiMart(state,action){
-      state.openEmojiMart = action.payload
+    setEmojiMart(state, action) {
+      state.openEmojiMart = action.payload;
     },
 
     setUser(state, action) {
@@ -126,6 +133,8 @@ export const {
   setIsLoading,
   setUser,
   toggleOpenEmojiMart,
-  setEmojiMart
+  setEmojiMart,
+  toggleIsOpenAttachFile,
+  setIsOpenAttachFile,
 } = navSlice.actions;
 export default navSlice.reducer;
