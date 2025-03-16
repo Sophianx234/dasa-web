@@ -3,13 +3,13 @@ import { toggleOpenEmojiMart } from "@/features/slices/navSlice";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { useChatType } from "@/hooks/useChat";
 import { signupCredentialsExtended } from "@/services/apiServices";
+import { useEffect, useRef, useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { BsEmojiGrin, BsSend } from "react-icons/bs";
 import { IoMdAttach } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import { formValues } from "../account/ChangeContactForm";
 import AttachFile from "./attachFile";
-import { MouseEvent, useEffect, useRef, useState } from "react";
 export type sendMessageFormValues = formValues & {
   message: string;
 };
@@ -22,7 +22,7 @@ function ChatSendInput({ type, hookForm }: useChatType) {
   const attachFileRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: Event) => {
       if (
         attachFileRef.current &&
         !attachFileRef.current.contains(event?.target as Node)
@@ -80,7 +80,7 @@ function ChatSendInput({ type, hookForm }: useChatType) {
         onSubmit={hookForm?.handleSubmit(handleSendAnonymous)}
         className="flex py-2  items-center space-x-2   justify-center relative -z-1   text-black "
       >
-        {isOpenAttachFile && <AttachFile />}
+        {isOpenAttachFile && <AttachFile attachFileRef={attachFileRef} />}
         <label className="flex  w-screen    z-40 items-center justify-center ">
           <textarea
             {...hookForm?.register("message")}
@@ -92,7 +92,7 @@ function ChatSendInput({ type, hookForm }: useChatType) {
               className="size-5"
               onClick={() => dispatch(toggleOpenEmojiMart())}
             />
-            <div ref={attachFileRef}>
+            <div >
               <IoMdAttach
                 className="size-5"
                 onClick={() => setIsOpenAttachFile((isOpen) => !isOpen)}
