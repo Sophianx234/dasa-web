@@ -39,7 +39,8 @@ export type dmType = {
     messageType: 'text' |'file',
     content: string,
     _id: string,
-    createdAt: string
+    createdAt: string;
+    fileURL: string;
   }
 export type directMessageType ={
   messages: dmType[]

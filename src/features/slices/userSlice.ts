@@ -10,6 +10,7 @@ export type anonymousMessagesType = {
   sender: signupCredentialsExtended;
   createdAt: string;
   anonymousName: string;
+  fileURL: string
 };
 export type initialStateProp = {
   isLiked: boolean;

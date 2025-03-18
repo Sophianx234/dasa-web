@@ -37,7 +37,7 @@ function ChatItem({ chat, orient }: chatItemProps) {
                   flex flex-col
                   text-wrap    break-words      `}
               >
-                <span className="pb-[.21rem]">{chat?.content}</span>
+                {chat.content ?<span className="pb-[.21rem]">{chat.content } </span>:<img src={chat.fileURL}/>}
 
                 <span className="   font-bold opacity-60       text-xs text-nowrap  text-blue-400 contrast-200     ">
                   {date}
@@ -63,7 +63,8 @@ function ChatItem({ chat, orient }: chatItemProps) {
                   flex flex-col
                   text-wrap   break-words      `}
               >
-                <span className="text-[#e7e8ea] pb-[.21rem]">{chat?.content}</span>
+                {chat.content ?<span className="pb-[.21rem]">{chat.content } </span>:<img src={chat.fileURL}/>}
+
 
                 <span className="   font-bold opacity-60       text-xs text-nowrap  text-blue-400 contrast-200     ">
                   {date}

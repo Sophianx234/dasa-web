@@ -47,7 +47,7 @@ console.log(videos)
         </div>
         <div className=" w-full items-center space-y-6 flex flex-col pt-10">
 
-          {videos.map((video:videoI)=><VideoPlayer src={video.secure_url} />)}
+          {videos.map((video:videoI)=><VideoPlayer key={video._id} src={video.secure_url} />)}
           
         </div>
         <p className="text-center text-sm font-chewy pt-10 ">
