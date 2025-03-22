@@ -2,7 +2,7 @@ localStorage.debug = "*";
 
 import { sendAnonymousMessage, sendMessage } from "@/features/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
-import { signupCredentialsExtended } from "@/services/apiServices";
+import { dmType, signupCredentialsExtended } from "@/services/apiServices";
 import {
   createContext,
   ReactNode,
@@ -51,13 +51,14 @@ function SocketProvider({ children }: socketProviderProps) {
         console.log('xxxy',message)
         dispatch(sendMessage(message));
       });
-      socketInstance.on("recieveFile", (message) => {
+      socketInstance.on("recieveFile", (message:dmType) => {
         console.log('xxxy',message)
-        if(message.recipient){
+        console.log('dddd',message.recipient)
+        if(!message.recipient){
 
-          dispatch(sendMessage(message));
-        }else{
           dispatch(sendAnonymousMessage(message))
+        }else{
+          dispatch(sendMessage(message));
 
         }
       });
