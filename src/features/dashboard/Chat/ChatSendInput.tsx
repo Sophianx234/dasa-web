@@ -85,7 +85,7 @@ function ChatSendInput({ type, hookForm }: useChatType) {
         onSubmit={hookForm?.handleSubmit(handleSendAnonymous)}
         className="flex py-2  items-center space-x-2   justify-center relative -z-1   text-black "
       >
-        {isOpenAttachFile && <AttachFile attachFileRef={attachFileRef} />}
+        {isOpenAttachFile && <AttachFile type={type} attachFileRef={attachFileRef}  />}
         <label className="flex  w-screen    z-40 items-center justify-center ">
           <textarea
             {...hookForm?.register("message")}
