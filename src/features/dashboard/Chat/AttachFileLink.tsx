@@ -8,6 +8,7 @@ import { API_URL, dmType } from "@/services/apiServices";
 import { useParams } from "react-router-dom";
 import { sendAnonymousMessage, sendMessage } from "@/features/slices/userSlice";
 import { File } from "buffer";
+import { useSocket } from "@/context/SocketContext";
 type attachFileLinkProps = {
   icon: ReactNode;
   text: string;
@@ -21,6 +22,7 @@ function AttachFileLink({ icon, text, accept,type }: attachFileLinkProps) {
   const dispatch = useAppDispatch()
   const fileRef = useRef<HTMLInputElement | null>(null);
   const {id} = useParams()
+  const socket = useSocket()
   console.log('yy2233kdsdlfjdg',id)
 
    function handleClick() {
@@ -32,19 +34,15 @@ function AttachFileLink({ icon, text, accept,type }: attachFileLinkProps) {
     for(const file of  e.target.files as FileList){
       const formData = new FormData()
       formData.append('img',file)
-      const {data} = await axios.post(`${API_URL}/${`messages/${type==='channel'?'anonymous':id}/upload`}`,formData)
+      const {data} = await axios.post(`${API_URL}/messages/${type==='channel'?'anonymous':id}/upload`,formData)
       console.log('res',data)
       const {populatedMessage} = data as {
         populatedMessage: dmType
       }
-      console.log('dxc',populatedMessage)
-      if(type==='channel'){
-        dispatch(sendAnonymousMessage(populatedMessage))
-      }
-      if(type==='direct'){
-        dispatch(sendMessage(populatedMessage))
-      }
+      
+      
 
+      socket?.emit('upload',populatedMessage)
     }
     dispatch(setIsOpenAttachFile(false))
 

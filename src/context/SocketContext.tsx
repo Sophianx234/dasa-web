@@ -51,6 +51,16 @@ function SocketProvider({ children }: socketProviderProps) {
         console.log('xxxy',message)
         dispatch(sendMessage(message));
       });
+      socketInstance.on("recieveFile", (message) => {
+        console.log('xxxy',message)
+        if(message.recipient){
+
+          dispatch(sendMessage(message));
+        }else{
+          dispatch(sendAnonymousMessage(message))
+
+        }
+      });
 
       return () => {
         if (socketInstance) {
