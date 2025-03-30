@@ -1,6 +1,6 @@
 localStorage.debug = "*";
 
-import { setTypingUsers, setUserIsTyping } from "@/features/slices/navSlice";
+import { removeTypingUser, setTypingUsers, setUserIsTyping } from "@/features/slices/navSlice";
 import { sendAnonymousMessage, sendMessage } from "@/features/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { dmType, signupCredentialsExtended } from "@/services/apiServices";
@@ -55,7 +55,7 @@ function SocketProvider({ children }: socketProviderProps) {
         console.log('xxxy',message)
         dispatch(sendMessage(message));
       });
-      socketInstance.on("isTyping", (message) => {
+      socketInstance.on("isTyping", (message:signupCredentialsExtended) => {
         console.log('xxxy',message)
         if(message){
           dispatch(setUserIsTyping(true));
@@ -67,6 +67,7 @@ function SocketProvider({ children }: socketProviderProps) {
 
           typingTimeoutRef.current = setTimeout(()=>{
             dispatch(setUserIsTyping(false))
+            dispatch(removeTypingUser(message._id))
           },typingTimeOut)
           
            

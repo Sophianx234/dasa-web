@@ -131,6 +131,9 @@ const navSlice = createSlice({
     setEmojiMart(state, action) {
       state.openEmojiMart = action.payload;
     },
+    removeTypingUser(state,action){
+      state.typingUsers = state.typingUsers.filter(user=>user._id !==action.payload)
+    },
     setTypingUsers(state, action) {
       console.log('state',JSON.parse(JSON.stringify(state.typingUsers)))
       if(!state.typingUsers.some(user=>user._id === action.payload._id)){
@@ -174,6 +177,7 @@ export const {
   toggleIsOpenAttachFile,
   setIsOpenAttachFile,
   setUserIsTyping,
-  setTypingUsers
+  setTypingUsers,
+  removeTypingUser
 } = navSlice.actions;
 export default navSlice.reducer;
