@@ -9,6 +9,7 @@ import {
   ReactNode,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import { io, Socket } from "socket.io-client";
@@ -29,8 +30,10 @@ function useSocket() {
 function SocketProvider({ children }: socketProviderProps) {
   const dispatch = useAppDispatch();
   const [socket, setSocket] = useState<Socket | null>(null);
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout>|null>(null)
   const { user } = useAppSelector((store) => store.nav);
   const userInfo = user as signupCredentialsExtended;
+  const typingTimeOut = 3000 
   const serverURL = "http://localhost:8000"
   // const serverURL = "https://dasa-api.onrender.com"
   useEffect(() => {
@@ -57,9 +60,16 @@ function SocketProvider({ children }: socketProviderProps) {
         if(message){
           dispatch(setUserIsTyping(true));
           dispatch(setTypingUsers(message))
-          /* setTimeout(function(){
+
+          if(typingTimeoutRef.current){
+            clearTimeout(typingTimeoutRef.current)
+          }
+
+          typingTimeoutRef.current = setTimeout(()=>{
             dispatch(setUserIsTyping(false))
-          },500) */
+          },typingTimeOut)
+          
+           
 
 
         }

@@ -1,5 +1,6 @@
 import { useAppSelector } from "@/features/utils/hooks";
 import { signupCredentialsExtended } from "@/services/apiServices";
+import { AnimatePresence,easeOut,motion } from "framer-motion";
 import { PulseLoader } from "react-spinners";
 
 type isTypingIndicatorProps = {
@@ -13,7 +14,14 @@ function TypingIndicator({typingUser,type}:isTypingIndicatorProps) {
 
 if(typingUser._id !== userInfo._id)
   return (
-    <div className="chat chat-start  w-screen  ">
+<AnimatePresence>
+
+    <motion.div
+    initial={{opacity:0, scale:0.5 }}
+    transition={{duration:0.3,scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 }, ease:'easeInOut'}}
+    animate={{opacity:1, scale:1}}
+    
+    className="chat chat-start  w-screen  ">
               <div className="chat-image avatar">
                 {typingUser.anonymousProfile && (
                   <div className="w-8 rounded-full">
@@ -36,7 +44,7 @@ if(typingUser._id !== userInfo._id)
                     className={` leading-5 
                       flex flex-col
                       text-wrap py-2    break-words      `}
-                  >
+                      >
       <PulseLoader color="white" speedMultiplier={0.6} size={8}/>
     
                     <span className="   font-bold opacity-60       text-xs text-nowrap  text-blue-400 contrast-200     ">
@@ -45,7 +53,8 @@ if(typingUser._id !== userInfo._id)
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
+                    </AnimatePresence>
           
   )
 }
