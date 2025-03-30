@@ -1,3 +1,4 @@
+import { useAppSelector } from "@/features/utils/hooks";
 import { signupCredentialsExtended } from "@/services/apiServices";
 import { PulseLoader } from "react-spinners";
 
@@ -7,8 +8,10 @@ type isTypingIndicatorProps = {
 
 }
 function TypingIndicator({typingUser,type}:isTypingIndicatorProps) {
-  
+  const {user} = useAppSelector(store=>store.nav)
+  const userInfo = user as signupCredentialsExtended
 
+if(typingUser._id !== userInfo._id)
   return (
     <div className="chat chat-start  w-screen  ">
               <div className="chat-image avatar">
