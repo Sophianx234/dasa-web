@@ -1,34 +1,51 @@
-import { useAppSelector } from "@/features/utils/hooks"
-import { SyncLoader } from "react-spinners"
+import { signupCredentialsExtended } from "@/services/apiServices";
+import { PulseLoader } from "react-spinners";
 
-function TypingIndicator({}) {
-  const {isTyping} = useAppSelector(store=>store.nav)
+type isTypingIndicatorProps = {
+  typingUser: signupCredentialsExtended;
+  type: 'direct'|'channel'
+
+}
+function TypingIndicator({typingUser,type}:isTypingIndicatorProps) {
+  
+
   return (
-    <div className="chat chat-end">
-              <div className="chat-bubble shadow-lg text-gray-200 bg-[#0B192C]   ">
-                <div className="text-xs flex pb-1 justify-end text-[#F4D793]">
-                  {(chat as anonymousMessagesType)?.sender?.anonymousName ||
-                    (chat as dmType).recipient.firstName}
+    <div className="chat chat-start  w-screen  ">
+              <div className="chat-image avatar">
+                {typingUser.anonymousProfile && (
+                  <div className="w-8 rounded-full">
+                    <img
+                      alt="Tailwind CSS chat bubble component"
+                      src={typingUser.anonymousProfile}
+                      />
+                  </div>
+                )}
+              </div>
+              <div className="chat-bubble  shadow-lg  bg-[#33312d] text-[#fdf4df] ">
+                <div className="text-xs flex  justify-start font-bold text-green-600">
+                 {type==='channel'? typingUser?.anonymousName :
+                null} 
+                  {/* {(chat as anonymousMessagesType)?.sender?.anonymousName ||
+                    (chat as dmType).recipient?.firstName} */}
                 </div>
-                <div className="flex    ">
+                <div className="flex     ">
                   <div
                     className={` leading-5 
                       flex flex-col
-                      text-wrap   break-words      `}
+                      text-wrap py-2    break-words      `}
                   >
-                    {chat.content ?<span className="pb-[.21rem]">{chat.content } </span>:<img className="max-w-[15rem] rounded-sm pb-1" src={chat.fileURL}/>}
-    
+      <PulseLoader color="white" speedMultiplier={0.6} size={8}/>
     
                     <span className="   font-bold opacity-60       text-xs text-nowrap  text-blue-400 contrast-200     ">
-                      {date}
+                      {/* {date} */}
                     </span>
                   </div>
                 </div>
               </div>
             </div>
-          </>
+          
   )
 }
 
-// {isTyping && <SyncLoader color="white" speedMultiplier={0.6} size={8}/>}
+
 export default TypingIndicator

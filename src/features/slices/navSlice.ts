@@ -131,10 +131,11 @@ const navSlice = createSlice({
     setEmojiMart(state, action) {
       state.openEmojiMart = action.payload;
     },
-    setTypingUser(state, action) {
-      if(!state.typingUsers.includes(action.payload)){
-
-        state.typingUsers = Array.from(new Set([state.typingUsers,action.payload]));
+    setTypingUsers(state, action) {
+      console.log('state',JSON.parse(JSON.stringify(state.typingUsers)))
+      if(!state.typingUsers.some(user=>user._id === action.payload._id)){
+        console.log('action.payload',action.payload)
+        state.typingUsers.push(action.payload) 
       }
     },
 
@@ -172,6 +173,7 @@ export const {
   setEmojiMart,
   toggleIsOpenAttachFile,
   setIsOpenAttachFile,
-  setUserIsTyping
+  setUserIsTyping,
+  setTypingUsers
 } = navSlice.actions;
 export default navSlice.reducer;
