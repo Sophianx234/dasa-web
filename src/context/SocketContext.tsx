@@ -1,5 +1,6 @@
 localStorage.debug = "*";
 
+import { setUserIsTyping } from "@/features/slices/navSlice";
 import { sendAnonymousMessage, sendMessage } from "@/features/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { dmType, signupCredentialsExtended } from "@/services/apiServices";
@@ -50,6 +51,16 @@ function SocketProvider({ children }: socketProviderProps) {
       socketInstance.on("recieveMessage", (message) => {
         console.log('xxxy',message)
         dispatch(sendMessage(message));
+      });
+      socketInstance.on("isTyping", (message) => {
+        console.log('xxxy',message)
+        if(message){
+          dispatch(setUserIsTyping(true));
+          
+
+        }else {
+          dispatch(setUserIsTyping(false))
+        }
       });
       socketInstance.on("recieveFile", (message:dmType) => {
         console.log('xxxy',message)

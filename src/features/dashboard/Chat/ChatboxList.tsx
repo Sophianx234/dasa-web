@@ -9,6 +9,7 @@ import { addEmoji, emojiType } from "@/hooks/addEmoji";
 import Picker from '@emoji-mart/react';
 import { useEffect, useRef } from "react";
 import { useForm, UseFormReturn } from "react-hook-form";
+import { SyncLoader } from "react-spinners";
 
 type chatBoxListProps = {
   type: 'direct' |'channel'
@@ -20,7 +21,7 @@ function ChatboxList({type}:chatBoxListProps) {
     
   const dispatch = useAppDispatch()
   const {messages,userInfo,lastMessageRef,directMessages} = useChat({type})
-  const {openEmojiMart} = useAppSelector(store=>store.nav)
+  const {openEmojiMart,isTyping} = useAppSelector(store=>store.nav)
   console.log('emojiMart',openEmojiMart)
   useEffect(() => {
     const handleOutsideClick = (event:MouseEvent) => {
@@ -50,6 +51,7 @@ function ChatboxList({type}:chatBoxListProps) {
         <ChatItem chat={message} orient={message.sender?._id === userInfo._id  && "reverse"} />
         </div>
       ))}
+      
     </div>
     <div className="grid grid-cols-[.5fr_1fr] " ref={emojiRef}>
       {openEmojiMart && <Picker previewPosition='none' onEmojiSelect={(emoji:emojiType)=>addEmoji(emoji,watch,setValue)} />}

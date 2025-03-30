@@ -1,8 +1,35 @@
-import { signupCredentialsExtended, userType } from "@/services/apiServices";
+import { mediaType, signupCredentialsExtended } from "@/services/apiServices";
 import { createSlice } from "@reduxjs/toolkit";
 import { genRandomName } from "../utils/helpers";
 
-const initialState = {
+interface navState {
+  typingUsers: signupCredentialsExtended[]; 
+  isTyping: boolean; 
+  openEmojiMart: boolean; 
+  isOpen: boolean; 
+  openSidebar: boolean; 
+  openChatMenuOptions: boolean; 
+  isOpenChangePassword: boolean; 
+  showChangeContact: boolean; 
+  revealConfirmModal: boolean; 
+  revealReportIssue: boolean; 
+  revealFaq: boolean; 
+  revealUploadProfile: boolean; 
+  isOpenUploadProduct: boolean; 
+  renameImage: boolean; 
+  revealUplaoadUserImage: boolean; 
+  isAuthenticated: boolean; 
+  showToaster: boolean; 
+  page: number; 
+  images: mediaType[]; 
+  numMedia: number; 
+  isLoading: boolean; 
+  user: signupCredentialsExtended |object; 
+  isOpenAttachFile: boolean; 
+}
+const initialState:navState = {
+  typingUsers: [],
+  isTyping: false,
   openEmojiMart: false,
   isOpen: false,
   openSidebar: false,
@@ -98,8 +125,17 @@ const navSlice = createSlice({
     setImages(state, action) {
       state.images = action.payload;
     },
+    setUserIsTyping(state, action) {
+      state.isTyping = action.payload;
+    },
     setEmojiMart(state, action) {
       state.openEmojiMart = action.payload;
+    },
+    setTypingUser(state, action) {
+      if(!state.typingUsers.includes(action.payload)){
+
+        state.typingUsers = Array.from(new Set([state.typingUsers,action.payload]));
+      }
     },
 
     setUser(state, action) {
@@ -136,5 +172,6 @@ export const {
   setEmojiMart,
   toggleIsOpenAttachFile,
   setIsOpenAttachFile,
+  setUserIsTyping
 } = navSlice.actions;
 export default navSlice.reducer;
