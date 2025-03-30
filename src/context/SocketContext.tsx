@@ -1,4 +1,3 @@
-localStorage.debug = "*";
 
 import { removeTypingUser, setTypingUsers, setUserIsTyping } from "@/features/slices/navSlice";
 import { sendAnonymousMessage, sendMessage } from "@/features/slices/userSlice";
