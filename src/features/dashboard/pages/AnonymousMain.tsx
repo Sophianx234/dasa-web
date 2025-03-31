@@ -2,19 +2,22 @@ import { useAppSelector } from "@/features/utils/hooks";
 import WriteAnonymous from "../anonymous/WriteAnonymous";
 import ChatboxList from "../chat/ChatboxList";
 import ChatHeader from "../chat/ChatHeader";
+import { signupCredentialsExtended } from "@/services/apiServices";
 
 function AnonymousMain() {
-  const {typingUsers} = useAppSelector(store=>store.nav)
-  const currentlyTypingUsers = typingUsers.map(user=>user.anonymousName).map(name=>name.match(/[A-Z][a-z]*/g)?.[0])
-  const displayedNames = currentlyTypingUsers.slice(0,3)
-  console.log('tp',typingUsers)
+  const {typingUsers,user} = useAppSelector(store=>store.nav)
+  const userInfo = user as signupCredentialsExtended
+  const currentlyTypingUsers = typingUsers.filter(user=>user._id != userInfo._id).map(user=>user.anonymousName).map(name=>name.match(/[A-Z][a-z]*/g)?.[0])
   return (
-    <div>
+    <div className="relative">
       <WriteAnonymous>
         <ChatHeader title='Anonymous' />
-        { typingUsers.length && <div className="bg-white z-50 px-3 text-center font-medium py-3 text-sm font-mulish shadow-2xl relative -top-2">
-        <span className="font-bold">{ currentlyTypingUsers.join(',') }</span> typing 
-        </div>}
+        <div className="absolute inset-x-0  z-50 top-16">
+
+        { currentlyTypingUsers.length ? <div className="bg-white  px-3 text-center font-medium py-3 text-sm font-mulish shadow-2xl  ">
+        <span className="font-bold">{ currentlyTypingUsers.join(',') }</span> typing... 
+        </div>:null}
+        </div>
 
         <ChatboxList type="channel" />
       </WriteAnonymous>
