@@ -2,33 +2,40 @@ import { mediaType, signupCredentialsExtended } from "@/services/apiServices";
 import { createSlice } from "@reduxjs/toolkit";
 import { genRandomName } from "../utils/helpers";
 
+export type onlineUsersType = {
+  userId: string;
+  userName: string;
+  isOnline: boolean;
+};
 interface navState {
-  typingUsers: signupCredentialsExtended[]; 
-  isTyping: boolean; 
-  openEmojiMart: boolean; 
-  isOpen: boolean; 
-  openSidebar: boolean; 
-  openChatMenuOptions: boolean; 
-  isOpenChangePassword: boolean; 
-  showChangeContact: boolean; 
-  revealConfirmModal: boolean; 
-  revealReportIssue: boolean; 
-  revealFaq: boolean; 
-  revealUploadProfile: boolean; 
-  isOpenUploadProduct: boolean; 
-  renameImage: boolean; 
-  revealUplaoadUserImage: boolean; 
-  isAuthenticated: boolean; 
-  showToaster: boolean; 
-  page: number; 
-  images: mediaType[]; 
-  numMedia: number; 
-  isLoading: boolean; 
-  user: signupCredentialsExtended |object; 
-  isOpenAttachFile: boolean; 
+  typingUsers: signupCredentialsExtended[];
+  isTyping: boolean;
+  onlineUsers: onlineUsersType[];
+  openEmojiMart: boolean;
+  isOpen: boolean;
+  openSidebar: boolean;
+  openChatMenuOptions: boolean;
+  isOpenChangePassword: boolean;
+  showChangeContact: boolean;
+  revealConfirmModal: boolean;
+  revealReportIssue: boolean;
+  revealFaq: boolean;
+  revealUploadProfile: boolean;
+  isOpenUploadProduct: boolean;
+  renameImage: boolean;
+  revealUplaoadUserImage: boolean;
+  isAuthenticated: boolean;
+  showToaster: boolean;
+  page: number;
+  images: mediaType[];
+  numMedia: number;
+  isLoading: boolean;
+  user: signupCredentialsExtended | object;
+  isOpenAttachFile: boolean;
 }
-const initialState:navState = {
+const initialState: navState = {
   typingUsers: [],
+  onlineUsers: [],
   isTyping: false,
   openEmojiMart: false,
   isOpen: false,
@@ -125,20 +132,31 @@ const navSlice = createSlice({
     setImages(state, action) {
       state.images = action.payload;
     },
+    
+    setOnlineUsers(state, action) {
+      state.onlineUsers.push(action.payload);
+    },
     setUserIsTyping(state, action) {
       state.isTyping = action.payload;
     },
     setEmojiMart(state, action) {
       state.openEmojiMart = action.payload;
     },
-    removeTypingUser(state,action){
-      state.typingUsers = state.typingUsers.filter(user=>user._id !==action.payload)
+    removeOnlineUser(state, action) {
+      const OfflineUser = action.payload as onlineUsersType
+      state.onlineUsers = state.onlineUsers.filter(user=>user.userId !== OfflineUser.userId )
+
+    },
+    removeTypingUser(state, action) {
+      state.typingUsers = state.typingUsers.filter(
+        (user) => user._id !== action.payload
+      );
     },
     setTypingUsers(state, action) {
-      console.log('state',JSON.parse(JSON.stringify(state.typingUsers)))
-      if(!state.typingUsers.some(user=>user._id === action.payload._id)){
-        console.log('action.payload',action.payload)
-        state.typingUsers.push(action.payload) 
+      console.log("state", JSON.parse(JSON.stringify(state.typingUsers)));
+      if (!state.typingUsers.some((user) => user._id === action.payload._id)) {
+        console.log("action.payload", action.payload);
+        state.typingUsers.push(action.payload);
       }
     },
 
@@ -178,6 +196,8 @@ export const {
   setIsOpenAttachFile,
   setUserIsTyping,
   setTypingUsers,
-  removeTypingUser
+  removeTypingUser,
+  setOnlineUsers,
+  removeOnlineUser
 } = navSlice.actions;
 export default navSlice.reducer;

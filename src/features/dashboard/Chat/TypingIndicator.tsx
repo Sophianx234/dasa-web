@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/features/utils/hooks";
 import { signupCredentialsExtended } from "@/services/apiServices";
-import { AnimatePresence,easeOut,motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { PulseLoader } from "react-spinners";
 
 type isTypingIndicatorProps = {
@@ -27,7 +27,7 @@ if(typingUser._id !== userInfo._id)
                   <div className="w-8 rounded-full">
                     <img
                       alt="Tailwind CSS chat bubble component"
-                      src={typingUser.anonymousProfile}
+                      src={type === 'channel'?typingUser.anonymousProfile:typingUser.profileImage}
                       />
                   </div>
                 )}

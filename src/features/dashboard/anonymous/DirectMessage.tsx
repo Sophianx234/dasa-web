@@ -4,8 +4,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import ChatboxList from "../chat/ChatboxList"
 import ChatHeader from "../chat/ChatHeader"
-import WriteAnonymous from "./WriteAnonymous"
 import { usersResponse } from "../chat/ChatMenu"
+import WriteAnonymous from "./WriteAnonymous"
 
 function ViewAnonymous() {
     const {id} = useParams()
@@ -27,7 +27,7 @@ function ViewAnonymous() {
     return (
         <div>
             <WriteAnonymous>
-            <ChatHeader user={user as signupCredentialsExtended} />
+            <ChatHeader type="direct" user={user as signupCredentialsExtended} />
             <ChatboxList type="direct"/>
             </WriteAnonymous>
         </div>
