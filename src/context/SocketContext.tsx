@@ -19,6 +19,12 @@ type socketProviderProps = {
   children: ReactNode;
 };
 
+export type userIsTypingI = {
+  userInfo: signupCredentialsExtended;
+  type: "direct" | "channel";
+  recipientId: string;
+};
+
 function useSocket() {
   const context = useContext(SocketContext);
   if (context === undefined)
@@ -54,7 +60,7 @@ function SocketProvider({ children }: socketProviderProps) {
         console.log('xxxy',message)
         dispatch(sendMessage(message));
       });
-      socketInstance.on("isTyping", (message:signupCredentialsExtended) => {
+      socketInstance.on("isTyping", (message:userIsTypingI) => {
         console.log('xxxy',message)
         if(message){
           dispatch(setUserIsTyping(true));
@@ -66,7 +72,7 @@ function SocketProvider({ children }: socketProviderProps) {
 
           typingTimeoutRef.current = setTimeout(()=>{
             dispatch(setUserIsTyping(false))
-            dispatch(removeTypingUser(message._id))
+            dispatch(removeTypingUser(message.userInfo._id))
           },typingTimeOut)
           
            

@@ -134,11 +134,10 @@ const navSlice = createSlice({
     },
     
     setOnlineUsers(state, action) {
-      const onlineUser = action.payload as onlineUsersType
-      const userIsOnline = state.onlineUsers.some(user=>user.userId === onlineUser.userId)
-      console.log('isONline',userIsOnline)
-      if(!userIsOnline){
+      const onlineUser =  action.payload as  onlineUsersType
+      if(!state.onlineUsers.some(user=>user.userId === onlineUser.userId)){
         state.onlineUsers.push(action.payload);
+
       }
     },
     setUserIsTyping(state, action) {

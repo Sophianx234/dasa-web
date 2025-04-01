@@ -16,6 +16,7 @@ function ChatHeader({ title, user,type }: chatHeaderProps) {
   const { onlineUsers } = useAppSelector((store) => store.nav);
   const { id } = useParams();
   console.log("123", id);
+  console.log('12xxx',onlineUsers)
   const onlineUser = onlineUsers.find((user) => user.userId === id);
   console.log("xx2y", onlineUsers);
 
