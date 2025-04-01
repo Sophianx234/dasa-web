@@ -134,7 +134,12 @@ const navSlice = createSlice({
     },
     
     setOnlineUsers(state, action) {
-      state.onlineUsers.push(action.payload);
+      const onlineUser = action.payload as onlineUsersType
+      const userIsOnline = state.onlineUsers.some(user=>user.userId === onlineUser.userId)
+      console.log('isONline',userIsOnline)
+      if(!userIsOnline){
+        state.onlineUsers.push(action.payload);
+      }
     },
     setUserIsTyping(state, action) {
       state.isTyping = action.payload;
@@ -154,7 +159,8 @@ const navSlice = createSlice({
     },
     setTypingUsers(state, action) {
       console.log("state", JSON.parse(JSON.stringify(state.typingUsers)));
-      if (!state.typingUsers.some((user) => user._id === action.payload._id)) {
+      const typist = action.payload as signupCredentialsExtended
+      if (!state.typingUsers.some((user) => user._id === typist._id)) {
         console.log("action.payload", action.payload);
         state.typingUsers.push(action.payload);
       }

@@ -17,7 +17,7 @@ function ChatHeader({ title, user,type }: chatHeaderProps) {
   const { id } = useParams();
   console.log("123", id);
   const onlineUser = onlineUsers.find((user) => user.userId === id);
-  console.log("xx2y", onlineUser);
+  console.log("xx2y", onlineUsers);
 
   if (!user)
     return (
