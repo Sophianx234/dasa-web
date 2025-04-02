@@ -19,7 +19,7 @@ function AccountProfile() {
                     <h1 className="font-medium">{user.username}</h1>
                     <p className="text-center text-sm">{user.email}</p>
                 </div>
-                <Link to='63324d/profile' className="flex justify-center">
+                <Link to={`${user._id}/profile`} className="flex justify-center">
 
                 <div className="flex items-center  space-x-1 mt-1 justify-center bg-dasadeep w-fit px-3 py-2 rounded-3xl text-[#332b22] font-bold">
                     <p>
