@@ -75,7 +75,6 @@ export function useLogout(navigate: NavigateFunction) {
     onSuccess: () => {
       toast.dismiss();
       toast.success("logout successful");
-      localStorage.removeItem("token");
       setTimeout(() => {
         toast.dismiss();
         navigate("/homepage");

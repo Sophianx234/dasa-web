@@ -1,27 +1,45 @@
 import { API_URL } from "@/services/apiServices";
 import axios from "axios";
 import { ReactNode, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { HashLoader } from "react-spinners";
 
 export type protectedRouteProp = {
-    children:ReactNode
-}
+  children: ReactNode;
+};
 export type isAuthenticatedResponse = {
-    isAuthenticated: boolean
-}
-export function ProtectedRoute({children}:protectedRouteProp){
-    const navigate = useNavigate()
-    const [isLoggedIn,setIsLoggedIn] = useState<boolean>(false)
-    useEffect(function(){
-        async function checkUserIsAuthenticated(){
-
-            const {data} = await axios.get(`${API_URL}/users/auth/check`,{withCredentials:true})
-            const {isAuthenticated} = data as isAuthenticatedResponse
-            if(!isAuthenticated) navigate('/')
-                setIsLoggedIn(isAuthenticated)
+  isAuthenticated: boolean;
+};
+export function ProtectedRoute({ children }: protectedRouteProp) {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
+  useEffect(
+    function () {
+      async function checkUserIsAuthenticated() {
+          
+          const { data } = await axios.get(`${API_URL}/users/auth/check`, {
+              withCredentials: true,
+            });
+            if (data) {
+                const { isAuthenticated } = data as isAuthenticatedResponse;
+                setIsLoggedIn(isAuthenticated);
+                if (!isAuthenticated) {
+                    navigate("/");
+                }
             }
-        checkUserIsAuthenticated()
-    },[navigate])
+            
+        }
+        checkUserIsAuthenticated();
+        if(!isLoggedIn){
+                setIsLoggedIn(false)
+                navigate('/')
+            
+        }
+      
+    },
+    [navigate,isLoggedIn]
+  );
+  
 
-    return isLoggedIn ? children :null
+  return isLoggedIn ? children : null;
 }
