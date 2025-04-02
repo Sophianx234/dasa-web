@@ -13,7 +13,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { NavigateFunction } from "react-router-dom";
-import { toggleIsAuthenticated, toggleSidebar } from "../slices/navSlice";
+import { setIsLoggedIn, toggleIsAuthenticated, toggleSidebar } from "../slices/navSlice";
 import type { AppDispatch, RootState } from "./../../../store";
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
@@ -64,8 +64,8 @@ export const useAppSelector = useSelector.withTypes<RootState>();
   }
   */
 
-export function useLogout(navigate: NavigateFunction) {
-  const dispatch = useAppDispatch();
+ export function useLogout(navigate: NavigateFunction) {
+   const dispatch = useAppDispatch();
 
   const { mutateAsync: handleLogout } = useMutation({
     mutationFn: logout,
@@ -93,6 +93,7 @@ export function useLogout(navigate: NavigateFunction) {
 }
 
 export function useLogin(navigate: NavigateFunction) {
+  const dispatch = useAppDispatch()
 
   const { mutateAsync: handleLogin } = useMutation({
     mutationFn: login,
@@ -103,7 +104,7 @@ export function useLogin(navigate: NavigateFunction) {
     onSuccess: () => {
       toast.dismiss();
       toast.success("Login Successfully");
-      localStorage.setItem("isAuthenticated", 'true');
+      dispatch(setIsLoggedIn(true))
 
       setTimeout(() => {
         toast.dismiss();

@@ -32,10 +32,12 @@ interface navState {
   isLoading: boolean;
   user: signupCredentialsExtended | object;
   isOpenAttachFile: boolean;
+  isLoggedIn:boolean
 }
 const initialState: navState = {
   typingUsers: [],
   onlineUsers: [],
+  isLoggedIn: false,
   isTyping: false,
   openEmojiMart: false,
   isOpen: false,
@@ -101,6 +103,9 @@ const navSlice = createSlice({
     },
     setIsLoading(state, action) {
       state.isLoading = action.payload;
+    },
+    setIsLoggedIn(state, action) {
+      state.isLoggedIn = action.payload;
     },
     toggleRevealUplaoadUserImage(state) {
       state.revealUplaoadUserImage = !state.revealUplaoadUserImage;
@@ -203,6 +208,7 @@ export const {
   setTypingUsers,
   removeTypingUser,
   setOnlineUsers,
-  removeOnlineUser
+  removeOnlineUser,
+  setIsLoggedIn
 } = navSlice.actions;
 export default navSlice.reducer;

@@ -3,6 +3,8 @@ import axios from "axios";
 import { ReactNode, useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { setIsLoggedIn } from "../slices/navSlice";
 
 export type protectedRouteProp = {
   children: ReactNode;
@@ -12,17 +14,19 @@ export type isAuthenticatedResponse = {
 };
 export function ProtectedRoute({ children }: protectedRouteProp) {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
+  const {isLoggedIn} = useAppSelector(store=>store.nav)
+  const dispatch = useAppDispatch()
   useEffect(
     function () {
       async function checkUserIsAuthenticated() {
+          console.log('Goku')
           
-          const { data } = await axios.get(`${API_URL}/users/auth/check`, {
+          const  {data} = await axios.get(`${API_URL}/users/auth/check`, {
               withCredentials: true,
             });
             if (data) {
                 const { isAuthenticated } = data as isAuthenticatedResponse;
-                setIsLoggedIn(isAuthenticated);
+                dispatch(setIsLoggedIn(isAuthenticated));
                 if (!isAuthenticated) {
                     navigate("/");
                 }
@@ -31,13 +35,13 @@ export function ProtectedRoute({ children }: protectedRouteProp) {
         }
         checkUserIsAuthenticated();
         if(!isLoggedIn){
-                setIsLoggedIn(false)
-                navigate('/')
-            
+            navigate('/')
         }
+        
+        
       
     },
-    [navigate,isLoggedIn]
+    []
   );
   
 
