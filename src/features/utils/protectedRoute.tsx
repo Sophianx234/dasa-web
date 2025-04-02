@@ -19,29 +19,31 @@ export function ProtectedRoute({ children }: protectedRouteProp) {
   useEffect(
     function () {
       async function checkUserIsAuthenticated() {
-          console.log('Goku')
-          
-          const  {data} = await axios.get(`${API_URL}/users/auth/check`, {
-              withCredentials: true,
-            });
-            if (data) {
-                const { isAuthenticated } = data as isAuthenticatedResponse;
-                dispatch(setIsLoggedIn(isAuthenticated));
-                if (!isAuthenticated) {
-                    navigate("/");
+          try{
+                console.log('d1')
+              const  {data} = await axios.get(`${API_URL}/users/auth/check`, {
+                  withCredentials: true,
+                });
+                console.log('Goku',data)
+                if (data) {
+                    const { isAuthenticated } = data as isAuthenticatedResponse;
+                    dispatch(setIsLoggedIn(isAuthenticated));
+                    if (!isAuthenticated) {
+                        navigate("/");
+                    }
                 }
+            }catch(err){
+                console.log('dxx',err)
             }
             
         }
         checkUserIsAuthenticated();
-        if(!isLoggedIn){
-            navigate('/')
-        }
+        
         
         
       
     },
-    []
+    [navigate,dispatch,isLoggedIn]
   );
   
 
