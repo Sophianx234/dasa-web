@@ -33,7 +33,7 @@ export function ProtectedRoute({ children }: protectedRouteProp) {
                     }
                 }
             }catch(err){
-                console.log('dxx',err)
+                console.log('xx',err)
             }
             
         }
