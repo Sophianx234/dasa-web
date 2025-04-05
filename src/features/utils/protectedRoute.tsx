@@ -1,10 +1,9 @@
 import { API_URL } from "@/services/apiServices";
 import axios from "axios";
-import { ReactNode, useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { HashLoader } from "react-spinners";
-import { useAppDispatch, useAppSelector } from "./hooks";
+import { ReactNode, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { setIsLoggedIn } from "../slices/navSlice";
+import { useAppDispatch, useAppSelector } from "./hooks";
 
 export type protectedRouteProp = {
   children: ReactNode;

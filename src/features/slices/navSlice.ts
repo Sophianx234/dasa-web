@@ -173,7 +173,7 @@ const navSlice = createSlice({
     setUser(state, action) {
       state.user = {
         ...(action?.payload as signupCredentialsExtended),
-        anonymousName: genRandomName(),
+        
       };
     },
   },
