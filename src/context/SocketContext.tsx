@@ -60,7 +60,7 @@ function SocketProvider({ children }: socketProviderProps) {
         console.log('xxxy',message)
         dispatch(sendMessage(message));
       });
-      socketInstance.on("isTyping", (message:userIsTypingI) => {
+      socketInstance.on("isTyping", (message:signupCredentialsExtended) => {
         console.log('xxxy',message)
         if(message){
           dispatch(setUserIsTyping(true));
@@ -72,7 +72,8 @@ function SocketProvider({ children }: socketProviderProps) {
 
           typingTimeoutRef.current = setTimeout(()=>{
             dispatch(setUserIsTyping(false))
-            dispatch(removeTypingUser(message.userInfo._id))
+            console.log('message x',message)
+            dispatch(removeTypingUser(message._id))
           },typingTimeOut)
           
            

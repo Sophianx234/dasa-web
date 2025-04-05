@@ -157,6 +157,7 @@ const navSlice = createSlice({
 
     },
     removeTypingUser(state, action) {
+      console.log('typingUsers',setTypingUsers)
       state.typingUsers = state.typingUsers.filter(
         (user) => user._id !== action.payload
       );
