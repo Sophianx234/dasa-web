@@ -27,6 +27,8 @@ interface navState {
   isAuthenticated: boolean;
   showToaster: boolean;
   page: number;
+  dateArr:string[],
+
   images: mediaType[];
   numMedia: number;
   isLoading: boolean;
@@ -36,6 +38,7 @@ interface navState {
 }
 const initialState: navState = {
   typingUsers: [],
+  dateArr:[],
   onlineUsers: [],
   isLoggedIn: false,
   isTyping: false,
@@ -118,6 +121,10 @@ const navSlice = createSlice({
     },
     setIsOpenAttachFile(state, action) {
       state.isOpenAttachFile = action.payload;
+    },
+    setDateArr(state, action) {
+      const dateExist = state.dateArr.find(date=>date===action.payload)
+      if(!dateExist) state.dateArr.push(action.payload)
     },
     toggleIsOpenAttachFile(state) {
       state.isOpenAttachFile = !state.isOpenAttachFile;
@@ -210,6 +217,7 @@ export const {
   removeTypingUser,
   setOnlineUsers,
   removeOnlineUser,
-  setIsLoggedIn
+  setIsLoggedIn,
+  setDateArr
 } = navSlice.actions;
 export default navSlice.reducer;

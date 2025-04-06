@@ -10,10 +10,13 @@ import Picker from "@emoji-mart/react";
 import { useEffect, useRef } from "react";
 import { useForm, UseFormReturn } from "react-hook-form";
 import TypingIndicator from "./TypingIndicator";
+import { formatDate, isYesterday } from "date-fns";
+import { formatChatDate } from "@/features/utils/helpers";
 
 type chatBoxListProps = {
   type: "direct" | "channel";
 };
+/* test */
 function ChatboxList({ type }: chatBoxListProps) {
   const { watch, setValue, ...hookForm } = useForm<sendMessageFormValues>();
   const emojiRef = useRef<HTMLDivElement | null>(null);
@@ -22,7 +25,7 @@ function ChatboxList({ type }: chatBoxListProps) {
   const { messages, userInfo, lastMessageRef, directMessages } = useChat({
     type,
   });
-  const { openEmojiMart, isTyping, typingUsers } = useAppSelector(
+  const { openEmojiMart, isTyping, typingUsers,dateArr } = useAppSelector(
     (store) => store.nav
   );
   console.log("emojiMart", openEmojiMart);
@@ -52,6 +55,7 @@ function ChatboxList({ type }: chatBoxListProps) {
                 key={i}
                 ref={i === messages.length - 1 ? lastMessageRef : null}
               >
+                {<div>{ formatChatDate(message.createdAt,dispatch,dateArr) }</div>}
                 <ChatItem
                   chat={message}
                   orient={message.sender?._id === userInfo._id && "reverse"}

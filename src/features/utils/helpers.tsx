@@ -3,6 +3,10 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import isToday from 'dayjs/plugin/isToday';
 import isYesterday from 'dayjs/plugin/isYesterday';
 import {uniqueNamesGenerator, animals, adjectives,Style} from 'unique-names-generator'
+import { useState } from 'react';
+import { useAppSelector } from './hooks';
+import { Dispatch } from '@reduxjs/toolkit';
+import { setDateArr } from '../slices/navSlice';
 day.extend(relativeTime);
 day.extend(isToday);
 day.extend(isYesterday);
@@ -96,6 +100,44 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
     return  uniqueNamesGenerator(customConfig).replace("_",'') + Math.floor(Math.random()*100)
 
   } 
+  export function formatChatDate(isoString:string,dispatch:Dispatch,dateArr:string[]) {
+    const date = new Date(isoString);
+    const now = new Date();
+    console.log('dateArr',dateArr)
+    const isToday =
+      date.getDate() === now.getDate() &&
+      date.getMonth() === now.getMonth() &&
+      date.getFullYear() === now.getFullYear();
+  
+    const yesterday = new Date();
+    yesterday.setDate(now.getDate() - 1);
+    const isYesterday =
+      date.getDate() === yesterday.getDate() &&
+      date.getMonth() === yesterday.getMonth() &&
+      date.getFullYear() === yesterday.getFullYear();
+
+      if(isToday){
+        if(!dateArr.find(prevDate=>prevDate ==='Today')){
+          dispatch(setDateArr('Today'))
+          return 'Today'
+          
+
+        }
+
+      }else if(isYesterday){
+        if(!dateArr.find(prevDate=>prevDate ==='Yesterday')){
+          dispatch(setDateArr('Yesterday'))
+          return 'Yesterday' 
+        }
+        
+      } else if(!isToday && !isYesterday){
+        console.log('1x2xx',dateArr.find(prevDate=>prevDate ===date.toLocaleDateString()))
+        if(!dateArr.find(prevDate=>prevDate ===date.toLocaleDateString()))
+          dispatch(setDateArr(date.toLocaleDateString()))
+        return date.toLocaleDateString()
+        
+      } 
+  }
 
 
   
