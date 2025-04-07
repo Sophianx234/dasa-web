@@ -60,7 +60,7 @@ function ChatboxList({ type }: chatBoxListProps) {
                   key={i}
                   ref={i === messages.length - 1 ? lastMessageRef : null}
                   >
-                 {shouldRenderDate && <div className="flex justify-center sticky top-0 my-2 text-sm "><span className="bg-dasadeep px-3 py-2 font-medium font-poppins">{formattedDate}</span></div>}
+                 {shouldRenderDate && <div className="flex justify-center sticky top-0 my-2 text-sm "><span className="bg-dasadeep px-3 py-2 font-medium font-poppins rounded-md">{formattedDate}</span></div>}
                 <ChatItem
                   chat={message}
                   orient={message.sender?._id === userInfo._id && "reverse"}
@@ -97,11 +97,16 @@ function ChatboxList({ type }: chatBoxListProps) {
       <>
         <div className="relative overflow-y-scroll h-dvh z-30">
           {directMessages &&
-            directMessages?.map((message, i) => (
+            directMessages?.map((message, i) => {
+              const formattedDate = formatChatDate(message.createdAt);
+              const shouldRenderDate = formattedDate !== lastRenderedDate;
+              lastRenderedDate = formattedDate;
+              return (
               <div
                 key={i}
                 ref={i === directMessages.length - 1 ? lastMessageRef : null}
               >
+                {shouldRenderDate && <div className="flex justify-center sticky top-0 my-2 text-sm "><span className="bg-dasadeep px-3 py-2 font-medium font-poppins rounded-md">{formattedDate}</span></div>}
                 <ChatItem
                   chat={message as dmType}
                   orient={
@@ -110,7 +115,7 @@ function ChatboxList({ type }: chatBoxListProps) {
                   }
                 />
               </div>
-            ))}
+            )})}
             {isTyping &&
           typingUsers.map((user) => (
             <TypingIndicator typingUser={user} type={type} />
