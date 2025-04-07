@@ -16,10 +16,10 @@ import { formatChatDate } from "@/features/utils/helpers";
 type chatBoxListProps = {
   type: "direct" | "channel";
 };
-/* test */
 function ChatboxList({ type }: chatBoxListProps) {
   const { watch, setValue, ...hookForm } = useForm<sendMessageFormValues>();
   const emojiRef = useRef<HTMLDivElement | null>(null);
+  let lastRenderedDate = "";
 
   const dispatch = useAppDispatch();
   const { messages, userInfo, lastMessageRef, directMessages } = useChat({
@@ -50,22 +50,30 @@ function ChatboxList({ type }: chatBoxListProps) {
       <>
         <div className="relative overflow-y-scroll h-dvh z-30">
           {messages &&
-            messages?.map((message, i) => (
-              <div
-                key={i}
-                ref={i === messages.length - 1 ? lastMessageRef : null}
-              >
-                {<div>{ formatChatDate(message.createdAt,dispatch,dateArr) }</div>}
+            messages?.map((message, i) =>{
+              const formattedDate = formatChatDate(message.createdAt);
+              const shouldRenderDate = formattedDate !== lastRenderedDate;
+              lastRenderedDate = formattedDate;
+                return (
+
+                  <div
+                  key={i}
+                  ref={i === messages.length - 1 ? lastMessageRef : null}
+                  >
+                 {shouldRenderDate && <div className="flex justify-center sticky top-0 my-2 text-sm "><span className="bg-dasadeep px-3 py-2 font-medium font-poppins">{formattedDate}</span></div>}
                 <ChatItem
                   chat={message}
                   orient={message.sender?._id === userInfo._id && "reverse"}
-                />
+                  />
               </div>
-            ))}
+                )
+          }
+            
+            )}
             {isTyping &&
-          typingUsers.map((user) => (
-            <TypingIndicator typingUser={user} type={type} />
-          ))}
+              typingUsers.map((user) => (
+                <TypingIndicator typingUser={user} type={type} />
+              ))}
         </div>
         <div className="grid grid-cols-[.5fr_1fr] " ref={emojiRef}>
           {openEmojiMart && (
