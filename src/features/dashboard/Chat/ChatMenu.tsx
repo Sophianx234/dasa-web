@@ -80,7 +80,6 @@ function ChatMenu() {
           {users?.map((user) => (
             user._id !== userInfo._id && <ChatProfile
               user= {user}
-              text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet ? "
             />
           ))}
         </div>

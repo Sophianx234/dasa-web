@@ -15,11 +15,13 @@ function DashNavItem({icon, arrIcon,navTitle, link}:dashNavItem) {
     function handleNavLinkOnClick(){
         if(navTitle.toLowerCase().includes('logout')){
             handleLogout()
+            if(link.includes('logout')) navigate('')
             
 
         } else{
 
             dispatch(toggleSidebar())
+            navigate(`/${link}`)
         }
         
 
@@ -27,11 +29,11 @@ function DashNavItem({icon, arrIcon,navTitle, link}:dashNavItem) {
     const dispatch = useAppDispatch()
     return (
         <li  >
-            <Link to={`${link.includes('logout')?'':`/${link}`}`} onClick={handleNavLinkOnClick} className="flex  items-center gap-3 border py-4 px-2 font-Montserrat text-xl group hover:bg-dasalight hover:py-4 hover:px-4 rounded-xl transition-all duration-150 font-bold text-[#191817] ">
+            <a  onClick={handleNavLinkOnClick} className="flex  items-center gap-3 border py-4 px-2 font-Montserrat text-xl group hover:bg-dasalight hover:py-4 hover:px-4 rounded-xl transition-all duration-150 font-bold text-[#191817] ">
 
         {icon}<div  className="flex justify-between  items-center w-full"><span>{navTitle}</span>  <span className="hidden group-hover:block">{arrIcon}</span>
         </div>
-            </Link>
+            </a>
         </li>
     )
 }
