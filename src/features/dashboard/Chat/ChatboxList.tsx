@@ -4,14 +4,13 @@ import ChatItem from "./ChatItem";
 import ChatSendInput, { sendMessageFormValues } from "./ChatSendInput";
 
 import { setEmojiMart } from "@/features/slices/navSlice";
+import { formatChatDate } from "@/features/utils/helpers";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { addEmoji, emojiType } from "@/hooks/addEmoji";
 import Picker from "@emoji-mart/react";
 import { useEffect, useRef } from "react";
 import { useForm, UseFormReturn } from "react-hook-form";
 import TypingIndicator from "./TypingIndicator";
-import { formatDate, isYesterday } from "date-fns";
-import { formatChatDate } from "@/features/utils/helpers";
 
 type chatBoxListProps = {
   type: "direct" | "channel";
@@ -25,7 +24,7 @@ function ChatboxList({ type }: chatBoxListProps) {
   const { messages, userInfo, lastMessageRef, directMessages } = useChat({
     type,
   });
-  const { openEmojiMart, isTyping, typingUsers,dateArr } = useAppSelector(
+  const { openEmojiMart, isTyping, typingUsers} = useAppSelector(
     (store) => store.nav
   );
   console.log("emojiMart", openEmojiMart);
@@ -60,7 +59,7 @@ function ChatboxList({ type }: chatBoxListProps) {
                   key={i}
                   ref={i === messages.length - 1 ? lastMessageRef : null}
                   >
-                 {shouldRenderDate && <div className="flex justify-center sticky top-0 my-2 text-sm "><span className="bg-dasadeep px-3 py-2 font-medium font-poppins rounded-md">{formattedDate}</span></div>}
+                 {shouldRenderDate && <div className="flex justify-center sticky top-0 my-2 text-sm "><span className="bg-[#f4e9dd] px-3 py-2 font-medium shadow-sm   font-poppins rounded-md">{formattedDate}</span></div>}
                 <ChatItem
                   chat={message}
                   orient={message.sender?._id === userInfo._id && "reverse"}
