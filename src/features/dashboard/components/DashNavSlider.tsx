@@ -5,7 +5,7 @@ import { FaRegUser } from "react-icons/fa6";
 import { GrGallery } from "react-icons/gr";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { MdOutlineStore } from "react-icons/md";
+import { MdOutlineAdminPanelSettings, MdOutlineStore } from "react-icons/md";
 import { PiSidebarFill } from "react-icons/pi";
 import { RiHome3Line, RiSecurePaymentLine } from "react-icons/ri";
 import { TbLogout2, TbMessage } from "react-icons/tb";
@@ -51,6 +51,12 @@ function DashNavSlider() {
               navTitle="Home"
               arrIcon={<IoIosArrowForward />}
             />
+              <DashNavItem
+                icon={<MdOutlineAdminPanelSettings className="size-8" />}
+                link="dashboard/admin"
+                navTitle="Administrator"
+                arrIcon={<IoIosArrowForward />}
+              />
             <DashNavItem
               icon={<IoNotificationsOutline className="size-8" />}
               link="dashboard/notifications"
@@ -92,6 +98,7 @@ function DashNavSlider() {
               navTitle="Account"
               arrIcon={<IoIosArrowForward />}
             /> */}
+            
             <DashNavItem
               icon={<TbLogout2 className="size-8" />}
               link="dashboard/logout"

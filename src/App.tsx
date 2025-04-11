@@ -43,6 +43,7 @@ import { ProtectedRoute } from "./features/utils/protectedRoute";
 import Spinner from "./features/ui/Spinner";
 import axios from "axios";
 import { SocketProvider } from "./context/SocketContext";
+import AdminPage from "./features/dashboard/pages/AdminPage";
 
 const queryClient = new QueryClient();
 axios.defaults.withCredentials = true;
@@ -82,6 +83,14 @@ function App() {
             <Route
               path="/dashboard/account/:id/profile"
               element={<ProfilePage />}
+              />
+
+
+
+{/* Admin Route */}
+<Route
+              path="/dashboard/admin/:id"
+              element={<AdminPage />}
               />
             {/* Chat Route */}
 

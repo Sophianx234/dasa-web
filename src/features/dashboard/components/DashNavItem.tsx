@@ -1,5 +1,6 @@
 import { toggleSidebar } from "@/features/slices/navSlice"
-import { useAppDispatch, useLogout } from "@/features/utils/hooks"
+import { useAppDispatch, useAppSelector, useLogout } from "@/features/utils/hooks"
+import { signupCredentialsExtended } from "@/services/apiServices"
 import { ReactElement } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -12,13 +13,21 @@ export type dashNavItem = {
 function DashNavItem({icon, arrIcon,navTitle, link}:dashNavItem) {
     const navigate = useNavigate()
     const {handleLogout} = useLogout(navigate)
+    const {user}= useAppSelector(store=>store.nav)
+    const userInfo = user as signupCredentialsExtended
+
     function handleNavLinkOnClick(){
         if(navTitle.toLowerCase().includes('logout')){
             handleLogout()
             if(link.includes('logout')) navigate('')
             
 
-        } else{
+        } else if(navTitle.toLowerCase().includes('administrator')){
+            dispatch(toggleSidebar())
+            navigate(`/${link}/${userInfo._id}`)
+
+        }
+         else{
 
             dispatch(toggleSidebar())
             navigate(`/${link}`)
