@@ -1,7 +1,7 @@
 import { toggleSidebar } from "@/features/slices/navSlice"
 import { useAppDispatch, useLogout } from "@/features/utils/hooks"
 import { ReactElement } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export type dashNavItem = {
     icon: ReactElement,

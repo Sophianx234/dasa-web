@@ -12,6 +12,8 @@ import { TbLogout2, TbMessage } from "react-icons/tb";
 import AvatarComponent from "./AvatarComponent";
 import DashNavItem from "./DashNavItem";
 import { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
+import AccountProfileBottom from "./AccountProfileBottom";
 function DashNavSlider() {
   const dispatch = useAppDispatch();
 
@@ -67,24 +69,29 @@ function DashNavSlider() {
               navTitle="Gallery"
               arrIcon={<IoIosArrowForward />}
             />
-            <DashNavItem
+           {/*
+            Deactivated
+
+           <DashNavItem
               icon={<MdOutlineStore className="size-8" />}
               link="dashboard/market"
               navTitle="DaSA Market Center"
               arrIcon={<IoIosArrowForward />}
-            />
+            /> */}
             <DashNavItem
               icon={<RiSecurePaymentLine className="size-8" />}
               link="dashboard/payment"
               navTitle="Payment"
               arrIcon={<IoIosArrowForward />}
             />
+            {/*
+              Deactivated
             <DashNavItem
               icon={<FaRegUser className="size-8" />}
               link="dashboard/account"
               navTitle="Account"
               arrIcon={<IoIosArrowForward />}
-            />
+            /> */}
             <DashNavItem
               icon={<TbLogout2 className="size-8" />}
               link="dashboard/logout"
@@ -92,13 +99,7 @@ function DashNavSlider() {
               arrIcon={<IoIosArrowForward />}
             />
           </ul>
-          <div className="flex items-center space-x-2 pt-10 pb-10">
-            <AvatarComponent />
-            <div className="">
-              <h1 className="font-bold font-mulish text-sm">Damian</h1>
-              <p className="text-xs">@xlr8</p>
-            </div>
-          </div>
+          <AccountProfileBottom/>
         </div>
         <Toaster
         position="top-center"/>

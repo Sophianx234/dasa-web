@@ -59,7 +59,7 @@ function ChatboxList({ type }: chatBoxListProps) {
                   key={i}
                   ref={i === messages.length - 1 ? lastMessageRef : null}
                   >
-                 {shouldRenderDate && <div className="flex justify-center sticky top-0 my-2 text-sm "><span className="bg-[#f4e9dd] px-3 py-2 font-medium shadow-sm   font-poppins rounded-md">{formattedDate}</span></div>}
+                 {shouldRenderDate && <div className="flex justify-center sticky top-0 my-2 text-sm z-50"><span className="bg-[#f4e9dd] px-3 py-2 font-medium shadow-sm   font-poppins rounded-md">{formattedDate}</span></div>}
                 <ChatItem
                   chat={message}
                   orient={message.sender?._id === userInfo._id && "reverse"}
