@@ -237,6 +237,7 @@ export function useGallery(page:number,limit:number) {
   const {isLoading, data,error} = useQuery({
     queryFn: ()=>getGallery(page,limit),
     queryKey: ['gallery'],
+    
 
   })
 

@@ -161,7 +161,7 @@ export async function getGallery(
   limit: number
 ): Promise<getGalleryResponse> {
   const { data } = await axios.get(
-    `${API_URL}/media/images?field=_id,secure_url,public_id,format&page=${page}&limit=${limit}`
+    `${API_URL}/media/images?field=_id,secure_url,public_id,format,created_at&page=${page}&limit=${limit}`
   );
   return data;
 }

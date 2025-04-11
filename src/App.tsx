@@ -3,12 +3,11 @@ import { lazy, Suspense } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const Homepage = lazy(() => import("./features/pages/Homepage"));
 const AppLayout = lazy(() => import("./features/dashboard/pages/AppLayout"));
-import About from "./features/pages/About"
-import PageNotFound from "./features/pages/PageNotFound"
-import Login from "./features/pages/Login"
+import About from "./features/pages/About";
+import PageNotFound from "./features/pages/PageNotFound";
+import Login from "./features/pages/Login";
 
-import SignUp from "./features/pages/SignUp"
-
+import SignUp from "./features/pages/SignUp";
 
 import DashboardOverview from "./features/dashboard/components/DashboardOverview";
 
@@ -44,112 +43,122 @@ import Spinner from "./features/ui/Spinner";
 import axios from "axios";
 import { SocketProvider } from "./context/SocketContext";
 import AdminPage from "./features/dashboard/pages/AdminPage";
+import MediaLayout from "./features/dashboard/administrator/MediaLayout";
 
 const queryClient = new QueryClient();
 axios.defaults.withCredentials = true;
 function App() {
-  
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-      <Suspense fallback={<Spinner/>}>
+        <Suspense fallback={<Spinner />}>
+          <ScrollToTop />
 
-        <ScrollToTop />
+          <Routes>
+            <Route path="homepage" element={<Homepage />} />
+            <Route index element={<Navigate to={"/homepage"} />} />
+            <Route path="homepage/about" element={<About />} />
+            <Route path="homepage/login" element={<Login />} />
+            <Route path="homepage/signup" element={<SignUp />} />
 
-        <Routes>
-          <Route path="homepage" element={<Homepage />} />
-          <Route index element={<Navigate to={"/homepage"} />} />
-          <Route path="homepage/about" element={<About />} />
-          <Route path="homepage/login" element={<Login />} />
-          <Route path="homepage/signup" element={<SignUp />} />
-
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <AppLayout />
-              </ProtectedRoute>
-            }
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
             >
-              
-            <Route index element={<Navigate to="overview" replace={true} />} />
-            <Route path="overview" element={<DashboardOverview />} />
-            <Route path="/dashboard/gallery" element={<GalleryPage />} />
-            <Route
-              path="/dashboard/notifications"
-              element={<NotificationsPage />}
+              <Route
+                index
+                element={<Navigate to="overview" replace={true} />}
               />
-            <Route path="/dashboard/account/:id" element={<AccountPage />} />
-            <Route
-              path="/dashboard/account/:id/profile"
-              element={<ProfilePage />}
+              <Route path="overview" element={<DashboardOverview />} />
+              <Route path="/dashboard/gallery" element={<GalleryPage />} />
+              <Route
+                path="/dashboard/notifications"
+                element={<NotificationsPage />}
               />
-
-
-
-{/* Admin Route */}
-<Route
-              path="/dashboard/admin/:id"
-              element={<AdminPage />}
-              />
-            {/* Chat Route */}
-
-            <Route
-              path="/dashboard/anonymous/write"
-              element={<SocketProvider><AnonymousMain /></SocketProvider>}
-              />
-            <Route
-              path="/dashboard/chat/:id"
-              element={<SocketProvider><ViewAnonymous /></SocketProvider>}
-              />
-            <Route
-              path="/dashboard/anonymous/conversation"
-              element={<SocketProvider><Conversation /></SocketProvider>}
+              <Route path="/dashboard/account/:id" element={<AccountPage />} />
+              <Route
+                path="/dashboard/account/:id/profile"
+                element={<ProfilePage />}
               />
 
-            {/* Payment Route */}
+              {/* Admin Route */}
+              <Route path="/dashboard/admin/:id" element={<AdminPage />} />
+              <Route path="/dashboard/admin/:id/media" element={<MediaLayout />} >
+              </Route>
+              {/* Chat Route */}
 
-            <Route path="/dashboard/payment" element={<PaymentPage />}>
-              <Route index element={<Navigate to="form" replace />} />
-              <Route path="form" element={<Payment />} />
-              <Route path="history" element={<PaymentHistory />} />
+              <Route
+                path="/dashboard/anonymous/write"
+                element={
+                  <SocketProvider>
+                    <AnonymousMain />
+                  </SocketProvider>
+                }
+              />
+              <Route
+                path="/dashboard/chat/:id"
+                element={
+                  <SocketProvider>
+                    <ViewAnonymous />
+                  </SocketProvider>
+                }
+              />
+              <Route
+                path="/dashboard/anonymous/conversation"
+                element={
+                  <SocketProvider>
+                    <Conversation />
+                  </SocketProvider>
+                }
+              />
+
+              {/* Payment Route */}
+
+              <Route path="/dashboard/payment" element={<PaymentPage />}>
+                <Route index element={<Navigate to="form" replace />} />
+                <Route path="form" element={<Payment />} />
+                <Route path="history" element={<PaymentHistory />} />
+              </Route>
+
+              {/* Market  Route */}
+
+              <Route
+                path="/dashboard/market/productdetail"
+                element={<ProductDetail />}
+              />
+              <Route
+                path="/dashboard/market/:id/wishlist"
+                element={<WishListPage />}
+              />
+              <Route
+                path="/dashboard/market/:id/orders"
+                element={<OrderUser />}
+              />
+              <Route
+                path="/dashboard/market/:id/uploadedproducts"
+                element={<UploadedProducts />}
+              />
+              <Route path="/dashboard/market/:id/cart" element={<CartPage />} />
+
+              <Route path="/dashboard/market" element={<MarketPage />}>
+                <Route index element={<Market style="main" />} />
+                <Route path="electronic" element={<ElectronicsScreen />} />
+                <Route path="food" element={<FoodScreen />} />
+                <Route path="accessories" element={<AccessoriesScreen />} />
+                <Route path="beauty" element={<BeautyScreen />} />
+                <Route path="furniture" element={<FurnitureScreen />} />
+                <Route path="fashion" element={<FashionScreen />} />
+                <Route path="health" element={<BeautyScreen />} />
+                <Route path="stationary" element={<StationaryScreen />} />
+              </Route>
             </Route>
-
-            {/* Market  Route */}
-
-            <Route
-              path="/dashboard/market/productdetail"
-              element={<ProductDetail />}
-              />
-            <Route
-              path="/dashboard/market/:id/wishlist"
-              element={<WishListPage />}
-            />
-            <Route
-              path="/dashboard/market/:id/orders"
-              element={<OrderUser />}
-              />
-            <Route
-              path="/dashboard/market/:id/uploadedproducts"
-              element={<UploadedProducts />}
-            />
-            <Route path="/dashboard/market/:id/cart" element={<CartPage />} />
-
-            <Route path="/dashboard/market" element={<MarketPage />}>
-              <Route index element={<Market style="main" />} />
-              <Route path="electronic" element={<ElectronicsScreen />} />
-              <Route path="food" element={<FoodScreen />} />
-              <Route path="accessories" element={<AccessoriesScreen />} />
-              <Route path="beauty" element={<BeautyScreen />} />
-              <Route path="furniture" element={<FurnitureScreen />} />
-              <Route path="fashion" element={<FashionScreen />} />
-              <Route path="health" element={<BeautyScreen />} />
-              <Route path="stationary" element={<StationaryScreen />} />
-            </Route>
-          </Route>
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-              </Suspense>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </QueryClientProvider>
   );
