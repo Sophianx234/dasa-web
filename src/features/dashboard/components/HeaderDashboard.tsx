@@ -1,12 +1,15 @@
 import { toggleSidebar } from "@/features/slices/navSlice"
-import { useAppDispatch } from "@/features/utils/hooks"
+import { useAppDispatch, useAppSelector } from "@/features/utils/hooks"
 import { GoBell } from "react-icons/go"
 import { IoMenuOutline } from "react-icons/io5"
 import { Link } from "react-router-dom"
 import AvatarComponent from "./AvatarComponent"
+import { signupCredentialsExtended } from "@/services/apiServices"
 
 function HeaderDashboard() {
     const dispatch = useAppDispatch()
+    const {user} = useAppSelector(store=>store.nav)
+    const userInfo = user as signupCredentialsExtended
     
     
     
@@ -33,7 +36,7 @@ function HeaderDashboard() {
                 <GoBell className="size-9 pt-1 fill-[#33312ee7] group-hover:scale-105"/>
                     </Link>
                 
-        <Link to='/dashboard/account' className="hover:scale-105">
+        <Link to={`/dashboard/account/${userInfo._id}`} className="hover:scale-105">
 
                 <AvatarComponent/>
         </Link>

@@ -78,7 +78,7 @@ function App() {
               path="/dashboard/notifications"
               element={<NotificationsPage />}
               />
-            <Route path="/dashboard/account" element={<AccountPage />} />
+            <Route path="/dashboard/account/:id" element={<AccountPage />} />
             <Route
               path="/dashboard/account/:id/profile"
               element={<ProfilePage />}

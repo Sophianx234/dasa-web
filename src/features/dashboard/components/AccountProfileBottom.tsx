@@ -11,7 +11,7 @@ function AccountProfileBottom() {
   const userInfo = user as signupCredentialsExtended
   function handleNavigation(){
     dispatch(toggleSidebar())
-    navigate('/dashboard/account')
+    navigate(`/dashboard/account/${userInfo._id}`)
 
   }
   return (
