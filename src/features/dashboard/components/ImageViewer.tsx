@@ -5,13 +5,29 @@ import { mediaType } from '@/services/apiServices';
 import { IoCloseOutline } from 'react-icons/io5';
 import { useDeleteImage } from '@/features/utils/hooks';
 import { Toaster } from 'react-hot-toast';
+import Swal from 'sweetalert2';
+
 export type imageViewerProps = {
   images: mediaType[] ;
   type?: 'normal'|'control'
 }
 function ImageViewer({images, type='normal'}:imageViewerProps) {
   const {handleRemoveImage} = useDeleteImage()
-
+  const handleDelete = async (imageId: string) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: "This image will be permanently deleted.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#e8590c',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+    });
+  
+    if (result.isConfirmed) {
+      await handleRemoveImage(imageId);
+    }
+  };
   
 
   return (
@@ -23,7 +39,7 @@ function ImageViewer({images, type='normal'}:imageViewerProps) {
           {images.map((item:mediaType , index) =>
             (
             <div className='relative  '>
-            <div className='absolute z-30  right-0 ' onClick={()=>handleRemoveImage(item._id)}><IoCloseOutline className='size-6 stroke-red-600'/></div>
+            <div className='absolute z-30  right-0 ' onClick={()=>handleDelete(item._id)}><IoCloseOutline className='size-6 stroke-red-600'/></div>
             <PhotoView key={index}  src={item.secure_url}
           >
             

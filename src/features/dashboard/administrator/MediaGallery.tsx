@@ -13,6 +13,7 @@ function MediaGallery() {
   
   
   
+  
   return (
     <div className="pt-4">
       {data  && <ImageViewer type="control" images={(data as mediaI).images}/>}
