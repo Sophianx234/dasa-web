@@ -53,6 +53,8 @@
     "slate-history": "^0.110.3",
     "slate-react": "^0.112.1",
     "socket.io-client": "^4.8.1",
+    "sweetalert2": "^11.17.2",
+    "sweetalert2-react-content": "^5.1.0",
     "swiper": "^11.1.15",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",

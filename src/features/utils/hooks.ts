@@ -5,6 +5,7 @@ import {
   getUser,
   login,
   logout,
+  removeImage,
   signup,
   updateUser,
   uploadImages,
@@ -233,10 +234,41 @@ export function useChangeUserProfile() {
 
   return { handleChangeProfile };
 }
-export function useGallery(page:number,limit:number) {
+export function useDeleteImage() {
+  const queryClient = useQueryClient();
+  
+  const { mutateAsync: handleRemoveImage } = useMutation({
+    mutationFn: removeImage,
+    onMutate: () => {
+      toast.loading("Deleting Image....");
+    },
+
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Image deleted");
+      queryClient.invalidateQueries({
+        queryKey: ["gallery"],
+      });
+
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Could not change profile picture", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+  });
+
+  return { handleRemoveImage };
+}
+export function useGallery() {
   const {isLoading, data,error} = useQuery({
-    queryFn: ()=>getGallery(page,limit),
-    queryKey: ['gallery',page,limit],
+    queryFn: getGallery,
+    queryKey: ['gallery'],
     
 
   })

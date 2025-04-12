@@ -1,7 +1,6 @@
-import { useGallery } from "@/features/utils/hooks"
-import ImageViewer from "../components/ImageViewer"
-import { useState } from "react"
+import { useDeleteImage, useGallery } from "@/features/utils/hooks"
 import { mediaType } from "@/services/apiServices"
+import ImageViewer from "../components/ImageViewer"
 type mediaI = {
   status:string,
   numImages:number,
@@ -10,7 +9,8 @@ type mediaI = {
 
 
 function MediaGallery() {
-  const {isLoading,data} = useGallery(0,100)
+  const {data} = useGallery()
+  
   
   
   return (

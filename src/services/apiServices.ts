@@ -34,17 +34,17 @@ export type errorType = {
 };
 
 export type dmType = {
-    sender: signupCredentialsExtended,
-    recipient: signupCredentialsExtended,
-    messageType: 'text' |'file',
-    content: string,
-    _id: string,
-    createdAt: string;
-    fileURL: string;
-  }
-export type directMessageType ={
-  messages: dmType[]
-}
+  sender: signupCredentialsExtended;
+  recipient: signupCredentialsExtended;
+  messageType: "text" | "file";
+  content: string;
+  _id: string;
+  createdAt: string;
+  fileURL: string;
+};
+export type directMessageType = {
+  messages: dmType[];
+};
 
 export type LoginResponse = {
   token: string;
@@ -156,22 +156,13 @@ export async function changeProfile(update: unknown): Promise<unknown[]> {
   const { data } = await axios.patch(`${API_URL}/users/upload`, update);
   return data;
 }
-export async function getGallery(
-  page: number,
-  limit: number
-){
-  const { data } = await axios.get(
-    `${API_URL}/media/images?field=_id,secure_url,public_id,format,created_at&page=${page}&limit=${limit}`
-  );
-  return data;
-}
-export async function getImages(
-){
+export async function getGallery() {
   const { data } = await axios.get(
     `${API_URL}/media/images?field=_id,secure_url,public_id,format,created_at`
   );
   return data;
 }
+
 export async function getVideos(): Promise<videosResponse> {
   const { data } = await axios.get(
     `${API_URL}/media/videos?field=_id,secure_url,public_id,format`
@@ -182,5 +173,9 @@ export async function getVideos(): Promise<videosResponse> {
 export async function uploadImages(update: unknown): Promise<unknown[]> {
   console.log(update);
   const { data } = await axios.post(`${API_URL}/media/upload`, update);
+  return data;
+}
+export async function removeImage(imageId: unknown): Promise<unknown[]> {
+  const { data } = await axios.delete(`${API_URL}/media/${imageId}`);
   return data;
 }
