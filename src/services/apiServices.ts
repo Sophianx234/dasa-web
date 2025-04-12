@@ -159,9 +159,16 @@ export async function changeProfile(update: unknown): Promise<unknown[]> {
 export async function getGallery(
   page: number,
   limit: number
-): Promise<getGalleryResponse> {
+){
   const { data } = await axios.get(
     `${API_URL}/media/images?field=_id,secure_url,public_id,format,created_at&page=${page}&limit=${limit}`
+  );
+  return data;
+}
+export async function getImages(
+){
+  const { data } = await axios.get(
+    `${API_URL}/media/images?field=_id,secure_url,public_id,format,created_at`
   );
   return data;
 }

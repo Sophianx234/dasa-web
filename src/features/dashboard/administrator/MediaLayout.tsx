@@ -1,13 +1,11 @@
 import { useGallery } from "@/features/utils/hooks"
 import HeaderDashboard from "../components/HeaderDashboard"
 import FilterItem from "./FilterItem"
+import MediaGallery from "./MediaGallery"
 
 function MediaLayout() {
   
-  const {isLoading,data} = useGallery(0,600)
-  if(data){
-    console.log('data',data)
-  }
+  
   return (
     <div>
       <HeaderDashboard/>
@@ -15,6 +13,7 @@ function MediaLayout() {
         <FilterItem/>
         <FilterItem type='limit'/>
       </div>
+<MediaGallery/>
     </div>
   )
 }
