@@ -13,7 +13,7 @@ function FilterItem({type ='select'}:FilterItemProps) {
   return (
     <div className="">
       <Select>
-  <SelectTrigger className="w-40">
+  <SelectTrigger className="w-72">
     <SelectValue placeholder="images" />
   </SelectTrigger>
   <SelectContent>
