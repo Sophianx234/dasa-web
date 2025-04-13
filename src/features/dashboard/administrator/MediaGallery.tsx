@@ -36,7 +36,7 @@ function MediaGallery({filter,activateFilter}:mediaGalleryI) {
   
   return (
     <div className="pt-4">
-      {videosData  && (videosData as videoRes).videos.map(video=><VideoPlayer control="admin" src={video.secure_url}/>)}
+      {videosData  && (videosData as videoRes).videos.map(video=><VideoPlayer id={video._id} control="admin" src={video.secure_url}/>)}
     </div>
   
   )
