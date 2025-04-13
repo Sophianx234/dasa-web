@@ -163,7 +163,7 @@ export async function getGallery() {
   return data;
 }
 
-export async function getVideos(): Promise<videosResponse> {
+export async function getVideos() {
   const { data } = await axios.get(
     `${API_URL}/media/videos?field=_id,secure_url,public_id,format`
   );

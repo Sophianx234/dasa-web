@@ -1,22 +1,42 @@
-import { useDeleteImage, useGallery } from "@/features/utils/hooks"
+import { useGallery, useGetVideos } from "@/features/utils/hooks"
 import { mediaType } from "@/services/apiServices"
 import ImageViewer from "../components/ImageViewer"
-type mediaI = {
+import VideoPlayer from "@/features/ui/VideoPlayer"
+import { videoI } from "@/features/ui/Activities"
+type imagesI = {
   status:string,
   numImages:number,
   images: mediaType[]
 }
+type videoRes = {
+  status:string,
+  numImages:number,
+  videos: videoI[]
+}
+type mediaGalleryI = {
+  filter: 'images'|'videos'
+  activateFilter: boolean
+}
 
 
-function MediaGallery() {
-  const {data} = useGallery()
-  
-  
-  
+function MediaGallery({filter,activateFilter}:mediaGalleryI) {
+  const {data} = useGallery( filter === 'images' )
+  const {data:videosData} = useGetVideos(filter === 'videos')
+
+  if(filter==='images')
   
   return (
     <div className="pt-4">
-      {data  && <ImageViewer type="control" images={(data as mediaI).images}/>}
+      {data  && <ImageViewer type="control" images={(data as imagesI).images}/>}
+    </div>
+  
+  )
+  else if(filter==='videos' && activateFilter)
+    console.log('8989',videosData)
+  
+  return (
+    <div className="pt-4">
+      {videosData  && (videosData as videoRes).videos.map(video=><VideoPlayer control="admin" src={video.secure_url}/>)}
     </div>
   
   )

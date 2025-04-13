@@ -3,6 +3,7 @@ import {
   getAnonymous,
   getGallery,
   getUser,
+  getVideos,
   login,
   logout,
   removeImage,
@@ -265,10 +266,53 @@ export function useDeleteImage() {
 
   return { handleRemoveImage };
 }
-export function useGallery() {
+export function useDeleteVideo() {
+  const queryClient = useQueryClient();
+  
+  const { mutateAsync: handleRemoveVideo } = useMutation({
+    mutationFn: removeImage,
+    onMutate: () => {
+      toast.loading("Deleting video....");
+    },
+
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Video deleted");
+      queryClient.invalidateQueries({
+        queryKey: ["videos"],
+      });
+
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Could not change profile picture", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+  });
+
+  return { handleRemoveVideo };
+}
+export function useGallery(enabled: boolean = true) {
   const {isLoading, data,error} = useQuery({
     queryFn: getGallery,
     queryKey: ['gallery'],
+    enabled
+    
+
+  })
+
+  return { isLoading,data,error };
+}
+export function useGetVideos(enabled:boolean = true) {
+  const {isLoading, data,error} = useQuery({
+    queryFn: getVideos,
+    queryKey: ['videos'],
+    enabled
     
 
   })

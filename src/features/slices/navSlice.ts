@@ -1,6 +1,5 @@
 import { mediaType, signupCredentialsExtended } from "@/services/apiServices";
 import { createSlice } from "@reduxjs/toolkit";
-import { genRandomName } from "../utils/helpers";
 
 export type onlineUsersType = {
   userId: string;
@@ -8,6 +7,7 @@ export type onlineUsersType = {
   isOnline: boolean;
 };
 interface navState {
+  selectFilter: 'images'|'videos',
   typingUsers: signupCredentialsExtended[];
   isTyping: boolean;
   onlineUsers: onlineUsersType[];
@@ -37,6 +37,7 @@ interface navState {
   isLoggedIn:boolean
 }
 const initialState: navState = {
+  selectFilter: 'images',
   typingUsers: [],
   dateArr:[],
   onlineUsers: [],
@@ -109,6 +110,10 @@ const navSlice = createSlice({
     },
     setIsLoggedIn(state, action) {
       state.isLoggedIn = action.payload;
+    },
+    
+    setSelectFilter(state, action) {
+      state.selectFilter = action.payload;
     },
     toggleRevealUplaoadUserImage(state) {
       state.revealUplaoadUserImage = !state.revealUplaoadUserImage;
@@ -218,6 +223,7 @@ export const {
   setOnlineUsers,
   removeOnlineUser,
   setIsLoggedIn,
-  setDateArr
+  setDateArr,
+  setSelectFilter
 } = navSlice.actions;
 export default navSlice.reducer;

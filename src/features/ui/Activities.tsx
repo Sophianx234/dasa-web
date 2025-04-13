@@ -2,7 +2,7 @@ import { getVideos } from "@/services/apiServices";
 import { useQuery } from "@tanstack/react-query";
 import SVGLite from "./SVGLite";
 import VideoPlayer from "./VideoPlayer";
-interface videoI{
+export interface videoI{
   
     format: string;
     public_id: string;

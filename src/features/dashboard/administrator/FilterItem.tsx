@@ -5,18 +5,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { setSelectFilter } from "@/features/slices/navSlice"
+import { useDispatch } from "react-redux"
 type FilterItemProps = {
   type?: 'select'|'limit'
 }
 function FilterItem({type ='select'}:FilterItemProps) {
+  const dispatch = useDispatch()
+
   if(type === 'select')
   return (
     <div className="">
-      <Select>
+      <Select onValueChange={(value)=>dispatch(setSelectFilter(value))}>
   <SelectTrigger className="w-72">
     <SelectValue placeholder="images" />
   </SelectTrigger>
-  <SelectContent>
+  <SelectContent >
     <SelectItem value="images">Images</SelectItem>
     <SelectItem value="videos">Videos</SelectItem>
   </SelectContent>

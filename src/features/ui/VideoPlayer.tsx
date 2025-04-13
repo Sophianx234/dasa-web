@@ -2,15 +2,37 @@ import { useCallback, useEffect, useRef } from "react";
 import { BsInstagram } from "react-icons/bs";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiFacebook } from "react-icons/fi";
+import { IoTrashBinOutline } from "react-icons/io5";
 import { PiTelegramLogo } from "react-icons/pi";
 import { useIsVisible } from "../utils/useIsVisible";
 import ReactionList from "./ReactionList";
 import SVGLite from "./SVGLite";
+import { useDeleteVideo } from "../utils/hooks";
+import { Toaster } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 export type videoPlayerProps = {
   src: string;
+  control?: 'normal'|'admin'
+  id?: string
 };
-function VideoPlayer({ src }: videoPlayerProps) {
+function VideoPlayer({ src,id,control = 'normal' }: videoPlayerProps) {
+  const {handleRemoveVideo} = useDeleteVideo()
+  async function handleDeleteVideo(vidId:string){
+    const result = await Swal.fire({
+          title: 'Are you sure?',
+          text: "This video will be permanently deleted.",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#e8590c',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Yes, delete it!',
+        });
+      
+        if (result.isConfirmed) {
+          await handleRemoveVideo(vidId);
+        }
+  }
   const { isVisible, targetRef } = useIsVisible(
     {
       root: null,
@@ -68,7 +90,7 @@ function VideoPlayer({ src }: videoPlayerProps) {
       <video
         ref={videoRef}
         loop
-        muted
+        muted 
         autoPlay={false}
         preload="none"
         playsInline
@@ -80,7 +102,8 @@ function VideoPlayer({ src }: videoPlayerProps) {
         Your browser does not support the video tag. Please try viewing this
         page in a modern browser.
       </video>
-      <div className="flex">
+      <div className="flex relative">
+      {control ==='admin'&&<IoTrashBinOutline onClick={()=>handleDeleteVideo(id as string)} className="size-8 bg-red-300 stroke-red-950 p-1 border-2 rounded-full  -top-1 absolute"/>}
             <div className="self-end">
               <ReactionList />
             </div>
@@ -92,6 +115,7 @@ function VideoPlayer({ src }: videoPlayerProps) {
 
         <SVGLite type="lines"  />
     </div>
+    <Toaster/>
     </>
   );
 
