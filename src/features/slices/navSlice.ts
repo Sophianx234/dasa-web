@@ -34,12 +34,14 @@ interface navState {
   isLoading: boolean;
   user: signupCredentialsExtended | object;
   isOpenAttachFile: boolean;
-  isLoggedIn:boolean
+  isLoggedIn:boolean;
+  uploadVideo: boolean
 }
 const initialState: navState = {
   selectFilter: 'images',
   typingUsers: [],
   dateArr:[],
+  uploadVideo:false,
   onlineUsers: [],
   isLoggedIn: false,
   isTyping: false,
@@ -89,6 +91,9 @@ const navSlice = createSlice({
     },
     toggleRevealReportIssue(state) {
       state.revealReportIssue = !state.revealReportIssue;
+    },
+    toggleUploadVideo(state) {
+      state.uploadVideo = !state.uploadVideo;
     },
     toggleRevealFaq(state) {
       state.revealFaq = !state.revealFaq;
@@ -194,6 +199,7 @@ const navSlice = createSlice({
 export const {
   toggleShowToaster,
   toggleNav,
+  toggleUploadVideo,
   toggleSidebar,
   toggleChatMenu,
   toggleChangePassword,

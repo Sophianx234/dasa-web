@@ -29,7 +29,7 @@ export type extendFile = File & {
   preview: string;
 };
 export type dragZoneProps = {
-  type: "product" | "image";
+  type: "products" | "images"|'videos';
 };
 export type formDataType = {
   files?: File[];
@@ -55,7 +55,7 @@ function DragZone({ type }: dragZoneProps) {
     "https://i.ibb.co/LdfLkxF/photo-89-2024-10-31-06-52-36.jpg",
     "https://i.ibb.co/mSLzS1k/photo-19-2024-10-31-06-51-41.jpg",
   ];
-  const imgs = type === "product" ? productImg : userImgs;
+  const imgs = type === "products" ? productImg : userImgs;
 
   const productCategories = [
     "Electronics",
@@ -176,7 +176,7 @@ function DragZone({ type }: dragZoneProps) {
               className="flex 
            justify-center gap-3 flex-col  pt-4"
             >
-              {type === "product" && (
+              {type === "products" && (
                 <>
                   <Controller
                     name="product-category"
