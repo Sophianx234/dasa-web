@@ -71,6 +71,8 @@ export type signupCredentialsExtended = signupCredentials & {
   _id: string;
   anonymousName: string;
   anonymousProfile: string;
+  sex:'male'|'female'
+  role: string
 };
 export type logoutResponse = {
   status: string;
@@ -132,7 +134,7 @@ export async function getUser(): Promise<userType> {
   return data;
 }
 
-export async function getUsers(): Promise<unknown[]> {
+export async function getUsers() {
   const { data } = await axios.get(`${API_URL}/users`);
   return data;
 }
@@ -170,6 +172,7 @@ export async function getVideos() {
   return data;
 }
 
+
 export async function uploadImages(update: unknown): Promise<unknown[]> {
   console.log(update);
   const { data } = await axios.post(`${API_URL}/media/upload`, update);
@@ -177,5 +180,18 @@ export async function uploadImages(update: unknown): Promise<unknown[]> {
 }
 export async function removeImage(imageId: unknown): Promise<unknown[]> {
   const { data } = await axios.delete(`${API_URL}/media/${imageId}`);
+  return data;
+}
+export async function removeUser(id: string) {
+  const { data } = await axios.delete(`${API_URL}/users/${id}`);
+  return data;
+}
+type changeRoleI = {
+  id:string,
+  role: string
+}
+export async function changeUserRole({id,role}:changeRoleI) {
+console.log('role:',role)
+  const { data } = await axios.patch(`${API_URL}/users/${id}`,{role});
   return data;
 }

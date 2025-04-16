@@ -44,6 +44,9 @@ import axios from "axios";
 import { SocketProvider } from "./context/SocketContext";
 import AdminPage from "./features/dashboard/pages/AdminPage";
 import MediaLayout from "./features/dashboard/administrator/MediaLayout";
+import AnnouncementsLayout from "./features/dashboard/administrator/AnnouncementsLayout";
+import UsersLayout from "./features/dashboard/administrator/UsersLayout";
+import EventsLayout from "./features/dashboard/administrator/EventsLayout";
 
 const queryClient = new QueryClient();
 axios.defaults.withCredentials = true;
@@ -86,9 +89,12 @@ function App() {
               />
 
               {/* Admin Route */}
-              <Route path="/dashboard/admin/:id" element={<AdminPage />} />
-              <Route path="/dashboard/admin/:id/media" element={<MediaLayout />} >
+              <Route path="/dashboard/admin/:id" element={<AdminPage />} >
               </Route>
+              <Route path="/dashboard/admin/:id/media" element={<MediaLayout />} />
+              <Route path="/dashboard/admin/:id/announcements" element={<AnnouncementsLayout />} />
+              <Route path="/dashboard/admin/:id/users" element={<UsersLayout />} />
+              <Route path="/dashboard/admin/:id/events" element={<EventsLayout />} />
               {/* Chat Route */}
 
               <Route

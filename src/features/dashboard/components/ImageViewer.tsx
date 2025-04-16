@@ -39,7 +39,7 @@ function ImageViewer({images, type='normal'}:imageViewerProps) {
           {images.map((item:mediaType , index) =>
             (
             <div className='relative  '>
-            {type==='control'&&<div className='absolute z-30  right-0 ' onClick={()=>handleDelete(item._id)}><IoCloseOutline className='size-6 stroke-red-600'/></div>}
+            {type==='control'&&<div className='absolute z-30  right-0 bg-white rounded-full shadow-md ' onClick={()=>handleDelete(item._id)}><IoCloseOutline className='size-6 stroke-red-600'/></div>}
             <PhotoView key={index}  src={item.secure_url}
           >
             

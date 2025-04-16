@@ -32,7 +32,6 @@ function MediaGallery({filter,activateFilter}:mediaGalleryI) {
   
   )
   else if(filter==='videos' && activateFilter)
-    console.log('8989',videosData)
   
   return (
     <div className="pt-4">

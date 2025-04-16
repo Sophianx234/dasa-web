@@ -1,12 +1,15 @@
 import {
   changeProfile,
+  changeUserRole,
   getAnonymous,
   getGallery,
   getUser,
+  getUsers,
   getVideos,
   login,
   logout,
   removeImage,
+  removeUser,
   signup,
   updateUser,
   uploadImages,
@@ -186,7 +189,7 @@ export function useUpdateUser() {
       toast.dismiss();
       toast.success("profile changed");
       queryClient.invalidateQueries({
-        queryKey: ["user"],
+        queryKey: ["users"],
       });
 
       setTimeout(() => {
@@ -217,7 +220,7 @@ export function useChangeUserProfile() {
       toast.dismiss();
       toast.success("profile changed");
       queryClient.invalidateQueries({
-        queryKey: ["user"],
+        queryKey: ["users"],
       });
 
       setTimeout(() => {
@@ -266,6 +269,68 @@ export function useDeleteImage() {
 
   return { handleRemoveImage };
 }
+export function useDeleteUser() {
+  const queryClient = useQueryClient();
+  
+  const { mutateAsync: handleRemoveUser } = useMutation({
+    mutationFn: removeUser,
+    onMutate: () => {
+      toast.loading("Deleting User....");
+    },
+
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("User deleted");
+      queryClient.invalidateQueries({
+        queryKey: ["users"],
+      });
+
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Could not deleteUser", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+  });
+
+  return { handleRemoveUser };
+}
+export function useChangeUserRole() {
+  const queryClient = useQueryClient();
+  
+  const { mutateAsync: handleChangeUserRole } = useMutation({
+    mutationFn:changeUserRole,
+    onMutate: () => {
+      toast.loading("Changing User role....");
+    },
+
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("User role changed");
+      queryClient.invalidateQueries({
+        queryKey: ["users"],
+      });
+
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Could not deleteUser", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+  });
+
+  return { handleChangeUserRole };
+}
 export function useDeleteVideo() {
   const queryClient = useQueryClient();
   
@@ -302,6 +367,17 @@ export function useGallery(enabled: boolean = true) {
     queryFn: getGallery,
     queryKey: ['gallery'],
     enabled
+    
+
+  })
+  return {isLoading,data,error}
+}
+
+export function useGetusers() {
+  const {isLoading, data,error} = useQuery({
+    queryFn: getUsers,
+    queryKey: ['users'],
+    
     
 
   })
