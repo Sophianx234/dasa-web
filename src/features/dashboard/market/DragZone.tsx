@@ -101,7 +101,9 @@ function DragZone({ type }: dragZoneProps) {
       dispatch(toggleRevealUplaoadUserImage());
       dispatch(setIsLoading(false))
       dispatch(resetPageNumber())
-      navigate('/dashboard/gallery')
+      if(type !=='videos'){
+        navigate('/dashboard/gallery')
+      }
     }, 2000);
   };
   const onDrop = useCallback(
@@ -169,7 +171,7 @@ function DragZone({ type }: dragZoneProps) {
           </div>
         </div>
         <div className="h-fit  pb-10">
-          <div className={`${type!=='videos'?'grid grid-cols-4 mx-2 gap-3':'flex '}`}>{renderPreviews()}</div>
+          <div className={`${type!=='videos'?'grid grid-cols-4 mx-2 gap-3':'flex flex-col gap-4'}`}>{renderPreviews()}</div>
           {files && files?.length > 0 && (
             <form
               onSubmit={handleSubmit(onSubmit)}

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 type adminControlItemProps = {
   icon: ReactElement;
-  text: string;
+  text?: string | null;
   link: string;
 };
 function AdminControlItem({ icon, text, link }: adminControlItemProps) {

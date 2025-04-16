@@ -1,11 +1,8 @@
-import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import { extendFile } from "./DragZone";
 
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import DropDownButton from "./DropDownButton";
-import VideoPlayer from "@/features/ui/VideoPlayer";
 export type uploadPrductImgProps = {
   file: extendFile;
   id: number;
@@ -41,7 +38,7 @@ function UploadProductImg({
   return (
     <div className="relative    ">
       <IoMdClose
-        className="absolute  left-0 top-0"
+        className={`${fileType!=='video'?"absolute stroke-red-500 left-0 top-0":''}`}
         onClick={() => handleRemoveImage(id)}
         />
         {fileType==='image'?
