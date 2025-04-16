@@ -34,8 +34,8 @@ function UserCard({userInfo}:userCardProps) {
   return (
     <div>
       <div className="grid relative  grid-cols-[1.5fr_2fr] bg-white border shadow-sm rounded-md overflow-hidden">
-      <button onClick={()=>handleDeleteUser(userInfo._id)} className="absolute border  bg-red-300 shadow-lg p-1 z-30 rounded-full right-0 top-0">
-      <RiDeleteBin5Line className="fill-red-950"/>
+      <button onClick={()=>handleDeleteUser(userInfo._id)} className="absolute border  bg-red-300 shadow-lg p-[3px] z-30 rounded-full right-1 top-1">
+      <RiDeleteBin5Line className="fill-red-950 size-4"/>
       </button>
         <img src={userInfo.profileImage} className="size-52 object-cover object-center" alt="" />
         <div className="flex pt-2 relative  flex-col gap-1 ">
