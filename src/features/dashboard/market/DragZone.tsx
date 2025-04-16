@@ -169,7 +169,7 @@ function DragZone({ type }: dragZoneProps) {
           </div>
         </div>
         <div className="h-fit  pb-10">
-          <div className="grid grid-cols-4 mx-2 gap-3">{renderPreviews()}</div>
+          <div className={`${type!=='videos'?'grid grid-cols-4 mx-2 gap-3':'flex '}`}>{renderPreviews()}</div>
           {files && files?.length > 0 && (
             <form
               onSubmit={handleSubmit(onSubmit)}

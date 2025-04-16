@@ -5,6 +5,7 @@ import { extendFile } from "./DragZone";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import DropDownButton from "./DropDownButton";
+import VideoPlayer from "@/features/ui/VideoPlayer";
 export type uploadPrductImgProps = {
   file: extendFile;
   id: number;
@@ -35,27 +36,43 @@ function UploadProductImg({
   function handleToggleRename(){
     setRenameImage(reveal=>!reveal)
   }
+  const fileType = file.type.split('/')[0]
+  console.log('fileX',fileType)
   return (
     <div className="relative    ">
       <IoMdClose
         className="absolute  left-0 top-0"
         onClick={() => handleRemoveImage(id)}
-      />
+        />
+        {fileType==='image'?
+
       <img
         src={file?.preview}
         alt={file.name}
         className="size-48 object-cover object-center "
-      />
+      />: <video
+      
+      loop
+      muted 
+      autoPlay={false}
+      
+      playsInline
+      controls
+      className="w-screen h-56 pb-4 object-cover object-center "
+      
+      
+    >
+      <source src={file.preview}  type={file.type} />
+      Your browser does not support the video tag. Please try viewing this
+      page in a modern browser.
+    </video>}
 
       <form onSubmit={handleSubmit(onSubmit)}>
       <div className="text-center text-xs tracking-tighter leading-4 flex justify-between items-center pt-1  font-bold">
         
-        {renameImage?<input type="text" {...register("imgName")} id="" className="bg-white w-full focus:outline-none focus:border indent-2 border-dasadeep py-1" />:
-        newImgName || file.name.split(".")[0].slice(0, 12)
-      }
+        
 
 
-{!renameImage &&<DropDownButton icon={<BiDotsVerticalRounded className="translate-x-1 size-4"/>} handleRemoveImage={handleRemoveImage} handleToggleRename={handleToggleRename} id={id}/>}
       </div>
       {renameImage && <div className="flex pl-1 pt-2">
          <button   className="bg-dasadeep text-xs px-2 font-poppins font-semibold rounded-sm py-1 ">Rename</button>

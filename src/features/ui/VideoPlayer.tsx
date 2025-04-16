@@ -95,7 +95,7 @@ function VideoPlayer({ src,id,control = 'normal' }: videoPlayerProps) {
         preload="none"
         playsInline
         controls
-        className="w-72 pb-4 "
+        className="w-72 pb-4  "
         
       >
         <source src={src}  type="video/mp4" />
