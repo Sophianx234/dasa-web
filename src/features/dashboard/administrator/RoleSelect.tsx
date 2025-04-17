@@ -28,9 +28,9 @@ const {handleChangeUserRole} = useChangeUserRole()
   }
   return (
     <>
-    <Popover>
-    <PopoverTrigger><div className={`${role==='user'?'bg-blue-300 text-blue-950':role==='admin'?'bg-dasadeep ':'bg-yellow-300 text-yellow-950'} w-[8rem] rounded-md`}>{role}</div></PopoverTrigger>
-    <PopoverContent>
+    <Popover >
+    <PopoverTrigger><div className={`${role==='user'?'bg-blue-300 text-blue-950':role==='admin'?'bg-green-300 ':'bg-yellow-300 text-yellow-950'} w-[8rem] rounded-md `}>{role}</div></PopoverTrigger>
+    <PopoverContent className="z-50">
       <div className="bg-white shadow-md pt-2   w-[8rem]">
 
     

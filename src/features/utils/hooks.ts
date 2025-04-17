@@ -2,6 +2,7 @@ import {
   changeProfile,
   changeUserRole,
   getAnonymous,
+  getEvents,
   getGallery,
   getUser,
   getUsers,
@@ -171,6 +172,14 @@ export function useGetAnonymous() {
   const { isLoading, data, error } = useQuery({
     queryKey: ["anonymous"],
     queryFn: getAnonymous,
+  });
+
+  return { isLoading, data, error };
+}
+export function useGetEvents() {
+  const { isLoading, data, error } = useQuery({
+    queryKey: ["events"],
+    queryFn: getEvents,
   });
 
   return { isLoading, data, error };

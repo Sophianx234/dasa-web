@@ -1,7 +1,9 @@
+import HeaderDashboard from "../components/HeaderDashboard"
+
 function EventsLayout() {
   return (
     <div>
-      Events Page
+      <HeaderDashboard/>
     </div>
   )
 }

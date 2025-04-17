@@ -8,13 +8,15 @@ import 'swiper/swiper-bundle.css';
 
 // import required modules
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { eventI, eventsI } from './Events';
+import Event from './Event';
 
 export type sliderMainProps={
-  el: ReactElement[] | string[],
+  events: eventI[],
   direction?: 'vertical'| 'horizontal' 
 }
 
-export default function SliderMain({el,direction='horizontal'}:sliderMainProps) {
+export default function SliderMain({events,direction='horizontal'}:sliderMainProps) {
   return (
     <div className=''>
       <>
@@ -33,7 +35,7 @@ export default function SliderMain({el,direction='horizontal'}:sliderMainProps) 
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
         >
-        {el.map((el,i)=><SwiperSlide key={i}>{typeof(el) ==='string'? <img src={el}/>: el}</SwiperSlide>)}
+        {events.map((event)=><SwiperSlide key={event._id}>{<Event eventInfo={event}/>}</SwiperSlide>)}
         
       </Swiper>
         </>

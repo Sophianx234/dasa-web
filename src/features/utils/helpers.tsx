@@ -1,12 +1,8 @@
-import day from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime';
+import day from 'dayjs';
 import isToday from 'dayjs/plugin/isToday';
 import isYesterday from 'dayjs/plugin/isYesterday';
-import {uniqueNamesGenerator, animals, adjectives,Style} from 'unique-names-generator'
-import { useState } from 'react';
-import { useAppSelector } from './hooks';
-import { Dispatch } from '@reduxjs/toolkit';
-import { setDateArr } from '../slices/navSlice';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { adjectives, animals, Style, uniqueNamesGenerator } from 'unique-names-generator';
 day.extend(relativeTime);
 day.extend(isToday);
 day.extend(isYesterday);
@@ -121,6 +117,36 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
     if (isYesterday) return "Yesterday";
     return date.toLocaleDateString(); 
   }
+
+  export function formatDate(dateString:string) {
+    const date = new Date(dateString);
+  
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+  
+    const dayOfWeek = days[date.getUTCDay()];
+    const day = date.getUTCDate();
+    const month = months[date.getUTCMonth()];
+    const year = date.getUTCFullYear();
+  
+    // Function to get ordinal suffix
+    const getOrdinal = (n) => {
+      if (n > 3 && n < 21) return `${n}th`;
+      switch (n % 10) {
+        case 1: return `${n}st`;
+        case 2: return `${n}nd`;
+        case 3: return `${n}rd`;
+        default: return `${n}th`;
+      }
+    };
+  
+    return `${dayOfWeek} ${getOrdinal(day)} ${month} ${year}`;
+  }
+  
+  
 
   
 

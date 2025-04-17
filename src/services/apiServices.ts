@@ -195,3 +195,24 @@ console.log('role:',role)
   const { data } = await axios.patch(`${API_URL}/users/${id}`,{role});
   return data;
 }
+export async function getEvents() {
+  const { data } = await axios.get(`${API_URL}/events`);
+  return data;
+}
+export async function removeEvents(id:string) {
+  const { data } = await axios.delete(`${API_URL}/events/${id}`);
+  return data;
+}
+
+type updateEventI = {
+  id:string,
+  body: {
+    title:string,
+    eventDate:Date,
+    venue:string
+  }
+}
+export async function updateEvents({id,body}:updateEventI) {
+  const { data } = await axios.patch(`${API_URL}/events/${id}`,body);
+  return data;
+}

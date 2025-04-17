@@ -1,14 +1,11 @@
+import { useSocket } from "@/context/SocketContext";
 import { setIsOpenAttachFile } from "@/features/slices/navSlice";
 import { useAppDispatch } from "@/features/utils/hooks";
-import { ChangeEvent, ReactNode, useRef } from "react";
-import { useForm } from "react-hook-form";
-import { formValues } from "../account/ChangeContactForm";
-import axios from "axios";
 import { API_URL, dmType } from "@/services/apiServices";
+import axios from "axios";
+import { ChangeEvent, ReactNode, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { sendAnonymousMessage, sendMessage } from "@/features/slices/userSlice";
-import { File } from "buffer";
-import { useSocket } from "@/context/SocketContext";
+import { formValues } from "../account/ChangeContactForm";
 type attachFileLinkProps = {
   icon: ReactNode;
   text: string;

@@ -21,11 +21,9 @@ function MediaLayout() {
       <HeaderDashboard/>
       <div className="flex items-center justify-center  gap-2 ">
         <FilterItem/>
-        <div className="border-2 p-2 rounded-sm hover:scale-105">
-
-        <CiFilter onClick={()=>setActivateFilter(true)} className="size-4"/>
-        </div>
+        
       </div>
+
 <MediaGallery filter={selectFilter} activateFilter={activateFilter}/>
 
 <div className="fixed shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] -bottom-1 left-0 right-0 flex items-center justify-center z-50 bg-white py-3 ">
