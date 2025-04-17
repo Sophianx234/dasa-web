@@ -2,7 +2,7 @@ import { FaRegCalendar } from "react-icons/fa6"
 import { MdOutlineLocationOn } from "react-icons/md"
 import { eventI } from "./Events"
 import { formatDate } from "@/features/utils/helpers"
-import { IoTrashBinOutline } from "react-icons/io5"
+import { IoCloseOutline, IoTrashBinOutline } from "react-icons/io5"
 type eventProps = {
     eventInfo: eventI
     type?: 'normal'|'control'
@@ -15,7 +15,11 @@ function Event({eventInfo,type ='normal'}:eventProps) {
         <div className="grid grid-cols-1  border-dasalight border-2 mx-4 shadow-lg pb-6 rounded-lg">
             
             <div className="relative">
-                <div>      {type ==='control'&&<IoTrashBinOutline onClick={()=>handleDeleteVideo(id as string)} className="size-8 bg-red-400 stroke-red-950 p-1 border-2 rounded-full  top-0 right-1 absolute"/>}
+                <div>      {type ==='control'&&
+                    <div className="p-1  rounded-full  top-0 right-1 absolute bg-white">
+                        <IoCloseOutline onClick={()=>handleDeleteVideo(id as string)} className="size-6  stroke-red-400  "/>
+                            </div>
+                            }
                 </div>
             <img src={eventInfo.eventImage} alt="d-2" className=" w-full h-80 object-cover object-center"/>
             </div>
