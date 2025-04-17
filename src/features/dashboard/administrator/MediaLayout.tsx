@@ -9,6 +9,7 @@ import DragZone from "../market/DragZone"
 import FilterItem from "./FilterItem"
 import MediaGallery from "./MediaGallery"
 import ControlHeader from "./ControlHeader"
+import ControlPageTitle from "./ControlPageTitle"
 
 function MediaLayout() {
   const {selectFilter,isOpenUploadProduct} = useAppSelector(store=>store.nav)
@@ -19,6 +20,7 @@ function MediaLayout() {
   return (
     <div>
       <HeaderDashboard/>
+
       <div className="flex items-center justify-center  gap-2 ">
         <FilterItem/>
         

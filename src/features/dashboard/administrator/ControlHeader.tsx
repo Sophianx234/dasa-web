@@ -14,7 +14,7 @@ const controlDesc = ["Media",
 "Events",
 "Users"]
   return (
-    <div className="flex gap-4 pb-4 items-center justify-center">
+    <div className="flex bg-white gap-4 pb-4 items-center justify-center">
       <AdminControlItem link="media" icon={<BsFolder className="size-7" />} text={!children ? controlDesc[0]:null} />
       <AdminControlItem link="announcements" icon={<GrAnnounce  className="size-7"  />} text={!children ? controlDesc[1]:null} />
       {children}
