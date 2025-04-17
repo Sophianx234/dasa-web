@@ -10,6 +10,7 @@ import SVGLite from "./SVGLite";
 import { useDeleteVideo } from "../utils/hooks";
 import { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
+import DeleteButton from "../dashboard/administrator/DeleteButton";
 
 export type videoPlayerProps = {
   src: string;
@@ -103,7 +104,7 @@ function VideoPlayer({ src,id,control = 'normal' }: videoPlayerProps) {
         page in a modern browser.
       </video>
       <div className="flex relative">
-      {control ==='admin'&&<IoTrashBinOutline onClick={()=>handleDeleteVideo(id as string)} className="size-8 bg-red-300 stroke-red-950 p-1 border-2 rounded-full  -top-1 absolute"/>}
+      {control ==='admin'&&<DeleteButton/>}
             <div className="self-end">
               <ReactionList />
             </div>
