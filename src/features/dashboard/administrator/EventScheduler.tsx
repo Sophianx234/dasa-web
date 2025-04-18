@@ -19,7 +19,7 @@ function EventScheduler() {
 
       <div className="text-center pt-10 font-poppins font-semibold">Schedule Event</div>
       <label htmlFor="file-upload"
-       className="flex justify-center  border mx-4 border-dashed relative border-dasadeep group">
+       className="flex justify-center  border mx-4 border-dashed relative rounded-lg overflow-hidden border-dasadeep group">
       <input
         type="file"
         id="file-upload"
