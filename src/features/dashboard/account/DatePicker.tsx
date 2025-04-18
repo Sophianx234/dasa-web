@@ -15,7 +15,7 @@ import {
 import { ControllerRenderProps, FieldValues, Path } from "react-hook-form"
 
 export type datePickerProps<T extends FieldValues> = {
-    field: ControllerRenderProps<T, Path<T>>,
+    field?: ControllerRenderProps<T, Path<T>>,
 
 }
 export function DatePicker<T extends FieldValues>({field}:datePickerProps<T>) {

@@ -28,7 +28,7 @@ interface navState {
   showToaster: boolean;
   page: number;
   dateArr:string[],
-
+revealEventScheduler: boolean;
   images: mediaType[];
   numMedia: number;
   isLoading: boolean;
@@ -61,6 +61,7 @@ const initialState: navState = {
   isAuthenticated: false,
   showToaster: false,
   page: 1,
+  revealEventScheduler:false,
   images: [],
   numMedia: 1,
   isLoading: false,
@@ -138,6 +139,9 @@ const navSlice = createSlice({
     },
     toggleIsOpenAttachFile(state) {
       state.isOpenAttachFile = !state.isOpenAttachFile;
+    },
+    toggleRevealEventScheduler(state) {
+      state.revealEventScheduler = !state.revealEventScheduler;
     },
     increasePageNumber(state) {
       state.page = state.page + 1;
@@ -230,6 +234,7 @@ export const {
   removeOnlineUser,
   setIsLoggedIn,
   setDateArr,
-  setSelectFilter
+  setSelectFilter,
+  toggleRevealEventScheduler
 } = navSlice.actions;
 export default navSlice.reducer;

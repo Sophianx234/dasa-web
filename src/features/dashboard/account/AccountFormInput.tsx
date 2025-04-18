@@ -2,10 +2,10 @@ import { InputHTMLAttributes, ReactElement } from "react"
 import { FieldValues, Path, UseFormRegister } from "react-hook-form"
 
 export type accountFormInput<T extends FieldValues> = {
-    register: UseFormRegister<T>,
-    inputName: Path<T>,
+    register?: UseFormRegister<T>,
+    inputName?: Path<T>,
     icon?: ReactElement,
-    errMsg: string,
+    errMsg?: string,
     type?: string,
     iconBorder?: boolean
     
@@ -22,14 +22,17 @@ function AccountFormInput<T extends FieldValues>({icon,errMsg,register,inputName
 
       {icon}
           </div>
-        <input  className={`grow ${iconBorder&&'indent-10'} `}  {...register(inputName,{required:errMsg})} {...rest}  />
+       {register && <input  className={`grow ${iconBorder&&'indent-10'} `}  {...register(inputName!,{required:errMsg})} {...rest}  />}
       </label>
       
       </>
     )
     else return (
-      <textarea  className="textarea textarea-bordered w-full bg-white" placeholder="write issue here"
-      {...register(inputName,{required:errMsg})} ></textarea>
+      <div>
+
+      {register &&<textarea  className="textarea textarea-bordered w-full bg-white" placeholder="write issue here"
+      { ...register(inputName!,{required:errMsg})} ></textarea>}
+      </div>
     )
 }
 

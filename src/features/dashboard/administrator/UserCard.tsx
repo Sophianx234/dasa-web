@@ -9,6 +9,7 @@ import { PiGenderIntersexLight } from "react-icons/pi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 import RoleSelect from "./RoleSelect";
+import DeleteButton from "./DeleteButton";
 
 type userCardProps = {
   userInfo: signupCredentialsExtended
@@ -34,9 +35,9 @@ function UserCard({userInfo}:userCardProps) {
   return (
     <div>
       <div className="grid relative  grid-cols-[1.5fr_2fr] bg-white border shadow-sm rounded-md overflow-hidden">
-      <button onClick={()=>handleDeleteUser(userInfo._id)} className="absolute border  bg-red-300 shadow-lg p-[3px] z-30 rounded-full right-1 top-1">
-      <RiDeleteBin5Line className="fill-red-950 size-4"/>
-      </button>
+      
+      <DeleteButton handleDelete={()=>handleDeleteUser(userInfo._id)}/>
+      
         <img src={userInfo.profileImage} className="size-52 object-cover object-center" alt="" />
         <div className="flex pt-2 relative  flex-col gap-1 ">
           <div className="pl-2 flex flex-col gap-1">
