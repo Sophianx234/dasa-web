@@ -30,7 +30,7 @@ function EventScheduler() {
         } 
       />
       <HiOutlinePlusSmall className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-44 opacity-85 hidden group-hover:block transition-all " />
-        <img src={eventImg?URL.createObjectURL(eventImg):"https://i.ibb.co/n8hRM6d/dasalogo-removebg.png"} alt="" className="size-72 w-full" />
+        <img src={eventImg?URL.createObjectURL(eventImg):"https://i.ibb.co/n8hRM6d/dasalogo-removebg.png"} alt="" className={`size-72 ${eventImg&&'w-full'}`} />
       </label>
       <div className="pt-2">
 
