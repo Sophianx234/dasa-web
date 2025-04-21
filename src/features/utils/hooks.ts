@@ -9,6 +9,8 @@ import {
   getVideos,
   login,
   logout,
+  removeEvent,
+  removeEvents,
   removeImage,
   removeUser,
   signup,
@@ -275,8 +277,37 @@ export function useDeleteImage() {
       });
     },
   });
+}
+export function useDeleteEvent() {
+  const queryClient = useQueryClient();
+  
+  const { mutateAsync: handleRemoveEvent } = useMutation({
+    mutationFn: removeEvent,
+    onMutate: () => {
+      toast.loading("Deleting Event....");
+    },
 
-  return { handleRemoveImage };
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Event deleted");
+      queryClient.invalidateQueries({
+        queryKey: ["events"],
+      });
+
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Could not delete event", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+  });
+
+  return { handleRemoveEvent };
 }
 export function useDeleteUser() {
   const queryClient = useQueryClient();

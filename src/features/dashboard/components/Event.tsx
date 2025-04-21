@@ -1,14 +1,33 @@
+import { formatDate } from "@/features/utils/helpers"
 import { FaRegCalendar } from "react-icons/fa6"
+import { IoCloseOutline } from "react-icons/io5"
 import { MdOutlineLocationOn } from "react-icons/md"
 import { eventI } from "./Events"
-import { formatDate } from "@/features/utils/helpers"
-import { IoCloseOutline, IoTrashBinOutline } from "react-icons/io5"
+import Swal from "sweetalert2"
+import { useDeleteEvent } from "@/features/utils/hooks"
+import { Toaster } from "react-hot-toast"
 type eventProps = {
     eventInfo: eventI
     type?: 'normal'|'control'
 }
 function Event({eventInfo,type ='normal'}:eventProps) {
     const date = formatDate(eventInfo.eventDate)
+    const {handleRemoveEvent} = useDeleteEvent()
+      async function handleDeleteEvent(id:string){
+          const result = await Swal.fire({
+                title: 'Are you sure?',
+                text: "This event will be permanently deleted.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#e8590c',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!',
+              });
+            
+              if (result.isConfirmed) {
+                await handleRemoveEvent(id);
+              }
+        }
     return (
         <>
 
@@ -17,7 +36,7 @@ function Event({eventInfo,type ='normal'}:eventProps) {
             <div className="relative">
                 <div>      {type ==='control'&&
                     <div className="p-1  rounded-full  top-0 right-1 absolute bg-white">
-                        <IoCloseOutline onClick={()=>handleDeleteVideo(id as string)} className="size-6  stroke-red-400  "/>
+                        <IoCloseOutline onClick={()=>handleDeleteEvent(eventInfo._id)} className="size-6  stroke-red-400  "/>
                             </div>
                             }
                 </div>
@@ -30,6 +49,7 @@ function Event({eventInfo,type ='normal'}:eventProps) {
                     <p className="flex text-sm gap-2 font-Montserrat font-semibold items-center "> <FaRegCalendar className="size-6"/>{date}</p>
                     <p className="flex items-center  text-sm gap-1 font-poppins -translate-x-1 font-semibold"><MdOutlineLocationOn className="size-7"/> <span>{eventInfo.venue}</span></p>
                 </div>
+                <Toaster/>
             </div>
         </div>
         </>
