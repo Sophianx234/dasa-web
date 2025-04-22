@@ -1,34 +1,69 @@
 import { toggleRevealEventScheduler } from "@/features/slices/navSlice";
-import { useAppDispatch } from "@/features/utils/hooks";
+import { useAppDispatch, useCreateEvent } from "@/features/utils/hooks";
 import { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { Toaster } from "react-hot-toast";
 import { GoLocation } from "react-icons/go";
 import { HiOutlinePlusSmall } from "react-icons/hi2";
 import { IoMdTime } from "react-icons/io";
 import { MdOutlineEmojiEvents } from "react-icons/md";
+import Swal from "sweetalert2";
 import AccountFormInput from "../account/AccountFormInput";
-import { DatePicker } from "../account/DatePicker";
-import DeleteButton from "./DeleteButton";
-import { Controller, useForm } from "react-hook-form";
 import { formValues } from "../account/ChangeContactForm";
+import { DatePicker } from "../account/DatePicker";
+import { eventI } from "../components/Events";
+import DeleteButton from "./DeleteButton";
+import axios from "axios";
+import { API_URL } from "@/services/apiServices";
 export type eventSchedulerFormValues = formValues & {
   title: string;
   venue: string;
   time: string;
-  eventImage: string;
+  eventImage: File;
   date: string;
 };
 function EventScheduler() {
   const dispatch = useAppDispatch();
   const [eventImg, setEventImg] = useState<File | null>(null);
-  const { register, reset,control,handleSubmit } = useForm<eventSchedulerFormValues>();
+  const { register, reset, control, handleSubmit } =
+    useForm<eventSchedulerFormValues>();
+  const { handleCreateEvent } = useCreateEvent();
+  async function handleCreateNewEvent(data: eventI) {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "This event will be created.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#e8590c",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes!",
+    });
 
-  const onSubmit = (data:eventSchedulerFormValues)=>{
-    console.log('damian')
-    console.log(data)
+    if (result.isConfirmed) {
+      const formData = new FormData();
+      formData.append("eventImg", eventImg as File);
+      formData.append("title", data.title);
+      formData.append("venue", data.venue);
+      formData.append("date", data.eventDate);
+      formData.append("time", data.time);
+      handleCreateEvent(formData);
+      dispatch(toggleRevealEventScheduler());
+    }
   }
+
+  const onSubmit = async (data: eventSchedulerFormValues) => {
+    console.log("damian");
+    console.log(data);
+    if (!data) console.log("goku");
+
+    handleCreateNewEvent(data as unknown as eventI);
+  };
   console.log("eventImg", eventImg);
   return (
-    <form className="bg-white fixed  inset-0 -top-1  z-50" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="bg-white fixed  inset-0 -top-1  z-50"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <DeleteButton dispatch={() => dispatch(toggleRevealEventScheduler())} />
 
       <div className="text-center pt-10 font-poppins font-semibold">
@@ -43,7 +78,6 @@ function EventScheduler() {
           id="file-upload"
           className="hidden"
           accept="image/*"
-          {...register("eventImage")}
           onChange={(e) => {
             if (e.target.files) setEventImg(e?.target?.files[0] as File);
           }}
@@ -66,6 +100,7 @@ function EventScheduler() {
         >
           <div className="pl-1">Event name</div>
           <AccountFormInput
+            required
             inputName="title"
             register={register}
             placeholder="eg. General Meeting"
@@ -79,10 +114,10 @@ function EventScheduler() {
         >
           <div className="pl-1">Event date</div>
           <Controller
-          control={control}
-          name='date'
-          render={({field})=> <DatePicker field={field} />}/>
-          
+            control={control}
+            name="date"
+            render={({ field }) => <DatePicker field={field} />}
+          />
         </label>
         <label
           htmlFor=""
@@ -90,6 +125,7 @@ function EventScheduler() {
         >
           <div className="pl-1">time</div>
           <AccountFormInput
+            required
             placeholder="eg. 5:00pm"
             inputName="time"
             register={register}
@@ -103,6 +139,7 @@ function EventScheduler() {
         >
           <div className="pl-1">venue</div>
           <AccountFormInput
+            required
             inputName="venue"
             register={register}
             type="text"
@@ -117,6 +154,7 @@ function EventScheduler() {
           Create event
         </button>
       </div>
+      <Toaster />
     </form>
   );
 }

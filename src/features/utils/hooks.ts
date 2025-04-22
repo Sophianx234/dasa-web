@@ -1,6 +1,7 @@
 import {
   changeProfile,
   changeUserRole,
+  createEvent,
   getAnonymous,
   getEvents,
   getGallery,
@@ -217,6 +218,38 @@ export function useUpdateUser() {
   });
 
   return { handleUpdateUser };
+}
+export function useCreateEvent() {
+  const queryClient = useQueryClient();
+  
+
+  const { mutateAsync: handleCreateEvent } = useMutation({
+    mutationFn: createEvent,
+    onMutate: () => {
+      toast.loading("Created event....");
+    },
+
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Event created");
+      queryClient.invalidateQueries({
+        queryKey: ["events"],
+      });
+
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Could not create event ", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+  });
+
+  return { handleCreateEvent };
 }
 export function useChangeUserProfile() {
   const queryClient = useQueryClient();

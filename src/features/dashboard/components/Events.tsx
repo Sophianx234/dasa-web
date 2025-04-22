@@ -1,13 +1,14 @@
 import { useGetEvents } from "@/features/utils/hooks";
-import Event from "./Event";
 import SliderMain from "./SliderMain";
 export type eventI = {
   _id: string;
-  eventImage: string;
+  eventImage: File;
   title: string;
   eventDate: string;
   venue: string;
+  time:string;
   createdAt: string;
+  
 };
 export type eventsI = {
   events: eventI[];

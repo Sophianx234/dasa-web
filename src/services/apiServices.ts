@@ -1,3 +1,4 @@
+import { eventI } from "@/features/dashboard/components/Events";
 import { videosResponse } from "@/features/ui/Activities";
 import axios from "axios";
 
@@ -204,15 +205,17 @@ export async function removeEvent(id:string) {
   return data;
 }
 
-type updateEventI = {
+
+
+export type updateEventI = {
   id:string,
-  body: {
-    title:string,
-    eventDate:Date,
-    venue:string
-  }
+  body: eventI
 }
-export async function updateEvents({id,body}:updateEventI) {
+export async function updateEvent({id,body}:updateEventI) {
   const { data } = await axios.patch(`${API_URL}/events/${id}`,body);
+  return data;
+}
+export async function createEvent(body:FormData) {
+  const { data } = await axios.post(`${API_URL}/events`,body);
   return data;
 }
