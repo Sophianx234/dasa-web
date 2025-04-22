@@ -290,6 +290,7 @@ export function useDeleteImage() {
     onMutate: () => {
       toast.loading("Deleting Image....");
     },
+    
 
     onSuccess: () => {
       toast.dismiss();
@@ -309,7 +310,9 @@ export function useDeleteImage() {
         position: "top-center",
       });
     },
+    
   });
+  return {handleRemoveImage}
 }
 export function useDeleteEvent() {
   const queryClient = useQueryClient();

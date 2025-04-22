@@ -4,7 +4,7 @@ export type eventI = {
   _id: string;
   eventImage: File;
   title: string;
-  eventDate: string;
+  eventDate: Date;
   venue: string;
   time:string;
   createdAt: string;

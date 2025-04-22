@@ -20,7 +20,7 @@ export type eventSchedulerFormValues = formValues & {
   venue: string;
   time: string;
   eventImage: File;
-  date: string;
+  date: Date;
 };
 function EventScheduler() {
   const dispatch = useAppDispatch();
@@ -28,7 +28,7 @@ function EventScheduler() {
   const { register, reset, control, handleSubmit } =
     useForm<eventSchedulerFormValues>();
   const { handleCreateEvent } = useCreateEvent();
-  async function handleCreateNewEvent(data: eventI) {
+  async function handleCreateNewEvent(data: eventSchedulerFormValues) {
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "This event will be created.",
@@ -40,11 +40,12 @@ function EventScheduler() {
     });
 
     if (result.isConfirmed) {
+      console.log('ttt',data.date.toISOString())
       const formData = new FormData();
       formData.append("eventImg", eventImg as File);
       formData.append("title", data.title);
       formData.append("venue", data.venue);
-      formData.append("date", data.eventDate);
+      formData.append("eventDate", data.date.toISOString());
       formData.append("time", data.time);
       handleCreateEvent(formData);
       dispatch(toggleRevealEventScheduler());
@@ -56,7 +57,7 @@ function EventScheduler() {
     console.log(data);
     if (!data) console.log("goku");
 
-    handleCreateNewEvent(data as unknown as eventI);
+    handleCreateNewEvent(data);
   };
   console.log("eventImg", eventImg);
   return (
