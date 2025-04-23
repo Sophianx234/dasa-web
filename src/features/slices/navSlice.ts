@@ -13,6 +13,7 @@ interface navState {
   onlineUsers: onlineUsersType[];
   openEmojiMart: boolean;
   isOpen: boolean;
+  revealCreateAnnouncementForm: boolean;
   openSidebar: boolean;
   openChatMenuOptions: boolean;
   isOpenChangePassword: boolean;
@@ -48,6 +49,7 @@ const initialState: navState = {
   openEmojiMart: false,
   isOpen: false,
   openSidebar: false,
+  revealCreateAnnouncementForm:false,
   openChatMenuOptions: false,
   isOpenChangePassword: false,
   showChangeContact: false,
@@ -143,6 +145,9 @@ const navSlice = createSlice({
     toggleRevealEventScheduler(state) {
       state.revealEventScheduler = !state.revealEventScheduler;
     },
+    toggleRevealAnnouncementForm(state) {
+      state.revealCreateAnnouncementForm = !state.revealCreateAnnouncementForm;
+    },
     increasePageNumber(state) {
       state.page = state.page + 1;
     },
@@ -235,6 +240,7 @@ export const {
   setIsLoggedIn,
   setDateArr,
   setSelectFilter,
-  toggleRevealEventScheduler
+  toggleRevealEventScheduler,
+  toggleRevealAnnouncementForm
 } = navSlice.actions;
 export default navSlice.reducer;

@@ -300,7 +300,7 @@ export function useCreateAnnouncement() {
   const queryClient = useQueryClient();
   
 
-  const { mutateAsync: handleCreateEvent } = useMutation({
+  const { mutateAsync: handleCreateAnnouncement } = useMutation({
     mutationFn: createAnnouncement,
     onMutate: () => {
       toast.loading("Created announcement....");
@@ -326,7 +326,7 @@ export function useCreateAnnouncement() {
     },
   });
 
-  return { handleCreateEvent };
+  return { handleCreateAnnouncement };
 }
 export function useCreateEvent() {
   const queryClient = useQueryClient();

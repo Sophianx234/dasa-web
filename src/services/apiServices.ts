@@ -1,3 +1,4 @@
+import { announcementFormValues } from "@/features/dashboard/administrator/AnnouncementForm";
 import { eventI } from "@/features/dashboard/components/Events";
 import { videosResponse } from "@/features/ui/Activities";
 import axios from "axios";
@@ -181,13 +182,14 @@ export interface announcementI {
   announcer: string;
   announcerProfile: string;
   portfolio: string;
-  date: Date;
+  date: Date|string;
   messageType: string;
   title: string;
   content: string;
   reactions: number;
   comments: string[];
 }
+export type newAnnouncementI = Omit<announcementI,'_id'|'reactions'|'comments'>
 export interface announcementResponse {
   announcements: announcementI[]
 
@@ -204,7 +206,7 @@ export async function deleteAnnouncement(id:string) {
   const { data } = await axios.delete(`${API_URL}/announcements/${id}`);
   return data;
 }
-export async function createAnnouncement(body:announcementI) {
+export async function createAnnouncement(body:newAnnouncementI) {
   const { data } = await axios.post(`${API_URL}/announcements`, body);
   return data;
 }
