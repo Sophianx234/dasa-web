@@ -11,10 +11,7 @@ import Swal from "sweetalert2";
 import AccountFormInput from "../account/AccountFormInput";
 import { formValues } from "../account/ChangeContactForm";
 import { DatePicker } from "../account/DatePicker";
-import { eventI } from "../components/Events";
 import DeleteButton from "./DeleteButton";
-import axios from "axios";
-import { API_URL } from "@/services/apiServices";
 export type eventSchedulerFormValues = formValues & {
   title: string;
   venue: string;

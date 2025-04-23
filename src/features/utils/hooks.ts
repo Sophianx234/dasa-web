@@ -1,7 +1,11 @@
 import {
   changeProfile,
   changeUserRole,
+  createAnnouncement,
   createEvent,
+  deleteAnnouncement,
+  getAnnouncement,
+  getAnnouncements,
   getAnonymous,
   getEvents,
   getGallery,
@@ -15,6 +19,7 @@ import {
   removeImage,
   removeUser,
   signup,
+  updateAnnouncement,
   updateUser,
   uploadImages,
 } from "@/services/apiServices";
@@ -187,6 +192,14 @@ export function useGetEvents() {
 
   return { isLoading, data, error };
 }
+export function useGetAnnouncements() {
+  const { isLoading, data, error } = useQuery({
+    queryKey: ["announcements"],
+    queryFn: getAnnouncements,
+  });
+
+  return { isLoading, data, error };
+}
 
 export function useUpdateUser() {
   const queryClient = useQueryClient();
@@ -218,6 +231,102 @@ export function useUpdateUser() {
   });
 
   return { handleUpdateUser };
+}
+export function useUpdateAnnouncement() {
+  const queryClient = useQueryClient();
+
+  const { mutateAsync: handleUpdateAnnouncement } = useMutation({
+    mutationFn: updateAnnouncement,
+    onMutate: () => {
+      toast.loading("Changing announcement....");
+    },
+
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("announcement changed");
+      queryClient.invalidateQueries({
+        queryKey: ["announcements"],
+      });
+
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Could not change profile picture", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+  });
+
+  return { handleUpdateAnnouncement };
+}
+export function useDeleteAnnouncement() {
+  const queryClient = useQueryClient();
+  
+  const { mutateAsync: handleRemoveAnnouncement } = useMutation({
+    mutationFn: deleteAnnouncement,
+    onMutate: () => {
+      toast.loading("Deleting Announcement....");
+    },
+    
+
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Announcement deleted");
+      queryClient.invalidateQueries({
+        queryKey: ["announcements"],
+      });
+
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Could not delete announcement", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+    
+  });
+  return {handleRemoveAnnouncement}
+}
+
+export function useCreateAnnouncement() {
+  const queryClient = useQueryClient();
+  
+
+  const { mutateAsync: handleCreateEvent } = useMutation({
+    mutationFn: createAnnouncement,
+    onMutate: () => {
+      toast.loading("Created announcement....");
+    },
+
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Announcement created");
+      queryClient.invalidateQueries({
+        queryKey: ["events"],
+      });
+
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Could not create announcement ", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+  });
+
+  return { handleCreateEvent };
 }
 export function useCreateEvent() {
   const queryClient = useQueryClient();
@@ -282,6 +391,8 @@ export function useChangeUserProfile() {
 
   return { handleChangeProfile };
 }
+
+
 export function useDeleteImage() {
   const queryClient = useQueryClient();
   

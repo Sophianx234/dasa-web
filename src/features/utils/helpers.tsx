@@ -149,5 +149,20 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
   
 
   
-
+  export function convertDateToCustomString(isoDate: Date) {
+    const date = new Date(isoDate);
+  
+    const options: Intl.DateTimeFormatOptions = {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    };
+  
+    const parts = date.toLocaleString('en-US', options).split(', ');
+    const [monthDay, time] = parts;
+    return `${monthDay}, ${time.toLowerCase()}`;
+  }
+  
   

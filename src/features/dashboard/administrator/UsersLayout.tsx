@@ -14,7 +14,7 @@ function UsersLayout() {
 
       <UserCardList/>
 
-      <div className="fixed bg-white -bottom-1 left-0 right-0 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] pt-4">
+      <div className="fixed bg-white -bottom-1 left-0 right-0 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] py-3 pt-4">
         
 
       <ControlHeader/>

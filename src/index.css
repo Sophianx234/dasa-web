@@ -78,3 +78,12 @@
   }
   
 }
+.custom-swiper .swiper-button-prev,
+.custom-swiper .swiper-button-next {
+  @apply size-10 text-dasadeep shadow-lg px-1 bg-white rounded-full z-40; /* Width/height = 2.5rem (40px) */
+}
+
+.custom-swiper .swiper-button-prev::after,
+.custom-swiper .swiper-button-next::after {
+  @apply text-xl; /* Adjusts arrow size */
+}

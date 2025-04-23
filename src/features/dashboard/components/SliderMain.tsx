@@ -33,7 +33,7 @@ export default function SliderMain({events,direction='horizontal'}:sliderMainPro
         }}
         navigation={direction?.startsWith('h')? true :false}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
+        className="mySwiper custom-swiper"
         >
         {events.map((event)=><SwiperSlide key={event._id}>{<Event eventInfo={event}/>}</SwiperSlide>)}
         

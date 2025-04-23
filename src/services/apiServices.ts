@@ -72,8 +72,8 @@ export type signupCredentialsExtended = signupCredentials & {
   _id: string;
   anonymousName: string;
   anonymousProfile: string;
-  sex:'male'|'female'
-  role: string
+  sex: "male" | "female";
+  role: string;
 };
 export type logoutResponse = {
   status: string;
@@ -172,7 +172,42 @@ export async function getVideos() {
   );
   return data;
 }
+export async function getAnnouncements() {
+  const { data } = await axios.get(`${API_URL}/announcements`);
+  return data;
+}
+export interface announcementI {
+  _id:string
+  announcer: string;
+  announcerProfile: string;
+  portfolio: string;
+  date: Date;
+  messageType: string;
+  title: string;
+  content: string;
+  reactions: number;
+  comments: string[];
+}
+export interface announcementResponse {
+  announcements: announcementI[]
 
+}
+export type updateAnnouncementI = {
+  id: string;
+  body: announcementI;
+};
+export async function updateAnnouncement({ id, body }: updateAnnouncementI) {
+  const { data } = await axios.patch(`${API_URL}/announcements/${id}`, body );
+  return data;
+}
+export async function deleteAnnouncement(id:string) {
+  const { data } = await axios.delete(`${API_URL}/announcements/${id}`);
+  return data;
+}
+export async function createAnnouncement(body:announcementI) {
+  const { data } = await axios.post(`${API_URL}/announcements`, body);
+  return data;
+}
 
 export async function uploadImages(update: unknown): Promise<unknown[]> {
   console.log(update);
@@ -188,34 +223,32 @@ export async function removeUser(id: string) {
   return data;
 }
 type changeRoleI = {
-  id:string,
-  role: string
-}
-export async function changeUserRole({id,role}:changeRoleI) {
-console.log('role:',role)
-  const { data } = await axios.patch(`${API_URL}/users/${id}`,{role});
+  id: string;
+  role: string;
+};
+export async function changeUserRole({ id, role }: changeRoleI) {
+  console.log("role:", role);
+  const { data } = await axios.patch(`${API_URL}/users/${id}`, { role });
   return data;
 }
 export async function getEvents() {
   const { data } = await axios.get(`${API_URL}/events`);
   return data;
 }
-export async function removeEvent(id:string) {
+export async function removeEvent(id: string) {
   const { data } = await axios.delete(`${API_URL}/events/${id}`);
   return data;
 }
 
-
-
 export type updateEventI = {
-  id:string,
-  body: eventI
-}
-export async function updateEvent({id,body}:updateEventI) {
-  const { data } = await axios.patch(`${API_URL}/events/${id}`,body);
+  id: string;
+  body: eventI;
+};
+export async function updateEvent({ id, body }: updateEventI) {
+  const { data } = await axios.patch(`${API_URL}/events/${id}`, body);
   return data;
 }
-export async function createEvent(body:FormData) {
-  const { data } = await axios.post(`${API_URL}/events`,body);
+export async function createEvent(body: FormData) {
+  const { data } = await axios.post(`${API_URL}/events`, body);
   return data;
 }

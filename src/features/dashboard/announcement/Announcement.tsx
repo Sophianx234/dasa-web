@@ -1,25 +1,60 @@
-import { SlPin } from "react-icons/sl"
+import { convertDateToCustomString } from "@/features/utils/helpers";
+import { announcementI } from "@/services/apiServices";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
-import { MdOutlineEventNote } from "react-icons/md";
 import { FaRegSmileBeam } from "react-icons/fa";
 import { LiaComment } from "react-icons/lia";
-function Announcement() {
+import { MdOutlineEventNote } from "react-icons/md";
+import { SlPin } from "react-icons/sl";
+import DeleteButton from "../administrator/DeleteButton";
+import { useDeleteAnnouncement } from "@/features/utils/hooks";
+import { Toaster } from "react-hot-toast";
+import Swal from "sweetalert2";
+
+export type announcementProps = {
+    announce:announcementI 
+    type?: 'admin'|'normal'
+}
+function Announcement({announce,type='normal'}:announcementProps) {
+    const date = convertDateToCustomString(announce.date)
+  const {handleRemoveAnnouncement} = useDeleteAnnouncement()
+  async function handleDeleteAnnouncement(id:string) {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "This announcement will be deleted.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#e8590c",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes!",
+      });
+  
+      if (result.isConfirmed) {
+        
+        handleRemoveAnnouncement(id);
+      }
+    }    
     return (
         <div className="mx-4 border-2 shadow-lg mt-4 pt-2 px-2 rounded-md ">
             <div className="grid grid-cols-[2fr_.5fr] pt-2 pr-1 ">
                 <div className="flex space-x-2">
-                <img src="https://i.ibb.co/LdfLkxF/photo-89-2024-10-31-06-52-36.jpg" className="size-14 rounded-full"/>
+                <img src={announce.announcerProfile} className="size-14 rounded-full"/>
+                {/* <img src="https://i.ibb.co/LdfLkxF/photo-89-2024-10-31-06-52-36.jpg" className="size-14 rounded-full"/> */}
 
                     <div >
-                        <h1 className="font-Montserrat font-semibold ">Damian Nannet</h1>
-                        <p className="text-sm">Vice President - Mar 16, 09:00pm</p>
+                        <h1 className="font-Montserrat font-semibold ">{announce.announcer}</h1>
+                        <p className="text-sm">{announce.portfolio} - {date}</p>
 
                     </div>
 
                 </div>
-                <div className="flex justify-end gap-2">
+                <div className="flex justify-end gap-2 relative">
                 <SlPin className="size-5"/>
-                <BiDotsHorizontalRounded className="size-5"/>
+
+                {type=='normal'?<BiDotsHorizontalRounded className="size-5"/>: <div className="">
+                    <DeleteButton handleDelete={()=>handleDeleteAnnouncement(announce._id)} abs={false}/>
+
+                </div> 
+                }
 
                 </div>
             </div>
@@ -28,18 +63,18 @@ function Announcement() {
 
                 <h1 className="flex items-center gap-1 ">
                 <MdOutlineEventNote className="size-6 fill-dasadeep"/>
-                <span className="">General</span>
+                <span className="">{announce.messageType[0].toUpperCase()+announce.messageType.slice(1)}</span>
                 </h1>
-                <h1 className="font-bold font-mulish text-lg">Welcome to DaSA humble Dasians</h1>
+                <h1 className="font-bold font-mulish text-lg">{announce.title}</h1>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas molestias quaerat ratione eveniet id rem. Doloremque ad natus architecto praesentium.</p>
+                <p>{announce.content}</p>
                 <div className="flex justify-between py-2 pr-3 items-center">
                   <h1 className="font-semibold">
                   <span className="">
-                  👍🤯</span>  12 person
+                  👍🤯</span>  {announce.reactions} person
                     </h1> 
                     <div>
-                        <p className="font-semibold">2 Comments</p> 
+                        <p className="font-semibold">{announce.comments.length} Comments</p> 
                         </div> 
                 </div>
                 <div>
@@ -49,6 +84,7 @@ function Announcement() {
                        <span className="flex items-center gap-2 justify-center font-semibold"><LiaComment/> Comment</span> 
                     </div>
                 </div>
+                <Toaster/>
             </div>
         </div>
     )
