@@ -10,7 +10,7 @@ function GalleryPage() {
     <div className="bg-white">
       <HeaderDashboard />
       <UploadButton/>
-      {revealUplaoadUserImage&&<DragZone type="image"/>}
+      {revealUplaoadUserImage&&<DragZone type="images"/>}
 
       <BriefGallery style="side" />
       

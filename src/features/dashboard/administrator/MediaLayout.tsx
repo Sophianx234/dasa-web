@@ -1,15 +1,13 @@
 import { toggleRevealUploadProduct } from "@/features/slices/navSlice"
 import { useAppSelector } from "@/features/utils/hooks"
 import { useState } from "react"
-import { CiFilter } from "react-icons/ci"
 import { IoAdd } from "react-icons/io5"
 import { useDispatch } from "react-redux"
 import HeaderDashboard from "../components/HeaderDashboard"
 import DragZone from "../market/DragZone"
+import ControlHeader from "./ControlHeader"
 import FilterItem from "./FilterItem"
 import MediaGallery from "./MediaGallery"
-import ControlHeader from "./ControlHeader"
-import ControlPageTitle from "./ControlPageTitle"
 
 function MediaLayout() {
   const {selectFilter,isOpenUploadProduct} = useAppSelector(store=>store.nav)
