@@ -1,7 +1,7 @@
-import { TbUserHexagon } from "react-icons/tb";
+import { getPayStackConfig, payStackConfig } from "@/features/utils/paystack";
+import { FormEvent, ReactNode } from "react";
+import { usePaystackPayment } from 'react-paystack';
 import PricingCheck from "./PricingCheck";
-import { PiCrownBold } from "react-icons/pi";
-import { ReactNode } from "react";
 
 type PricingCardProps = {
   mainIcon: ReactNode;
@@ -14,6 +14,13 @@ type PricingCardProps = {
   planPackage: string[];
   type?: "personal" | "standard" | "pro";
 };
+type PaystackSuccessResponse = {
+  reference: string;
+  trans: string;
+  status: string;
+  message: string;
+  // ...other Paystack return fields you may use
+};
 function PricingCard({
   mainIcon,
   badgeIcon,
@@ -25,6 +32,18 @@ function PricingCard({
   planPackage,
   type = "personal",
 }: PricingCardProps) {
+  
+  const onSuccess = (reference:PaystackSuccessResponse) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    console.log(reference);
+  };
+
+  // you can call this function anything
+  const onClose = () => {
+    // implementation for  whatever you want to do when the Paystack dialog closed.
+    console.log('closed')
+  }
+  const initializePayment = usePaystackPayment(getPayStackConfig())
   return (
     <div
       className={`w-[18rem]  rounded-lg border relative shadow-md
@@ -68,7 +87,12 @@ function PricingCard({
           {priceStrike}
         </span>
       </div>
-      <button className={`border w-full border-gray-700 py-1 text-lg rounded-md font-bold ${type=='personal'?'hover:border-[#ffa94d]':type==='pro'?'bg-[#ffa94def] border-[#ffa94def] text-[#f8f9fa] hover:bg-transparent hover:text-black hover:border-black ':'border-white hover:bg-white hover:text-black hover:border-[#ffa94d]'} transition-all duration-500 `}>
+      <button
+      onClick={(e:FormEvent)=>{
+        e.preventDefault()
+        
+        initializePayment({onSuccess,onClose})}}
+      className={`border w-full border-gray-700 py-1 text-lg rounded-md font-bold ${type=='personal'?'hover:border-[#ffa94d]':type==='pro'?'bg-[#ffa94def] border-[#ffa94def] text-[#f8f9fa] hover:bg-transparent hover:text-black hover:border-black ':'border-white hover:bg-white hover:text-black hover:border-[#ffa94d]'} transition-all duration-500 `}>
         Buy {title} License
       </button>
       <div className="flex items-center gap-1 py-6 border-dashed border-b-2">
