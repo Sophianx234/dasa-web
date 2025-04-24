@@ -149,7 +149,7 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
   
 
   
-  export function convertDateToCustomString(isoDate: Date) {
+  export function convertDateToCustomString(isoDate: string) {
     const date = new Date(isoDate);
   
     const options: Intl.DateTimeFormatOptions = {

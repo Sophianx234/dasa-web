@@ -15,7 +15,7 @@ export type announcementProps = {
     type?: 'admin'|'normal'
 }
 function Announcement({announce,type='normal'}:announcementProps) {
-    const date = convertDateToCustomString(announce.date)
+    const date = convertDateToCustomString(announce.date as string)
   const {handleRemoveAnnouncement} = useDeleteAnnouncement()
   async function handleDeleteAnnouncement(id:string) {
       const result = await Swal.fire({
@@ -37,7 +37,7 @@ function Announcement({announce,type='normal'}:announcementProps) {
         <div className="mx-4 border-2 shadow-lg mt-4 pt-2 px-2 rounded-md ">
             <div className="grid grid-cols-[2fr_.5fr] pt-2 pr-1 ">
                 <div className="flex space-x-2">
-                <img src={announce.announcerProfile} className="size-14 rounded-full"/>
+                <img src={announce.announcerProfile} className="size-12 w-14 rounded-full"/>
                 {/* <img src="https://i.ibb.co/LdfLkxF/photo-89-2024-10-31-06-52-36.jpg" className="size-14 rounded-full"/> */}
 
                     <div >
@@ -62,7 +62,7 @@ function Announcement({announce,type='normal'}:announcementProps) {
                 <div className="pt-5 space-y-2 pb-3">
 
                 <h1 className="flex items-center gap-1 ">
-                <MdOutlineEventNote className="size-6 fill-dasadeep"/>
+                <MdOutlineEventNote className={`size-6 ${announce.messageType === 'general'?'fill-dasadeep':announce.messageType ==='event'?'fill-green-400':'fill-red-400'}`}/>
                 <span className="">{announce.messageType[0].toUpperCase()+announce.messageType.slice(1)}</span>
                 </h1>
                 <h1 className="font-bold font-mulish text-lg">{announce.title}</h1>
