@@ -1,21 +1,18 @@
+import { toggleRevealAnnouncementForm } from "@/features/slices/navSlice";
+import { useAppSelector, useCreateAnnouncement } from "@/features/utils/hooks";
+import { signupCredentialsExtended } from "@/services/apiServices";
+import { LucideCircleUser } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Toaster } from "react-hot-toast";
-import { GoLocation } from "react-icons/go";
-import { IoMdTime } from "react-icons/io";
-import { MdOutlineEmojiEvents, MdOutlineSubtitles } from "react-icons/md";
-import AccountFormInput from "../account/AccountFormInput";
-import DeleteButton from "./DeleteButton";
-import { PiSubtitlesThin } from "react-icons/pi";
-import { LucideCircleUser } from "lucide-react";
-import { LuCrown } from "react-icons/lu";
 import { FiTarget } from "react-icons/fi";
-import { useAppSelector, useCreateAnnouncement } from "@/features/utils/hooks";
-import { newAnnouncementI, signupCredentialsExtended } from "@/services/apiServices";
-import { useState } from "react";
-import { formValues } from "../account/ChangeContactForm";
-import Swal from "sweetalert2";
+import { LuCrown } from "react-icons/lu";
+import { MdOutlineSubtitles } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { toggleRevealAnnouncementForm } from "@/features/slices/navSlice";
+import Swal from "sweetalert2";
+import AccountFormInput from "../account/AccountFormInput";
+import { formValues } from "../account/ChangeContactForm";
+import DeleteButton from "./DeleteButton";
 
 /* 
 announcer: string 
@@ -50,8 +47,8 @@ function AnnouncementForm() {
     console.log(data)
     const date = new Date(Date.now()).toISOString()
 
-    const announcerProfile = userInfo.profileImage
-    const body = {...data,date,announcerProfile}
+    const [announcerProfile,messageType] = [userInfo.profileImage,(selected as string).toLocaleLowerCase()]
+    const body = {...data,date,announcerProfile,messageType }
     console.log(body)
     const result = await Swal.fire({
           title: "Are you sure?",
