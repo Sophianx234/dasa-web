@@ -310,7 +310,7 @@ export function useCreateAnnouncement() {
       toast.dismiss();
       toast.success("Announcement created");
       queryClient.invalidateQueries({
-        queryKey: ["events"],
+        queryKey: ["announcements"],
       });
 
       setTimeout(() => {

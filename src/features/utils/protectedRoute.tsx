@@ -1,8 +1,8 @@
-import { API_URL } from "@/services/apiServices";
+import { API_URL, signupCredentialsExtended } from "@/services/apiServices";
 import axios from "axios";
 import { ReactNode, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { setIsLoggedIn } from "../slices/navSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import { setIsLoggedIn, setUser } from "../slices/navSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
 export type protectedRouteProp = {
@@ -10,6 +10,7 @@ export type protectedRouteProp = {
 };
 export type isAuthenticatedResponse = {
   isAuthenticated: boolean;
+  user:signupCredentialsExtended
 };
 export function ProtectedRoute({ children }: protectedRouteProp) {
   const navigate = useNavigate();
@@ -19,13 +20,14 @@ export function ProtectedRoute({ children }: protectedRouteProp) {
     function () {
       async function checkUserIsAuthenticated() {
           try{
-                console.log('d1')
               const  {data} = await axios.get(`${API_URL}/users/auth/check`, {
                   withCredentials: true,
                 });
+                
                 console.log('Goku',data)
                 if (data) {
-                    const { isAuthenticated } = data as isAuthenticatedResponse;
+                    const { isAuthenticated,user } = data as isAuthenticatedResponse;
+                    dispatch(setUser(user))
                     dispatch(setIsLoggedIn(isAuthenticated));
                     if (!isAuthenticated) {
                         navigate("/");
