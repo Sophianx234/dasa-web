@@ -27,11 +27,12 @@ function PricingCard({
 }: PricingCardProps) {
   return (
     <div
-      className={`w-[18rem]  rounded-lg border shadow-md
+      className={`w-[18rem]  rounded-lg border relative shadow-md
     ${
       type == "personal" ? "" : type === "standard" ? "bg-[#030303] text-white" : "bg-dasalight"
     } mx-auto px-6 py-4 pb-6`}
     >
+      {type==='pro'&&<div className="uppercase font-extrabold  absolute top-0 right-10 text-sm px-4 shadow-sm py-1 rounded-b-full pb-2 bg-[#ffa94d] text-[#33220f]">Most Popular</div>}
       <div
         className={`${
           type == "personal" ? "bg-gray-100" : "bg-white"
@@ -67,7 +68,7 @@ function PricingCard({
           {priceStrike}
         </span>
       </div>
-      <button className={`border w-full border-gray-700 py-1 text-lg rounded-md font-bold ${type=='personal'?'':type==='pro'?'bg-[#ffa94def] border-[#ffa94def] text-[#f8f9fa] hover:bg-transparent hover:text-black ':'border-white hover:bg-white hover:text-black'} transition-all duration-500 `}>
+      <button className={`border w-full border-gray-700 py-1 text-lg rounded-md font-bold ${type=='personal'?'hover:border-[#ffa94d]':type==='pro'?'bg-[#ffa94def] border-[#ffa94def] text-[#f8f9fa] hover:bg-transparent hover:text-black hover:border-black ':'border-white hover:bg-white hover:text-black hover:border-[#ffa94d]'} transition-all duration-500 `}>
         Buy {title} License
       </button>
       <div className="flex items-center gap-1 py-6 border-dashed border-b-2">

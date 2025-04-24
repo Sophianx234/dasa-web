@@ -5,9 +5,9 @@ type PricingCheckProps = {
 }
 function PricingCheck({desc}:PricingCheckProps) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="grid grid-cols-[.1fr_2fr] items-center gap-2">
       <BsCheck2Circle className="size-4 stroke-[#666666]"/>
-      <span className="underline underline-offset-2 font-semibold">{desc}</span>
+      <span className="underline underline-offset-2 text-sm font-semibold">{desc}</span>
       </div>
   )
 }
