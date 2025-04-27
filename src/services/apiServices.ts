@@ -140,9 +140,9 @@ export async function getUsers() {
   const { data } = await axios.get(`${API_URL}/users`);
   return data;
 }
-export async function getAnonymous(): Promise<anonymousResponse> {
+export async function getAnonymous(lim:number|null = null): Promise<anonymousResponse> {
   const { data } = await axios.get(
-    `${API_URL}/messages/anonymous?field=messages`
+    `${API_URL}/messages/anonymous?field=messages&${lim?`limit=${lim}`:''}`
   );
   return data;
 }

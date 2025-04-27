@@ -176,10 +176,10 @@ export function useGetUser() {
 
   return { isLoading, data, error };
 }
-export function useGetAnonymous() {
+export function useGetAnonymous(lim:number|null=null) {
   const { isLoading, data, error } = useQuery({
     queryKey: ["anonymous"],
-    queryFn: getAnonymous,
+    queryFn: ()=>getAnonymous(lim),
   });
 
   return { isLoading, data, error };

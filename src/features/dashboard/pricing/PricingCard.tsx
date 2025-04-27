@@ -31,6 +31,7 @@ function PricingCard({
   badgeTitle,
   planPackage,
   type = "personal",
+  
 }: PricingCardProps) {
   
   const onSuccess = (reference:PaystackSuccessResponse) => {
@@ -43,7 +44,7 @@ function PricingCard({
     // implementation for  whatever you want to do when the Paystack dialog closed.
     console.log('closed')
   }
-  const initializePayment = usePaystackPayment(getPayStackConfig())
+  const initializePayment = usePaystackPayment(getPayStackConfig(price))
   return (
     <div
       className={`w-[18rem]  rounded-lg border relative shadow-md
@@ -77,14 +78,14 @@ function PricingCard({
             type == "personal" ? "text-[#191817]" :type=='standard'? "text-white":''
           }`}
         >
-          {price}
+          ${price}
         </h1>
         <span
           className={`font-medium ${
             type == "personal" ? "text-gray-300" :type=='standard'? "text-[#ffa94d]":'text-[#ffa94d]'
           } line-through`}
         >
-          {priceStrike}
+          ${priceStrike}
         </span>
       </div>
       <button

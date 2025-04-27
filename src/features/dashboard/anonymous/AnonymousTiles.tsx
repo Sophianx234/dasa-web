@@ -1,30 +1,44 @@
+import { useGetAnonymous } from "@/features/utils/hooks";
 import AnonymousTile from "./AnonymousTile";
+import { anonymousResponse, anonymousType, messagesType } from "@/services/apiServices";
+import { useState } from "react";
 
+type anosType ={
+  
+    _id: string,
+    sender: {
+        _id: string,
+        anonymousProfile: string,
+        anonymousName: string
+    },
+    anonymousName: string,
+    content: string,
+    createdAt: string
+
+}
 function AnonymousTiles() {
-  return (
-    <div className="pt-5">
+  const {isLoading,data} = useGetAnonymous(5)
+  if(isLoading) return <>loading</>
+  console.log('x123',data)
+  if(data){
+    const {anonymous:{messages}} = data as anonymousResponse
+    console.log(messages)
+    
+    return (
+      <div className="pt-5">
       <h1 className="px-5 dash-title">Anonymous</h1>
-
-      <AnonymousTile
-        to="Aisha"
-        message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa alias magnam adipisci quo maxime omnis?"
-        time="2 months ago"
+{(messages as unknown as anosType[]).map(msg=>
+<AnonymousTile
+        to={msg.sender.anonymousName}
+        key={msg._id}
+        message={msg.content}
+        time={msg.createdAt}
         title="Anonymous"
-      />
-      <AnonymousTile
-        to="Aisha"
-        message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa alias magnam adipisci quo maxime omnis?"
-        time="2 months ago"
-        title="Anonymous"
-      />
-      <AnonymousTile
-        to="Aisha"
-        message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa alias magnam adipisci quo maxime omnis?"
-        time="2 months ago"
-        title="Anonymous"
-      />
+        />)}
+      
     </div>
   );
+}
 }
 
 export default AnonymousTiles;

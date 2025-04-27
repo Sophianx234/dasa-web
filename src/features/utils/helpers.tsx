@@ -164,5 +164,43 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
     const [monthDay, time] = parts;
     return `${monthDay}, ${time.toLowerCase()}`;
   }
+
+
+
+
+  export function DateAnonymous(isoString: string) {
+    const date = new Date(isoString);
+    const now = new Date();
+  
+    const isToday =
+      date.getDate() === now.getDate() &&
+      date.getMonth() === now.getMonth() &&
+      date.getFullYear() === now.getFullYear();
+  
+    const yesterday = new Date();
+    yesterday.setDate(now.getDate() - 1);
+  
+    const isYesterday =
+      date.getDate() === yesterday.getDate() &&
+      date.getMonth() === yesterday.getMonth() &&
+      date.getFullYear() === yesterday.getFullYear();
+  
+    if (isToday) return "Today";
+    if (isYesterday) return "Yesterday";
+  
+    const secondsAgo = Math.floor((now.getTime() - date.getTime()) / 1000);
+    const minutesAgo = Math.floor(secondsAgo / 60);
+    const hoursAgo = Math.floor(minutesAgo / 60);
+    const daysAgo = Math.floor(hoursAgo / 24);
+    const monthsAgo = Math.floor(daysAgo / 30);
+    const yearsAgo = Math.floor(daysAgo / 365);
+  
+    if (daysAgo < 30) return `${daysAgo} day${daysAgo === 1 ? "" : "s"} ago`;
+    if (monthsAgo < 12) return `${monthsAgo} month${monthsAgo === 1 ? "" : "s"} ago`;
+  
+    // If it's older than 1 year, fallback to normal date format
+    return date.toLocaleDateString();
+  }
+  
   
   

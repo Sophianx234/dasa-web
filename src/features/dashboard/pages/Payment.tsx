@@ -63,20 +63,20 @@ function Payment() {
       planPackage={personalPackage as string[]}
       badgeIcon={<PiCrownBold className="size-6 fill-[#666666]" />}
       badgeTitle="Cultural Custodian"
-      subTitle="For those who quietly fuel the DaSA dream." priceStrike="$50" title="Personal" price="$37" mainIcon={<TbUserHexagon className="size-6" />}/>
+      subTitle="For those who quietly fuel the DaSA dream." priceStrike="50" title="Personal" price="37" mainIcon={<TbUserHexagon className="size-6" />}/>
       <PricingCard
       
       type="pro"
       planPackage={standardPackage as string[]}
       badgeIcon={<LuTrophy className="size-6 stroke-[#ffa94d]" />}
       badgeTitle="Gold Member"
-      subTitle="For members who give without asking." priceStrike="$50" title="Standard" price="$37" mainIcon={<RiMedalFill className="size-6" />}/>
+      subTitle="For members who give without asking." priceStrike="50" title="Standard" price="37" mainIcon={<RiMedalFill className="size-6" />}/>
       <PricingCard
       type="standard"
       planPackage={proPackage as string[]}
       badgeIcon={<GiTigerHead className="size-6 fill-green-400 " />}
       badgeTitle="Gbuɣinli Bia"
-      subTitle="For anyone who believes in the roots of DaSA." priceStrike="$50" title="Pro" price="$37" mainIcon={<BsFillLightningChargeFill className="size-6 fill-[#ffa94d]" />}/>
+      subTitle="For anyone who believes in the roots of DaSA." priceStrike="50" title="Pro" price="37" mainIcon={<BsFillLightningChargeFill className="size-6 fill-[#ffa94d]" />}/>
       </div>
 <div className="flex justify-center">
 
