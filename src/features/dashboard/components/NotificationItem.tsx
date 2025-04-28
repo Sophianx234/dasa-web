@@ -14,7 +14,8 @@ function NotificationItem({notify}:notificationItemProps) {
                 <img src={notify.notificationImg} alt="profile-icon-x" className="scale-150"/>
                 </div>
                 <div>
-                    <p className="font-semibold font-Montserrat text-sm">
+                    <p className="
+                    font-inter  text-sm ">
 
                     {notify.content} 
                     </p>
