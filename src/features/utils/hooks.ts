@@ -9,6 +9,7 @@ import {
   getAnonymous,
   getEvents,
   getGallery,
+  getNotifications,
   getUser,
   getUsers,
   getVideos,
@@ -188,6 +189,14 @@ export function useGetEvents() {
   const { isLoading, data, error } = useQuery({
     queryKey: ["events"],
     queryFn: getEvents,
+  });
+
+  return { isLoading, data, error };
+}
+export function useGetNotifications() {
+  const { isLoading, data, error } = useQuery({
+    queryKey: ["notifications"],
+    queryFn: getNotifications,
   });
 
   return { isLoading, data, error };

@@ -12,6 +12,7 @@ import AccountFormInput from "../account/AccountFormInput";
 import { formValues } from "../account/ChangeContactForm";
 import { DatePicker } from "../account/DatePicker";
 import DeleteButton from "./DeleteButton";
+import { useSocket } from "@/context/SocketContext";
 export type eventSchedulerFormValues = formValues & {
   title: string;
   venue: string;
@@ -22,6 +23,7 @@ export type eventSchedulerFormValues = formValues & {
 function EventScheduler() {
   const dispatch = useAppDispatch();
   const [eventImg, setEventImg] = useState<File | null>(null);
+  const socket = useSocket()
   const { register, reset, control, handleSubmit } =
     useForm<eventSchedulerFormValues>();
   const { handleCreateEvent } = useCreateEvent();
@@ -45,6 +47,7 @@ function EventScheduler() {
       formData.append("eventDate", data.date.toISOString());
       formData.append("time", data.time);
       handleCreateEvent(formData);
+    socket?.emit('notification',{content:`New event:${data.title}.Check dashboard for more information`,type:'Event'})
       dispatch(toggleRevealEventScheduler());
     }
   }
@@ -55,8 +58,8 @@ function EventScheduler() {
     if (!data) console.log("goku");
 
     handleCreateNewEvent(data);
+
   };
-  console.log("eventImg", eventImg);
   return (
     <form
       className="bg-white fixed  inset-0 -top-1  z-50"

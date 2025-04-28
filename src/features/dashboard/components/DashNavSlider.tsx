@@ -1,21 +1,22 @@
 import { toggleSidebar } from "@/features/slices/navSlice";
-import { useAppDispatch } from "@/features/utils/hooks";
+import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
+import { signupCredentialsExtended } from "@/services/apiServices";
 import { motion } from "framer-motion";
-import { FaRegUser } from "react-icons/fa6";
+import { Toaster } from "react-hot-toast";
 import { GrGallery } from "react-icons/gr";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { MdOutlineAdminPanelSettings, MdOutlineStore } from "react-icons/md";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { PiSidebarFill } from "react-icons/pi";
 import { RiHome3Line, RiSecurePaymentLine } from "react-icons/ri";
 import { TbLogout2, TbMessage } from "react-icons/tb";
-import AvatarComponent from "./AvatarComponent";
-import DashNavItem from "./DashNavItem";
-import { Toaster } from "react-hot-toast";
-import { Link } from "react-router-dom";
 import AccountProfileBottom from "./AccountProfileBottom";
+import DashNavItem from "./DashNavItem";
 function DashNavSlider() {
   const dispatch = useAppDispatch();
+  const {user} = useAppSelector(store=>store.nav)
+  const userInfo = user as signupCredentialsExtended
+  console.log(userInfo)
 
   return (
     <motion.div
@@ -51,12 +52,12 @@ function DashNavSlider() {
               navTitle="Home"
               arrIcon={<IoIosArrowForward />}
             />
-              <DashNavItem
+              {userInfo.role==='admin' &&<DashNavItem
                 icon={<MdOutlineAdminPanelSettings className="size-8" />}
                 link="dashboard/admin"
                 navTitle="Administrator"
                 arrIcon={<IoIosArrowForward />}
-              />
+              />}
             <DashNavItem
               icon={<IoNotificationsOutline className="size-8" />}
               link="dashboard/notifications"

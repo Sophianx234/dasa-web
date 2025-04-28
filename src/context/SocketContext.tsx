@@ -1,5 +1,5 @@
 
-import { removeOnlineUser, removeTypingUser, setOnlineUsers, setTypingUsers, setUserIsTyping } from "@/features/slices/navSlice";
+import { addNotification, removeOnlineUser, removeTypingUser, setOnlineUsers, setTypingUsers, setUserIsTyping } from "@/features/slices/navSlice";
 import { sendAnonymousMessage, sendMessage } from "@/features/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { dmType, signupCredentialsExtended } from "@/services/apiServices";
@@ -88,6 +88,11 @@ function SocketProvider({ children }: socketProviderProps) {
       socketInstance.on('isOffline',(message)=>{
         console.log('test',message)
         dispatch(removeOnlineUser(message))
+      })
+      socketInstance.on('recieveNotification',(message)=>{
+        console.log('notification',message)
+        dispatch(addNotification(message))
+        
       })
       socketInstance.on("recieveFile", (message:dmType) => {
         console.log('xxxy',message)

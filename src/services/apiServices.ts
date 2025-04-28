@@ -237,6 +237,10 @@ export async function getEvents() {
   const { data } = await axios.get(`${API_URL}/events`);
   return data;
 }
+export async function getNotifications() {
+  const { data } = await axios.get(`${API_URL}/notifications`);
+  return data;
+}
 export async function removeEvent(id: string) {
   const { data } = await axios.delete(`${API_URL}/events/${id}`);
   return data;

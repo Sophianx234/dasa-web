@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 import AccountFormInput from "../account/AccountFormInput";
 import { formValues } from "../account/ChangeContactForm";
 import DeleteButton from "./DeleteButton";
+import { useSocket } from "@/context/SocketContext";
 
 /* 
 announcer: string 
@@ -38,6 +39,7 @@ announcer: string
 function AnnouncementForm() {
   const {register,handleSubmit}  = useForm<announcementFormValues>()
   const dispatch = useDispatch()
+  const socket = useSocket()
   const {handleCreateAnnouncement} = useCreateAnnouncement()
   const {user} = useAppSelector(store=>store.nav)
   const userInfo = user as signupCredentialsExtended
@@ -62,6 +64,7 @@ function AnnouncementForm() {
     
         if (result.isConfirmed) {
           await handleCreateAnnouncement(body)
+          socket?.emit('notification',{content:`New Announcement from the Dasa Executive Team. Check your dashboard`,type:'Announcement'})
            dispatch(toggleRevealAnnouncementForm());
         }
   }

@@ -68,7 +68,10 @@ function App() {
               path="/dashboard"
               element={
                 <ProtectedRoute>
+                  <SocketProvider>
                   <AppLayout />
+
+                  </SocketProvider>
                 </ProtectedRoute>
               }
             >
@@ -76,7 +79,8 @@ function App() {
                 index
                 element={<Navigate to="overview" replace={true} />}
               />
-              <Route path="overview" element={<DashboardOverview />} />
+              <Route path="overview" element={
+                <DashboardOverview />} />
               <Route path="/dashboard/gallery" element={<GalleryPage />} />
               <Route
                 path="/dashboard/notifications"
@@ -100,9 +104,9 @@ function App() {
               <Route
                 path="/dashboard/anonymous/write"
                 element={
-                  <SocketProvider>
+                  
                     <AnonymousMain />
-                  </SocketProvider>
+                  
                 }
               />
               <Route

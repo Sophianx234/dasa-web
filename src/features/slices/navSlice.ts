@@ -6,6 +6,13 @@ export type onlineUsersType = {
   userName: string;
   isOnline: boolean;
 };
+export type notificationsType = {
+  content: string;
+  type: string;
+  createdAt:string;
+  _id:string
+  notificationImg:string
+};
 interface navState {
   selectFilter: 'images'|'videos',
   typingUsers: signupCredentialsExtended[];
@@ -36,11 +43,13 @@ revealEventScheduler: boolean;
   user: signupCredentialsExtended | object;
   isOpenAttachFile: boolean;
   isLoggedIn:boolean;
-  uploadVideo: boolean
+  uploadVideo: boolean,
+  notifications:notificationsType[]
 }
 const initialState: navState = {
   selectFilter: 'images',
   typingUsers: [],
+  notifications:[],
   dateArr:[],
   uploadVideo:false,
   onlineUsers: [],
@@ -182,6 +191,12 @@ const navSlice = createSlice({
       state.onlineUsers = state.onlineUsers.filter(user=>user.userId !== OfflineUser.userId )
 
     },
+    loadNotifications(state,action){
+      state.notifications = action.payload
+    },
+    addNotification(state,action){
+      state.notifications = [...state.notifications,action.payload]
+    },
     removeTypingUser(state, action) {
       console.log('typingUsers',setTypingUsers)
       state.typingUsers = state.typingUsers.filter(
@@ -241,6 +256,8 @@ export const {
   setDateArr,
   setSelectFilter,
   toggleRevealEventScheduler,
-  toggleRevealAnnouncementForm
+  toggleRevealAnnouncementForm,
+  loadNotifications,
+  addNotification
 } = navSlice.actions;
 export default navSlice.reducer;
