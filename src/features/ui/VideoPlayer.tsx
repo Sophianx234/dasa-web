@@ -24,6 +24,8 @@ function VideoPlayer({ src,id,control = 'normal' }: videoPlayerProps) {
           title: 'Are you sure?',
           text: "This video will be permanently deleted.",
           icon: 'warning',
+          heightAuto:false,
+          backdrop:false,
           showCancelButton: true,
           confirmButtonColor: '#e8590c',
           cancelButtonColor: '#3085d6',
