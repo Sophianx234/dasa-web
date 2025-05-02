@@ -19,6 +19,8 @@ function UserCard({userInfo}:userCardProps) {
   async function handleDeleteUser(id:string){
       const result = await Swal.fire({
             title: 'Are you sure?',
+            heightAuto:false,
+          backdrop:false,
             text: "This user will be permanently deleted.",
             icon: 'warning',
             showCancelButton: true,

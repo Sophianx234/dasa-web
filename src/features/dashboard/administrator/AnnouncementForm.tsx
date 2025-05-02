@@ -54,6 +54,8 @@ function AnnouncementForm() {
     console.log(body)
     const result = await Swal.fire({
           title: "Are you sure?",
+          heightAuto:false,
+          backdrop:false,
           text: "This announcement will be created.",
           icon: "warning",
           showCancelButton: true,

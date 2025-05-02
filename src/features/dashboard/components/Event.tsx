@@ -18,6 +18,8 @@ function Event({eventInfo,type ='normal'}:eventProps) {
                 title: 'Are you sure?',
                 text: "This event will be permanently deleted.",
                 icon: 'warning',
+                heightAuto:false,
+          backdrop:false,
                 showCancelButton: true,
                 confirmButtonColor: '#e8590c',
                 cancelButtonColor: '#3085d6',

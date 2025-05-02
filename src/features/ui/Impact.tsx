@@ -1,25 +1,33 @@
 import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
+
 function Impact() {
-    return (
-        <div className='py-10 bg-dasalight space-y-2'>
-            <h1 className='text-xl text-center font-mulish font-bold '>
-                Our impact in numbers
-            </h1>
+  const { ref: messagesRef, inView: messagesInView } = useInView({ triggerOnce: true });
+  const { ref: usersRef, inView: usersInView } = useInView({ triggerOnce: true });
 
-            <div className='flex items-center gap-10 justify-center '>
-                <div className='flex flex-col '>
+  return (
+    <div className="py-10 bg-dasalight space-y-2">
+      <h1 className="text-xl text-center font-mulish font-bold">
+        Our impact in numbers
+      </h1>
 
-               <p className='text-center font-Montserrat font-bold text-xl text-[#33312e]'><span><CountUp enableScrollSpy start={0}  end={100} duration={10} /></span>M</p>
-               <p className='font-mulish'>Messages sent</p> 
-                </div>
-                <div>
-
-               <p className='text-center font-Montserrat  font-bold text-xl text-[#33312e]'><span><CountUp enableScrollSpy start={0} duration={8}  end={100} /></span>+</p>
-               <p className='font-mulish'>Active users</p>
-                </div>
-            </div>
+      <div className="flex items-center gap-10 justify-center">
+        <div className="flex flex-col" ref={messagesRef}>
+          <p className="text-center font-Montserrat font-bold text-xl text-[#33312e]">
+            {messagesInView ? <CountUp start={0} end={100} duration={3} /> : 0}M
+          </p>
+          <p className="font-mulish">Messages sent</p>
         </div>
-    )
+
+        <div className="flex flex-col" ref={usersRef}>
+          <p className="text-center font-Montserrat font-bold text-xl text-[#33312e]">
+            {usersInView ? <CountUp start={0} end={100} duration={3} /> : 0}+
+          </p>
+          <p className="font-mulish">Active users</p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Impact
+export default Impact;

@@ -1,4 +1,5 @@
 import AboutSection from "../ui/AboutSection"
+import ConstitutionSection from "../ui/ConstitutionSection"
 import ExecutivesSection from "../ui/ExecutivesSection"
 import Footer from "../ui/Footer"
 import Impact from "../ui/Impact"
@@ -19,6 +20,7 @@ function About() {
            <ExecutivesSection/>
            <Impact/>
            <Values/>
+           <ConstitutionSection/>
            <Footer/>
            </main>
         </div>

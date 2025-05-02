@@ -12,7 +12,7 @@ import { Link, Outlet } from "react-router-dom"
 
 function MediaLayout() {
   const {selectFilter,isOpenUploadProduct} = useAppSelector(store=>store.nav)
-  const [activateFilter,setActivateFilter] = useState<boolean>(false)
+  const [filter,setFilter] = useState<'images'|'videos'>('images')
   const dispatch = useDispatch()
   console.log('1yes',selectFilter)
   
@@ -21,13 +21,12 @@ function MediaLayout() {
       <HeaderDashboard/>
 
       <div className="flex items-center justify-center  gap-2 ">
-        <Link to='images' className={` font-mulish font-semibold border px-3 py-2 rounded-full bg-dasadeep`}>Images</Link>
-        <Link to='videos' className={`font-mulish font-semibold border px-3 py-2 rounded-full`}>Videos</Link>
+        <Link to='images' onClick={()=>setFilter('images')} className={` font-mulish font-semibold border px-3 py-2 rounded-full ${filter==='images'&&'bg-dasadeep'}`}>Images</Link>
+        <Link  to='videos' onClick={()=>setFilter('videos')} className={`font-mulish font-semibold border px-3 py-2 rounded-full ${filter==='videos'&&'bg-dasadeep'}`}>Videos</Link>
         
       </div>
       <Outlet/> 
 
-<MediaGallery filter={selectFilter} activateFilter={activateFilter}/>
 
 <div className="fixed shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] -bottom-1 left-0 right-0 flex items-center justify-center z-50 bg-white py-3 ">
   <ControlHeader>

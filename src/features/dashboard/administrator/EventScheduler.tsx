@@ -30,6 +30,8 @@ function EventScheduler() {
   async function handleCreateNewEvent(data: eventSchedulerFormValues) {
     const result = await Swal.fire({
       title: "Are you sure?",
+      heightAuto:false,
+          backdrop:false,
       text: "This event will be created.",
       icon: "warning",
       showCancelButton: true,

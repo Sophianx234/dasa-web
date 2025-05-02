@@ -49,6 +49,7 @@ import UsersLayout from "./features/dashboard/administrator/UsersLayout";
 import EventsLayout from "./features/dashboard/administrator/EventsLayout";
 import MediaImagesSection from "./features/dashboard/administrator/MediaImagesSection";
 import MediaVideosSection from "./features/dashboard/administrator/MediaVideosSections";
+import AdminOverview from "./features/dashboard/administrator/AdminOverview";
 
 const queryClient = new QueryClient();
 axios.defaults.withCredentials = true;
@@ -96,14 +97,18 @@ function App() {
 
               {/* Admin Route */}
               <Route path="/dashboard/admin/:id" element={<AdminPage />} >
-              </Route>
-              <Route path="/dashboard/admin/:id/media" element={<MediaLayout />}>
-              <Route path="/dashboard/admin/:id/media/images" element={<MediaImagesSection/>} />
-              <Route path="/dashboard/admin/:id/media/videos"  element={<MediaVideosSection/>}/>
+              <Route index element={<Navigate to='overview'/>}/>
+              <Route path='overview' element={<AdminOverview/>}/>
+              <Route path="media" element={<MediaLayout />}>
+              
+              <Route index element={<Navigate to='images' replace/>} />
+              <Route path="images" element={<MediaImagesSection/>} />
+              <Route path="videos"  element={<MediaVideosSection/>}/>
               </Route>
               <Route path="/dashboard/admin/:id/announcements" element={<AnnouncementsLayout />} />
               <Route path="/dashboard/admin/:id/users" element={<UsersLayout />} />
               <Route path="/dashboard/admin/:id/events" element={<EventsLayout />} />
+              </Route>
               {/* Chat Route */}
 
               <Route

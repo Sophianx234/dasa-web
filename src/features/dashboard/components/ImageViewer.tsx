@@ -18,6 +18,8 @@ function ImageViewer({images, type='normal'}:imageViewerProps) {
       title: 'Are you sure?',
       text: "This image will be permanently deleted.",
       icon: 'warning',
+      heightAuto:false,
+          backdrop:false,
       showCancelButton: true,
       confirmButtonColor: '#e8590c',
       cancelButtonColor: '#3085d6',

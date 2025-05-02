@@ -22,6 +22,8 @@ function Announcement({announce,type='normal'}:announcementProps) {
         title: "Are you sure?",
         text: "This announcement will be deleted.",
         icon: "warning",
+        heightAuto:false,
+          backdrop:false,
         showCancelButton: true,
         confirmButtonColor: "#e8590c",
         cancelButtonColor: "#3085d6",

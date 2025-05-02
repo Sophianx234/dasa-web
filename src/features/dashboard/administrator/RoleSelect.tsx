@@ -15,6 +15,7 @@ const {handleChangeUserRole} = useChangeUserRole()
                 title: "Change User Role?",
                 text: "You're about to change this user's role. Proceed with caution.",
                 icon: 'warning',
+                
                 showCancelButton: true,
                 confirmButtonColor: '#e8590c',
                 cancelButtonColor: '#3085d6',
