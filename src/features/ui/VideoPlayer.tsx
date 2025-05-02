@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { ChangeEvent, FormEvent, useCallback, useEffect, useRef } from "react";
 import { BsInstagram } from "react-icons/bs";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiFacebook } from "react-icons/fi";
@@ -104,7 +104,7 @@ function VideoPlayer({ src,id,control = 'normal' }: videoPlayerProps) {
         page in a modern browser.
       </video>
       <div className="flex relative">
-      {control ==='admin'&&<DeleteButton/>}
+      {control ==='admin'&&<DeleteButton handleDelete={()=>handleDeleteVideo(id as string)} />}
             <div className="self-end">
               <ReactionList />
             </div>

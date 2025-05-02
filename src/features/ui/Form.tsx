@@ -11,9 +11,10 @@ import FormInput from "../ui/FormInput";
 import { useAppSelector, useSignup } from "../utils/hooks";
 import Select from "./Select";
 import SVGLite from "./SVGLite";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
+import { DatePicker } from "../dashboard/account/DatePicker";
 
 export type signupFormValues = {
   firstName: string;
@@ -26,9 +27,10 @@ export type signupFormValues = {
   password: string;
   sex: string;
   confirmPassword: string;
+  birthDate:Date
 };
 function Form() {
-  const { handleSubmit, register, watch } = useForm<signupFormValues>();
+  const { handleSubmit, register, watch,control } = useForm<signupFormValues>();
   const navigate = useNavigate();
   const isAnnex = useAppSelector((store) => store.user.isAnnex);
 
@@ -106,6 +108,13 @@ function Form() {
               style="bg-transparent border-b-2 border-b-dasadeep text-xs"
               icon={<PiBuildingApartmentLight className="absolute left-2   " />}
             />
+            <Controller
+            name="birthDate"
+            
+            control={control}
+             // Set the default value to an empty string
+            render={({ field }) => <DatePicker type="signup" field={field} />}
+          />
 
             {isAnnex === "Annex" || isAnnex === "UGEL Hostel" ? (
               <Select
@@ -192,7 +201,7 @@ function Form() {
             </Link>
           </p>
           <div className="text-center pb-6">
-            <button className="w-full py-2 font-Montserrat font-bold  bg-dasadeep text-[#33312e] hover:bg-transparent border-2 border-transparent hover:border-dasadeep rounded-lg duration-150 transition-all">
+            <button className="w-full py-2 font-Montserrat font-bold  bg-dasadeep text-[#33312e] hover:bg-transparent border-2 border-transparent hover:border-dasadeep  rounded-full duration-150 transition-all">
               Signup
             </button>
           </div>

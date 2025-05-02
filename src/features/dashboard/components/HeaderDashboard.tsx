@@ -8,7 +8,7 @@ import { signupCredentialsExtended } from "@/services/apiServices"
 
 function HeaderDashboard() {
     const dispatch = useAppDispatch()
-    const {user} = useAppSelector(store=>store.nav)
+    const {user,notifications} = useAppSelector(store=>store.nav)
     const userInfo = user as signupCredentialsExtended
     
     
@@ -30,7 +30,7 @@ function HeaderDashboard() {
                 <div className="flex items-center justify-center gap-4">
                     <Link to='/dashboard/notifications'
                     className="border  border-transparent hover:border group rounded-md duration-100 hover:border-dasalight relative">
-                        <div className="absolute -right-1 -top-1 text-xs bg-dasalight px-2 py-1 shadow-md  font-mulish font-bold rounded-full group-hover:scale-110 z-30">5</div>
+                      {notifications.length?  <div className="absolute -right-1 -top-1 text-xs bg-dasalight px-2 py-1 shadow-md  font-mulish font-bold rounded-full group-hover:scale-110 z-30">{notifications.length}</div>:null}
                      
 
                 <GoBell className="size-9 pt-1 fill-[#33312ee7] group-hover:scale-105"/>

@@ -540,8 +540,9 @@ export function useDeleteVideo() {
       toast.dismiss();
       toast.success("Video deleted");
       queryClient.invalidateQueries({
-        queryKey: ["videos"],
+        queryKey: ["videos"]
       });
+      queryClient.refetchQueries({ queryKey: ["videos"] })
 
       setTimeout(() => {
         toast.dismiss();
@@ -558,11 +559,11 @@ export function useDeleteVideo() {
 
   return { handleRemoveVideo };
 }
-export function useGallery(enabled: boolean = true) {
+export function useGallery() {
   const {isLoading, data,error} = useQuery({
     queryFn: getGallery,
     queryKey: ['gallery'],
-    enabled
+    
     
 
   })
@@ -580,11 +581,11 @@ export function useGetusers() {
 
   return { isLoading,data,error };
 }
-export function useGetVideos(enabled:boolean = true) {
+export function useGetVideos() {
   const {isLoading, data,error} = useQuery({
     queryFn: getVideos,
-    queryKey: ['videos'],
-    enabled
+    queryKey: ["videos"],
+    
     
 
   })

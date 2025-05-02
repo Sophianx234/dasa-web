@@ -14,7 +14,7 @@ function Executive({name,imgUrl,role,desc}:executiveProps) {
                         <div className="text-center px-2">
                             <h1 className="text-center font-bold font-mulish text-lg text-[#4c4945]">{name}</h1>
                             <p className="font-bold  font-rethink text-[#4c4945]">{role}</p>
-                            <p className="leading-7">{desc}</p>
+                            <p className="leading-7 text-justify px-4">{desc}</p>
                         </div>
                         <Socials />
                     </div>

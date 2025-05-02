@@ -41,7 +41,7 @@ function NavLinks({swap= 'flex'}:navLinksProps) {
                 className="hover:bg-dasalight py-2">
                     Login
                 </NavLink>
-                <NavLink to='/homepage/signup' className='text-center bg-dasalight py-2 font-semibold hover:rounded-sm hover:bg-white hover:border-2 border-2 border-white hover:border-dasalight transition-all duration-150 rounded-sm' onClick={()=>dispatch(toggleNav())}>
+                <NavLink to='/homepage/signup' className='text-center bg-dasalight py-2  font-semibold  hover:bg-white hover:border-2 border-2 border-white hover:border-dasalight transition-all duration-150 rounded-full' onClick={()=>dispatch(toggleNav())}>
                     Join the Community
                 </NavLink>
             </ul>

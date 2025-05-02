@@ -8,6 +8,7 @@ import DragZone from "../market/DragZone"
 import ControlHeader from "./ControlHeader"
 import FilterItem from "./FilterItem"
 import MediaGallery from "./MediaGallery"
+import { Link, Outlet } from "react-router-dom"
 
 function MediaLayout() {
   const {selectFilter,isOpenUploadProduct} = useAppSelector(store=>store.nav)
@@ -20,9 +21,11 @@ function MediaLayout() {
       <HeaderDashboard/>
 
       <div className="flex items-center justify-center  gap-2 ">
-        <FilterItem/>
+        <Link to='images' className={` font-mulish font-semibold border px-3 py-2 rounded-full bg-dasadeep`}>Images</Link>
+        <Link to='videos' className={`font-mulish font-semibold border px-3 py-2 rounded-full`}>Videos</Link>
         
       </div>
+      <Outlet/> 
 
 <MediaGallery filter={selectFilter} activateFilter={activateFilter}/>
 

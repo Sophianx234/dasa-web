@@ -8,14 +8,14 @@ function NotificationItem({notify}:notificationItemProps) {
     const time = DateAnonymous(notify.createdAt)
     return (
         <div>
-            <div className="flex items-center border pt-5 space-x-4 mx-4 py-4 rounded-xl px-3 relative ">
+            <div className="flex items-center border pt-5 space-x-4 mx-4 py-4 rounded-xl px-3 relative shadow ">
                 <div className="bg-dasalight overflow-hidden rounded-full w-28">
 
                 <img src={notify.notificationImg} alt="profile-icon-x" className="scale-150"/>
                 </div>
                 <div>
                     <p className="
-                    font-inter  text-sm ">
+                    font-inter  text-sm italic leading-4 ">
 
                     {notify.content} 
                     </p>

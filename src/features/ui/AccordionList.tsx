@@ -24,7 +24,7 @@ function AccordionList() {
         },
         {
           question: "What activities does DaSA organize?",
-          answer: "We host cultural events, academic seminars, study groups, workshops, and social gatherings."
+          answer: "We host cultural events, academic seminars, study groups, workshops, and social gatherings on campus ."
         },
         {
           question: "How can I find out about upcoming DaSA events?",
@@ -44,7 +44,7 @@ function AccordionList() {
         },
         {
           question: "Does DaSA provide financial assistance or scholarships?",
-          answer: "While DaSA itself doesn’t offer scholarships, we provide information on available scholarships and resources for students in need."
+          answer: "While DaSA doesn’t directly offer scholarships, we actively share available opportunities and support members through the application process. We also endeavor to secure scholarships and financial aid for members facing financial difficulties."
         },
         {
           question: "How can I connect with alumni of DaSA?",
@@ -56,7 +56,7 @@ function AccordionList() {
         },
         {
           question: "How can I contact DaSA's executive board?",
-          answer: "You can email the executive board or contact us via our social media channels."
+          answer: "You can email the executive board or contact us via our social media channels. Or check the about page on this site."
         },
         {
           question: "How can I update my membership information?",
@@ -64,11 +64,11 @@ function AccordionList() {
         },
         {
           question: "Can members promote their businesses through DaSA?",
-          answer: "Yes, we support member businesses. You can showcase your business on the DaSA website’s business section."
+          answer: "Yes, we support member businesses. You can showcase your business on the DaSA Market center."
         },
         {
           question: "What is the Down Boys group in DaSA?",
-          answer: "The Down Boys are a group within DaSA with shared goals of striving for significant life changes despite humble beginnings. They focus on ambition, resilience, and community support."
+          answer: "Down Boys is a purpose-driven group within DaSA made up of members who believe in turning humble beginnings into powerful futures. They focus on ambition, self-discipline, and supporting one another on the path to personal and academic success."
         }
       ]
     return (

@@ -8,6 +8,7 @@ import FormInput from "../ui/FormInput";
 import { useLogin } from "../utils/hooks";
 import DasaLogo from "./DasaLogo";
 import SVGLite from "./SVGLite";
+import { useState } from "react";
 
 export type loginFormValues = {
   email: string;
@@ -41,13 +42,20 @@ function SignIn() {
     register,
     formState: { errors },
   } = useForm<loginFormValues>();
+  const [isLoggingIn,setIsLogginIn] = useState<boolean>(false)
 
   const { handleLogin } = useLogin(navigate);
   const onSubmit: SubmitHandler<loginFormValues> = (data: loginFormValues) => {
+    setIsLogginIn(true)
     console.log(data);
     console.log(errors);
-    if (!data.email || !data.password) return;
+    if (!data.email || !data.password){
+      setIsLogginIn(false)
+      return;
+      
+    } 
     handleLogin(data);
+    setIsLogginIn(false)
   };
   
 
@@ -102,8 +110,8 @@ function SignIn() {
                 <TbBrandOpenvpn className="size-4 " />
                 <span className="self-end">Forgot Password?</span>
               </Link>
-              <div className="pt-2">
-                Already have an account{" "}
+              <div className="pt-2 italic pl-1">
+                Do not have an account{" "}
                 <Link
                   to="/homepage/signup"
                   className="text-blue-600 font-medium hover:underline"
@@ -113,7 +121,7 @@ function SignIn() {
               </div>
             </div>
           </div>
-          <button className=" bg-dasadeep mt-3 rounded-sm py-2 text-sm font-bold font-Montserrat ">
+          <button className=" rounded-full bg-dasadeep mt-3 border border-dasadeep hover:border-[#191611] hover:bg-transparent transition-all duration-300 py-2 text-sm font-bold font-Montserrat " disabled={isLoggingIn}>
             Login
           </button>
         </form>

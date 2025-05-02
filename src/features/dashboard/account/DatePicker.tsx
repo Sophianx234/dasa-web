@@ -15,14 +15,15 @@ import {
 import { ControllerRenderProps, FieldValues, Path } from "react-hook-form"
 
 export type datePickerProps<T extends FieldValues> = {
+    type?:'normal' | 'signup'
     field: ControllerRenderProps<T, Path<T>>,
 
 }
-export function DatePicker<T extends FieldValues>({field}:datePickerProps<T>) {
+export function DatePicker<T extends FieldValues>({field,type='normal'}:datePickerProps<T>) {
   const [date, setDate] = React.useState<Date>()
  
   return (
-    <Popover  >
+    <Popover   >
       <PopoverTrigger className="relative indent-10 " asChild>
         <Button 
           variant={"outline"}
@@ -35,7 +36,7 @@ export function DatePicker<T extends FieldValues>({field}:datePickerProps<T>) {
 
           <CalendarIcon />
           </div>
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          {date ? format(date, "PPP") : <span>{type==='normal'?'Pick a date':'Date of birth'}</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto  p-0">

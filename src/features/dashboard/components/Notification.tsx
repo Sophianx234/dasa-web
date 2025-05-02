@@ -22,7 +22,7 @@ function NotificationList() {
 
     },[])
     if(isLoading) return <>loading</>
-    console.log(data)
+    
 
         return (
             <div className="bg-white">
@@ -38,7 +38,7 @@ function NotificationList() {
             </div>
             </div>
             <div className="pb-4 pt-6 space-y-2  ">
-{notices && notices.map(notification=><NotificationItem notify={notification} key={notification._id} />)}
+{notices.length ? notices.map(notification=><NotificationItem notify={notification} key={notification._id} />):null}
 
             
             
