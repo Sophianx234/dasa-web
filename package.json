@@ -52,6 +52,7 @@
     "react-router-dom": "^6.27.0",
     "react-slideshow-image": "^4.3.2",
     "react-spinners": "^0.15.0",
+    "react-switch": "^7.1.0",
     "recharts": "^2.15.2",
     "slate": "^0.112.0",
     "slate-history": "^0.110.3",

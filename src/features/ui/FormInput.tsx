@@ -7,6 +7,7 @@ import {
 
 export type formInputProps<T extends FieldValues> = {
   icon: ReactElement;
+  icon2?: ReactElement;
   type?: string;
   form?: string;
   placeholder: string;
@@ -28,7 +29,8 @@ function FormInput<T extends FieldValues>({
   addClass,
   style,
   inputName,
-  register, 
+  register,
+  icon2 
 }: formInputProps<T>) {
   const universityOfGhanaHostels = [
     {
@@ -101,16 +103,21 @@ function FormInput<T extends FieldValues>({
         "Managed by the University of Ghana Enterprise Limited, offering modern accommodation options for students.",
     },
   ];
+
   
 
   return (
-    <div className={`flex  items-center relative ${addClass}`}>
-      {icon}
+    <div className={`flex  items-center relative overflow-hidden rounded-lg ${addClass}`}>
+      {icon} 
+     
+       {icon2}
+     
       {type !== "select" ? (
         <input
           type={type}
           placeholder={placeholder}
-          className={`py-2 pl-7 ${style} rounded-sm px-1 font-poppins h-full w-full outline-none focus:outline-offset-1 focus:outline-orange-300 `}
+          className={`py-2 pl-7 ${style} rounded-sm px-1 font-poppins h-full w-full outline-none
+          text-lg indent-8 focus:outline-offset-1 focus:outline-orange-300 `}
           {...register(inputName,{})}
         required />
       ) : (

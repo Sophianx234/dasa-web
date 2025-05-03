@@ -1,9 +1,10 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Toaster } from "react-hot-toast";
-import { FaRegUser } from "react-icons/fa6";
-import { IoLockClosed } from "react-icons/io5";
+import { FaRegEyeSlash, FaRegUser } from "react-icons/fa6";
+import { IoEyeOutline, IoLockClosedOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
+import Switch from "react-switch";
 import FormInput from "../ui/FormInput";
 import { useLogin } from "../utils/hooks";
 import DasaLogo from "./DasaLogo";
@@ -43,6 +44,7 @@ function SignIn() {
   } = useForm<loginFormValues>();
   const [isLoggingIn,setIsLogginIn] = useState<boolean>(false)
   const [rememberMe,setRememberMe] = useState<boolean>(false)
+  const [viewPass,setsetViewPass] = useState<"text"|'password'>('password')
 
 
   const { handleLogin } = useLogin(navigate);
@@ -79,6 +81,13 @@ function SignIn() {
     }else return 
     
   },[])
+
+
+
+  function handleToggle(nextChecked:boolean){
+    setRememberMe(nextChecked)
+
+  }
   
 
   return (
@@ -89,9 +98,9 @@ function SignIn() {
         <SVGLite type="sticks" />
         </div>
       </div>
-      <div className="   shadow-lg px-2 rounded-md border py-8  absolute top-28 w-[20rem] ">
+      <div className="   shadow-lg px-2 rounded-md border py-8  absolute top-28 w-[22rem]  ">
         <form
-          className="flex flex-col  px-2  "
+          className="flex flex-col  px-2   "
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex  items-center gap-4 pb-4">
@@ -100,12 +109,12 @@ function SignIn() {
             </h1>
             <DasaLogo clns="text-sm" title="Dagbon Students Association" />
           </div>
-          <div className="space-y-4 ">
+          <div className="space-y-6 ">
             <FormInput
               register={register}
               inputName="email"
               style="bg-white border-dasadeep border "
-              icon={<FaRegUser className="absolute left-2 " />}
+              icon={<span className="absolute  bg-dasalight items-center left-0 px-4 h-full rounded-l-md shadow-sm flex "><FaRegUser className=" size-5" /></span>}
               type="email"
               placeholder="Enter Email Address"
             />
@@ -115,24 +124,32 @@ function SignIn() {
               register={register}
               inputName="password"
               style="bg-white border-dasadeep border "
-              icon={<IoLockClosed className="absolute left-2  " />}
-              type="password"
+              type={viewPass}
+              icon={<span className="absolute  bg-dasalight items-center left-0 px-4 h-full rounded-l-md shadow-sm flex "> <IoLockClosedOutline className="  size-5  " /></span>}
+              icon2={<span className="absolute  bg-[#f1f3f5] items-center right-0 px-4 h-full  rounded-r-md shadow-sm flex ">{viewPass!=='text'?<IoEyeOutline className=" size-5"
+                onClick={()=>setsetViewPass("text")}/>:<FaRegEyeSlash className="  size-5" onClick={()=>setsetViewPass("password")}/>}</span>}
               placeholder="Password"
             />
 
             <div>
-              <div className="flex  text-xs gap-2">
-                <input type="checkbox" onChange={(e:ChangeEvent<HTMLInputElement>)=>setRememberMe(e.target.checked)}  name="" id="" />
-                <p className="font-medium text-sm tracking-wide ">Remember me</p>
-              </div>
-              <Link
-                className="text-gray-700 flex items-center  gap-1 pt-2 hover:underline"
+            <Link
+                className="text-gray-700 flex items-center  gap-1  -mt-1 pb-2 hover:underline"
                 to="/forgotPassword"
               >
                 
                 <span className="self-end text-sm font-poppins italic">Forgot Password?</span>
               </Link>
-              <div className="pt-2 italic  text-sm font-poppins font-medium tracking-tight">
+              <div className="flex  text-xs gap-2 items-center">
+                
+                <p className="font-medium text-sm tracking-wide ">Remember Sign in details</p> <Switch onChange={handleToggle}  
+                onColor="#ffd8a8"
+                height={25}
+                width={55}
+                className=""
+                checked={rememberMe} />
+              </div>
+              
+              <div className=" italic  text-sm font-poppins font-medium tracking-tight py-2 pt-4">
                 Do not have an account?{" "}
                 <Link
                   to="/homepage/signup"
