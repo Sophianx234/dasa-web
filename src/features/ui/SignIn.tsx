@@ -1,14 +1,13 @@
+import { ChangeEvent, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Toaster } from "react-hot-toast";
 import { FaRegUser } from "react-icons/fa6";
 import { IoLockClosed } from "react-icons/io5";
-import { TbBrandOpenvpn } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 import FormInput from "../ui/FormInput";
 import { useLogin } from "../utils/hooks";
 import DasaLogo from "./DasaLogo";
 import SVGLite from "./SVGLite";
-import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 
 export type loginFormValues = {
   email: string;
@@ -61,6 +60,10 @@ function SignIn() {
       localStorage.setItem('password',data.password)
       
       
+    }else{
+      
+      localStorage.removeItem('email')
+      localStorage.removeItem('password')
     }
     handleLogin(data);
     setIsLogginIn(false)
@@ -80,8 +83,8 @@ function SignIn() {
 
   return (
     <div className="flex flex-col overflow-hidden mx-4 items-center  h-dvh text-[60%] space-y-12 ">
-      <div className="absolute top-1">
-        <div className="overflow-x-hidden w-[25rem]">
+      <div className="absolute top-1 overflow-hidden">
+        <div className="overflow-x-hidden w-dvw">
 
         <SVGLite type="sticks" />
         </div>
@@ -146,7 +149,7 @@ function SignIn() {
         </form>
       </div>
       <div className="absolute bottom-1">
-      <div className="overflow-x-hidden w-[25rem]">
+      <div className="overflow-x-hidden w-dvw">
 
         <SVGLite type="sticks" />
       </div>
