@@ -21,11 +21,12 @@ function UploadProductImg({
   
   
   const [renameImage, setRenameImage] = useState<boolean|null>()
-  const [newImgName, setNewImgName] = useState<string|null>()
-  const {handleSubmit,register,reset} = useForm<productImgFormValues>()
+  // const [newImgName, setNewImgName] = useState<string|null>()
+  const {handleSubmit,reset} = useForm<productImgFormValues>()
   const onSubmit: SubmitHandler<productImgFormValues>=(data:productImgFormValues)=>{
     
-    setNewImgName(data?.imgName)
+    // setNewImgName(data?.imgName)
+    console.log(data)
     reset()
     handleToggleRename()
 

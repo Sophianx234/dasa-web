@@ -3,7 +3,7 @@ import { BsFolder } from "react-icons/bs";
 import { GrAnnounce } from "react-icons/gr";
 import { MdOutlineEventNote } from "react-icons/md";
 import { RiUserSettingsLine } from "react-icons/ri";
-import AdminControlItem from "./adminControlItem";
+import AdminControlItem from "./AdminControlItem";
 
 type controleHeaderProps = {
   children?: ReactNode

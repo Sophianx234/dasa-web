@@ -1,16 +1,15 @@
-import { ChangeEvent, FormEvent, useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
+import { Toaster } from "react-hot-toast";
 import { BsInstagram } from "react-icons/bs";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiFacebook } from "react-icons/fi";
-import { IoTrashBinOutline } from "react-icons/io5";
 import { PiTelegramLogo } from "react-icons/pi";
+import Swal from "sweetalert2";
+import DeleteButton from "../dashboard/administrator/DeleteButton";
+import { useDeleteVideo } from "../utils/hooks";
 import { useIsVisible } from "../utils/useIsVisible";
 import ReactionList from "./ReactionList";
 import SVGLite from "./SVGLite";
-import { useDeleteVideo } from "../utils/hooks";
-import { Toaster } from "react-hot-toast";
-import Swal from "sweetalert2";
-import DeleteButton from "../dashboard/administrator/DeleteButton";
 
 export type videoPlayerProps = {
   src: string;

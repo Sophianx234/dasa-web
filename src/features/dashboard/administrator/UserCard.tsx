@@ -6,10 +6,9 @@ import { FaTheaterMasks } from "react-icons/fa";
 import { HiOutlineBuildingOffice } from "react-icons/hi2";
 import { IoShieldOutline } from "react-icons/io5";
 import { PiGenderIntersexLight } from "react-icons/pi";
-import { RiDeleteBin5Line } from "react-icons/ri";
 import Swal from "sweetalert2";
-import RoleSelect from "./RoleSelect";
 import DeleteButton from "./DeleteButton";
+import RoleSelect from "./RoleSelect";
 
 type userCardProps = {
   userInfo: signupCredentialsExtended

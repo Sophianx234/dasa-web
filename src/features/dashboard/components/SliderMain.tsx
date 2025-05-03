@@ -1,4 +1,3 @@
-import { ReactElement } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -8,8 +7,8 @@ import 'swiper/swiper-bundle.css';
 
 // import required modules
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import { eventI, eventsI } from './Events';
 import Event from './Event';
+import { eventI } from './Events';
 
 export type sliderMainProps={
   events: eventI[],

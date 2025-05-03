@@ -1,8 +1,8 @@
-import { Link, useNavigate } from "react-router-dom"
-import AvatarComponent from "./AvatarComponent"
-import { useAppDispatch, useAppSelector } from "@/features/utils/hooks"
 import { toggleSidebar } from "@/features/slices/navSlice"
+import { useAppDispatch, useAppSelector } from "@/features/utils/hooks"
 import { signupCredentialsExtended } from "@/services/apiServices"
+import { useNavigate } from "react-router-dom"
+import AvatarComponent from "./AvatarComponent"
 
 function AccountProfileBottom() {
   const dispatch = useAppDispatch()

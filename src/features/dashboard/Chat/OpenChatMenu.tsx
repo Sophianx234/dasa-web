@@ -1,6 +1,6 @@
+import { useAppSelector } from "@/features/utils/hooks"
 import { AnimatePresence } from "framer-motion"
 import ChatMenu from "./ChatMenu"
-import { useAppSelector } from "@/features/utils/hooks"
 
 function OpenChatMenu() {
     const openChatMenuOptions = useAppSelector(store=>store.nav.openChatMenuOptions)

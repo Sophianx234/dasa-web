@@ -6,15 +6,13 @@ import FormError from "./FormError"
 function ChangePasswordForm() {
     const {
         register,
-        handleSubmit,
-        reset,
+        
         watch,
         formState:{errors}
     }= useForm()
     const password = watch('newPass')
     return (
-        <form onSubmit={handleSubmit((data)=>{
-          reset()})}>
+        <form>
         
       <label className="input input-bordered flex items-center gap-2 bg-white">
       <TbPasswordUser/>

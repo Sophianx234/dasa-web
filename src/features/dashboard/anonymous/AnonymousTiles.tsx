@@ -1,7 +1,6 @@
 import { useGetAnonymous } from "@/features/utils/hooks";
+import { anonymousResponse } from "@/services/apiServices";
 import AnonymousTile from "./AnonymousTile";
-import { anonymousResponse, anonymousType, messagesType } from "@/services/apiServices";
-import { useState } from "react";
 
 type anosType ={
   

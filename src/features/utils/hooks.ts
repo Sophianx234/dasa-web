@@ -4,7 +4,6 @@ import {
   createAnnouncement,
   createEvent,
   deleteAnnouncement,
-  getAnnouncement,
   getAnnouncements,
   getAnonymous,
   getEvents,
@@ -16,13 +15,12 @@ import {
   login,
   logout,
   removeEvent,
-  removeEvents,
   removeImage,
   removeUser,
   signup,
   updateAnnouncement,
   updateUser,
-  uploadImages,
+  uploadImages
 } from "@/services/apiServices";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";

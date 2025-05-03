@@ -6,15 +6,14 @@ import {
 } from "@/features/slices/navSlice";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
 import { useChatType } from "@/hooks/useChat";
-import { signupCredentialsExtended, userType } from "@/services/apiServices";
-import { useEffect, useRef, useState } from "react";
+import { signupCredentialsExtended } from "@/services/apiServices";
+import { useEffect, useRef } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { BsEmojiGrin, BsSend } from "react-icons/bs";
 import { IoMdAttach } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import { formValues } from "../account/ChangeContactForm";
-import AttachFile from "./attachFile";
-import { userInfo } from "os";
+import AttachFile from "./AttachFile";
 export type sendMessageFormValues = formValues & {
   message: string;
 };

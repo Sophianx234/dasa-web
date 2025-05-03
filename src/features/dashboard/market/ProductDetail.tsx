@@ -1,5 +1,4 @@
 import { FaShoppingCart } from "react-icons/fa"
-import SliderMain from "../components/SliderMain"
 import ProductDescription from "./ProductDescription"
 import ProductNav from "./ProductNav"
 
@@ -10,8 +9,7 @@ import ProductNav from "./ProductNav"
 
 function ProductDetail() {
     // const navigate = useNavigate()
-    const imgs = ["https://i.ibb.co/5T0GmMy/sneaker-2.png","https://i.ibb.co/F7K9fjg/sneaker-3.png","https://i.ibb.co/L5Z1hNM/sneaker-4.png","https://i.ibb.co/PcPBVyC/sneaker-1.jpg"
-        ]
+    // const imgs = ["https://i.ibb.co/5T0GmMy/sneaker-2.png","https://i.ibb.co/F7K9fjg/sneaker-3.png","https://i.ibb.co/L5Z1hNM/sneaker-4.png","https://i.ibb.co/PcPBVyC/sneaker-1.jpg"]
 
       
     return (
@@ -20,7 +18,7 @@ function ProductDetail() {
             <div >
 
             <div className="mx-8" >
-                <SliderMain el={imgs}/>
+                {/* <SliderMain /> */}
             </div>
             <ProductDescription/>
             </div>

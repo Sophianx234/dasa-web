@@ -1,6 +1,6 @@
 import { BarChartx } from "@/components/ui/barchart"
 import ControlHeader from "./ControlHeader"
-import { LineChartx } from "@/components/ui/LineChart"
+import { LineChartx } from "@/components/ui/Linechart"
 import { RadialChart } from "@/components/ui/RadialChart"
 import HeaderDashboard from "../components/HeaderDashboard"
 

@@ -1,4 +1,4 @@
-import { getPayStackConfig, payStackConfig } from "@/features/utils/paystack";
+import { getPayStackConfig } from "@/features/utils/paystack";
 import { FormEvent, ReactNode } from "react";
 import { usePaystackPayment } from 'react-paystack';
 import PricingCheck from "./PricingCheck";

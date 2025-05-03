@@ -2,7 +2,7 @@ import day from 'dayjs';
 import isToday from 'dayjs/plugin/isToday';
 import isYesterday from 'dayjs/plugin/isYesterday';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { adjectives, animals, Style, uniqueNamesGenerator } from 'unique-names-generator';
+import { adjectives, animals,  uniqueNamesGenerator } from 'unique-names-generator';
 day.extend(relativeTime);
 day.extend(isToday);
 day.extend(isYesterday);
@@ -90,7 +90,7 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
       dictionaries: [adjectives,animals],
       seperator: '',
       length: 2,
-      style: 'capital' as Style
+      style: 'capital' as 'capital' | 'upperCase'
 
     }
     return  uniqueNamesGenerator(customConfig).replace("_",'') + Math.floor(Math.random()*100)
@@ -133,7 +133,7 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
     const year = date.getUTCFullYear();
   
     // Function to get ordinal suffix
-    const getOrdinal = (n) => {
+    const getOrdinal = (n:number) => {
       if (n > 3 && n < 21) return `${n}th`;
       switch (n % 10) {
         case 1: return `${n}st`;
@@ -193,7 +193,7 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
     const hoursAgo = Math.floor(minutesAgo / 60);
     const daysAgo = Math.floor(hoursAgo / 24);
     const monthsAgo = Math.floor(daysAgo / 30);
-    const yearsAgo = Math.floor(daysAgo / 365);
+    // const yearsAgo = Math.floor(daysAgo / 365);
   
     if (daysAgo < 30) return `${daysAgo} day${daysAgo === 1 ? "" : "s"} ago`;
     if (monthsAgo < 12) return `${monthsAgo} month${monthsAgo === 1 ? "" : "s"} ago`;

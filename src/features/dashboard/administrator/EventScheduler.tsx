@@ -24,7 +24,7 @@ function EventScheduler() {
   const dispatch = useAppDispatch();
   const [eventImg, setEventImg] = useState<File | null>(null);
   const socket = useSocket()
-  const { register, reset, control, handleSubmit } =
+  const { register, control, handleSubmit } =
     useForm<eventSchedulerFormValues>();
   const { handleCreateEvent } = useCreateEvent();
   async function handleCreateNewEvent(data: eventSchedulerFormValues) {

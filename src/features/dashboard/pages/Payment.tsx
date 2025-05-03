@@ -1,14 +1,12 @@
 import { PiCrownBold } from "react-icons/pi";
 // import PaymentForm from "../components/PaymentForm";
-import { TbUserHexagon } from "react-icons/tb";
-import PricingCheck from "../pricing/PricingCheck";
-import PricingCard from "../pricing/PricingCard";
-import { LuLeaf, LuTrophy } from "react-icons/lu";
-import { BsFillLightningChargeFill, BsShield } from "react-icons/bs";
-import { RiMedalFill } from "react-icons/ri";
+import { BsFillLightningChargeFill } from "react-icons/bs";
 import { GiTigerHead } from "react-icons/gi";
 import { IoCubeOutline } from "react-icons/io5";
-import { LiaHandshake, LiaSmileBeam } from "react-icons/lia";
+import { LuTrophy } from "react-icons/lu";
+import { RiMedalFill } from "react-icons/ri";
+import { TbUserHexagon } from "react-icons/tb";
+import PricingCard from "../pricing/PricingCard";
 
 function Payment() {
   const personalPackage =  [

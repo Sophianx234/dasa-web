@@ -5,16 +5,15 @@ import { API_URL, dmType } from "@/services/apiServices";
 import axios from "axios";
 import { ChangeEvent, ReactNode, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { formValues } from "../account/ChangeContactForm";
 type attachFileLinkProps = {
   icon: ReactNode;
   text: string;
   accept: string;
   type: 'channel'|'direct'
 };
-type uploadAttachedFileFormInput = formValues &{
+/* type uploadAttachedFileFormInput = formValues &{
   img:string
-}
+} */
 function AttachFileLink({ icon, text, accept,type }: attachFileLinkProps) {
   const dispatch = useAppDispatch()
   const fileRef = useRef<HTMLInputElement | null>(null);

@@ -1,9 +1,7 @@
-import { useGallery, useGetVideos } from "@/features/utils/hooks"
-import { mediaType } from "@/services/apiServices"
-import ImageViewer from "../components/ImageViewer"
-import VideoPlayer from "@/features/ui/VideoPlayer"
 import { videoI } from "@/features/ui/Activities"
-import { memo, useMemo } from "react"
+import VideoPlayer from "@/features/ui/VideoPlayer"
+import { useGetVideos } from "@/features/utils/hooks"
+import { mediaType } from "@/services/apiServices"
 export type imagesI = {
   status:string,
   numImages:number,
@@ -20,7 +18,7 @@ export type mediaGalleryI = {
 }
 
 
-function MediaGallery({filter}:mediaGalleryI) {
+function MediaGallery() {
   
   const {data:videosData} = useGetVideos()
 
@@ -37,11 +35,6 @@ function MediaGallery({filter}:mediaGalleryI) {
 
 
 
-if(filter==='videos')
-    
-  return (
-    <div className="pt-4">{videoList}</div>
-  )
 }
 
 export default MediaGallery

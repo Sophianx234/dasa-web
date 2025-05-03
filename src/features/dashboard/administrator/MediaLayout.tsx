@@ -3,12 +3,10 @@ import { useAppSelector } from "@/features/utils/hooks"
 import { useState } from "react"
 import { IoAdd } from "react-icons/io5"
 import { useDispatch } from "react-redux"
+import { Link, Outlet } from "react-router-dom"
 import HeaderDashboard from "../components/HeaderDashboard"
 import DragZone from "../market/DragZone"
 import ControlHeader from "./ControlHeader"
-import FilterItem from "./FilterItem"
-import MediaGallery from "./MediaGallery"
-import { Link, Outlet } from "react-router-dom"
 
 function MediaLayout() {
   const {selectFilter,isOpenUploadProduct} = useAppSelector(store=>store.nav)

@@ -1,7 +1,6 @@
 import { anonymousMessagesType } from "@/features/slices/userSlice";
 import { formatTime } from "@/features/utils/helpers";
-import { useAppSelector } from "@/features/utils/hooks";
-import { dmType, signupCredentialsExtended } from "@/services/apiServices";
+import { dmType } from "@/services/apiServices";
 
 export type chatItemProps = {
   chat: anonymousMessagesType | dmType;
@@ -9,8 +8,8 @@ export type chatItemProps = {
 };
 function ChatItem({ chat, orient }: chatItemProps) {
   const date = formatTime(chat.createdAt);
-  const { user } = useAppSelector((store) => store.nav);
-  const userInfo = user as signupCredentialsExtended;
+  // const { user } = useAppSelector((store) => store.nav);
+  // const userInfo = user as signupCredentialsExtended;
   // const {user} = useQuery()
   if (orient !== "reverse")
     return (

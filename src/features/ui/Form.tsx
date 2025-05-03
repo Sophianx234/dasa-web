@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { Toaster } from "react-hot-toast";
 import { FaRegUser } from "react-icons/fa6";
 import {
   IoLockClosedOutline,
@@ -7,14 +10,13 @@ import {
 import { LuContact2 } from "react-icons/lu";
 import { PiBuildingApartmentLight } from "react-icons/pi";
 import { Link, useNavigate } from "react-router-dom";
+import { DatePicker } from "../dashboard/account/DatePicker";
 import FormInput from "../ui/FormInput";
 import { useAppSelector, useSignup } from "../utils/hooks";
+import PrivacyPolicy from "./PrivacyPolicy";
 import Select from "./Select";
 import SVGLite from "./SVGLite";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
-import { Toaster } from "react-hot-toast";
-import { DatePicker } from "../dashboard/account/DatePicker";
+import Terms from "./Terms";
 
 export type signupFormValues = {
   firstName: string;
@@ -33,6 +35,8 @@ function Form() {
   const { handleSubmit, register, watch,control } = useForm<signupFormValues>();
   const navigate = useNavigate();
   const isAnnex = useAppSelector((store) => store.user.isAnnex);
+  const [openPrivacy,setOpenPrivacy] = useState<boolean>(false)
+  const [openTerms,setOpenTerms] = useState<boolean>(false)
 
   const { handleSignup } = useSignup(navigate);
   const onSubmit: SubmitHandler<signupFormValues> = (
@@ -185,26 +189,29 @@ function Form() {
           )}
           <p className="pt-7 pb-5">
             By signing up, you acknowledge that you’ve read and accepted our{" "}
-            <Link
-              to="/terms"
+            <span
+               onClick={()=>setOpenTerms(true)}  
               className="text-blue-950 font-bold hover:underline italic"
             >
               {" "}
               Terms of Service
-            </Link>{" "}
+            </span>{" "}
             and{" "}
-            <Link
-              to="/policy"
+            <span
+              onClick={()=>setOpenPrivacy(true)}
               className="text-blue-950 font-bold hover:underline italic"
             >
               Privacy Policy.
-            </Link>
+            </span>
           </p>
           <div className="text-center pb-6">
             <button className="w-full py-2 font-Montserrat font-bold  bg-dasadeep text-[#33312e] hover:bg-transparent border-2 border-transparent hover:border-dasadeep  rounded-full duration-150 transition-all">
               Signup
             </button>
           </div>
+          {/* Terms of service */}
+           {openTerms && <Terms handleClose={setOpenTerms}/>} 
+          {openPrivacy &&<PrivacyPolicy handleClose={setOpenPrivacy}/>}
         </form>
       </div>
       <SVGLite type="sticks" />

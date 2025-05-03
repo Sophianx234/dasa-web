@@ -1,7 +1,7 @@
 import { API_URL, signupCredentialsExtended } from "@/services/apiServices";
 import axios from "axios";
 import { ReactNode, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setIsLoggedIn, setUser } from "../slices/navSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
