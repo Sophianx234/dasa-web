@@ -8,7 +8,7 @@ import FormInput from "../ui/FormInput";
 import { useLogin } from "../utils/hooks";
 import DasaLogo from "./DasaLogo";
 import SVGLite from "./SVGLite";
-import { useState } from "react";
+import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 
 export type loginFormValues = {
   email: string;
@@ -43,6 +43,8 @@ function SignIn() {
     formState: { errors },
   } = useForm<loginFormValues>();
   const [isLoggingIn,setIsLogginIn] = useState<boolean>(false)
+  const [rememberMe,setRememberMe] = useState<boolean>(false)
+
 
   const { handleLogin } = useLogin(navigate);
   const onSubmit: SubmitHandler<loginFormValues> = (data: loginFormValues) => {
@@ -54,20 +56,37 @@ function SignIn() {
       return;
       
     } 
+    if(rememberMe){
+      localStorage.setItem('email',data.email)
+      localStorage.setItem('password',data.password)
+      
+      
+    }
     handleLogin(data);
     setIsLogginIn(false)
   };
+
+  useEffect(()=>{
+    const email = localStorage.getItem('email')
+    const password = localStorage.getItem('password')
+
+    if(email && password){
+      handleLogin({email,password})
+
+    }else return 
+    
+  },[])
   
 
   return (
-    <div className="flex flex-col overflow-hidden  items-center  h-dvh text-[60%] space-y-12 ">
+    <div className="flex flex-col overflow-hidden mx-4 items-center  h-dvh text-[60%] space-y-12 ">
       <div className="absolute top-1">
         <div className="overflow-x-hidden w-[25rem]">
 
         <SVGLite type="sticks" />
         </div>
       </div>
-      <div className="   shadow-lg px-2 rounded-md border py-8  absolute top-28 ">
+      <div className="   shadow-lg px-2 rounded-md border py-8  absolute top-28 w-[20rem] ">
         <form
           className="flex flex-col  px-2  "
           onSubmit={handleSubmit(onSubmit)}
@@ -76,7 +95,7 @@ function SignIn() {
             <h1 className="font-poppins font-semibold text-3xl text-[#33312e] pb-4 pt-4">
               Login
             </h1>
-            <DasaLogo title="Dagbon Students Association" />
+            <DasaLogo clns="text-sm" title="Dagbon Students Association" />
           </div>
           <div className="space-y-4 ">
             <FormInput
@@ -100,18 +119,18 @@ function SignIn() {
 
             <div>
               <div className="flex  text-xs gap-2">
-                <input type="checkbox" name="" id="" />
-                <p>Remember Me</p>
+                <input type="checkbox" onChange={(e:ChangeEvent<HTMLInputElement>)=>setRememberMe(e.target.checked)}  name="" id="" />
+                <p className="font-medium text-sm tracking-wide ">Remember me</p>
               </div>
               <Link
-                className="text-blue-900 flex items-center gap-2 pt-2 "
+                className="text-gray-700 flex items-center  gap-1 pt-2 hover:underline"
                 to="/forgotPassword"
               >
-                <TbBrandOpenvpn className="size-4 " />
-                <span className="self-end">Forgot Password?</span>
+                
+                <span className="self-end text-sm font-poppins italic">Forgot Password?</span>
               </Link>
-              <div className="pt-2 italic pl-1">
-                Do not have an account{" "}
+              <div className="pt-2 italic  text-sm font-poppins font-medium tracking-tight">
+                Do not have an account?{" "}
                 <Link
                   to="/homepage/signup"
                   className="text-blue-600 font-medium hover:underline"

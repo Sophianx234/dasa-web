@@ -6,7 +6,7 @@ type privacyProps = {
 }
 function PrivacyPolicy({handleClose}:privacyProps) {
   return (
-    <div className="fixed mx-3 my-3  inset-0 bg-white px-4 pt-2  ">
+    <div className="fixed mx-3 my-3  inset-0 bg-white px-4 pt-3 rounded-xl ">
       <div className=" overflow-y-scroll  h-[38rem]">
 
       <div className={`  rounded-full  top-1 right-1 ${'absolute p-1'} bg-white shadow-sm border z-20`}>
