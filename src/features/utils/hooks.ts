@@ -4,6 +4,7 @@ import {
   createAnnouncement,
   createEvent,
   deleteAnnouncement,
+  forgotPassword,
   getAnnouncements,
   getAnonymous,
   getEvents,
@@ -17,6 +18,7 @@ import {
   removeEvent,
   removeImage,
   removeUser,
+  resetPassword,
   signup,
   updateAnnouncement,
   updateUser,
@@ -135,6 +137,36 @@ export function useLogin(navigate: NavigateFunction) {
 
   return { handleLogin };
 }
+export function useResetPassword(navigate: NavigateFunction) {
+  const dispatch = useAppDispatch()
+
+  const { mutateAsync: handlePassReset } = useMutation({
+    mutationFn: resetPassword,
+    onMutate: () => {
+      toast.loading("Resetting password....");
+    },
+
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Password reset Successfully");
+      dispatch(setIsLoggedIn(true))
+
+      setTimeout(() => {
+        toast.dismiss();
+        navigate("/dashboard/overview");
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Login Failed", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+  });
+
+  return { handlePassReset };
+}
 export function useSignup(navigate: NavigateFunction) {
   const dispatch = useAppDispatch();
 
@@ -172,6 +204,7 @@ export function useGetUser() {
     queryKey: ["user"],
     queryFn: getUser,
   });
+
 
   return { isLoading, data, error };
 }
@@ -238,6 +271,34 @@ export function useUpdateUser() {
   });
 
   return { handleUpdateUser };
+}
+export function useForgotPassword() {
+
+  const { mutateAsync: handleforgotPassword } = useMutation({
+    mutationFn: forgotPassword,
+    onMutate: () => {
+      toast.loading("Requesting password reset....");
+    },
+
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Successful");
+      
+
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2 * 1000);
+    },
+    onError: () => {
+      toast.dismiss();
+      toast.error("Could not change profile picture", {
+        duration: 1000,
+        position: "top-center",
+      });
+    },
+  });
+
+  return { handleforgotPassword};
 }
 export function useUpdateAnnouncement() {
   const queryClient = useQueryClient();

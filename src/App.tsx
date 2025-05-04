@@ -50,6 +50,8 @@ import EventsLayout from "./features/dashboard/administrator/EventsLayout";
 import MediaImagesSection from "./features/dashboard/administrator/MediaImagesSection";
 import MediaVideosSection from "./features/dashboard/administrator/MediaVideosSections";
 import AdminOverview from "./features/dashboard/administrator/AdminOverview";
+import ResetPasswordPage from "./features/pages/ResetPasswordPage";
+import ForgotPasswordPage from "./features/pages/ForgotPasswordPage";
 
 const queryClient = new QueryClient();
 axios.defaults.withCredentials = true;
@@ -66,6 +68,8 @@ function App() {
             <Route path="homepage/about" element={<About />} />
             <Route path="homepage/login" element={<Login />} />
             <Route path="homepage/signup" element={<SignUp />} />
+            <Route path="homepage/forgotpassword" element={<ForgotPasswordPage />} />
+            <Route path="homepage/resetpassword/:token" element={<ResetPasswordPage />} />
 
             <Route
               path="/dashboard"

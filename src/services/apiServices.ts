@@ -1,4 +1,5 @@
 import { eventI } from "@/features/dashboard/components/Events";
+import { resetPassFormValues } from "@/features/pages/ResetPasswordPage";
 import axios from "axios";
 
 // const API_URL = "localhost:/api/v1"
@@ -130,6 +131,23 @@ export async function signup(userInfo: signupCredentials): Promise<unknown> {
 
 export async function getUser(): Promise<userType> {
   const { data } = await axios.get(`${API_URL}/users/getme`);
+  console.log("Data:", data); // Process the data
+
+  return data;
+}
+export async function forgotPassword(email:string): Promise<userType> {
+  const { data } = await axios.post(`${API_URL}/users/forgot-password`,{email});
+  console.log("Data:", data); // Process the data
+
+  return data;
+}
+
+type resetPasswordType = {
+  token:string;
+  body: resetPassFormValues
+}
+export async function resetPassword({token,body}:resetPasswordType): Promise<userType> {
+  const { data } = await axios.patch(`${API_URL}/users/reset-password/:${token}`,{password:body.pass,confirmPassword:body.confirmPass});
   console.log("Data:", data); // Process the data
 
   return data;

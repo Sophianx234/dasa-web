@@ -134,7 +134,7 @@ function SignIn() {
             <div>
             <Link
                 className="text-gray-700 flex items-center  gap-1  -mt-1 pb-2 hover:underline"
-                to="/forgotPassword"
+                to="/homepage/forgotpassword"
               >
                 
                 <span className="self-end text-sm font-poppins italic">Forgot Password?</span>
