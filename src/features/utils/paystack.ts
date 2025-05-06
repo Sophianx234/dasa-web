@@ -1,7 +1,13 @@
-export const getPayStackConfig = (amount:string) => ({
-  reference: new Date().getTime().toString(), // Always unique
-  email: "dx4336969@gmail.com",
-  amount: +amount * 100, // Amount is in Kobo (₦200)
-  currency: 'GHS',
-  publicKey: 'pk_test_47942aac0ea9216a4c98d03ca6dddd51ef89b627',
-});
+
+export const getPayStackConfig = (amount:string) =>{
+  const publicKey = process.env.PAYSTACK_PUBLIC_KEY
+  if(!publicKey) throw new Error('Missing public key')
+  return {
+
+    reference: new Date().getTime().toString(), // Always unique
+    email: "dx4336969@gmail.com",
+    amount: +amount * 100, // Amount is in Kobo (₦200)
+    currency: 'GHS',
+    publicKey
+  }
+}

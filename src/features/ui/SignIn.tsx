@@ -98,9 +98,9 @@ function SignIn() {
         <SVGLite type="sticks" />
         </div>
       </div>
-      <div className="   shadow-lg px-2 rounded-md border py-8  absolute top-28 w-[22rem]  ">
+      <div className="   shadow-lg px-2 rounded-md border py-8  absolute top-20 w-[22rem]  ">
         <form
-          className="flex flex-col  px-2   "
+          className="flex  flex-col  px-2   "
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex  items-center gap-4 pb-4">
@@ -109,7 +109,7 @@ function SignIn() {
             </h1>
             <DasaLogo clns="text-sm" title="Dagbon Students Association" />
           </div>
-          <div className="space-y-6 ">
+          <div className="space-y-6  ">
             <FormInput
               register={register}
               inputName="email"
@@ -131,7 +131,7 @@ function SignIn() {
               placeholder="Password"
             />
 
-            <div>
+            <div className="pt-2">
             <Link
                 className="text-gray-700 flex items-center  gap-1  -mt-1 pb-2 hover:underline"
                 to="/homepage/forgotpassword"

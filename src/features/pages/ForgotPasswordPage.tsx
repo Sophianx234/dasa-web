@@ -42,13 +42,13 @@ function ForgotPasswordPage() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex  items-center -space-x-10 pb-4">
-            <h1 className="font-poppins font-semibold text-3xl text-[#33312e] pb-2 pt-4">
-              Forgot <span className="text-3xl">password</span>
+            <h1 className="font-poppins font-semibold text-2xl text-[#33312e] leading-5 pb-2 pt-4">
+              Forgot <span className="text-2xl">password</span>
             </h1>
             <DasaLogo clns="text-sm" title="Dagbon Students Association" />
           </div>
-          <p className="text-lg  font-medium leading-6 pb-4 text-[#495057] italic">Please enter the email address you'd like you password reset information sent to. </p>
-          <div className="space-y-6 ">
+          <p className="text-base font-semibold leading-5 pb-4 text-[#495057] italic ">Please enter the email address you'd like you password reset information sent to. </p>
+          <div className="space-y-8 ">
             <FormInput
               register={register}
               inputName="email"
@@ -60,7 +60,7 @@ function ForgotPasswordPage() {
             />
 
             
-            <div>
+            <div className="pb-3">
             
             <div className=" flex justify-between italic  text-sm font-poppins font-medium tracking-tight pl-2 items-center  ">
                 Don't have an account?{" "}
