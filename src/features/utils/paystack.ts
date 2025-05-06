@@ -1,5 +1,5 @@
 export const getPayStackConfig = (amount:string) =>{
-  const publicKey = import.meta.env.PAYSTACK_PUBLIC_KEY
+  const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY
   if(!publicKey) throw new Error('Missing public key')
   return {
 
