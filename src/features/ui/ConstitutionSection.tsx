@@ -15,8 +15,8 @@ function ConstitutionSection() {
         />
         <div className=" w-full text-center  ">
           <a
-          download
-            href="/DRAFTED_CONSTITUTION.pdf"
+          
+            href="/drafted_constitution.pdf"
             className="bg-dasadeep  h-full py-2 font-bold text-lg     border hover:scale-100 border-dasadeep 
              transition-all duration-300 flex items-center justify-center gap-1"
           >
