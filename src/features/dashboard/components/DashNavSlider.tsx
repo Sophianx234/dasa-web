@@ -30,7 +30,7 @@ function DashNavSlider() {
         opacity: 1,
         type: "spring",
       }}
-      className="fixed overflow-x-auto -top-1 -bottom-3 bg-white  left-0 right-0  z-40   pb-5 px-4"
+      className="fixed overflow-x-auto -top-1 -bottom-3 bg-white  left-0 right-0  z-40 w-dvw   pb-5 px-4"
     >
       <div className="flex flex-col justify-between h-dvh pt-8 pb-4">
         <div className="flex items-center   justify-between pb-4">
