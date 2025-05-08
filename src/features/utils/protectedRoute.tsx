@@ -20,8 +20,10 @@ export function ProtectedRoute({ children }: protectedRouteProp) {
     function () {
       async function checkUserIsAuthenticated() {
           try{
+            const token = localStorage.getItem('token')
               const  {data} = await axios.get(`${API_URL}/users/auth/check`, {
                   withCredentials: true,
+                  headers: { Authorization: `Bearer ${token}` }
                 });
                 
                 console.log('Goku',data)

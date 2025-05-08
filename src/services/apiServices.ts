@@ -181,7 +181,7 @@ export async function changeProfile(update: unknown): Promise<unknown[]> {
 }
 export async function getGallery() {
   const { data } = await axios.get(
-    `${API_URL}/media/images?field=_id,secure_url,public_id,format,created_at`,,{headers: { Authorization: `Bearer ${token}` }}
+    `${API_URL}/media/images?field=_id,secure_url,public_id,format,created_at`,{headers: { Authorization: `Bearer ${token}` }}
   );
   return data;
 }
