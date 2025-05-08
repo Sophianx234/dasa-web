@@ -56,6 +56,7 @@ import ForgotPasswordPage from "./features/pages/ForgotPasswordPage";
 const queryClient = new QueryClient();
 axios.defaults.withCredentials = true;
 function App() {
+  
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>

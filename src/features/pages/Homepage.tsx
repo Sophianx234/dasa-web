@@ -16,7 +16,7 @@ import { useAppSelector } from "../utils/hooks"
 function Homepage() {
     const isOpen = useAppSelector(store=>store.nav.isOpen)
     return (
-        <div className="text-stone-900 bg-white overflow-x-hidden">
+        <div className="text-stone-900 bg-white overflow-x-hidden w-dvw">
             
             <Header/>
             <AnimatePresence >

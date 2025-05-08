@@ -14,6 +14,7 @@ import {
   getUsers,
   getVideos,
   login,
+  LoginResponse,
   logout,
   removeEvent,
   removeImage,
@@ -116,11 +117,12 @@ export function useLogin(navigate: NavigateFunction) {
       toast.loading("Authenticating");
     },
 
-    onSuccess: () => {
+    onSuccess: (data:LoginResponse) => {
       toast.dismiss();
       toast.success("Login Successfully");
+      
       dispatch(setIsLoggedIn(true))
-
+      localStorage.setItem('token',data.token)
       setTimeout(() => {
         toast.dismiss();
         navigate("/dashboard/overview");

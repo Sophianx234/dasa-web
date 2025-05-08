@@ -14,7 +14,7 @@ function AppLayout() {
 
   },[])
   return (
-    <div className="h-dvh">
+    <div className="h-dvh overflow-x-hidden w-dvw">
       <Outlet />
       <SideNav />
       <OpenChatMenu />

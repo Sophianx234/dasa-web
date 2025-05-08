@@ -7,6 +7,12 @@ import axios from "axios";
 // const API_URL = "https://dasa-api.onrender.com/api/v1"
 // export const API_URL = "http://localhost:8000/api/v1";
 export const API_URL = "https://dasa-api.onrender.com/api/v1";
+const token = localStorage.getItem('token')
+
+// const token = localStorage.getItem("token");
+//         const { data, status } = await axios.get("/api/get_contacts_list", {
+//           headers: { Authorization: `Bearer ${token}` },
+//         });
 export type messagesType = {
   content: string;
   userId: string;
@@ -130,7 +136,7 @@ export async function signup(userInfo: signupCredentials): Promise<unknown> {
 }
 
 export async function getUser(): Promise<userType> {
-  const { data } = await axios.get(`${API_URL}/users/getme`);
+  const { data } = await axios.get(`${API_URL}/users/getme`,{headers: { Authorization: `Bearer ${token}` }});
   console.log("Data:", data); // Process the data
 
   return data;
@@ -154,44 +160,40 @@ export async function resetPassword({token,body}:resetPasswordType): Promise<use
 }
 
 export async function getUsers() {
-  const { data } = await axios.get(`${API_URL}/users`);
+  const { data } = await axios.get(`${API_URL}/users`,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 export async function getAnonymous(lim:number|null = null): Promise<anonymousResponse> {
   const { data } = await axios.get(
-    `${API_URL}/messages/anonymous?field=messages&${lim?`limit=${lim}`:''}`
+    `${API_URL}/messages/anonymous?field=messages&${lim?`limit=${lim}`:''}`,{headers: { Authorization: `Bearer ${token}` }}
   );
   return data;
 }
 export async function updateUser(update: unknown): Promise<unknown[]> {
   console.log(update);
-  const { data } = await axios.patch(`${API_URL}/users/update-user`, update, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  const { data } = await axios.patch(`${API_URL}/users/update-user`, update,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 export async function changeProfile(update: unknown): Promise<unknown[]> {
   console.log(update);
-  const { data } = await axios.patch(`${API_URL}/users/upload`, update);
+  const { data } = await axios.patch(`${API_URL}/users/upload`, update,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 export async function getGallery() {
   const { data } = await axios.get(
-    `${API_URL}/media/images?field=_id,secure_url,public_id,format,created_at`
+    `${API_URL}/media/images?field=_id,secure_url,public_id,format,created_at`,,{headers: { Authorization: `Bearer ${token}` }}
   );
   return data;
 }
 
 export async function getVideos() {
   const { data } = await axios.get(
-    `${API_URL}/media/videos?field=_id,secure_url,public_id,format`
+    `${API_URL}/media/videos?field=_id,secure_url,public_id,format`,{headers: { Authorization: `Bearer ${token}` }}
   );
   return data;
 }
 export async function getAnnouncements() {
-  const { data } = await axios.get(`${API_URL}/announcements`);
+  const { data } = await axios.get(`${API_URL}/announcements`,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 export interface announcementI {
@@ -216,29 +218,29 @@ export type updateAnnouncementI = {
   body: announcementI;
 };
 export async function updateAnnouncement({ id, body }: updateAnnouncementI) {
-  const { data } = await axios.patch(`${API_URL}/announcements/${id}`, body );
+  const { data } = await axios.patch(`${API_URL}/announcements/${id}`, body,{headers: { Authorization: `Bearer ${token}` }} );
   return data;
 }
 export async function deleteAnnouncement(id:string) {
-  const { data } = await axios.delete(`${API_URL}/announcements/${id}`);
+  const { data } = await axios.delete(`${API_URL}/announcements/${id}`,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 export async function createAnnouncement(body:newAnnouncementI) {
-  const { data } = await axios.post(`${API_URL}/announcements`, body);
+  const { data } = await axios.post(`${API_URL}/announcements`, body,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 
 export async function uploadImages(update: unknown): Promise<unknown[]> {
   console.log(update);
-  const { data } = await axios.post(`${API_URL}/media/upload`, update);
+  const { data } = await axios.post(`${API_URL}/media/upload`, update,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 export async function removeImage(imageId: unknown): Promise<unknown[]> {
-  const { data } = await axios.delete(`${API_URL}/media/${imageId}`);
+  const { data } = await axios.delete(`${API_URL}/media/${imageId}`,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 export async function removeUser(id: string) {
-  const { data } = await axios.delete(`${API_URL}/users/${id}`);
+  const { data } = await axios.delete(`${API_URL}/users/${id}`,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 type changeRoleI = {
@@ -247,19 +249,19 @@ type changeRoleI = {
 };
 export async function changeUserRole({ id, role }: changeRoleI) {
   console.log("role:", role);
-  const { data } = await axios.patch(`${API_URL}/users/${id}`, { role });
+  const { data } = await axios.patch(`${API_URL}/users/${id}`, { role },{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 export async function getEvents() {
-  const { data } = await axios.get(`${API_URL}/events`);
+  const { data } = await axios.get(`${API_URL}/events`,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 export async function getNotifications() {
-  const { data } = await axios.get(`${API_URL}/notifications`);
+  const { data } = await axios.get(`${API_URL}/notifications`,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 export async function removeEvent(id: string) {
-  const { data } = await axios.delete(`${API_URL}/events/${id}`);
+  const { data } = await axios.delete(`${API_URL}/events/${id}`,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 
@@ -268,10 +270,10 @@ export type updateEventI = {
   body: eventI;
 };
 export async function updateEvent({ id, body }: updateEventI) {
-  const { data } = await axios.patch(`${API_URL}/events/${id}`, body);
+  const { data } = await axios.patch(`${API_URL}/events/${id}`, body,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
 export async function createEvent(body: FormData) {
-  const { data } = await axios.post(`${API_URL}/events`, body);
+  const { data } = await axios.post(`${API_URL}/events`, body,{headers: { Authorization: `Bearer ${token}` }});
   return data;
 }
