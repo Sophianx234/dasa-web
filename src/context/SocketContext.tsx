@@ -39,8 +39,8 @@ function SocketProvider({ children }: socketProviderProps) {
   const { user } = useAppSelector((store) => store.nav);
   const userInfo = user as signupCredentialsExtended;
   const typingTimeOut = 3000 
-  const serverURL = "http://localhost:8000"
-  // const serverURL = "https://dasa-api.onrender.com"
+  // const serverURL = "http://localhost:8000"
+  const serverURL = "https://dasa-api.onrender.com"
   useEffect(() => {
     if (userInfo) {
       const socketInstance = io(serverURL, {
