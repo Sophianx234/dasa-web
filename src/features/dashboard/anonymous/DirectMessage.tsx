@@ -11,16 +11,17 @@ function ViewAnonymous() {
   const { id } = useParams();
   const [user, setUser] = useState<signupCredentialsExtended | null>(null);
   console.log(id);
+  const token = localStorage.getItem('token')
   useEffect(() => {
     async function getUserInfo() {
-      const { data } = await axios.get(`${API_URL}/users/${id}`);
+      const { data } = await axios.get(`${API_URL}/users/${id}`,{headers: { Authorization: `Bearer ${token}` }});
       if (data) {
         const { user } = data as usersResponse;
         setUser(user);
       }
     }
     getUserInfo();
-  }, [id]);
+  }, [id,token]);
   console.log("getUserInfo", user);
   return (
     <div>

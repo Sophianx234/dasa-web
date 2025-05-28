@@ -1,13 +1,12 @@
-import { increasePageNumber, setImages, setIsLoading, setNumMedia } from "@/features/slices/navSlice";
 import Footer from "@/features/ui/Footer";
 import { shuffleArray } from "@/features/utils/helpers";
 import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
-import { getGalleryResponse, mediaType } from "@/services/apiServices";
+import { API_URL, getGalleryResponse, mediaType } from "@/services/apiServices";
 import axios from "axios";
-import InfiniteScroll from "react-infinite-scroller";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { PropagateLoader } from "react-spinners";
 import ImageViewer from "./ImageViewer";
+import { PropagateLoader } from "react-spinners";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -99,49 +98,69 @@ function BriefGallery({ style }: BriefGalleryProps) {
     },
   ];
   
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   
-  const {page,images,numMedia,isLoading} = useAppSelector(store=>store.nav)
+  const {  numMedia } = useAppSelector((store) => store.nav);
+  const [page, setPage] = useState<number>(1);
+  const [isLoading,setIsLoading] = useState<boolean>(false)
+  const [hasMore,setHasMore] = useState<boolean>(true)
+  const [images,setImages] = useState<mediaType[]|null>(null)
   const shuffledImageLinks = shuffleArray(imageLinks, 3);
   
-  console.log(page)
-  console.log(numMedia)
-  
-
-
-  async function loadMore() {
-    if(!numMedia || isLoading) return
-    dispatch(setIsLoading(true))
-    console.log(page)
-   const {data} = await axios.get(`http://localhost:8000/api/v1/media/images?field=_id,secure_url,public_id,format&page=${page}&limit=12`)
-   console.log(data)
-      const { images:imgs,numImages } = data as getGalleryResponse;
-      console.log('media',images)
-
-      if(!images){
-        setTimeout(function(){
-          dispatch(setImages(imgs))
-          setIsLoading(false)
-          dispatch(increasePageNumber())
-          
-        },2000)
-        
-      }else{
-        dispatch(setImages([...images,...imgs]))
-        setTimeout(function(){
-          dispatch(setNumMedia(numImages))
-          dispatch(setIsLoading(false))
-          dispatch(increasePageNumber())
-          
-        },2000)
-
-      }
-    
-    
-     
+  const loaderRef = useRef<HTMLDivElement | null>(null);
+  async function loadImgs(page: number) {
+    if(!hasMore) return
+    setIsLoading(true)
+    const { data } = await axios.get(
+      `${API_URL}/media/images?field=_id,secure_url,public_id,format&page=${page}&limit=12`
+    );
+    setIsLoading(false)
+    console.log("Testx23", data);
+    const { images: imgs, numImages } = data as getGalleryResponse;
+    if(numImages ===0) setHasMore(false)
+    console.log("media", imgs);
+    if(imgs){
+      setImages(img=>img? [...(img as mediaType[]),...imgs]: imgs)
+    }
   }
-  
 
+
+  const observerCallback = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const target = entries[0];
+      console.log('entries',entries)
+      console.log('elgnth',(images as mediaType[])?.length)
+      
+      if (target.isIntersecting) {
+        console.log('prevpage',page)
+        setPage((prevPage) => prevPage + 1);
+        
+        console.log('currPage',page)
+
+      } 
+    },
+    [isLoading, numMedia,images]
+  );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(observerCallback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1.0,
+    });
+
+    if (loaderRef.current) observer.observe(loaderRef.current);
+
+    return () => {
+      if (loaderRef.current) observer.unobserve(loaderRef.current);
+    };
+  }, [observerCallback]);
+
+  useEffect(() => {
+    console.log('page',page)
+      loadImgs(page); // initial load
+    
+  }, [page]);
   return (
     <div>
       <div className={`mx-4  rounded-lg  pb-6 ${style === "side" && "pt-20"}`}>
@@ -156,20 +175,13 @@ function BriefGallery({ style }: BriefGalleryProps) {
 
       {style !== "overview" && (
         <>
-          <InfiniteScroll
-            loader={
-              <div className="flex justify-center py-5">
-                {numMedia ? <PropagateLoader size={18} /> : null}
-              </div>
-            }
-            hasMore={Boolean(numMedia)}
-            loadMore={loadMore}
-            useWindow
-          >
-            <div className="pt-2 ">
-             {images && <ImageViewer images={images as mediaType[]} />}
-            </div>
-          </InfiniteScroll>
+          <div className="pt-2 ">
+            {images && <ImageViewer images={images as mediaType[]} />}
+          </div>
+          <div ref={loaderRef}>
+            {isLoading && <div className=" flex items-center justify-center py-2"><PropagateLoader className=""/></div>}
+          </div>
+
           <div className="pt-6">
             <Footer navType="dash" />
           </div>

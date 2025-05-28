@@ -4,7 +4,8 @@ import { IoIosArrowForward } from "react-icons/io"
 import { Link } from "react-router-dom"
 
 function AccountProfile() {
-    const {data} = useGetUser()
+    const {data,isLoading} = useGetUser()
+    if(isLoading) return <>loading</>
     const {user} = data as userType
     return (
         <div className="">

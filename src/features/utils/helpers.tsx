@@ -162,7 +162,7 @@ export function shuffleArray<T extends { _id: string }>(array: T[], freezeCount:
   
     const parts = date.toLocaleString('en-US', options).split(', ');
     const [monthDay, time] = parts;
-    return `${monthDay}, ${time.toLowerCase()}`;
+    return `${monthDay}, ${time}`;
   }
 
 

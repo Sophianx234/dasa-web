@@ -40,11 +40,15 @@ export function useChat({ type }: useChatType) {
   }, [messages, directMessages]);
 
   useEffect(() => {
+    const token = localStorage.getItem('token')
     const getUser = async () => {
-      const { data } = await axios.get(`${API_URL}/users/getme`);
+      const { data } = await axios.get(`${API_URL}/users/getme`,{headers: { Authorization: `Bearer ${token}` }});
       console.log("Data:", data);
-      const { user } = data as userType;
-      dispatch(setUser(user)); // Process the data
+      if(data){
+
+        const { user } = data as userType;
+        dispatch(setUser(user)); // Process the data
+      }
     };
     const fetchAnonymousMessages = async () => {
       const { data } = await axios.get(

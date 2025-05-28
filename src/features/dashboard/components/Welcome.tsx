@@ -1,23 +1,22 @@
 import { setUser } from "@/features/slices/navSlice"
 import { useAppDispatch, useGetUser } from "@/features/utils/hooks"
-import { userType } from "@/services/apiServices"
+import { signupCredentialsExtended } from "@/services/apiServices"
 import { useEffect } from "react"
 
 function Welcome() {
   const dispatch = useAppDispatch()
   const {data,isLoading,error} = useGetUser()
-  useEffect(()=>{
-    if(data){
-      dispatch(setUser(user))
-      
+  
+  const user = data?.user as signupCredentialsExtended
+  useEffect(() => {
+    if (user) {
+      dispatch(setUser(user));
     }
-    
-  },[dispatch,data])
+  }, [dispatch, user]);
   
+  
+  if(isLoading) return <>loading</>
   if(error) console.log('error',error)
-    if(isLoading) return <>loading</>
-  const {user} = data as userType
-  
   
   
   
@@ -26,7 +25,7 @@ function Welcome() {
           <div className="px-2 py-2 pb-7">
             <div className="overflow-hidden flex justify-center  ">
 
-          <img className="  w-full" src={user.profileImage} alt="photo-79-2024-10-31-06-52-36" />
+          <img className="  w-full" src={user?.profileImage} alt="photo-79-2024-10-31-06-52-36" />
             </div>
             <h1 className=" font-mulish font-bold text-lg  pt-4">Hey {user?.firstName} 👋</h1>
             <p className="font-poppins tracking-wide text-sm py-1 pb-2  ">

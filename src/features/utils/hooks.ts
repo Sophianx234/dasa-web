@@ -91,6 +91,7 @@ export const useAppSelector = useSelector.withTypes<RootState>();
     onSuccess: () => {
       toast.dismiss();
       toast.success("logout successful");
+      localStorage.removeItem('token')
       setTimeout(() => {
         toast.dismiss();
         navigate("/homepage");

@@ -7,14 +7,14 @@ import { CiEdit } from "react-icons/ci";
 function ProfileImage() {
   const {error,isLoading,data} = useGetUser()
   const {handleChangeProfile} = useChangeUserProfile()
-  const {user} = data as userType 
   const fileInputRef = useRef<HTMLInputElement |null>(null);
-
+  
   function handleButtonClick(){
     if(fileInputRef.current)fileInputRef?.current.click();
   };
-  if(isLoading) return <>Boruto</>
+  if(isLoading) return <>loading</>
   if(error) return <>error</>
+  const {user} = data as userType 
   function handleFileChange(e: ChangeEvent<HTMLInputElement>){
     if(e.target.files && e.target.files.length>0){
 

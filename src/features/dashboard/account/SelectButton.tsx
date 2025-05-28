@@ -29,7 +29,7 @@ function SelectButton<T extends FieldValues>({ field, options, theme,type }: sel
         </SelectTrigger>
         <SelectContent>
           {options.map((item) => (
-            <SelectItem key={item} value={item.toLowerCase()}>
+            <SelectItem key={item} value={item?.toLowerCase()}>
               {item}
             </SelectItem>
           ))}

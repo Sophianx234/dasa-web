@@ -1,8 +1,7 @@
-import { API_URL, signupCredentialsExtended } from "@/services/apiServices";
-import axios from "axios";
+import { signupCredentialsExtended } from "@/services/apiServices";
 import { ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { setIsLoggedIn, setUser } from "../slices/navSlice";
+import { setIsLoggedIn } from "../slices/navSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
 export type protectedRouteProp = {
@@ -21,20 +20,24 @@ export function ProtectedRoute({ children }: protectedRouteProp) {
       async function checkUserIsAuthenticated() {
           try{
             const token = localStorage.getItem('token')
-              const  {data} = await axios.get(`${API_URL}/users/auth/check`, {
-                  withCredentials: true,
-                  headers: { Authorization: `Bearer ${token}` }
-                });
+              // const  {data} = await axios.get(`${API_URL}/users/auth/check`, {
+              //     withCredentials: true,
+              //     headers: { Authorization: `Bearer ${token}` }
+              //   });
+
                 
-                console.log('Goku',data)
-                if (data) {
-                    const { isAuthenticated,user } = data as isAuthenticatedResponse;
-                    dispatch(setUser(user))
-                    dispatch(setIsLoggedIn(isAuthenticated));
-                    if (!isAuthenticated) {
-                        navigate("/");
-                    }
-                }
+                // console.log('Goku',data)
+                // if (data) {
+                //     const { isAuthenticated,user } = data as isAuthenticatedResponse;
+                //     dispatch(setUser(user))
+                  if(token){
+
+                    dispatch(setIsLoggedIn(true));
+                  }else{
+
+                    navigate("/");
+                  }
+                
             }catch(err){
                 console.log('xx',err)
             }
