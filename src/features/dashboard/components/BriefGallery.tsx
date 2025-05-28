@@ -1,12 +1,12 @@
 import Footer from "@/features/ui/Footer";
 import { shuffleArray } from "@/features/utils/helpers";
-import { useAppDispatch, useAppSelector } from "@/features/utils/hooks";
+import { useAppSelector } from "@/features/utils/hooks";
 import { API_URL, getGalleryResponse, mediaType } from "@/services/apiServices";
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import ImageViewer from "./ImageViewer";
 import { PropagateLoader } from "react-spinners";
+import ImageViewer from "./ImageViewer";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -98,7 +98,6 @@ function BriefGallery({ style }: BriefGalleryProps) {
     },
   ];
   
-  const dispatch = useAppDispatch();
   
   const {  numMedia } = useAppSelector((store) => store.nav);
   const [page, setPage] = useState<number>(1);
@@ -106,6 +105,7 @@ function BriefGallery({ style }: BriefGalleryProps) {
   const [hasMore,setHasMore] = useState<boolean>(true)
   const [images,setImages] = useState<mediaType[]|null>(null)
   const shuffledImageLinks = shuffleArray(imageLinks, 3);
+  const token = localStorage.getItem('token')
   
   const loaderRef = useRef<HTMLDivElement | null>(null);
   async function loadImgs(page: number) {
@@ -113,7 +113,7 @@ function BriefGallery({ style }: BriefGalleryProps) {
     setIsLoading(true)
     const { data } = await axios.get(
       `${API_URL}/media/images?field=_id,secure_url,public_id,format&page=${page}&limit=12`
-    );
+   ,{headers: { Authorization: `Bearer ${token}`}});
     setIsLoading(false)
     console.log("Testx23", data);
     const { images: imgs, numImages } = data as getGalleryResponse;
@@ -131,7 +131,7 @@ function BriefGallery({ style }: BriefGalleryProps) {
       console.log('entries',entries)
       console.log('elgnth',(images as mediaType[])?.length)
       
-      if (target.isIntersecting) {
+      if (target.isIntersecting && !isLoading) {
         console.log('prevpage',page)
         setPage((prevPage) => prevPage + 1);
         
@@ -139,14 +139,14 @@ function BriefGallery({ style }: BriefGalleryProps) {
 
       } 
     },
-    [isLoading, numMedia,images]
+    [isLoading, numMedia,images,page]
   );
 
   useEffect(() => {
     const observer = new IntersectionObserver(observerCallback, {
       root: null,
       rootMargin: "0px",
-      threshold: 1.0,
+      threshold: 1,
     });
 
     if (loaderRef.current) observer.observe(loaderRef.current);
