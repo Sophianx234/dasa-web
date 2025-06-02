@@ -47,31 +47,31 @@ function DashNavSlider() {
         <div className="flex flex-col justify-between h-full">
           <ul className="space-y-4  ">
             <DashNavItem
-              icon={<RiHome3Line className="size-8" />}
+              icon={<RiHome3Line className="size-7" />}
               link="dashboard/overview"
               navTitle="Home"
               arrIcon={<IoIosArrowForward />}
             />
               {userInfo.role==='admin' &&<DashNavItem
-                icon={<MdOutlineAdminPanelSettings className="size-8" />}
+                icon={<MdOutlineAdminPanelSettings className="size-7" />}
                 link="dashboard/admin"
                 navTitle="Administrator"
                 arrIcon={<IoIosArrowForward />}
               />}
             <DashNavItem
-              icon={<IoNotificationsOutline className="size-8" />}
+              icon={<IoNotificationsOutline className="size-7" />}
               link="dashboard/notifications"
               navTitle="Notifications"
               arrIcon={<IoIosArrowForward />}
             />
             <DashNavItem
-              icon={<TbMessage className="size-8" />}
+              icon={<TbMessage className="size-7" />}
               link="dashboard/anonymous/write"
               navTitle="Anonymous Message"
               arrIcon={<IoIosArrowForward />}
             />
             <DashNavItem
-              icon={<GrGallery className="size-8" />}
+              icon={<GrGallery className="size-7" />}
               link="dashboard/gallery"
               navTitle="Gallery"
               arrIcon={<IoIosArrowForward />}
@@ -86,7 +86,7 @@ function DashNavSlider() {
               arrIcon={<IoIosArrowForward />}
             /> */}
             <DashNavItem
-              icon={<RiSecurePaymentLine className="size-8" />}
+              icon={<RiSecurePaymentLine className="size-7" />}
               link="dashboard/payment"
               navTitle="Payment"
               arrIcon={<IoIosArrowForward />}
@@ -101,7 +101,7 @@ function DashNavSlider() {
             /> */}
             
             <DashNavItem
-              icon={<TbLogout2 className="size-8" />}
+              icon={<TbLogout2 className="size-7" />}
               link="dashboard/logout"
               navTitle="Logout"
               arrIcon={<IoIosArrowForward />}

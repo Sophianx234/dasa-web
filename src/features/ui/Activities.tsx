@@ -2,6 +2,7 @@ import { getVideos } from "@/services/apiServices";
 import { useQuery } from "@tanstack/react-query";
 import SVGLite from "./SVGLite";
 import VideoPlayer from "./VideoPlayer";
+import VideoSkeleton from "@/skeletons/VideoSkeleton";
 export interface videoI{
   
     format: string;
@@ -21,7 +22,9 @@ function Activities() {
     queryKey: ["videos"],
     queryFn: getVideos,
   });
-  if(isLoading) return <>loading</> 
+          
+  if(isLoading) return <>
+  {Array.from({length:3},(_,i)=><VideoSkeleton key={i}  />)}</> 
   const {videos} = data as videosResponse
 console.log(videos)
   
@@ -48,7 +51,8 @@ console.log(videos)
         <div className=" w-full items-center space-y-6 flex flex-col pt-10">
 
           {videos.map((video:videoI)=><VideoPlayer key={video._id} src={video.secure_url} />)}
-          
+          {isLoading && <>
+  {Array.from({length:5},(_,i)=><VideoSkeleton key={i}  />)}</> }
         </div>
         <p className="text-center text-sm font-chewy pt-10 ">
           Laughter, Community, and Lifelong <br /> Memories.
