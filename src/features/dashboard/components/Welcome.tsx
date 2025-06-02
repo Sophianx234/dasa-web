@@ -21,7 +21,7 @@ function Welcome() {
   
   
     return (
-        <div className="border-2 mx-4 my-6 shadow-md rounded-md ">
+        <div className="border-2 mx-8 my-6 shadow-md rounded-md ">
           <div className="px-2 py-2 pb-7">
             <div className="overflow-hidden flex justify-center  ">
 

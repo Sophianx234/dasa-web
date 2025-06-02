@@ -36,7 +36,7 @@ function Announcement({announce,type='normal'}:announcementProps) {
       }
     }    
     return (
-        <div className="mx-4 border-2 shadow-lg mt-4 pt-2 px-2 rounded-md ">
+        <div className="mx-8 border-2 shadow-lg mt-4 pt-2 px-2 rounded-md ">
             <div className="grid grid-cols-[2fr_.5fr] pt-2 pr-1 ">
                 <div className="flex space-x-2">
                 <img src={announce.announcerProfile} className="size-12 w-14 rounded-full"/>

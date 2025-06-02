@@ -34,7 +34,7 @@ function Event({eventInfo,type ='normal'}:eventProps) {
     return (
         <>
 
-        <div className="grid grid-cols-1  pt-2  mx-4  pb-10 rounded-lg ">
+        <div className="grid grid-cols-1  pt-2  mx-8  pb-10 rounded-lg ">
             <div className="shadow-md rounded-md pb-3 mb-4 overflow-hidden border">
 
             

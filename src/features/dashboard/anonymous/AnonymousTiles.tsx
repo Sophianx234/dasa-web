@@ -24,8 +24,8 @@ function AnonymousTiles() {
     console.log(messages)
     
     return (
-      <div className="pt-5">
-      <h1 className="px-5 dash-title">Anonymous</h1>
+      <div className="pt-5 ">
+      <h1 className="px-5 ml-8 dash-title">Anonymous</h1>
 {(messages as unknown as anosType[]).map(msg=>
 <AnonymousTile
         to={msg.sender.anonymousName}

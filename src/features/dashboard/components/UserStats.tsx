@@ -2,7 +2,7 @@ function UserStats() {
     return (
 
    <div>
-    <div className=" divide-y-4 mx-4 bg-dasalight shadow">
+    <div className=" divide-y-4 mx-10 bg-dasalight shadow">
   <div className="stat place-items-center">
     <div className="stat-title text-[#7f7a74]">Downloads</div>
     <div className="stat-value text-[#33312e]">31K</div>

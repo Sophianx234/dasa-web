@@ -21,7 +21,7 @@ function Events() {
   console.log("EVENTS", data);
   return (
     <div>
-      <h1 className="dash-title mx-4  pt-8 ">Events</h1>
+      <h1 className="dash-title mx-8  pt-8 ">Events</h1>
 
       <SliderMain events={events} />
     </div>

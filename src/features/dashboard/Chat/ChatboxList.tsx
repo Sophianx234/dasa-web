@@ -47,7 +47,7 @@ function ChatboxList({ type }: chatBoxListProps) {
   if (type === "channel")
     return (
       <>
-        <div className="relative overflow-y-scroll h-dvh z-30">
+        <div className="relative overflow-y-scroll overflow-x-hidden h-dvh z-30">
           {messages &&
             messages?.map((message, i) =>{
               const formattedDate = formatChatDate(message.createdAt);
