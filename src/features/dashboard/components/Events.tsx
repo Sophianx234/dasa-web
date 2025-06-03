@@ -1,5 +1,6 @@
 import { useGetEvents } from "@/features/utils/hooks";
 import SliderMain from "./SliderMain";
+import EventSkeleton from "@/skeletons/EventSkeleton";
 export type eventI = {
   _id: string;
   eventImage: string;
@@ -23,7 +24,8 @@ function Events() {
     <div>
       <h1 className="dash-title mx-8  pt-8 ">Events</h1>
 
-      <SliderMain events={events} />
+     {isLoading && <EventSkeleton />}
+     {events && <SliderMain events={events} />}
     </div>
   );
 }

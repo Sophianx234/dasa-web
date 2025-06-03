@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { PropagateLoader } from "react-spinners";
 import ImageViewer from "./ImageViewer";
+import GallerySkeleton from "@/skeletons/GallerySkeleton";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };
@@ -179,7 +180,8 @@ function BriefGallery({ style }: BriefGalleryProps) {
             {images && <ImageViewer images={images as mediaType[]} />}
           </div>
           <div ref={loaderRef}>
-            {isLoading && <div className=" flex items-center justify-center py-2"><PropagateLoader className=""/></div>}
+            {isLoading && <GallerySkeleton/>}
+            {/* {isLoading && <div className=" flex items-center justify-center py-2"><PropagateLoader className=""/></div>} */}
           </div>
 
           <div className="pt-6">

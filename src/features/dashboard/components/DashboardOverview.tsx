@@ -7,6 +7,7 @@ import HeaderDashboard from "./HeaderDashboard";
 import Market from "./Market";
 import UserStats from "./UserStats";
 import Welcome from "./Welcome";
+import GallerySkeleton from "@/skeletons/GallerySkeleton";
 
 function DashboardOverview() {
   
@@ -24,6 +25,7 @@ function DashboardOverview() {
       <AnonymousTiles />
       <Market style="overview" />
       <BriefGallery style="overview" />
+      
       <Footer navType="dash"/>
       </div>
       
