@@ -174,7 +174,6 @@ type signupResponse = {
     token: string
 }
 export function useSignup(navigate: NavigateFunction) {
-  const dispatch = useAppDispatch();
 
   const { mutateAsync: handleSignup } = useMutation({
     mutationFn: signup,
