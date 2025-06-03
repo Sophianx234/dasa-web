@@ -1,11 +1,12 @@
 import { setUser } from "@/features/slices/navSlice"
 import { useAppDispatch, useGetUser } from "@/features/utils/hooks"
 import { signupCredentialsExtended } from "@/services/apiServices"
+import WelcomeSkeleton from "@/skeletons/WelcomeSkeleton"
 import { useEffect } from "react"
 
 function Welcome() {
   const dispatch = useAppDispatch()
-  const {data,isLoading,error} = useGetUser()
+  const {data,isLoading,} = useGetUser()
   
   const user = data?.user as signupCredentialsExtended
   useEffect(() => {
@@ -14,14 +15,14 @@ function Welcome() {
     }
   }, [dispatch, user]);
   
+  if(isLoading) return <><WelcomeSkeleton/></>
   
-  if(isLoading) return <>loading</>
-  if(error) console.log('error',error)
+  
   
   
   
     return (
-        <div className="border-2 mx-8 my-6 shadow-md rounded-md ">
+        <div className="border-2 mx-7 my-6 shadow-md rounded-md ">
           <div className="px-2 py-2 pb-7">
             <div className="overflow-hidden flex justify-center  ">
 

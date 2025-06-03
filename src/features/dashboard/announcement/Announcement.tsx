@@ -36,7 +36,7 @@ function Announcement({announce,type='normal'}:announcementProps) {
       }
     }    
     return (
-        <div className="mx-8 border-2 shadow-lg mt-4 pt-2 px-2 rounded-md ">
+        <div className="mx-8 border-2 shadow-lg mt-4 pt-2 px-2 rounded-md  mb-10 ">
             <div className="grid grid-cols-[2fr_.5fr] pt-2 pr-1 ">
                 <div className="flex space-x-2">
                 <img src={announce.announcerProfile} className="size-12 w-14 rounded-full"/>
@@ -61,15 +61,15 @@ function Announcement({announce,type='normal'}:announcementProps) {
                 </div>
             </div>
             <div>
-                <div className="pt-5 space-y-2 pb-3">
+                <div className="pt-10 space-y-2 pb-3">
 
                 <h1 className="flex items-center gap-1 ">
                 <MdOutlineEventNote className={`size-6 ${announce.messageType === 'general'?'fill-dasadeep':announce.messageType ==='event'?'fill-green-400':'fill-red-400'}`}/>
                 <span className="">{announce.messageType[0].toUpperCase()+announce.messageType.slice(1)}</span>
                 </h1>
-                <h1 className="font-bold font-mulish text-lg">{announce.title}</h1>
+                <h1 className="font-bold font-mulish text-lg ">{announce.title}</h1>
                 </div>
-                <p>{announce.content}</p>
+                <p className="pb-10">{announce.content}</p>
                 <div className="flex justify-between py-2 pr-3 items-center">
                   <h1 className="font-semibold">
                   <span className="">

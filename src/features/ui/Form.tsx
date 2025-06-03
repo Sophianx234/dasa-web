@@ -42,7 +42,8 @@ function Form() {
   const onSubmit: SubmitHandler<signupFormValues> = (
     data: signupFormValues
   ) => {
-    console.log(data);
+    console.log('formData',data);
+
     handleSignup(data);
   };
   const [passwordMatchError, setPasswordMatchError] = useState<string | null>();

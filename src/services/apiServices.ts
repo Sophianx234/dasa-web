@@ -131,8 +131,13 @@ export async function logout(): Promise<logoutResponse> {
 }
 
 export async function signup(userInfo: signupCredentials): Promise<unknown> {
-  const { data } = await axios.post(`${API_URL}/users/signup`, userInfo);
-  return data;
+  try{
+
+    const { data } = await axios.post(`${API_URL}/users/signup`, userInfo);
+    return data;
+  }catch(err){
+    console.log(err)
+  }
 }
 
 export async function getUser(): Promise<userType> {
