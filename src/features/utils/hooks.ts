@@ -29,7 +29,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { NavigateFunction } from "react-router-dom";
-import { setIsLoggedIn, setUser, toggleIsAuthenticated, toggleSidebar } from "../slices/navSlice";
+import { setIsLoggedIn, setUser, toggleSidebar } from "../slices/navSlice";
 import type { AppDispatch, RootState } from "./../../../store";
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
@@ -95,8 +95,6 @@ export const useAppSelector = useSelector.withTypes<RootState>();
       setTimeout(() => {
         toast.dismiss();
         navigate("/homepage");
-
-        dispatch(toggleIsAuthenticated(false));
         dispatch(toggleSidebar());
       }, 1000);
     },
@@ -171,6 +169,10 @@ export function useResetPassword(navigate: NavigateFunction) {
 
   return { handlePassReset };
 }
+
+type signupResponse = {
+    token: string
+}
 export function useSignup(navigate: NavigateFunction) {
   const dispatch = useAppDispatch();
 
@@ -180,10 +182,11 @@ export function useSignup(navigate: NavigateFunction) {
       toast.loading("Signing Up ....");
     },
 
-    onSuccess: () => {
+    onSuccess: (data:signupResponse) => {
       toast.dismiss();
       toast.success("Signup Successful");
-      dispatch(toggleIsAuthenticated(true));
+      localStorage.setItem('token',data.token)
+
 
       setTimeout(() => {
         toast.dismiss();

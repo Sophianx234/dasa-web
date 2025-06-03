@@ -43,7 +43,7 @@ function Form() {
     data: signupFormValues
   ) => {
     console.log('formData',data);
-
+    // const newData = {...data,birthDate:new Date((data as signupFormValues).birthDate).toISOString()}
     handleSignup(data);
   };
   const [passwordMatchError, setPasswordMatchError] = useState<string | null>();

@@ -2,12 +2,11 @@ import Footer from "@/features/ui/Footer";
 import { shuffleArray } from "@/features/utils/helpers";
 import { useAppSelector } from "@/features/utils/hooks";
 import { API_URL, getGalleryResponse, mediaType } from "@/services/apiServices";
+import GallerySkeleton from "@/skeletons/GallerySkeleton";
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { PropagateLoader } from "react-spinners";
 import ImageViewer from "./ImageViewer";
-import GallerySkeleton from "@/skeletons/GallerySkeleton";
 export type BriefGalleryProps = {
   style: "overview" | "side";
 };

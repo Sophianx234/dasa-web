@@ -7,7 +7,6 @@ import HeaderDashboard from "./HeaderDashboard";
 import Market from "./Market";
 import UserStats from "./UserStats";
 import Welcome from "./Welcome";
-import GallerySkeleton from "@/skeletons/GallerySkeleton";
 
 function DashboardOverview() {
   

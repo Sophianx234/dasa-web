@@ -1,4 +1,3 @@
-import MarketFeaturedSkeleton from "@/skeletons/MarketFeaturedSkeleton"
 import MarketFeatured from "./MarketFeatured"
 import Slider from "./Slider"
 
