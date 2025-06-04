@@ -82,6 +82,7 @@ function DragZone({ type }: dragZoneProps) {
   const { handleUploadImages } = useUploadImages();
   /* Handling form submission */
   const onSubmit: SubmitHandler<formDataType> = async (data: formDataType) => {
+    console.log(data)
 
     const formData = new FormData();
     files?.forEach((file: File) => {

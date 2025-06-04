@@ -16,14 +16,14 @@ export type eventsI = {
 };
 function Events() {
   const { data, isLoading } = useGetEvents();
-  const { events } = data as eventsI;
+  
 
   return (
     <div>
       <h1 className="dash-title mx-8  pt-8 ">Events</h1>
 
      {isLoading && <EventSkeleton />}
-     {events && <SliderMain events={events} />}
+     {data && <SliderMain events={(data as eventsI).events} />}
     </div>
   );
 }

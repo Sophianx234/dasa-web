@@ -170,9 +170,7 @@ export function useResetPassword(navigate: NavigateFunction) {
   return { handlePassReset };
 }
 
-type signupResponse = {
-    token: string
-}
+
 export function useSignup(navigate: NavigateFunction) {
 
   const { mutateAsync: handleSignup } = useMutation({
