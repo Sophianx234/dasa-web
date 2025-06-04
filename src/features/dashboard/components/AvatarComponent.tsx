@@ -5,7 +5,8 @@ import { userType } from "@/services/apiServices"
 
 function AvatarComponent() {
     const {isLoading,data,error } = useGetUser()
-    if(isLoading) return <>loading</>
+    if(error) return <>X</>
+    
     
     const {user} = data as userType 
     const abbrName = user.username.split(' ').map((name:string)=>name[0]).join('')
@@ -15,7 +16,10 @@ function AvatarComponent() {
   <AvatarImage src={user.profileImage} className="object-cover object-top" />
   <AvatarFallback>{abbrName}</AvatarFallback>
 
-</Avatar>
+</Avatar> 
+{isLoading &&<div className="animate-pulse rounded-full size-12 bg-gray-100 shadow">
+
+</div>}
         </div>
     )
 }
