@@ -24,7 +24,7 @@ function Activities() {
   });
           
    
-  const {videos} = data as videosResponse
+  
   
   /* 
       const slideImages = [
@@ -48,7 +48,7 @@ function Activities() {
         </div>
         <div className=" w-full items-center space-y-6 flex flex-col pt-10">
 
-          {videos && videos.map((video:videoI)=><VideoPlayer key={video._id} src={video.secure_url} />)}
+          {data && (data as videosResponse).videos.map((video:videoI)=><VideoPlayer key={video._id} src={video.secure_url} />)}
           { <>
   { isLoading && Array.from({length:5},(_,i)=><VideoSkeleton key={i}  />)}</> }
         </div>

@@ -1,16 +1,17 @@
 import { useGallery } from "@/features/utils/hooks"
 import ImageViewer from "../components/ImageViewer"
 import { imagesI } from "./MediaGallery"
+import GallerySkeleton from "@/skeletons/GallerySkeleton"
 
 function MediaImagesSection() {
-  const {data} = useGallery()
+  const {data,isLoading} = useGallery()
   
-      if(!data) return null
       
       return (
         <div className="pt-8 ">
 
-        <ImageViewer type="control" images={(data as imagesI).images}/>
+        {data &&<ImageViewer type="control" images={(data as imagesI).images}/>}
+        {isLoading && <GallerySkeleton/>}
         </div>
         
     

@@ -12,7 +12,6 @@ function ChatProfile({user}:chatProfileProps) {
     const {user:userInfo} = useAppSelector(store=>store.nav)
     const [text,setText] = useState<string|null>(null)
     const [message,setMessage] = useState<dmType|null>(null)
-    const {directMessages} = useAppSelector(store=>store.user)
 useEffect(()=>{
     async function fetchRecentMessages(){
 
