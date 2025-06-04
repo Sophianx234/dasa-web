@@ -57,11 +57,9 @@ function SocketProvider({ children }: socketProviderProps) {
         dispatch(sendAnonymousMessage(content));
       });
       socketInstance.on("recieveMessage", (message) => {
-        console.log('xxxy',message)
         dispatch(sendMessage(message));
       });
       socketInstance.on("isTyping", (message:signupCredentialsExtended) => {
-        console.log('xxxy',message)
         if(message){
           dispatch(setUserIsTyping(true));
           dispatch(setTypingUsers(message))
@@ -72,7 +70,6 @@ function SocketProvider({ children }: socketProviderProps) {
 
           typingTimeoutRef.current = setTimeout(()=>{
             dispatch(setUserIsTyping(false))
-            console.log('message x',message)
             dispatch(removeTypingUser(message._id))
           },typingTimeOut)
           
@@ -82,21 +79,16 @@ function SocketProvider({ children }: socketProviderProps) {
         }
       });
       socketInstance.on('isOnline',(message)=>{
-        console.log('test',message)
         dispatch(setOnlineUsers(message))
       })
       socketInstance.on('isOffline',(message)=>{
-        console.log('test',message)
         dispatch(removeOnlineUser(message))
       })
       socketInstance.on('recieveNotification',(message)=>{
-        console.log('notification',message)
         dispatch(addNotification(message))
         
       })
       socketInstance.on("recieveFile", (message:dmType) => {
-        console.log('xxxy',message)
-        console.log('dddd',message.recipient)
         if(!message.recipient){
 
           dispatch(sendAnonymousMessage(message))

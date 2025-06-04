@@ -23,10 +23,8 @@ function Activities() {
     queryFn: getVideos,
   });
           
-  if(isLoading) return <>
-  {Array.from({length:3},(_,i)=><VideoSkeleton key={i}  />)}</> 
+   
   const {videos} = data as videosResponse
-console.log(videos)
   
   /* 
       const slideImages = [
@@ -50,9 +48,9 @@ console.log(videos)
         </div>
         <div className=" w-full items-center space-y-6 flex flex-col pt-10">
 
-          {videos.map((video:videoI)=><VideoPlayer key={video._id} src={video.secure_url} />)}
-          {isLoading && <>
-  {Array.from({length:5},(_,i)=><VideoSkeleton key={i}  />)}</> }
+          {videos && videos.map((video:videoI)=><VideoPlayer key={video._id} src={video.secure_url} />)}
+          { <>
+  { isLoading && Array.from({length:5},(_,i)=><VideoSkeleton key={i}  />)}</> }
         </div>
         <p className="text-center text-sm font-chewy pt-10 ">
           Laughter, Community, and Lifelong <br /> Memories.

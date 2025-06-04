@@ -17,9 +17,7 @@ useEffect(()=>{
     async function fetchRecentMessages(){
 
         const {data}= await axios.get(`${API_URL}/messages/${(userInfo as signupCredentialsExtended)._id}/${user._id}`)
-        console.log(data)
         if(data as dmType){
-            console.log('123,',directMessages[directMessages.length-1])
             setMessage(data.message)
             setText(data.message.content)
             

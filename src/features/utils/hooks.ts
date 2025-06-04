@@ -181,7 +181,7 @@ export function useSignup(navigate: NavigateFunction) {
       toast.loading("Signing Up ....");
     },
 
-    onSuccess: (data:signupResponse) => {
+    onSuccess: (data:LoginResponse) => {
       toast.dismiss();
       toast.success("Signup Successful");
       localStorage.setItem('token',data.token)

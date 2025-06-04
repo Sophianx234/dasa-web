@@ -16,10 +16,8 @@ export type eventsI = {
 };
 function Events() {
   const { data, isLoading } = useGetEvents();
-  if (isLoading) return <>loading</>;
   const { events } = data as eventsI;
 
-  console.log("EVENTS", data);
   return (
     <div>
       <h1 className="dash-title mx-8  pt-8 ">Events</h1>

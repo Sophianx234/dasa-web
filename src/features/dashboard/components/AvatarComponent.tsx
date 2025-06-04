@@ -6,10 +6,9 @@ import { userType } from "@/services/apiServices"
 function AvatarComponent() {
     const {isLoading,data,error } = useGetUser()
     if(isLoading) return <>loading</>
-    if(error)return <>could load</>
+    
     const {user} = data as userType 
     const abbrName = user.username.split(' ').map((name:string)=>name[0]).join('')
-    console.log(abbrName)
     return (
         <div>
             <Avatar>

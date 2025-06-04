@@ -18,10 +18,8 @@ type anosType ={
 }
 function AnonymousTiles() {
   const {isLoading,data} = useGetAnonymous(5)
-  console.log('x123',data)
   if(data){
     const {anonymous:{messages}} = data as anonymousResponse
-    console.log(messages)
     
     return (
       <div className="pt-5 ">

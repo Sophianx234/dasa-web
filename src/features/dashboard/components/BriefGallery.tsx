@@ -115,10 +115,8 @@ function BriefGallery({ style }: BriefGalleryProps) {
       `${API_URL}/media/images?field=_id,secure_url,public_id,format&page=${page}&limit=12`
    ,{headers: { Authorization: `Bearer ${token}`}});
     setIsLoading(false)
-    console.log("Testx23", data);
     const { images: imgs, numImages } = data as getGalleryResponse;
     if(numImages ===0) setHasMore(false)
-    console.log("media", imgs);
     if(imgs){
       setImages(img=>img? [...(img as mediaType[]),...imgs]: imgs)
     }
@@ -128,14 +126,10 @@ function BriefGallery({ style }: BriefGalleryProps) {
   const observerCallback = useCallback(
     (entries: IntersectionObserverEntry[]) => {
       const target = entries[0];
-      console.log('entries',entries)
-      console.log('elgnth',(images as mediaType[])?.length)
       
       if (target.isIntersecting && !isLoading) {
-        console.log('prevpage',page)
         setPage((prevPage) => prevPage + 1);
         
-        console.log('currPage',page)
 
       } 
     },
@@ -157,7 +151,6 @@ function BriefGallery({ style }: BriefGalleryProps) {
   }, [observerCallback]);
 
   useEffect(() => {
-    console.log('page',page)
       loadImgs(page); // initial load
     
   }, [page]);

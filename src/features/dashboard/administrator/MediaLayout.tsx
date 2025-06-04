@@ -12,7 +12,6 @@ function MediaLayout() {
   const {selectFilter,isOpenUploadProduct} = useAppSelector(store=>store.nav)
   const [filter,setFilter] = useState<'images'|'videos'>('images')
   const dispatch = useDispatch()
-  console.log('1yes',selectFilter)
   
   return (
     <div>

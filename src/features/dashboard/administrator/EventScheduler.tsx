@@ -41,7 +41,6 @@ function EventScheduler() {
     });
 
     if (result.isConfirmed) {
-      console.log('ttt',data.date.toISOString())
       const formData = new FormData();
       formData.append("eventImg", eventImg as File);
       formData.append("title", data.title);
@@ -55,10 +54,7 @@ function EventScheduler() {
   }
 
   const onSubmit = async (data: eventSchedulerFormValues) => {
-    console.log("damian");
-    console.log(data);
-    if (!data) console.log("goku");
-
+  
     handleCreateNewEvent(data);
 
   };

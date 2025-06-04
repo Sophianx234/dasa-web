@@ -47,11 +47,9 @@ function ChatSendInput({ type, hookForm }: useChatType) {
   const handleSendAnonymous: SubmitHandler<sendMessageFormValues> = (
     data: sendMessageFormValues
   ) => {
-    console.log("loggedInUserID:", userInfo._id);
 
     if (!data.message) return;
     if (!socket) {
-      console.log("Socket is undefined");
       return;
     }
     if (type === "channel") {
@@ -62,7 +60,6 @@ function ChatSendInput({ type, hookForm }: useChatType) {
           console.log("Server response Y:", response);
         }
       );
-      console.log("testXXX");
     }
     if (type === "direct") {
       socket?.emit(

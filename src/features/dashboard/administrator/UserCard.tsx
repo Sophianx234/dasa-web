@@ -32,7 +32,6 @@ function UserCard({userInfo}:userCardProps) {
             await handleRemoveUser(id);
           }
     }
-  console.log('user',userInfo)
   return (
     <div>
       <div className="grid relative  grid-cols-[1.5fr_2fr] bg-white border shadow-sm rounded-md overflow-hidden">

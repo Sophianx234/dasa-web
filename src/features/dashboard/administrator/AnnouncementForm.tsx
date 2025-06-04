@@ -46,12 +46,10 @@ function AnnouncementForm() {
   const [selected,setSelected] = useState<string|null>(null)
 
   const onSubmit = async(data:announcementFormValues)=>{
-    console.log(data)
     const date = new Date(Date.now()).toISOString()
 
     const [announcerProfile,messageType] = [userInfo.profileImage,(selected as string).toLocaleLowerCase()]
     const body = {...data,date,announcerProfile,messageType }
-    console.log(body)
     const result = await Swal.fire({
           title: "Are you sure?",
           heightAuto:false,
@@ -71,7 +69,6 @@ function AnnouncementForm() {
         }
   }
 
-  console.log('sdkljgd',selected)
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="fixed -top-1 inset-0 bg-white space-y-1 z-50">
        <DeleteButton dispatch={()=>dispatch(toggleRevealAnnouncementForm())} />

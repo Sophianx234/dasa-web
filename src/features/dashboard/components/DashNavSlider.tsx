@@ -16,7 +16,6 @@ function DashNavSlider() {
   const dispatch = useAppDispatch();
   const {user} = useAppSelector(store=>store.nav)
   const userInfo = user as signupCredentialsExtended
-  console.log(userInfo)
 
   return (
     <motion.div

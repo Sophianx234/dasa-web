@@ -77,14 +77,11 @@ function DragZone({ type }: dragZoneProps) {
     const filteredImgs = files?.filter((_, i) => i !== id);
     setFiles(filteredImgs);
 
-    console.log("filtered", filteredImgs);
-    console.log("clicked");
   }
 
   const { handleUploadImages } = useUploadImages();
   /* Handling form submission */
   const onSubmit: SubmitHandler<formDataType> = async (data: formDataType) => {
-    console.log("data", data);
 
     const formData = new FormData();
     files?.forEach((file: File) => {

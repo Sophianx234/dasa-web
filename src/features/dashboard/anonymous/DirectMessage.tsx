@@ -10,7 +10,6 @@ import WriteAnonymous from "./WriteAnonymous";
 function ViewAnonymous() {
   const { id } = useParams();
   const [user, setUser] = useState<signupCredentialsExtended | null>(null);
-  console.log(id);
   const token = localStorage.getItem('token')
   useEffect(() => {
     async function getUserInfo() {
@@ -22,7 +21,6 @@ function ViewAnonymous() {
     }
     getUserInfo();
   }, [id,token]);
-  console.log("getUserInfo", user);
   return (
     <div>
       <WriteAnonymous>

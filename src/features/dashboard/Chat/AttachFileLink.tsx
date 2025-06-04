@@ -19,7 +19,6 @@ function AttachFileLink({ icon, text, accept,type }: attachFileLinkProps) {
   const fileRef = useRef<HTMLInputElement | null>(null);
   const {id} = useParams()
   const socket = useSocket()
-  console.log('yy2233kdsdlfjdg',id)
 
    function handleClick() {
     if (fileRef.current) {
@@ -31,7 +30,6 @@ function AttachFileLink({ icon, text, accept,type }: attachFileLinkProps) {
       const formData = new FormData()
       formData.append('img',file)
       const {data} = await axios.post(`${API_URL}/messages/${type==='channel'?'anonymous':id}/upload`,formData)
-      console.log('res',data)
       const {populatedMessage} = data as {
         populatedMessage: dmType
       }

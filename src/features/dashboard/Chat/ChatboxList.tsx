@@ -27,7 +27,6 @@ function ChatboxList({ type }: chatBoxListProps) {
   const { openEmojiMart, isTyping, typingUsers} = useAppSelector(
     (store) => store.nav
   );
-  console.log("emojiMart", openEmojiMart);
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
@@ -43,7 +42,6 @@ function ChatboxList({ type }: chatBoxListProps) {
     };
   }, [emojiRef, dispatch]);
 
-  console.log("direct", directMessages);
   if (type === "channel")
     return (
       <>
