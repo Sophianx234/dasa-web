@@ -8,7 +8,7 @@ function DashNavLinks() {
     return (
         <>
                <DashNavLink title="Account" link={`/dashboard/account/${userInfo._id}`}/>
-               <DashNavLink title="Market" link="/dashboard/market"/>
+               <DashNavLink title="Market" link=""/>
                <DashNavLink title="Anonymous" link="/dashboard/anonymous/write"/>
                <DashNavLink title="Gallery" link="/dashboard/gallery"/>
                
