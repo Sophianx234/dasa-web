@@ -46,7 +46,7 @@ function ExecutivesSection() {
 <Executive
   imgUrl={executiveImgs[2]}
   role="Public Relations Officer (PRO)"
-  name="Your PRO's Name"
+  name="Mohammed Kamaldeen Sa-eed"
   desc="Communication is the lifeline of every great community. As PRO of DaSA, my vision is to ensure that our story, our achievements, and our aspirations are not just heard but truly understood. In every message we send, every announcement we make, and every representation we give, we carry the image of Dagbon with pride. I encourage every member to be a positive ambassador of DaSA, because the way we speak, write, and present ourselves today will shape how others perceive us tomorrow. Together, let us build a legacy of clarity, respect, and truth."
 
 />
@@ -75,7 +75,7 @@ function ExecutivesSection() {
 <Executive
   imgUrl={executiveImgs[6]}
   role="Women Commissioner (WOCOM)"
-  name="Abdul Majeed Amina"
+  name="Abdul Majeed Aamina"
   desc="The empowerment of women is not just a responsibility, it is a necessity for the growth of any community. As Women Commissioner of DaSA, I strive to create a platform where every female member feels valued, supported, and inspired to lead. Our strength lies in inclusivity, and by championing the voices of women, we strengthen the entire body of DaSA. I encourage all members to recognize the importance of gender balance, because when women rise, communities thrive, and together, we build a Dagbon where equality and opportunity are guaranteed for all."
 
 />

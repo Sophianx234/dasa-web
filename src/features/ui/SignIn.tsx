@@ -14,164 +14,183 @@ export type loginFormValues = {
   email: string;
   password: string;
 };
-function SignIn() {
-  /* const slideImages: slidesImagesType[] = [
-    {
-      url: "https://i.ibb.co/Yfy7hZR/photo-5-2024-10-31-06-51-41.jpg",
-    },
-    {
-      url: "https://i.ibb.co/5jHK7HD/IMG-20241107-WA0017.jpg",
-    },
-    {
-      url: "https://i.ibb.co/BN6WBpn/photo-30-2024-10-31-06-53-18.jpg",
-    },
-    {
-      url: "https://i.ibb.co/y4PdLty/photo-9-2024-10-31-06-50-45.jpg",
-    },
-    {
-      url: "https://i.ibb.co/SNcNjPD/photo-33-2024-10-31-06-52-36.jpg",
-    },
-    {
-      url: "https://i.ibb.co/jgk1phW/IMG-20241107-WA0013.jpg",
-    },
-  ]; */
 
+function SignIn() {
   const navigate = useNavigate();
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<loginFormValues>();
-  const [isLoggingIn,setIsLogginIn] = useState<boolean>(false)
-  const [rememberMe,setRememberMe] = useState<boolean>(false)
-  const [viewPass,setsetViewPass] = useState<"text"|'password'>('password')
-
+  const [isLoggingIn, setIsLogginIn] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [viewPass, setViewPass] = useState<"text" | "password">("password");
 
   const { handleLogin } = useLogin(navigate);
-  const onSubmit: SubmitHandler<loginFormValues> = (data: loginFormValues) => {
-    setIsLogginIn(true)
-    console.log(data);
-    console.log(errors);
-    if (!data.email || !data.password){
-      setIsLogginIn(false)
+
+  const onSubmit: SubmitHandler<loginFormValues> = (data) => {
+    setIsLogginIn(true);
+
+    if (!data.email || !data.password) {
+      setIsLogginIn(false);
       return;
-      
-    } 
-    if(rememberMe){
-      localStorage.setItem('email',data.email)
-      localStorage.setItem('password',data.password)
-      
-      
-    }else{
-      
-      localStorage.removeItem('email')
-      localStorage.removeItem('password')
     }
+
+    if (rememberMe) {
+      localStorage.setItem("email", data.email);
+      localStorage.setItem("password", data.password);
+    } else {
+      localStorage.removeItem("email");
+      localStorage.removeItem("password");
+    }
+
     handleLogin(data);
-    setIsLogginIn(false)
+    setIsLogginIn(false);
   };
 
-  useEffect(()=>{
-    const email = localStorage.getItem('email')
-    const password = localStorage.getItem('password')
+  useEffect(() => {
+    const email = localStorage.getItem("email");
+    const password = localStorage.getItem("password");
 
-    if(email && password){
-      handleLogin({email,password})
+    if (email && password) {
+      handleLogin({ email, password });
+    }
+  }, []);
 
-    }else return 
-    
-  },[])
-
-
-
-  function handleToggle(nextChecked:boolean){
-    setRememberMe(nextChecked)
-
+  function handleToggle(nextChecked: boolean) {
+    setRememberMe(nextChecked);
   }
-  
 
   return (
-    <div className="flex flex-col overflow-hidden mx-4 items-center  h-dvh text-[60%] space-y-12 ">
-      <div className="absolute top-1 overflow-hidden">
-        <div className="overflow-x-hidden w-dvw">
-
+    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br  relative overflow-hidden px-4">
+      {/* Background accents */}
+      <div className="absolute top-0 w-full opacity-70">
         <SVGLite type="sticks" />
-        </div>
       </div>
-      <div className="   shadow-lg px-2 rounded-md border py-8  absolute top-20 w-[22rem]  ">
-        <form
-          className="flex  flex-col  px-2   "
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className="flex  items-center gap-4 pb-4">
-            <h1 className="font-poppins font-semibold text-3xl text-[#33312e] pb-4 pt-4">
-              Login
-            </h1>
+
+      {/* Card */}
+      <div className="relative bg-white/95 backdrop-blur-md border border-orange-200 rounded-xl shadow-lg p-6 w-full max-w-sm">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          {/* Header */}
+          <div className="flex flex-col items-center text-center space-y-1">
             <DasaLogo clns="text-sm" title="Dagbon Students Association" />
+            <h1 className="font-poppins text-2xl font-semibold text-gray-800">
+              Welcome Back 👋
+            </h1>
+            <p className="text-gray-500 text-sm">Login to continue</p>
           </div>
-          <div className="space-y-6  ">
+
+          {/* Email */}
+          <div>
             <FormInput
               register={register}
               inputName="email"
-              style="bg-white border-dasadeep border "
-              icon={<span className="absolute  bg-dasalight items-center left-0 px-4 h-full rounded-l-md shadow-sm flex "><FaRegUser className=" size-5" /></span>}
+              style="bg-white border  text-sm"
+              icon={
+                <span className="absolute left-0 px-3 h-full flex items-center bg-black rounded-l-md">
+                  <FaRegUser className="text-white text-sm" />
+                </span>
+              }
               type="email"
-              placeholder="Enter Email Address"
+              placeholder="Email address"
             />
-            {errors && <div className="bg-black">{errors.email?.message}</div>}
+            {errors.email && (
+              <p className="text-xs text-red-500 mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
 
+          {/* Password */}
+          <div>
             <FormInput
               register={register}
               inputName="password"
-              style="bg-white border-dasadeep border "
+              style="bg-white border  focus:ring-2 focus:ring-black text-sm"
               type={viewPass}
-              icon={<span className="absolute  bg-dasalight items-center left-0 px-4 h-full rounded-l-md shadow-sm flex "> <IoLockClosedOutline className="  size-5  " /></span>}
-              icon2={<span className="absolute  bg-[#f1f3f5] items-center right-0 px-4 h-full  rounded-r-md shadow-sm flex ">{viewPass!=='text'?<IoEyeOutline className=" size-5"
-                onClick={()=>setsetViewPass("text")}/>:<FaRegEyeSlash className="  size-5" onClick={()=>setsetViewPass("password")}/>}</span>}
+              icon={
+                <span className="absolute left-0 px-3 h-full flex items-center bg-black rounded-l-md">
+                  <IoLockClosedOutline className=" text-white text-sm" />
+                </span>
+              }
+              icon2={
+                <span className="absolute right-0 px-3 h-full flex items-center bg-gray-100 rounded-r-md cursor-pointer">
+                  {viewPass !== "text" ? (
+                    <IoEyeOutline
+                      className="text-gray-500 text-sm"
+                      onClick={() => setViewPass("text")}
+                    />
+                  ) : (
+                    <FaRegEyeSlash
+                      className="text-gray-500 text-sm"
+                      onClick={() => setViewPass("password")}
+                    />
+                  )}
+                </span>
+              }
               placeholder="Password"
             />
+            {errors.password && (
+              <p className="text-xs text-red-500 mt-1">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
 
-            <div className="pt-2">
+          {/* Options */}
+          <div className="flex flex-col gap-2 text-xs">
             <Link
-                className="text-gray-700 flex items-center  gap-1  -mt-1 pb-2 hover:underline"
-                to="/homepage/forgotpassword"
-              >
-                
-                <span className="self-end text-sm font-poppins italic">Forgot Password?</span>
-              </Link>
-              <div className="flex  text-xs gap-2 items-center">
-                
-                <p className="font-medium text-sm tracking-wide ">Remember Sign in details</p> <Switch onChange={handleToggle}  
-                onColor="#ffd8a8"
-                height={25}
-                width={55}
-                className=""
-                checked={rememberMe} />
-              </div>
-              
-              <div className=" italic  text-sm font-poppins font-medium tracking-tight py-2 pt-4">
-                Do not have an account?{" "}
-                <Link
-                  to="/homepage/signup"
-                  className="text-blue-600 font-medium hover:underline"
-                >
-                  Signup
-                </Link>
-              </div>
+              to="/homepage/forgotpassword"
+              className="text-blue-600 hover:underline self-end"
+            >
+              Forgot Password?
+            </Link>
+
+            <div className="flex items-center justify-between">
+              <p className="text-gray-700 text-sm">Remember me</p>
+              <Switch
+                onChange={handleToggle}
+                onColor="#ff922b"
+                offColor="#dcdcdc"
+                height={18}
+                width={40}
+                checked={rememberMe}
+              />
             </div>
           </div>
-          <button className=" rounded-full bg-dasadeep mt-3 border border-dasadeep hover:border-[#191611] hover:bg-transparent transition-all duration-300 py-2 text-sm font-bold font-Montserrat " disabled={isLoggingIn}>
-            Login
+
+          {/* Submit */}
+          <button
+            disabled={isLoggingIn}
+            className={`w-full rounded-xl py-2 text-sm font-medium transition-all duration-300 
+              ${
+                isLoggingIn
+                  ? "bg-orange-300 cursor-not-allowed text-white"
+                  : "bg-orange-300 text-white hover:bg-orange-500"
+              }`}
+          >
+            {isLoggingIn ? "Logging in..." : "Login"}
           </button>
+
+          {/* Footer */}
+          <p className="text-center text-sm text-gray-600">
+            Don’t have an account?{" "}
+            <Link
+              to="/homepage/signup"
+              className="text-blue-600 font-medium hover:underline"
+            >
+              Sign up
+            </Link>
+          </p>
         </form>
       </div>
-      <div className="absolute bottom-1">
-      <div className="overflow-x-hidden w-dvw">
 
+      {/* Bottom background */}
+      <div className="absolute bottom-0 w-full opacity-70">
         <SVGLite type="sticks" />
       </div>
-      </div>
-      <Toaster position={"top-center"} />
+
+      <Toaster position="top-center" />
     </div>
   );
 }
