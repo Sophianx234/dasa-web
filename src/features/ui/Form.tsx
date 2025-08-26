@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Toaster } from "react-hot-toast";
 import { FaRegUser } from "react-icons/fa6";
@@ -16,6 +16,7 @@ import { useAppSelector, useSignup } from "../utils/hooks";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Select from "./Select";
 import Terms from "./Terms";
+import { FiPlus } from "react-icons/fi";
 
 export type signupFormValues = {
   firstName: string;
@@ -29,6 +30,7 @@ export type signupFormValues = {
   sex: string;
   confirmPassword: string;
   birthDate: Date;
+  profilePicture?: FileList; // new
 };
 
 function Form() {
@@ -41,11 +43,15 @@ function Form() {
   const [step, setStep] = useState(1);
 
   const { handleSignup } = useSignup(navigate);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const onSubmit: SubmitHandler<signupFormValues> = (data) => {
     if (step === 1) {
       setStep(2);
+    } else if (step === 2) {
+      setStep(3);
     } else {
+      // send data including profilePicture
       handleSignup(data);
     }
   };
@@ -63,13 +69,12 @@ function Form() {
   }, [password, confirmPassword]);
 
   return (
-    <div className=" flex flex-col items-center justify-center px-4 py-10">
+    <div className="flex flex-col items-center justify-center px-4 py-10">
       {/* Header */}
       <div className="mb-6 text-center flex justify-center flex-col items-center">
         <h1 className="text-3xl font-bold text-gray-800">Let’s get started</h1>
         <p className="text-sm text-gray-600 mt-1">
-          Create your DaSA account. Already registered?{" "}
-          <br />
+          Create your DaSA account. Already registered? <br />
           <Link
             to="/homepage/login"
             className="text-orange-500 font-medium hover:underline"
@@ -128,7 +133,9 @@ function Form() {
               <Controller
                 name="birthDate"
                 control={control}
-                render={({ field }) => <DatePicker type="signup" field={field} />}
+                render={({ field }) => (
+                  <DatePicker type="signup" field={field} />
+                )}
               />
             </div>
 
@@ -203,23 +210,6 @@ function Form() {
               <p className="text-xs text-red-600">{passwordMatchError}</p>
             )}
 
-            <p className="text-xs text-gray-600">
-              By signing up, you acknowledge that you’ve read and accepted our{" "}
-              <span
-                onClick={() => setOpenTerms(true)}
-                className="text-orange-500 font-medium hover:underline cursor-pointer"
-              >
-                Terms of Service
-              </span>{" "}
-              and{" "}
-              <span
-                onClick={() => setOpenPrivacy(true)}
-                className="text-orange-500 font-medium hover:underline cursor-pointer"
-              >
-                Privacy Policy
-              </span>.
-            </p>
-
             <div className="flex items-center gap-3">
               <button
                 type="button"
@@ -232,7 +222,7 @@ function Form() {
                 type="submit"
                 className="w-1/2 py-2 text-sm font-semibold bg-orange-400 text-white rounded-full hover:bg-orange-500 transition-all"
               >
-                Signup
+                Continue
               </button>
             </div>
 
@@ -240,6 +230,63 @@ function Form() {
             {openPrivacy && <PrivacyPolicy handleClose={setOpenPrivacy} />}
           </>
         )}
+
+        {/* Step 3 - Profile Picture */}
+        {step === 3 && (
+  <div className="space-y-4 text-center">
+    <label className="block text-sm font-medium text-gray-700">
+      Upload Profile Picture
+    </label>
+
+    {/* Hidden file input */}
+    <input
+      type="file"
+      accept="image/*"
+      {...register("profilePicture")}
+      ref={(e) => {
+        register("profilePicture").ref(e);
+        fileInputRef.current = e;
+      }}
+      className="hidden"
+    />
+
+    {/* Preview OR Upload Button */}
+    {watch("profilePicture")?.[0] ? (
+      <img
+        src={URL.createObjectURL(watch("profilePicture")[0])}
+        alt="preview"
+        className="mx-auto h-32 w-32 rounded-full object-cover cursor-pointer"
+        onClick={() => fileInputRef.current?.click()}
+      />
+    ) : (
+      <div className="flex justify-center">
+        <div
+          className="size-32 border flex items-center justify-center border-gray-300 rounded-full cursor-pointer hover:bg-gray-100"
+          onClick={() => fileInputRef.current?.click()}
+        >
+          <FiPlus className="size-8 text-gray-400" />
+        </div>
+      </div>
+    )}
+
+    <div className="flex items-center gap-3">
+      <button
+        type="button"
+        onClick={() => setStep(2)}
+        className="w-1/2 py-2 text-sm font-semibold bg-gray-300 text-gray-700 rounded-full hover:bg-gray-400 transition-all"
+      >
+        Back
+      </button>
+      <button
+        type="submit"
+        className="w-1/2 py-2 text-sm font-semibold bg-orange-400 text-white rounded-full hover:bg-orange-500 transition-all"
+      >
+        Signup
+      </button>
+    </div>
+  </div>
+)}
+
       </form>
     </div>
   );
