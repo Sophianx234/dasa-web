@@ -8,7 +8,6 @@ import Switch from "react-switch";
 import FormInput from "../ui/FormInput";
 import { useLogin } from "../utils/hooks";
 import DasaLogo from "./DasaLogo";
-import SVGLite from "./SVGLite";
 
 export type loginFormValues = {
   email: string;
@@ -62,11 +61,7 @@ function SignIn() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br  relative overflow-hidden px-4">
-      {/* Background accents */}
-      <div className="absolute top-0 w-full opacity-70">
-        {/* <SVGLite type="sticks" /> */}
-      </div>
+    <div className="flex flex-col h-dvh items-center justify-center  bg-gradient-to-br  relative overflow-hidden px-4">
 
       {/* Card */}
       <div className="relative bg-white/95 backdrop-blur-md border  rounded-xl shadow-lg p-6 w-full max-w-sm">
