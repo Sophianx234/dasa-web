@@ -65,17 +65,17 @@ function SignIn() {
     <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br  relative overflow-hidden px-4">
       {/* Background accents */}
       <div className="absolute top-0 w-full opacity-70">
-        <SVGLite type="sticks" />
+        {/* <SVGLite type="sticks" /> */}
       </div>
 
       {/* Card */}
-      <div className="relative bg-white/95 backdrop-blur-md border border-orange-200 rounded-xl shadow-lg p-6 w-full max-w-sm">
+      <div className="relative bg-white/95 backdrop-blur-md border  rounded-xl shadow-lg p-6 w-full max-w-sm">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           {/* Header */}
           <div className="flex flex-col items-center text-center space-y-1">
             <DasaLogo clns="text-sm" title="Dagbon Students Association" />
-            <h1 className="font-poppins text-2xl font-semibold text-gray-800">
-              Welcome Back 👋
+            <h1 className="font-poppins text-3xl font-semibold text-gray-800">
+              Welcome Back 
             </h1>
             <p className="text-gray-500 text-sm">Login to continue</p>
           </div>
@@ -87,8 +87,8 @@ function SignIn() {
               inputName="email"
               style="bg-white border  text-sm"
               icon={
-                <span className="absolute left-0 px-3 h-full flex items-center bg-black rounded-l-md">
-                  <FaRegUser className="text-white text-sm" />
+                <span className="absolute left-0 px-3 h-full flex items-center  rounded-l-md">
+                  <FaRegUser className="text-gray-700 text-sm" />
                 </span>
               }
               type="email"
@@ -109,8 +109,8 @@ function SignIn() {
               style="bg-white border  focus:ring-2 focus:ring-black text-sm"
               type={viewPass}
               icon={
-                <span className="absolute left-0 px-3 h-full flex items-center bg-black rounded-l-md">
-                  <IoLockClosedOutline className=" text-white text-sm" />
+                <span className="absolute left-0 px-3 h-full flex items-center  rounded-l-md">
+                  <IoLockClosedOutline className=" text-gray-800 text-sm" />
                 </span>
               }
               icon2={
@@ -141,7 +141,7 @@ function SignIn() {
           <div className="flex flex-col gap-2 text-xs">
             <Link
               to="/homepage/forgotpassword"
-              className="text-blue-600 hover:underline self-end"
+              className="text-gray-700 hover:underline self-end"
             >
               Forgot Password?
             </Link>
@@ -177,7 +177,7 @@ function SignIn() {
             Don’t have an account?{" "}
             <Link
               to="/homepage/signup"
-              className="text-blue-600 font-medium hover:underline"
+              className="text-gray-700 font-medium hover:underline"
             >
               Sign up
             </Link>
@@ -187,7 +187,7 @@ function SignIn() {
 
       {/* Bottom background */}
       <div className="absolute bottom-0 w-full opacity-70">
-        <SVGLite type="sticks" />
+        {/* <SVGLite type="sticks" /> */}
       </div>
 
       <Toaster position="top-center" />

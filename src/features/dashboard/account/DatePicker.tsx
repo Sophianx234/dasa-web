@@ -32,7 +32,7 @@ export function DatePicker<T extends FieldValues>({field,type='normal'}:datePick
             !date && "text-muted-foreground"
           )}
         >
-          <div className=" bg-dasalight h-full flex justify-center items-center left-0  px-4 absolute">
+          <div className="  h-full flex justify-center items-center left-0  px-4 absolute">
 
           <CalendarIcon />
           </div>

@@ -2,7 +2,7 @@ import Form from "../ui/Form"
 
 function SignUp() {
     return (
-        <div className="bg-dasalight ">
+        <div className=" ">
             <Form/>
         </div>
     )
