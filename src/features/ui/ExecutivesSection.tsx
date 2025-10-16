@@ -8,6 +8,7 @@ const executiveImgs = [
     "https://res.cloudinary.com/dtytb8qrc/image/upload/v1755997892/Sahnuun-1_ys9qc8.jpg",
     "https://res.cloudinary.com/dtytb8qrc/image/upload/v1755997892/Aamina_d98fzl.jpg",
   "https://res.cloudinary.com/dtytb8qrc/image/upload/v1755997991/Zanjina_mppiem.jpg",
+  "https://res.cloudinary.com/dtytb8qrc/image/upload/v1760617326/tipagra-1_yl3s3p.jpg" 
 ];
 
 /* [
@@ -69,6 +70,12 @@ function ExecutivesSection() {
   name="Sahnuun Mustapha "
   desc="Documentation is the memory of every association, and as General Secretary, I am committed to ensuring that DaSA’s journey is carefully recorded and preserved. Through clear communication, proper record-keeping, and transparent reporting, we not only keep our members informed but also leave behind a history that future generations can learn from. I believe that effective leadership requires both vision and accountability, and I encourage each member to contribute actively so that our collective story becomes one of progress, unity, and excellence."
 
+/>
+<Executive
+  imgUrl={executiveImgs[8]}
+  role="Organizer"
+  name="Humu-Krusum Tipagra Yussif"
+  desc="Organization is the heartbeat of every vibrant association. As the Organizing Secretary, my goal is to ensure that every DaSA activity is well-structured, impactful, and memorable. I believe that true organization goes beyond logistics — it’s about creating experiences that unite us, strengthen our bond, and reflect the values of Dagbon. Together, through teamwork and dedication, we will continue to make DaSA a beacon of excellence and togetherness."
 />
 
 
