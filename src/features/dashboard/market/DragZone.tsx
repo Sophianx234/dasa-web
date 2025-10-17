@@ -161,7 +161,7 @@ function DragZone({ type }: dragZoneProps) {
             <div className="text-center pt-3">
               <button
                 type="submit"
-                className="hover-primary bg-dasadeep rounded-lg font-bold duration-150 px-2 py-1"
+                className="hover-primary  bg-dasadeep rounded-lg font-bold duration-150 px-2 py-1"
               >
                 Select Files
               </button>

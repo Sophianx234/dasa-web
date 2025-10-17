@@ -13,6 +13,15 @@
   .dash-title{
     @apply  text-xl font-Montserrat font-semibold text-zinc-700
   }
+
+  .scrollbar-hide {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 }
 @layer base {
   :root {
@@ -78,6 +87,7 @@
   }
   
 }
+
 .custom-swiper .swiper-button-prev,
 .custom-swiper .swiper-button-next {
   @apply size-10 text-dasadeep shadow-lg px-1 bg-white rounded-full z-40; /* Width/height = 2.5rem (40px) */
