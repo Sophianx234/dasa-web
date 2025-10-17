@@ -60,7 +60,7 @@ function Hero() {
             </div>
           ))} 
         </Slide>
-        <div className='text-[#ffe8cbbd] absolute  top-[11.5rem] left-0 right-0 flex justify-center text-center font-extrabold   font-Montserrat text-3xl  '>Dagbon Tooni Tibu <br />  Shikuru Bihi Nuu Beni</div>
+        <div className='text-[#ffe8cbbd] absolute  top-[10.5rem] left-0 right-0 flex justify-center text-center font-extrabold   font-Montserrat text-3xl  '>Dagbon Tooni Tibu <br />  Shikuru Bihi Nuu Beni</div>
       </div>
       <div className='pt-10 bg-dasalight uppercase text-xs pb-8 font-mulish px-1 '>
         <h1 className='font-bold text-center text-[#33312e]'>Your gateway to a world of networking, mentorship, and cultural exchange.</h1>
