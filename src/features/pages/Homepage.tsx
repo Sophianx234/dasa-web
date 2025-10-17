@@ -16,7 +16,7 @@ import { useAppSelector } from "../utils/hooks";
 function Homepage() {
   const isOpen = useAppSelector((store) => store.nav.isOpen);
   return (
-    <div className="text-stone-900  h-dvh scrollbar-hide overflow-x-hidden w-dvw">
+    <div className="text-stone-900 h-dvh  scrollbar-hide overflow-x-hidden w-dvw">
       <Header />
       <AnimatePresence>{isOpen && <NavLinks swap="col" />}</AnimatePresence>
       <main className="">
