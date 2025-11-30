@@ -1,28 +1,56 @@
-import { IoMenu } from "react-icons/io5"
-import { Link } from "react-router-dom"
-
-import { useDispatch } from "react-redux"
-import { toggleNav } from "../slices/navSlice"
-import DasaLogo from "./DasaLogo"
+import { IoMenu } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toggleNav } from "../slices/navSlice";
+import DasaLogo from "./DasaLogo";
 
 function Header() {
-    const dispatch = useDispatch()
-    
-    return (
-        <div className="flex fixed  right-0 left-0 -top-2 shadow-md z-40 items-center justify-between px-2 py-2 bg-[#FEF3E7]">
-            
-            <Link to='/homepage'  className="flex items-center text-sm " onClick={()=>{
-                }}>
-            <DasaLogo title="Dagbon Students Association"/>
-            </Link>
-            <button onClick={()=>dispatch(toggleNav())}>
+  const dispatch = useDispatch();
 
-            <IoMenu className="size-12"/>
-            
-            </button>
-        </div>
-    )
+  return (
+    <header className="fixed left-0 right-0 top-0 z-40 bg-[#FEF3E7] shadow-md">
+      <div className="sm:grid flex grid-cols-[2.5fr_3fr_0.5fr] items-center text-lg justify-between sm:px-4 sm:py-1 px-2 py-3">
+
+        {/* Logo */}
+        <Link to="/homepage" className="flex items-center">
+          <DasaLogo title="Dagbon Students Association" />
+        </Link>
+
+        {/* Desktop Nav (hidden on mobile) */}
+        <nav className="hidden  font-semibold text-sm md:flex items-center gap-10 ">
+          <Link to="/homepage" className="hover:bg-dasadeep py-2 px-3 rounded-md">
+            Home
+          </Link>
+
+          <Link to="/homepage/about" className="hover:bg-dasadeep py-2 px-3 rounded-md">
+            About
+          </Link>
+
+          
+
+          <Link
+            to="/homepage/gallery"
+            className=" py-2 px-4  rounded-md
+               hover:bg-dasadeep transition"
+          >
+            Gallery
+          </Link>
+        </nav>
+
+        {/* Mobile Menu Button (hidden on desktop) */}
+        <button
+          onClick={() => dispatch(toggleNav())}
+          className="md:hidden"
+        >
+          <IoMenu className="size-10" />
+        </button>
+        <Link to="/homepage/login" className="hover:bg-dasadeep text-sm  border sm:flex items-center hidden justify-center border-dasadeep py-1 px-1 rounded-md">
+            login
+          </Link>
+
+      </div>
+    </header>
+  );
 }
 
-export
- default Header
+export default Header;

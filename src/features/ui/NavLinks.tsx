@@ -14,11 +14,11 @@ function NavLinks({swap= 'flex'}:navLinksProps) {
     const logo = ["https://i.ibb.co/n8hRM6d/dasalogo-removebg.png" ]
     return (
         <motion.div
-        exit={{x:'-100vw', opacity:0}}
-        animate={{x:0, opacity:1}}
-        initial={{x:'-100vw',opacity:0}}
+        exit={{y:'-100vh', opacity:0}}
+        animate={{y:0, opacity:1}}
+        initial={{y:'-100vh',opacity:0}}
         transition={{type:'keyframes'}}
-        className="bg-white fixed -top-1 -bottom-1 z-50  pb-10 left-0 right-0    pt-6 px-4 space-y-6">
+        className="bg-white fixed  -top-1 -bottom-1 z-50  pb-10 left-0 right-0    pt-6 px-4 space-y-6">
             <div className="flex justify-between ">
                 <Link to='/homepage'>
                 <img src={logo[0]} className=" w-20"/>
