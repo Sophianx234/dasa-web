@@ -16,10 +16,7 @@ function Footer({navType='home'}:footerProps) {
                     }
                 </ul>
                 <div className="flex items-center flex-col justify-center bg-dasalight  pb-5 space-y-2 ">
-                    
-
 <Svg/>
-                    
                     
 
 
