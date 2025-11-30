@@ -1,85 +1,105 @@
-import AccordionBar, { faqsType } from "./Accordion"
+import AccordionBar, { faqsType } from "./Accordion";
 
 function AccordionList() {
-    const faqs: faqsType[] = [
-        {
-          question: "What is DaSA?",
-          answer: "DaSA stands for the Dagbon Students Association, an organization aimed at supporting Dagbon students at the University of Ghana."
-        },
-        {
-          question: "Who can join DaSA?",
-          answer: "DaSA membership is open to all Dagbon students and those interested in learning about Dagbon culture."
-        },
-        {
-          question: "What are the benefits of joining DaSA?",
-          answer: "Members gain access to cultural events, networking opportunities, academic support, and a sense of community."
-        },
-        {
-          question: "How can I become a member?",
-          answer: "You can sign up on our website or visit our booth during campus events."
-        },
-        {
-          question: "Is there a membership fee?",
-          answer: "Yes, there is a small fee to cover association activities and resources. Details on the amount can be found on our website."
-        },
-        {
-          question: "What activities does DaSA organize?",
-          answer: "We host cultural events, academic seminars, study groups, workshops, and social gatherings on campus ."
-        },
-        {
-          question: "How can I find out about upcoming DaSA events?",
-          answer: "Check our website’s events page or follow us on social media for updates."
-        },
-        {
-          question: "Are DaSA events open to non-members?",
-          answer: "Some events are open to all, while others may be exclusive to members. Details will be specified for each event."
-        },
-        {
-          question: "How can I volunteer or participate in organizing events?",
-          answer: "Reach out to any executive member or send an email to express your interest. Volunteers are always welcome!"
-        },
-        {
-          question: "Can DaSA help with academic support?",
-          answer: "Yes, DaSA organizes study groups and workshops, and members often share resources and mentorship."
-        },
-        {
-          question: "Does DaSA provide financial assistance or scholarships?",
-          answer: "While DaSA doesn’t directly offer scholarships, we actively share available opportunities and support members through the application process. We also endeavor to secure scholarships and financial aid for members facing financial difficulties."
-        },
-        {
-          question: "How can I connect with alumni of DaSA?",
-          answer: "We have an alumni network, and regular events where alumni participate. You can also join our LinkedIn group."
-        },
-        {
-          question: "Are there networking opportunities through DaSA?",
-          answer: "Absolutely! DaSA organizes networking events and connects members with alumni and professionals from various fields."
-        },
-        {
-          question: "How can I contact DaSA's executive board?",
-          answer: "You can email the executive board or contact us via our social media channels. Or check the about page on this site."
-        },
-        {
-          question: "How can I update my membership information?",
-          answer: "Log into your member profile on the DaSA website to update your information, or reach out to the admin if you need help."
-        },
-        {
-          question: "Can members promote their businesses through DaSA?",
-          answer: "Yes, we support member businesses. You can showcase your business on the DaSA Market center."
-        },
-        {
-          question: "What is the Down Boys group in DaSA?",
-          answer: "Down Boys is a purpose-driven group within DaSA made up of members who believe in turning humble beginnings into powerful futures. They focus on ambition, self-discipline, and supporting one another on the path to personal and academic success."
-        }
-      ]
-    return (
-        <div className="space-y-3">
-            <h1 className="text-center font-semibold">Frequently Asked Questions</h1>
-            <div>
-                <AccordionBar faqs={faqs }/>
-                
-            </div>
-        </div>
-    )
+  const faqs: faqsType[] = [
+    {
+      question: "What is DaSA?",
+      answer:
+        "DaSA stands for the Dagbon Students Association, an organization aimed at supporting Dagbon students at the University of Ghana.",
+    },
+    {
+      question: "Who can join DaSA?",
+      answer:
+        "DaSA membership is open to all Dagbon students and those interested in learning about Dagbon culture.",
+    },
+    {
+      question: "What are the benefits of joining DaSA?",
+      answer:
+        "Members gain access to cultural events, networking opportunities, academic support, and a sense of community.",
+    },
+    {
+      question: "How can I become a member?",
+      answer:
+        "You can sign up on our website or visit our booth during campus events.",
+    },
+    {
+      question: "Is there a membership fee?",
+      answer:
+        "Yes, there is a small fee to cover association activities and resources. Details on the amount can be found on our website.",
+    },
+    {
+      question: "What activities does DaSA organize?",
+      answer:
+        "We host cultural events, academic seminars, study groups, workshops, and social gatherings on campus.",
+    },
+    {
+      question: "How can I find out about upcoming DaSA events?",
+      answer:
+        "Check our website’s events page or follow us on social media for updates.",
+    },
+    {
+      question: "Are DaSA events open to non-members?",
+      answer:
+        "Some events are open to all, while others may be exclusive to members. Details will be specified for each event.",
+    },
+    {
+      question: "How can I volunteer or participate in organizing events?",
+      answer:
+        "Reach out to any executive member or send an email to express your interest. Volunteers are always welcome!",
+    },
+    {
+      question: "Can DaSA help with academic support?",
+      answer:
+        "Yes, DaSA organizes study groups and workshops, and members often share resources and mentorship.",
+    },
+    {
+      question: "Does DaSA provide financial assistance or scholarships?",
+      answer:
+        "While DaSA doesn’t directly offer scholarships, we actively share available opportunities and support members through the application process. We also endeavor to secure scholarships and financial aid for members facing financial difficulties.",
+    },
+    {
+      question: "How can I connect with alumni of DaSA?",
+      answer:
+        "We have an alumni network, and regular events where alumni participate. You can also join our LinkedIn group.",
+    },
+    {
+      question: "Are there networking opportunities through DaSA?",
+      answer:
+        "Absolutely! DaSA organizes networking events and connects members with alumni and professionals from various fields.",
+    },
+    {
+      question: "How can I contact DaSA's executive board?",
+      answer:
+        "You can email the executive board or contact us via our social media channels. Or check the about page on this site.",
+    },
+    {
+      question: "How can I update my membership information?",
+      answer:
+        "Log into your member profile on the DaSA website to update your information, or reach out to the admin if you need help.",
+    },
+    {
+      question: "Can members promote their businesses through DaSA?",
+      answer:
+        "Yes, we support member businesses. You can showcase your business on the DaSA Market center.",
+    },
+    {
+      question: "What is the Down Boys group in DaSA?",
+      answer:
+        "Down Boys is a purpose-driven group within DaSA made up of members who believe in turning humble beginnings into powerful futures. They focus on ambition, self-discipline, and supporting one another on the path to personal and academic success.",
+    },
+  ];
+
+  return (
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">
+        Frequently Asked Questions
+      </h1>
+
+      <div className="max-w-4xl mx-auto space-y-4">
+        <AccordionBar faqs={faqs} />
+      </div>
+    </div>
+  );
 }
 
-export default AccordionList
+export default AccordionList;

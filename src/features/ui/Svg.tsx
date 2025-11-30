@@ -1,4 +1,4 @@
-function Svg() {
+ function Svg() {
   return (
     <svg
       version="1.1"

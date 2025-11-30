@@ -1,34 +1,51 @@
-import { FaArrowRight } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa";
 
-/* < src="https://i.ibb.co/0cXhh8Q/photo-43-2024-10-31-06-51-41.jpg"> */
 function CTAFooter() {
-  return (
-    <div>
-      <div></div>
-      <div className="bg-gradient-to-t from-[#33312eef] relative mix-blend-darken text-center   ">
-        <img
-          src="https://i.ibb.co/hH6qRBM/photo-31-2024-10-31-06-51-41.jpg"
-          alt=""
-          className=" object-contain mix-blend-color-burn"
-        />
-        <div className="absolute top-[50%]  grid-cols-1">
-          <div className="grid grid-cols-1 space-y-1">
-            <h1 className="font-extrabold text-2xl  text-[#fef4e9]">
-              Be Apart Of the Association
-            </h1>
-            <p className="text-[#fffbf6]  font-poppins leading-6  italic px-4">
-            DaSA isn’t just an association. it’s a living testament to the strength and resilience of the Dagbon people. Join us as we celebrate our culture, support each other, and strive for excellence in everything we do.
-            </p>
-          </div>
-            <div className="">
+  const imageUrl = "https://i.ibb.co/hH6qRBM/photo-31-2024-10-31-06-51-41.jpg";
 
-          <div className="absolute   h-10 mt-4 rounded-lg  overflow-hidden      left-0 right-0 mx-4 ml-3 flex border-dasalight border    ">
-            <input type="email" className=" w-full indent-6 placeholder:text-dasa-deep" placeholder="subscribe to newsletter" />
-            <button className="bg-dasalight absolute right-0 top-0 bottom-0  px-3  border-0 flex gap-1  font-semibold py-1 items-center  text-[#66615c]">
-              Ti Chama <FaArrowRight />
-            </button>
-          </div>
+  return (
+    <div className="container mx-auto px-4 py-12">
+      <div className="bg-[#33312e] rounded-xl shadow-2xl overflow-hidden md:flex lg:max-h-[500px]">
+        
+        {/* === LEFT SIDE: IMAGE WITH DARK OVERLAY === */}
+        <div className="md:w-1/2 relative min-h-[300px] md:min-h-full">
+          <img
+            src={imageUrl}
+            alt="Association members together"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay to improve contrast */}
+          <div className="absolute inset-0 bg-black opacity-70"></div>
+        </div>
+
+        {/* === RIGHT SIDE: TEXT AND CTA === */}
+        <div className="md:w-1/2 p-8 lg:p-12 flex flex-col justify-center text-center md:text-left relative z-10">
+          
+          <h1 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#fef4e9] font-rethink leading-tight mb-4">
+            Be A Part of the Association
+          </h1>
+          
+          <p className="text-[#fffbf6] font-poppins text-lg leading-relaxed italic mb-8">
+            DaSA isn’t just an association—it’s a living testament to the strength and resilience of the Dagbon people. Join us as we celebrate our culture, support each other, and strive for excellence in everything we do.
+          </p>
+
+          {/* === Newsletter Input / CTA === */}
+          <div className="w-full max-w-lg mx-auto md:mx-0">
+            <div className="flex relative rounded-lg overflow-hidden border border-dasalight shadow-lg">
+              <input 
+                type="email" 
+                className="flex-grow p-3 text-sm text-[#33312e] placeholder:text-gray-500 font-medium focus:ring-2 focus:ring-dasalight focus:outline-none" 
+                placeholder="Subscribe to our newsletter" 
+                aria-label="Email subscription"
+              />
+              <button 
+                className="absolute inset-y-0 right-0 flex items-center gap-2 px-4 bg-dasalight font-semibold text-[#33312e] whitespace-nowrap hover:bg-[#e8590c] transition duration-300"
+              >
+                Ti Chama <FaArrowRight className="text-sm" />
+              </button>
             </div>
+          </div>
+
         </div>
       </div>
     </div>
