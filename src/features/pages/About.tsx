@@ -11,7 +11,7 @@ import Header  from "./../ui/Header"
 function About() {
     const isOpen = useAppSelector(store=>store.nav.isOpen)
     return (
-        <div>
+        <div className="text-stone-900 h-dvh  scrollbar-hide overflow-x-hidden w-dvw">
            <Header/>
            { isOpen && <NavLinks swap='col'/>}
            <main>

@@ -44,8 +44,8 @@ function Header() {
         >
           <IoMenu className="size-10" />
         </button>
-        <Link to="/homepage/login" className="hover:bg-dasadeep text-sm  border sm:flex items-center hidden justify-center border-dasadeep py-1 px-1 rounded-md">
-            login
+        <Link to="/homepage/login" className="bg-dasadeep hover:py-2 transition-all duration-200 border-2 border-transparent hover:border-zinc-700 hover:bg-transparent font-bold  text-sm  border sm:flex items-center hidden justify-center border-dasadeep py-1 px-1 rounded-md">
+            Login
           </Link>
 
       </div>

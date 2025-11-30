@@ -11,7 +11,6 @@ import SignUp from "./features/pages/SignUp";
 
 import DashboardOverview from "./features/dashboard/components/DashboardOverview";
 
-import GalleryPage from "./features/dashboard/pages/GalleryPage";
 const MarketPage = lazy(() => import("./features/dashboard/pages/MarketPage"));
 
 import NotificationsPage from "./features/dashboard/pages/NotificationsPage";
@@ -52,6 +51,8 @@ import MediaVideosSection from "./features/dashboard/administrator/MediaVideosSe
 import AdminOverview from "./features/dashboard/administrator/AdminOverview";
 import ResetPasswordPage from "./features/pages/ResetPasswordPage";
 import ForgotPasswordPage from "./features/pages/ForgotPasswordPage";
+import Gallerypage from "./features/pages/Gallerypage";
+import GalleryPage from "./features/dashboard/pages/GalleryPage";
 
 const queryClient = new QueryClient();
 axios.defaults.withCredentials = true;
@@ -67,6 +68,7 @@ function App() {
             <Route path="homepage" element={<Homepage />} />
             <Route index element={<Navigate to={"/homepage"} />} />
             <Route path="homepage/about" element={<About />} />
+            <Route path="homepage/gallery" element={<Gallerypage />} />
             <Route path="homepage/login" element={<Login />} />
             <Route path="homepage/signup" element={<SignUp />} />
             <Route path="homepage/forgotpassword" element={<ForgotPasswordPage />} />

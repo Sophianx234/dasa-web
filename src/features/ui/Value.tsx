@@ -1,19 +1,29 @@
-import { ReactElement } from "react"
+import { ReactElement } from "react";
+
 export type valueProps = {
-    icon: ReactElement,
-    title: string,
-    desc: string
+  icon: ReactElement;
+  title: string;
+  desc: string;
+};
 
-}
-function Value({desc,title,icon}:valueProps) {
-    return (
-        <div className="flex flex-col items-center px-2">
-            {icon}
-            <h1 className="font-Montserrat  text-justify font-semibold">{title}</h1>
-            <p className="text-center  text-xs  leading-5 font-poppins  italic tracking-wider">{desc}</p>
-            
-        </div>
-    )
-}
+export default function Value({ icon, title, desc }: valueProps) {
+  return (
+    <div
+      className="
+        flex flex-col items-center text-center
+        p-6 rounded-2xl bg-white shadow-sm hover:shadow-md
+        transition-shadow duration-300
+      "
+    >
+      <div className="mb-4">{icon}</div>
 
-export default Value
+      <h2 className="font-Montserrat text-lg font-semibold text-[#2f2d2b]">
+        {title}
+      </h2>
+
+      <p className="text-sm mt-2 text-[#55524f] leading-6 font-poppins tracking-wide">
+        {desc}
+      </p>
+    </div>
+  );
+}

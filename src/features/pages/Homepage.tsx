@@ -12,6 +12,7 @@ import NavLinks from "../ui/NavLinks";
 import Questions from "../ui/Questions";
 import Testimonials from "../ui/Testimonials";
 import { useAppSelector } from "../utils/hooks";
+import BriefGallery from "../dashboard/components/BriefGallery";
 
 function Homepage() {
   const isOpen = useAppSelector((store) => store.nav.isOpen);
@@ -29,6 +30,7 @@ function Homepage() {
         <CTAFooter />
         <Questions />
         <Banner />
+        <BriefGallery style="overview"/>
         <Footer />
       </main>
     </div>
