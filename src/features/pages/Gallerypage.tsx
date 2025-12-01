@@ -8,7 +8,7 @@ function Gallerypage() {
       <Header />
       <div className="pt-32 ">
 
-        <BriefGallery style="overview"/>
+        <BriefGallery style="side"/>
       </div>
       <Footer navType="home" />
       

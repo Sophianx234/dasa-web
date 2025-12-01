@@ -50,7 +50,7 @@ function Hero() {
                   style={{ backgroundImage: `url(${slide.url})` }}
                 />
                 {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-black/80" />
+                <div className="absolute inset-0 sm:bg-black/80 bg-black/60" />
               </div>
             </SwiperSlide>
           ))}
