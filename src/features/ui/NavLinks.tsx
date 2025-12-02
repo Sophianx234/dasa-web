@@ -37,6 +37,10 @@ function NavLinks({swap= 'flex'}:navLinksProps) {
                 className="hover:bg-dasalight py-2">
                     About
                 </NavLink>
+                <NavLink to='/homepage/gallery' onClick={()=>dispatch(toggleNav())}
+                className="hover:bg-dasalight py-2">
+                    Gallery
+                </NavLink>
                 <NavLink to='/homepage/login' onClick={()=>dispatch(toggleNav())}
                 className="hover:bg-dasalight py-2">
                     Login

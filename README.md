@@ -1,50 +1,160 @@
-# React + TypeScript + Vite
+# **Dasaug -- Dagbon Students Association Social App**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A campus-centric social platform built for members of the **Dagbon
+Students Association (DaSA)** at the University of Ghana.\
+Dasaug provides a digital space where DaSA members can connect, share
+updates, view event photos, and communicate in real-time.
 
-Currently, two official plugins are available:
+------------------------------------------------------------------------
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📸 **Landing Page Preview**
 
-## Expanding the ESLint configuration
+![Dasaug Landing
+Page](https://i.ibb.co/FbG9KGnv/screencapture-localhost-5173-homepage-2025-12-02-21-41-05.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+------------------------------------------------------------------------
 
-- Configure the top-level `parserOptions` property like this:
+## 🚀 **Features**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 🌐 Landing Page
+
+A modern, responsive introduction to DaSA, showcasing the association's
+identity, values, and activities.
+
+### 🖼️ Gallery
+
+-   View DaSA event photos\
+-   Upload new images (members/admin)\
+-   Clean and organized media display
+
+### 💬 Chat System
+
+A real-time chat feature that allows verified DaSA members to
+communicate within the app.
+
+### 🔐 Authentication
+
+-   Login\
+-   Signup\
+-   Secure member access
+
+### 📊 Dashboard
+
+A personalized dashboard for members, showing updates, actions, and
+shortcuts.
+
+### 🛠️ Admin Panel
+
+-   Manage users\
+-   Approve or moderate gallery uploads\
+-   Oversee content and app activity
+
+------------------------------------------------------------------------
+
+## 🛠️ **Tech Stack**
+
+### Frontend
+
+-   React\
+-   TypeScript\
+-   Vite\
+-   Responsive UI architecture
+
+### Backend
+
+-   Node.js\
+-   Express.js\
+-   MongoDB / Mongoose
+
+### Other Tools
+
+-   JWT authentication\
+-   WebSockets (Socket.io) for chat\
+-   Cloud storage for image uploads
+
+------------------------------------------------------------------------
+
+## 📂 **Project Structure**
+
+    Dasaug/
+    ├── client/
+    │   ├── src/
+    │   │   ├── components/
+    │   │   ├── pages/
+    │   │   ├── hooks/
+    │   │   ├── context/
+    │   │   └── services/
+    │   └── public/
+    │
+    ├── server/
+    │   ├── controllers/
+    │   ├── models/
+    │   ├── routes/
+    │   ├── middleware/
+    │   └── utils/
+    │
+    └── README.md
+
+------------------------------------------------------------------------
+
+## ⚙️ **Setup Instructions**
+
+### 1. Clone the Repo
+
+``` bash
+git clone https://github.com/your-repo/dasaug.git
+cd dasaug
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. Install Dependencies
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+#### Client
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+``` bash
+cd client
+pnpm install
 ```
+
+#### Server
+
+``` bash
+cd ../server
+pnpm install
+```
+
+### 3. Add Environment Variables
+
+Create `.env` inside the server folder:
+
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_jwt_secret
+    CLOUD_STORAGE_KEY=your_image_service_key
+
+### 4. Start the App
+
+**Frontend**
+
+``` bash
+pnpm run dev
+```
+
+**Backend**
+
+``` bash
+pnpm run start
+```
+
+------------------------------------------------------------------------
+
+## 🔮 Future Enhancements
+
+-   Direct messaging\
+-   Push notifications\
+-   Event calendar\
+-   User profile customization
+
+------------------------------------------------------------------------
+
+## 🤝 Contributing
+
+Pull requests and suggestions are welcome!
