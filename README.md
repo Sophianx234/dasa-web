@@ -10,7 +10,7 @@ updates, view event photos, and communicate in real-time.
 ## 📸 **Landing Page Preview**
 
 ![Dasaug Landing
-Page](https://res.cloudinary.com/dtytb8qrc/image/upload/v1764717103/screencapture-localhost-5173-homepage-2025-12-02-21_41_05_1_fs7ukc.png)
+Page](./assets/landing-page.png)
 
 ------------------------------------------------------------------------
 
