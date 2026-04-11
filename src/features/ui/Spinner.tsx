@@ -4,8 +4,8 @@ function Spinner() {
         <div className='flex justify-center items-center h-dvh'>
             <HashLoader
             loading={true}
-            color='#ffd8a8'
-            size={150}/>
+            color='#18181B'
+            size={80}/>
         </div>
     )
 }

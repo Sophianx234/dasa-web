@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export type LogoProps = {
   title: string;
   clns?: string; // Standardized from 'clns'
@@ -29,7 +31,7 @@ export function DasaLogo({ title, clns = "" }: LogoProps) {
   };
 
   return (
-    <div className={`flex items-center gap-2 sm:gap-3 md:gap-4 ${clns}`}>
+    <Link to="/" className={`flex items-center gap-2 sm:gap-3 md:gap-4 ${clns}`}>
       <img
         src="https://i.ibb.co/n8hRM6d/dasalogo-removebg.png"
         alt="DaSA Logo"
@@ -40,6 +42,6 @@ export function DasaLogo({ title, clns = "" }: LogoProps) {
       <h1 className="leading-tight border-l-2 border-zinc-300 pl-2 sm:pl-3 md:pl-4 font-bold font-Montserrat text-zinc-900 text-[10px] xs:text-xs sm:text-sm md:text-base tracking-tight">
         {formatTitle()}
       </h1>
-    </div>
+    </Link>
   );
 }

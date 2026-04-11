@@ -87,7 +87,7 @@ function AboutSection() {
             transition={{ duration: 1 }}
             className="flex justify-center mt-20 pt-10 border-t border-gray-200/60"
           >
-            <div className="opacity-50 hover:opacity-100 transition-opacity duration-300">
+            <div className="opacity-50 sm:hidden block hover:opacity-100 transition-opacity duration-300">
                <SVGLite type="sticks" />
             </div>
           </motion.div>
