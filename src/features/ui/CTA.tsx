@@ -96,7 +96,7 @@ function CTA() {
           {/* Floating Images Cluster (Right Side) */}
           <div className="w-full lg:w-[45%] h-[320px] sm:h-[380px] lg:h-[450px] relative z-10">
             {/* Soft decorative ambient glow behind images */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] bg-dasalight/35 blur-[90px] rounded-full pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] bg-dasalight/25 blur-[90px] rounded-full pointer-events-none"></div>
 
             {positionedImages.map((img, idx) => (
               <motion.div

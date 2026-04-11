@@ -1,4 +1,4 @@
-import DasaLogo from "@/features/ui/DasaLogo"
+import { DasaLogo } from "@/features/ui/DasaLogo"
 import { FaShoppingCart } from "react-icons/fa"
 import { FaInbox } from "react-icons/fa6"
 import { Link } from "react-router-dom"
