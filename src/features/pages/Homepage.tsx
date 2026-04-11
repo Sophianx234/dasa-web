@@ -19,7 +19,7 @@ function Homepage() {
   return (
     <div className="text-stone-900 h-dvh  scrollbar-hide overflow-x-hidden w-dvw">
       <Header />
-      <AnimatePresence>{isOpen && <NavLinks swap="col" />}</AnimatePresence>
+      <AnimatePresence>{isOpen && <NavLinks  />}</AnimatePresence>
       <main className="">
         <Hero />
         <BriefAbout />

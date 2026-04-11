@@ -12,10 +12,10 @@ export default function Header() {
 
   // Navigation Links Array for easy mapping and maintenance
   const navItems = [
-    { name: "Home", path: "/homepage" },
+    { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Events", path: "/events" },
-    { name: "Leadership", path: "/leadership" },
+    { name: "Events", path: "" },
+    { name: "Leadership", path: "" },
     { name: "Gallery", path: "/gallery" },
     { name: "Contact", path: "/contact" },
   ];

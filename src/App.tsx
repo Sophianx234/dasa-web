@@ -53,6 +53,7 @@ import ResetPasswordPage from "./features/pages/ResetPasswordPage";
 import ForgotPasswordPage from "./features/pages/ForgotPasswordPage";
 import Gallerypage from "./features/pages/Gallerypage";
 import GalleryPage from "./features/dashboard/pages/GalleryPage";
+import ContactPage from "./features/pages/ContactPage";
 
 const queryClient = new QueryClient();
 axios.defaults.withCredentials = true;
@@ -67,6 +68,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="about" element={<About />} />
+            <Route path="contact" element={<ContactPage />} />
             <Route path="gallery" element={<Gallerypage />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
