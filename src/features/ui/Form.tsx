@@ -16,8 +16,8 @@ import PrivacyPolicy from "./PrivacyPolicy";
 import Select from "./Select";
 import Terms from "./Terms";
 import { FiPlus } from "react-icons/fi";
-import DasaLogo from "./DasaLogo";
 import { DatePicker } from "../dashboard/account/DatePicker";
+import { DasaLogo } from "./DasaLogo";
 
 export type signupFormValues = {
   firstName: string;

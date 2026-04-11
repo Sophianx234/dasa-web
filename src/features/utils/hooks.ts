@@ -94,7 +94,7 @@ export const useAppSelector = useSelector.withTypes<RootState>();
       localStorage.removeItem('token')
       setTimeout(() => {
         toast.dismiss();
-        navigate("/homepage");
+        navigate('/');
         dispatch(toggleSidebar());
       }, 1000);
     },

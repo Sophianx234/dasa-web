@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Switch from "react-switch";
 import FormInput from "../ui/FormInput";
 import { useLogin } from "../utils/hooks";
-import DasaLogo from "./DasaLogo";
+import { DasaLogo } from "./DasaLogo";
 
 export type loginFormValues = {
   email: string;

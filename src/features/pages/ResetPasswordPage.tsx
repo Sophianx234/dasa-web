@@ -3,9 +3,9 @@ import FormWrapper from "../ui/FormWrapper";
 import { FaArrowLeft, FaRegUser } from "react-icons/fa6";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import DasaLogo from "../ui/DasaLogo";
 import FormInput from "../ui/FormInput";
 import { useResetPassword } from "../utils/hooks";
+import { DasaLogo } from "../ui/DasaLogo";
 export type resetPassFormValues = {
   pass: string;
   confirmPass: string;

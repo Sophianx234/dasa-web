@@ -20,7 +20,7 @@ function NavLinks({ swap = "flex" }: navLinksProps) {
       className="bg-white fixed  -top-1 -bottom-1 z-50  pb-10 left-0 right-0    pt-6 px-4 space-y-6"
     >
       <div className="flex justify-between ">
-        <Link to="/homepage">
+        <Link to="/">
           <img src={logo[0]} className=" w-20" />
         </Link>
         <button onClick={() => dispatch(toggleNav())}>
@@ -31,7 +31,7 @@ function NavLinks({ swap = "flex" }: navLinksProps) {
         className={swap === "col" ? "flex flex-col px-4 gap-6" : "flex gap-10"}
       >
         <Link
-          to="/homepage"
+          to="/"
           className="hover:bg-dasalight py-2"
           onClick={() => dispatch(toggleNav())}
         >

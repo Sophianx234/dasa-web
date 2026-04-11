@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import DasaLogo from "../ui/DasaLogo";
 import FormWrapper from "../ui/FormWrapper";
 
 import { Link } from "react-router-dom";
@@ -8,6 +7,7 @@ import FormInput from "../ui/FormInput";
 import { useForgotPassword } from "../utils/hooks";
 import Swal from "sweetalert2";
 import { Toaster } from "react-hot-toast";
+import { DasaLogo } from "../ui/DasaLogo";
 type forgotpassFormValues = {
   email: string;
 };
