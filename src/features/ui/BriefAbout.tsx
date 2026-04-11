@@ -8,24 +8,26 @@ function BriefAbout() {
     {
       icon: <Users size={36} className="text-dasadeep" />,
       title: "Community",
-      description: "Connect with fellow students, share experiences, and build lasting friendships.",
+      description:
+        "Connect with fellow students, share experiences, and build lasting friendships.",
     },
     {
       icon: <BookOpen size={36} className="text-dasadeep" />,
       title: "Learning",
-      description: "Access mentorship, workshops, and resources for academic and personal growth.",
+      description:
+        "Access mentorship, workshops, and resources for academic and personal growth.",
     },
     {
       icon: <Globe size={36} className="text-dasadeep" />,
       title: "Culture",
-      description: "Celebrate Dagbon heritage and participate in cultural exchange programs.",
+      description:
+        "Celebrate Dagbon heritage and participate in cultural exchange programs.",
     },
   ];
 
   return (
     <section className="py-14 px-4 md:px-16 bg-white border-b-2 border-b-dasalight">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-10 md:gap-16">
-
         {/* Image */}
         <motion.div
           className="flex-shrink-0 w-full md:w-1/3"
@@ -53,11 +55,14 @@ function BriefAbout() {
             About DaSA
           </h2>
           <p className="text-center md:text-left text-sm md:text-base leading-6 text-gray-700">
-            The Dagbon Students Association (DaSA), University of Ghana branch is a vibrant community that brings together students from Dagbon and beyond to celebrate our rich heritage, foster unity, and empower academic and personal growth.
+            The Dagbon Students Association (DaSA), University of Ghana branch
+            is a vibrant community that brings together students from Dagbon and
+            beyond to celebrate our rich heritage, foster unity, and empower
+            academic and personal growth.
           </p>
 
           <Link
-            to="/homepage/about"
+            to="/about"
             className="inline-flex items-center gap-2 bg-dasalight px-4 py-2 rounded-2xl font-semibold text-[rgb(51,49,46)] hover:bg-[#ffd8a8] transition-colors duration-300 w-max mx-auto md:mx-0"
           >
             Read More
@@ -76,8 +81,12 @@ function BriefAbout() {
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
               >
                 <div className="mb-2">{feature.icon}</div>
-                <h3 className="font-semibold text-lg text-[#33312e]">{feature.title}</h3>
-                <p className="text-sm text-gray-600 mt-1">{feature.description}</p>
+                <h3 className="font-semibold text-lg text-[#33312e]">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  {feature.description}
+                </p>
               </motion.div>
             ))}
           </div>

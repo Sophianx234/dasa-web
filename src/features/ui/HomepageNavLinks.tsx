@@ -1,18 +1,15 @@
-import DashNavLink from "../dashboard/components/DashNavLink"
+import DashNavLink from "../dashboard/components/DashNavLink";
 
 function HomepageNavLinks() {
-    return (
-        <>
-         <DashNavLink title="About" link="/homepage/about"/>
-         <DashNavLink title="Support" link=""/>
-         <DashNavLink title="Help" link=""/>
-         <DashNavLink title="Signup" link="/homepage/signup"/>
-         <DashNavLink title="login" link="/homepage/login"/>
-             
-                   
-        </>
-        
-    )
+  return (
+    <>
+      <DashNavLink title="About" link="/about" />
+      <DashNavLink title="Support" link="" />
+      <DashNavLink title="Help" link="" />
+      <DashNavLink title="Signup" link="/signup" />
+      <DashNavLink title="login" link="/login" />
+    </>
+  );
 }
 
-export default HomepageNavLinks
+export default HomepageNavLinks;

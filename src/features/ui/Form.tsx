@@ -45,7 +45,7 @@ function Form() {
   const [openPrivacy, setOpenPrivacy] = useState(false);
   const [openTerms, setOpenTerms] = useState(false);
   const [passwordMatchError, setPasswordMatchError] = useState<string | null>(
-    null
+    null,
   );
 
   const password = watch("password");
@@ -82,7 +82,7 @@ function Form() {
             <p className="text-sm text-gray-600 mt-1">
               Create your DaSA account. Already registered? <br />
               <Link
-                to="/homepage/login"
+                to="/login"
                 className="text-orange-500 font-medium hover:underline"
               >
                 Login here
@@ -106,7 +106,9 @@ function Form() {
                     inputName="firstName"
                     placeholder="First name"
                     style="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-orange-400"
-                    icon={<FaRegUser className="absolute left-2 text-gray-500" />}
+                    icon={
+                      <FaRegUser className="absolute left-2 text-gray-500" />
+                    }
                   />
                   <FormInput
                     type="text"
@@ -114,7 +116,9 @@ function Form() {
                     inputName="lastName"
                     placeholder="Last name"
                     style="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-orange-400"
-                    icon={<FaRegUser className="absolute left-2 text-gray-500" />}
+                    icon={
+                      <FaRegUser className="absolute left-2 text-gray-500" />
+                    }
                   />
                 </div>
 
@@ -124,7 +128,9 @@ function Form() {
                   inputName="email"
                   placeholder="Email address"
                   style="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-orange-400"
-                  icon={<IoMailOutline className="absolute left-2 text-gray-500" />}
+                  icon={
+                    <IoMailOutline className="absolute left-2 text-gray-500" />
+                  }
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -141,7 +147,9 @@ function Form() {
                   <Controller
                     name="birthDate"
                     control={control}
-                    render={({ field }) => <DatePicker type="signup" field={field} />}
+                    render={({ field }) => (
+                      <DatePicker type="signup" field={field} />
+                    )}
                   />
                 </div>
 
@@ -186,7 +194,9 @@ function Form() {
                   type="tel"
                   placeholder="Contact number"
                   style="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-orange-400"
-                  icon={<LuContact2 className="absolute left-2 text-gray-500" />}
+                  icon={
+                    <LuContact2 className="absolute left-2 text-gray-500" />
+                  }
                 />
 
                 <button className="w-full py-2 text-sm font-semibold bg-orange-400 text-white rounded-xl hover:bg-orange-500 transition-all">
@@ -204,7 +214,9 @@ function Form() {
                   type="password"
                   placeholder="Password"
                   style="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-orange-400"
-                  icon={<IoLockClosedOutline className="absolute left-2 text-gray-500" />}
+                  icon={
+                    <IoLockClosedOutline className="absolute left-2 text-gray-500" />
+                  }
                 />
 
                 <FormInput
@@ -213,7 +225,9 @@ function Form() {
                   type="password"
                   placeholder="Confirm Password"
                   style="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-orange-400"
-                  icon={<IoLockOpenOutline className="absolute left-2 text-gray-500" />}
+                  icon={
+                    <IoLockOpenOutline className="absolute left-2 text-gray-500" />
+                  }
                 />
 
                 {passwordMatchError && (
@@ -299,7 +313,8 @@ function Form() {
 
         {/* Image Section */}
         <div className="hidden relative lg:block">
-          <img src="https://i.ibb.co/XW5MRmH/photo-60-2024-10-31-06-52-36.jpg" 
+          <img
+            src="https://i.ibb.co/XW5MRmH/photo-60-2024-10-31-06-52-36.jpg"
             alt="Signup illustration"
             className="w-full h-full object-cover"
           />

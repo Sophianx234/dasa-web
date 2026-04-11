@@ -1,19 +1,19 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/autoplay";
+import "swiper/css/effect-fade";
 
 import { motion } from "framer-motion";
 
-export type slidesImagesType = {
+export type SlidesImagesType = {
   url: string;
 };
 
-const slideImages: slidesImagesType[] = [
+const slideImages: SlidesImagesType[] = [
   { url: "https://i.ibb.co/z4Qb9CJ/das-1.jpg" },
   { url: "https://i.ibb.co/Yfy7hZR/photo-5-2024-10-31-06-51-41.jpg" },
   { url: "https://i.ibb.co/dg27dzH/photo-32-2024-10-31-06-53-18.jpg" },
@@ -23,20 +23,23 @@ const slideImages: slidesImagesType[] = [
   { url: "https://i.ibb.co/XW5MRmH/photo-60-2024-10-31-06-52-36.jpg" },
 ];
 
-function Hero() {
+export default function Hero() {
   return (
-    <div className="relative overflow-hidden">
+    <section className="relative w-full overflow-hidden flex flex-col mt-[5.6rem]">
+      
+      {/* Slider Container */}
       <motion.div
-        className="mt-[5.6rem] relative max-h-[25rem] h-[25rem] sm:h-[50rem] sm:max-h-[30rem]"
+        className="relative w-full h-[55vh] min-h-[400px] sm:h-[65vh] lg:h-[75vh]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
         <Swiper
-          modules={[Autoplay, Navigation, Pagination]}
+          modules={[Autoplay, Navigation, Pagination, EffectFade]}
+          effect="fade"
           autoplay={{ delay: 6000, disableOnInteraction: false }}
           navigation
-          pagination={{ clickable: true }}
+          pagination={{ clickable: true, dynamicBullets: true }}
           loop
           speed={1500}
           className="w-full h-full"
@@ -49,57 +52,65 @@ function Hero() {
                   className="absolute inset-0 bg-cover bg-center"
                   style={{ backgroundImage: `url(${slide.url})` }}
                 />
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 sm:bg-black/80 bg-black/60" />
+                {/* Restored Solid Dark Overlay */}
+                <div className="absolute inset-0 bg-black/60 sm:bg-black/80" />
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* Hero Title */}
-        <motion.div
-          className="text-[#ffe8cbbd] absolute top-[10.5rem] left-0 z-10 w-fit mx-auto right-0 flex justify-center text-center font-extrabold font-Montserrat text-3xl sm:text-6xl"
-          initial={{ y: -40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-        >
-          Dagbon Tooni Tibu <br /> Shikuru Bihi Nuu Beni
-        </motion.div>
+        {/* Title Overlay - Flawlessly Centered */}
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 pointer-events-none">
+          <motion.h1
+            className="text-[#ffe8cb] text-center font-extrabold font-Montserrat text-4xl sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-2xl leading-tight"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+          >
+            Dagbon Tooni Tibu <br />
+            <span className="text-white">Shikuru Bihi Nuu Beni</span>
+          </motion.h1>
+        </div>
       </motion.div>
 
-      {/* Description */}
+      {/* Description Banner */}
       <motion.div
-        className="pt-10 bg-dasalight uppercase text-xs pb-8 font-mulish px-1"
-        initial={{ y: 30, opacity: 0 }}
+        className="bg-[#faf8f5] py-10 px-6 sm:px-12 shadow-inner"
+        initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className="font-bold text-center sm:text-lg text-[#33312e]">
-          Your gateway to a world of networking, mentorship, and cultural
-          exchange.
-        </h1>
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-mulish font-bold uppercase tracking-wider text-sm sm:text-base md:text-lg text-[#33312e] leading-relaxed">
+            Your gateway to a world of networking, mentorship, and cultural exchange.
+          </h2>
+        </div>
       </motion.div>
 
-      {/* Custom Swiper navigation button & pagination colors */}
+      {/* Scoped Custom Swiper Overrides */}
       <style jsx global>{`
         .swiper-button-next,
         .swiper-button-prev {
-          color: #ffd8a8;
-          font-size: 2rem; /* larger arrows */
-          z-index: 50 !important;
+          color: #ffd8a8 !important;
+          transition: all 0.3s ease;
+          opacity: 0.7;
+        }
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+          opacity: 1;
+          transform: scale(1.1);
         }
         .swiper-pagination-bullet {
-          background-color: #fff; /* bullet color */
-          opacity: 0.8;
+          background-color: #ffffff !important;
+          opacity: 0.5 !important;
+          transition: all 0.3s ease;
         }
         .swiper-pagination-bullet-active {
-          background-color: #ffd8a8; /* active bullet color */
-          opacity: 1;
+          background-color: #ffd8a8 !important;
+          opacity: 1 !important;
+          transform: scale(1.3);
         }
-
       `}</style>
-    </div>
+    </section>
   );
 }
-
-export default Hero;

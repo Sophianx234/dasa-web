@@ -87,7 +87,9 @@ function SignIn() {
               placeholder="Email address"
             />
             {errors.email && (
-              <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>
+              <p className="text-xs text-red-500 mt-1">
+                {errors.email.message}
+              </p>
             )}
 
             {/* Password */}
@@ -119,13 +121,15 @@ function SignIn() {
               placeholder="Password"
             />
             {errors.password && (
-              <p className="text-xs text-red-500 mt-1">{errors.password.message}</p>
+              <p className="text-xs text-red-500 mt-1">
+                {errors.password.message}
+              </p>
             )}
 
             {/* Options */}
             <div className="flex flex-col gap-2 text-xs">
               <Link
-                to="/homepage/forgotpassword"
+                to="/forgotpassword"
                 className="text-gray-700 hover:underline self-end"
               >
                 Forgot Password?
@@ -160,7 +164,7 @@ function SignIn() {
             <p className="text-center text-sm text-gray-600">
               Don’t have an account?{" "}
               <Link
-                to="/homepage/signup"
+                to="/signup"
                 className="text-gray-700 font-medium hover:underline"
               >
                 Sign up
@@ -176,7 +180,7 @@ function SignIn() {
             alt="Sign in illustration"
             className="w-full h-full object-cover"
           />
-           <div className="absolute inset-0 bg-[#191611] bg-opacity-70"></div>
+          <div className="absolute inset-0 bg-[#191611] bg-opacity-70"></div>
         </div>
       </div>
 

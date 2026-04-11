@@ -65,14 +65,13 @@ function App() {
           <ScrollToTop />
 
           <Routes>
-            <Route path="homepage" element={<Homepage />} />
-            <Route index element={<Navigate to={"/homepage"} />} />
-            <Route path="homepage/about" element={<About />} />
-            <Route path="homepage/gallery" element={<Gallerypage />} />
-            <Route path="homepage/login" element={<Login />} />
-            <Route path="homepage/signup" element={<SignUp />} />
-            <Route path="homepage/forgotpassword" element={<ForgotPasswordPage />} />
-            <Route path="homepage/resetpassword/:token" element={<ResetPasswordPage />} />
+            <Route path="/" element={<Homepage />} />
+            <Route path="about" element={<About />} />
+            <Route path="gallery" element={<Gallerypage />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="forgotpassword" element={<ForgotPasswordPage />} />
+            <Route path="resetpassword/:token" element={<ResetPasswordPage />} />
 
             <Route
               path="/dashboard"
