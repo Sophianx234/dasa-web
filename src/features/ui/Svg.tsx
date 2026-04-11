@@ -3,10 +3,11 @@
     <svg
       version="1.1"
       id="Capa_1"
+      className="h-full w-auto max-w-full"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       x="0px"
       y="0px"
-      viewBox="0 0 1400 935"
+      viewBox="0 0 1400 350"
       enableBackground="new 0 0 1400 980"
     >
       <g>

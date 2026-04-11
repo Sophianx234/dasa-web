@@ -159,6 +159,30 @@ const fallbackImageLinks = [
     public_id: "Dasa/media/images/user-6779a73cb1b5df55c960c388-1736508703612-549258247_m11",
     _id: "24",
   },
+  {
+    secure_url: "https://i.ibb.co/pjc7DfZF/m-1.jpg",
+    format: "jpg",
+    public_id: "Dasa/media/images/user-6779a73cb1b5df55c960c388-1736508703612-549258247_m1",
+    _id: "25",
+  },
+  {
+    secure_url: "https://i.ibb.co/QFSYQW1j/m-3.jpg",
+    format: "jpg",
+    public_id: "Dasa/media/images/user-6779a73cb1b5df55c960c388-1736508703612-549258247_m3",
+    _id: "26",
+  },
+  {
+    secure_url: "https://i.ibb.co/8LQhwpqd/m-5.jpg",
+    format: "jpg",
+    public_id: "Dasa/media/images/user-6779a73cb1b5df55c960c388-1736508703612-549258247_m5",
+    _id: "27",
+  },
+  {
+    secure_url: "https://i.ibb.co/CswF0dzb/m-18.jpg",
+    format: "jpg",
+    public_id: "Dasa/media/images/user-6779a73cb1b5df55c960c388-1736508703612-549258247_m5",
+    _id: "28",
+  },
 ];
 
 function BriefGallery({ style }: BriefGalleryProps) {
@@ -243,8 +267,8 @@ function BriefGallery({ style }: BriefGalleryProps) {
     >
       {/* --- OVERVIEW VIEW --- */}
       {style === "overview" && (
-        <div className="mx-4 rounded-lg pb-6">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#33312e] pb-6 pt-4 font-rethink">
+        <div className="mx-4 mt-8 rounded-lg pb-6">
+          <h2 className="text-2xl md:text-3xl hidden  font-bold tracking-tight text-[#33312e] pb-6 pt-4 font-rethink">
             Gallery.
           </h2>
           <ImageViewer images={shuffledFallback} />
