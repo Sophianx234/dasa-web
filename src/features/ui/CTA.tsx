@@ -93,16 +93,16 @@ function CTA() {
           </div>
 
           {/* Floating Images Cluster (Right Side) */}
+          {/* Floating Images Cluster (Right Side) */}
           <div className="w-full lg:w-[45%] h-[320px] sm:h-[380px] lg:h-[450px] relative z-10">
             {/* Soft decorative ambient glow behind images */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] bg-dasalight/25 blur-[90px] rounded-full pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] bg-dasalight/35 blur-[90px] rounded-full pointer-events-none"></div>
 
             {positionedImages.map((img, idx) => (
               <motion.div
                 key={idx}
-                // Removed rounded-full here to prevent it from clipping the hover shadow/scale
-                // hover:!z-50 ensures any hovered item comes to the absolute front
-                className={`absolute ${img.position} rounded-full size-full hover:!z-50 group`}
+                // Ensure no rounded-full is on this positioning wrapper
+                className={`absolute ${img.position} hover:!z-50 group`}
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -122,17 +122,21 @@ function CTA() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
+                  // Moved the scale and hover effects here so it scales from the dead center
+                  className="group-hover:scale-110 transition-transform duration-300 cursor-pointer"
                 >
-                  <CTImages
-                    imageUrl={img.url}
-                    // Added: block, aspect-square, overflow-hidden to strictly enforce perfect mathematical circles
-                    className={`${img.size} block aspect-square rounded-full overflow-hidden object-cover ring-2 md:ring-4 ring-[#33312e] shadow-xl group-hover:scale-110 transition-transform duration-300 cursor-pointer`}
-                  />
+                  {/* FOOLPROOF CLIPPING MASK: This forces a perfect circle */}
+                  <div className={`${img.size} relative rounded-full overflow-hidden ring-2 md:ring-4 ring-[#33312e] shadow-xl `}>
+                    <CTImages
+                      imageUrl={img.url}
+                      // We force the image component to absolutely fill the perfect circle
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </div>
                 </motion.div>
               </motion.div>
             ))}
           </div>
-          
         </motion.div>
       </div>
     </section>
