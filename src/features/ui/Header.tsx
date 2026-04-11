@@ -25,10 +25,10 @@ export default function Header() {
       <div className="max-w-[90rem] mx-auto flex items-center justify-between px-3 sm:px-8 h-[5.6rem]">
         
         {/* Logo Section */}
-        <Link to="/homepage" className="flex-shrink-0 group">
+        <Link to="/" className="flex-shrink-0 group">
           <DasaLogo 
             title="Dagbon Students Association" 
-            className="group-hover:opacity-80 transition-opacity duration-300" 
+            clns="group-hover:opacity-80 transition-opacity duration-300" 
           />
         </Link>
 
@@ -64,7 +64,7 @@ export default function Header() {
           {/* Desktop Login Button */}
           <Link
             to="/login"
-            className="hidden sm:flex items-center justify-center bg-zinc-900 text-[#FEF3E7] hover:bg-dasadeep hover:text-zinc-900 font-bold text-sm py-2.5 px-7 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+            className="hidden sm:flex items-center justify-center bg-zinc-900 text-[#FEF3E7]   font-bold text-sm py-2.5 px-7 rounded-full shadow-md hover:shadow-lg transition-all duration-300  "
           >
             Login
           </Link>
@@ -72,7 +72,7 @@ export default function Header() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => dispatch(toggleNav())}
-            className="lg:hidden p-2 rounded-xl bg-white/50 text-zinc-800 hover:bg-dasadeep hover:text-zinc-900 border border-zinc-200/50 shadow-sm transition-all duration-300 focus:outline-none active:scale-95"
+            className="lg:hidden p-2 rounded-xl  text-zinc-800  hover:text-zinc-900    transition-all duration-300  active:scale-95"
             aria-label="Open Menu"
           >
             <IoMenu className="w-7 h-7" />

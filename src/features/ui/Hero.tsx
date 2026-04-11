@@ -29,7 +29,8 @@ export default function Hero() {
       
       {/* Slider Container */}
       <motion.div
-        className="relative w-full h-[55vh] min-h-[400px] sm:h-[65vh] lg:h-[75vh]"
+        // CHANGED: Restored mobile/sm heights, added md: prefix to the full-screen calc
+        className="relative w-full h-[55vh] min-h-[400px] sm:h-[65vh] md:h-[calc(100vh-5.6rem)]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
@@ -45,8 +46,8 @@ export default function Hero() {
           className="w-full h-full"
         >
           {slideImages.map((slide, index) => (
-            <SwiperSlide key={index}>
-              <div className="relative w-full h-full">
+            <SwiperSlide key={index} className="">
+              <div className="relative h-full w-full ">
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 bg-cover bg-center"
