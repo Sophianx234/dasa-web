@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, ChevronDown } from "lucide-react";
+import { Search, ChevronDown, X } from "lucide-react";
 
 export const faqsData = [
   { question: "What is DaSA?", answer: "DaSA stands for the Dagbon Students Association, an organization aimed at supporting Dagbon students at the University of Ghana." },
@@ -73,7 +73,6 @@ function AccordionItem({ faq, isOpen, onClick }) {
 // --- Main List Component ---
 function AccordionList() {
   const [searchQuery, setSearchQuery] = useState("");
-  // FIX: Track the actual question string, not the array index
   const [openQuestion, setOpenQuestion] = useState(null);
 
   const filteredFaqs = faqsData.filter(
@@ -82,7 +81,6 @@ function AccordionList() {
       faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // FIX: Compare and set based on the question string
   const handleToggle = (question) => {
     setOpenQuestion(openQuestion === question ? null : question);
   };
@@ -114,13 +112,32 @@ function AccordionList() {
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <Search className="h-5 w-5 text-[#33312e]/40 dark:text-[#fef4e9]/40" />
             </div>
+            
             <input
               type="text"
               placeholder="Search questions or keywords..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 bg-transparent border-b-2 border-[#33312e]/20 dark:border-[#fef4e9]/20 text-[#33312e] dark:text-[#fef4e9] placeholder:text-[#33312e]/40 dark:placeholder:text-[#fef4e9]/40 focus:border-dasalight focus:outline-none transition-colors font-poppins"
+              // Added pr-12 here so text doesn't hide behind the X icon
+              className="w-full pl-12 pr-12 py-4 bg-transparent border-b-2 border-[#33312e]/20 dark:border-[#fef4e9]/20 text-[#33312e] dark:text-[#fef4e9] placeholder:text-[#33312e]/40 dark:placeholder:text-[#fef4e9]/40 focus:border-dasalight focus:outline-none transition-colors font-poppins"
             />
+            
+            {/* Added Close Icon for resetting the input */}
+            <AnimatePresence>
+              {searchQuery && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={() => setSearchQuery("")}
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-[#33312e]/40 hover:text-[#33312e] dark:text-[#fef4e9]/40 dark:hover:text-[#fef4e9] transition-colors focus:outline-none"
+                  aria-label="Clear search"
+                >
+                  <X className="h-5 w-5" />
+                </motion.button>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
 
@@ -139,7 +156,6 @@ function AccordionList() {
                 >
                   <AccordionItem 
                     faq={faq} 
-                    // FIX: Pass down boolean based on question match
                     isOpen={openQuestion === faq.question} 
                     onClick={() => handleToggle(faq.question)} 
                   />
