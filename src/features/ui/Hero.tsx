@@ -6,8 +6,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+import { Users, Lightbulb, Earth } from "lucide-react";
 
 import { motion } from "framer-motion";
+import FeaturesBanner from "./FeaturesBanner";
 
 export type SlidesImagesType = {
   url: string;
@@ -75,18 +77,9 @@ export default function Hero() {
       </motion.div>
 
       {/* Description Banner */}
-      <motion.div
-        className="bg-[#faf8f5] py-10 px-6 sm:px-12 shadow-inner"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-mulish font-bold uppercase tracking-wider text-sm sm:text-base md:text-lg text-[#33312e] leading-relaxed">
-            Your gateway to a world of networking, mentorship, and cultural exchange.
-          </h2>
-        </div>
-      </motion.div>
+
+
+      <FeaturesBanner />
 
       {/* Scoped Custom Swiper Overrides */}
       <style jsx global>{`
