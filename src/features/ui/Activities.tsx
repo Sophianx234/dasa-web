@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import SVGLite from "./SVGLite";
 import VideoPlayer from "./VideoPlayer";
 import VideoSkeleton from "@/skeletons/VideoSkeleton";
+import { useAppSelector } from "../utils/hooks";
 
 export interface videoI {
   format: string;
@@ -27,6 +28,7 @@ function Activities() {
     queryFn: getVideos,
   });
 
+  const {turnOffLight} = useAppSelector((state) => state.nav);
   const videosToShow = (data as videosResponse)?.videos.slice(0, -1) || [];
 
   // Slider State
@@ -99,7 +101,7 @@ function Activities() {
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   className="w-full h-full flex justify-center"
                 >
-                  <div className="w-full md:w-[80%] shadow-lg rounded-xl overflow-hidden bg-black">
+                  <div className={`w-full md:w-[80%] shadow-lg rounded-xl overflow-hidden  ${turnOffLight ? 'bg-black' : 'bg-white'}`}>
                      <VideoPlayer src={videosToShow[activeIndex].secure_url} />
                   </div>
                 </motion.div>

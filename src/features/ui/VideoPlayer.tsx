@@ -77,7 +77,7 @@ function VideoPlayer({ src,id,control = 'normal' }: videoPlayerProps) {
       ref={targetRef}
       
     >
-      <div className="grid grid-cols-[.2fr_2fr_.2fr] gap-3">
+      <div className="grid grid-cols-[.2fr_2fr_.2fr] sm:grid-cols-[.2fr_2fr_.2fr] gap-3">
           <div className="flex   flex-col items-center  gap-16 pt-2">
             <div className="gap-4 flex flex-col items-center   pl-2">
               <FaXTwitter className="size-5 fill-[#ffd8a8] " />
@@ -88,7 +88,8 @@ function VideoPlayer({ src,id,control = 'normal' }: videoPlayerProps) {
               <BsInstagram className="size-5 fill-[#ffd8a8]" />
           </div>
           </div>
-          
+          <div className="flex items-center justify-center">
+
       <video
         ref={videoRef}
         loop
@@ -99,11 +100,12 @@ function VideoPlayer({ src,id,control = 'normal' }: videoPlayerProps) {
         controls
         className="w-72 pb-4  "
         
-      >
+        >
         <source src={src}  type="video/mp4" />
         Your browser does not support the video tag. Please try viewing this
         page in a modern browser.
       </video>
+        </div>
       <div className="flex relative">
       {control ==='admin'&&<DeleteButton handleDelete={()=>handleDeleteVideo(id as string)} />}
             <div className="self-end">
@@ -113,7 +115,7 @@ function VideoPlayer({ src,id,control = 'normal' }: videoPlayerProps) {
         </div>
         
     </span>
-    <div className="pb-12">
+    <div className="pb-12 hidden sm:block">
 
         <SVGLite type="lines"  />
     </div>

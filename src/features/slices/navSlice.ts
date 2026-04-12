@@ -14,6 +14,7 @@ export type notificationsType = {
   notificationImg:string
 };
 interface navState {
+  turnOffLight: boolean 
   selectFilter: 'images'|'videos',
   typingUsers: signupCredentialsExtended[];
   isTyping: boolean;
@@ -47,6 +48,7 @@ revealEventScheduler: boolean;
   notifications:notificationsType[]
 }
 const initialState: navState = {
+  turnOffLight: false,
   selectFilter: 'images',
   typingUsers: [],
   notifications:[],
@@ -137,6 +139,9 @@ const navSlice = createSlice({
     },
     toggleIsAuthenticated(state, action) {
       state.isAuthenticated = action.payload;
+    },
+    toggleTurnOffLight(state, action) {
+      state.turnOffLight = action.payload;
     },
     toggleShowToaster(state) {
       state.showToaster = !state.showToaster;
@@ -244,6 +249,7 @@ export const {
   setIsLoading,
   setUser,
   toggleOpenEmojiMart,
+  toggleTurnOffLight,
   setEmojiMart,
   toggleIsOpenAttachFile,
   setIsOpenAttachFile,
