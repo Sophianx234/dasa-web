@@ -1,160 +1,57 @@
-# **Dasaug -- Dagbon Students Association Social App**
+<div align="center">
+  <h1 align="center">Dasaug 🎓</h1>
+  <p align="center">
+    <strong>A full-stack social networking and community platform built for the Dagbon Students Association.</strong>
+  </p>
+  <p align="center">
+    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+    <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+    <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+    <img src="https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socketdotio&logoColor=white" alt="Socket.io" />
+  </p>
+</div>
 
-A campus-centric social platform built for members of the **Dagbon
-Students Association (DaSA)** at the University of Ghana.\
-Dasaug provides a digital space where DaSA members can connect, share
-updates, view event photos, and communicate in real-time.
+<br />
 
-------------------------------------------------------------------------
+<div align="center">
+  <img src="https://res.cloudinary.com/dtytb8qrc/image/upload/c_scale,w_1200,q_auto,f_auto/v1782390758/screencapture-dasaug-netlify-app-2026-06-25-12_29_06_1_mtxqkk.png" alt="Dasaug Landing Page Preview" width="100%" />
+</div>
 
-## 📸 **Landing Page Preview**
+<br />
 
-![Dasaug Landing
-Page](./assets/landing-page.png)
+## 📖 Overview
 
-------------------------------------------------------------------------
+**Dasaug** is a comprehensive, campus-centric social platform developed exclusively for the Dagbon Students Association (DaSA) at the University of Ghana. It provides a secure, digital ecosystem designed to foster community engagement, facilitate real-time communication, and centralize association updates.
 
-## 🚀 **Features**
+Built on the robust MERN stack (MongoDB, Express, React, Node.js) and powered by Vite, the application utilizes a decoupled client-server architecture to ensure high performance, scalable real-time interactions, and secure data handling.
 
-### 🌐 Landing Page
+## ✨ System Capabilities
 
-A modern, responsive introduction to DaSA, showcasing the association's
-identity, values, and activities.
+*   **Real-Time Communication:** Integrated WebSockets (Socket.io) allow verified DaSA members to communicate instantly within the application.
+*   **Secure Authentication & Authorization:** Implements JWT-based authentication with strict Role-Based Access Control (RBAC) separating standard members from administrators.
+*   **Interactive Member Dashboard:** A personalized hub featuring association updates, an event gallery, market place, and secure anonymous chat.
+*   **Media Management & Moderation:** Cloud-integrated storage for event photos with an administrative moderation pipeline to approve or restrict content.
+*   **Responsive UI Architecture:** highly responsive frontend ensuring seamless accessibility for students across all devices.
 
-### 🖼️ Gallery
+## 🧰 Tech Stack & Infrastructure
 
--   View DaSA event photos\
--   Upload new images (members/admin)\
--   Clean and organized media display
+**Frontend Architecture**
+*   **Framework:** React (bootstrapped with Vite)
+*   **Language:** TypeScript
+*   **Styling:** Modern Responsive UI Tooling
 
-### 💬 Chat System
+**Backend & Database**
+*   **Runtime & API:** Node.js, Express.js
+*   **Database:** MongoDB via Mongoose ODM
+*   **Real-Time Subsystem:** Socket.io
+*   **Security & Auth:** JSON Web Tokens (JWT), bcrypt
 
-A real-time chat feature that allows verified DaSA members to
-communicate within the app.
+## 🚀 Local Setup & Installation
 
-### 🔐 Authentication
+To run the Dasaug ecosystem locally, you will need to spin up both the client and server environments.
 
--   Login\
--   Signup\
--   Secure member access
-
-### 📊 Dashboard
-
-A personalized dashboard for members, showing updates, actions, and
-shortcuts.
-
-### 🛠️ Admin Panel
-
--   Manage users\
--   Approve or moderate gallery uploads\
--   Oversee content and app activity
-
-------------------------------------------------------------------------
-
-## 🛠️ **Tech Stack**
-
-### Frontend
-
--   React\
--   TypeScript\
--   Vite\
--   Responsive UI architecture
-
-### Backend
-
--   Node.js\
--   Express.js\
--   MongoDB / Mongoose
-
-### Other Tools
-
--   JWT authentication\
--   WebSockets (Socket.io) for chat\
--   Cloud storage for image uploads
-
-------------------------------------------------------------------------
-
-## 📂 **Project Structure**
-
-    Dasaug/
-    ├── client/
-    │   ├── src/
-    │   │   ├── components/
-    │   │   ├── pages/
-    │   │   ├── hooks/
-    │   │   ├── context/
-    │   │   └── services/
-    │   └── public/
-    │
-    ├── server/
-    │   ├── controllers/
-    │   ├── models/
-    │   ├── routes/
-    │   ├── middleware/
-    │   └── utils/
-    │
-    └── README.md
-
-------------------------------------------------------------------------
-
-## ⚙️ **Setup Instructions**
-
-### 1. Clone the Repo
-
-``` bash
-git clone https://github.com/your-repo/dasaug.git
+**1. Clone the repository**
+```bash
+git clone [https://github.com/sophianx243/dasaug.git](https://github.com/sophianx243/dasaug.git)
 cd dasaug
-```
-
-### 2. Install Dependencies
-
-#### Client
-
-``` bash
-cd client
-pnpm install
-```
-
-#### Server
-
-``` bash
-cd ../server
-pnpm install
-```
-
-### 3. Add Environment Variables
-
-Create `.env` inside the server folder:
-
-    MONGO_URI=your_mongodb_connection_string
-    JWT_SECRET=your_jwt_secret
-    CLOUD_STORAGE_KEY=your_image_service_key
-
-### 4. Start the App
-
-**Frontend**
-
-``` bash
-pnpm run dev
-```
-
-**Backend**
-
-``` bash
-pnpm run start
-```
-
-------------------------------------------------------------------------
-
-## 🔮 Future Enhancements
-
--   Direct messaging\
--   Push notifications\
--   Event calendar\
--   User profile customization
-
-------------------------------------------------------------------------
-
-## 🤝 Contributing
-
-Pull requests and suggestions are welcome!
